@@ -30,7 +30,8 @@ export const MEDIA_ALT_BY_STEM: Record<string, string> = {
 
 /** Thư mục ảnh nguồn của frontend (override qua env khi cần). */
 const SOURCE_DIR =
-  process.env.SEED_IMAGE_SOURCE_DIR || "C:/Users/LongVi/OneDrive/Desktop/TestSEO/public";
+  process.env.SEED_IMAGE_SOURCE_DIR ||
+  "C:/Users/LongVi/OneDrive/Desktop/TestSEO/public";
 
 const MIME_BY_EXT: Record<string, string> = {
   ".avif": "image/avif",
@@ -61,7 +62,12 @@ function pickSourceFile(stem: string): string | null {
   return null;
 }
 
-export type SeedMediaStats = { copied: number; created: number; total: number; updated: number };
+export type SeedMediaStats = {
+  copied: number;
+  created: number;
+  total: number;
+  updated: number;
+};
 
 /** Upsert media doc theo filename (đã có → cập nhật alt; thiếu → copy file + tạo mới). */
 export async function runSeedMedia(payload: Payload): Promise<SeedMediaStats> {
@@ -72,7 +78,9 @@ export async function runSeedMedia(payload: Payload): Promise<SeedMediaStats> {
   for (const [stem, alt] of Object.entries(MEDIA_ALT_BY_STEM)) {
     const sourcePath = pickSourceFile(stem);
     if (!sourcePath) {
-      payload.logger.warn(`Thiếu ảnh nguồn "${stem}" trong ${SOURCE_DIR} — bỏ qua.`);
+      payload.logger.warn(
+        `Thiếu ảnh nguồn "${stem}" trong ${SOURCE_DIR} — bỏ qua.`,
+      );
       continue;
     }
     const filename = path.basename(sourcePath);
@@ -116,7 +124,9 @@ export async function runSeedMedia(payload: Payload): Promise<SeedMediaStats> {
       data: { alt },
       file: {
         data,
-        mimetype: MIME_BY_EXT[path.extname(filename).toLowerCase()] || "application/octet-stream",
+        mimetype:
+          MIME_BY_EXT[path.extname(filename).toLowerCase()] ||
+          "application/octet-stream",
         name: filename,
         size: data.length,
       },
@@ -124,7 +134,8 @@ export async function runSeedMedia(payload: Payload): Promise<SeedMediaStats> {
     });
     mediaIdByFilename.set(filename, createdDoc.id);
     mediaIdByFilename.set(stem, createdDoc.id);
-    if (createdDoc.filename) mediaIdByFilename.set(createdDoc.filename, createdDoc.id);
+    if (createdDoc.filename)
+      mediaIdByFilename.set(createdDoc.filename, createdDoc.id);
     created += 1;
     copied += 1;
   }
@@ -132,7 +143,9 @@ export async function runSeedMedia(payload: Payload): Promise<SeedMediaStats> {
   return { copied, created, total: mediaIdByFilename.size, updated };
 }
 
-const invokedAsScript = (process.argv[1] ?? "").replace(/\\/g, "/").endsWith("/seedMedia.ts");
+const invokedAsScript = (process.argv[1] ?? "")
+  .replace(/\\/g, "/")
+  .endsWith("/seedMedia.ts");
 
 if (invokedAsScript) {
   const { loadEnv } = await import("payload/node");

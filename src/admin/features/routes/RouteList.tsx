@@ -159,13 +159,26 @@ export function RouteList() {
       sortable: true,
       render: (item) => (
         <div className="max-w-xs md:max-w-sm space-y-1">
-          <Link
-            to={`/routes/${item.id}`}
-            className="font-semibold text-slate-900 hover:text-blue-600 transition-colors line-clamp-1 block"
-            data-testid={`route-title-${item.id}`}
-          >
-            {item.name}
-          </Link>
+          <div className="flex items-center gap-2 flex-wrap">
+            <Link
+              to={`/routes/${item.id}`}
+              className="font-semibold text-slate-900 hover:text-blue-600 transition-colors line-clamp-1 block"
+              data-testid={`route-title-${item.id}`}
+            >
+              {item.name}
+            </Link>
+            {item.isBannerTop && (
+              <Badge
+                variant="warning"
+                size="sm"
+                className="bg-amber-500/15 text-amber-700 border border-amber-500/30 font-medium"
+                data-testid={`banner-top-badge-${item.id}`}
+              >
+                <Star className="w-3 h-3 mr-1 fill-amber-400 text-amber-500 shrink-0" />
+                <span>{item.bannerLabel || "Top"}</span>
+              </Badge>
+            )}
+          </div>
         </div>
       ),
     },
@@ -181,27 +194,6 @@ export function RouteList() {
           <span className="text-[11px] text-slate-400">4 hạng vé cước</span>
         </div>
       ),
-    },
-    {
-      key: "isBannerTop",
-      header: "Banner Top",
-      align: "center",
-      render: (item) => {
-        if (!item.isBannerTop) {
-          return <span className="text-slate-400 text-xs">—</span>;
-        }
-        return (
-          <Badge
-            variant="warning"
-            size="sm"
-            className="bg-amber-500/15 text-amber-700 border border-amber-500/30 font-medium"
-            data-testid={`banner-top-badge-${item.id}`}
-          >
-            <Star className="w-3 h-3 mr-1 fill-amber-400 text-amber-500 shrink-0" />
-            <span>{item.bannerLabel || "Top"}</span>
-          </Badge>
-        );
-      },
     },
     {
       key: "description",
@@ -413,8 +405,6 @@ export function RouteList() {
         onConfirm={handleDelete}
         onClose={() => setRouteToDelete(null)}
       />
-
-
     </div>
   );
 }

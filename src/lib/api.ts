@@ -10,6 +10,17 @@ import {
 } from "@/data/company-info";
 import { FALLBACK_ROUTES } from "@/data/fallback-routes";
 import type { RouteItem, RoutePriceDetail } from "@/lib/types";
+import {
+  getRoutesDirect,
+  getRouteDirect,
+  getCompanySettingsDirect,
+  getArticlesDirect,
+  getArticleDirect,
+  getAirportPricingDirect,
+  getDistanceRatesDirect,
+  getPricingSettingsDirect,
+  getPageDirect,
+} from "./api/server";
 
 export type { RouteItem, RoutePriceDetail };
 export { FALLBACK_ROUTES };
@@ -317,6 +328,9 @@ export async function getRoutes(options: GetRoutesOptions & { fields?: "card" | 
 export async function getRoutes(
   options: GetRoutesOptions & { fields?: "card" | "slug" | "full" } = {},
 ): Promise<RouteItem[] | { slug: string }[]> {
+  if (typeof window === "undefined") {
+    return getRoutesDirect(options);
+  }
   const query = buildRoutesQuery({ fields: "card", ...options });
   try {
     const data = await cmsGet<RouteCardOut[] | { slug: string }[]>(`/api/v1/routes${query}`, [
@@ -357,6 +371,9 @@ function fallbackRouteDetail(slug: string): RouteDetail | null {
 }
 
 export async function getRoute(slug: string): Promise<RouteDetail> {
+  if (typeof window === "undefined") {
+    return getRouteDirect(slug);
+  }
   try {
     const data = await cmsGet<RouteDetailOut>(`/api/v1/routes/${encodeURIComponent(slug)}`, [
       "routes",
@@ -475,6 +492,9 @@ export const FALLBACK_COMPANY_SETTINGS: CompanySettingsData = {
 const text = (value: string | null | undefined): string => value ?? "";
 
 export async function getCompanySettings(): Promise<CompanySettingsData> {
+  if (typeof window === "undefined") {
+    return getCompanySettingsDirect();
+  }
   try {
     const doc = await cmsGet<CompanySettingsOut>("/api/v1/settings/company", ["company"]);
     const identity = doc.identity ?? {};
@@ -631,14 +651,23 @@ export type PricingSettings = {
 };
 
 export function getAirportPricing(): Promise<AirportPricingRow[]> {
+  if (typeof window === "undefined") {
+    return getAirportPricingDirect();
+  }
   return cmsGet<AirportPricingRow[]>("/api/v1/pricing/airport", ["pricing", "airport-pricing"]);
 }
 
 export function getDistanceRates(): Promise<DistancePricing> {
+  if (typeof window === "undefined") {
+    return getDistanceRatesDirect();
+  }
   return cmsGet<DistancePricing>("/api/v1/pricing/distance", ["pricing", "distance-rates"]);
 }
 
 export function getPricingSettings(): Promise<PricingSettings> {
+  if (typeof window === "undefined") {
+    return getPricingSettingsDirect();
+  }
   return cmsGet<PricingSettings>("/api/v1/settings/pricing", ["pricing"]);
 }
 
@@ -701,6 +730,9 @@ function toArticle(card: ArticleCardOut): Article {
 }
 
 export async function getArticles(options: GetArticlesOptions = {}): Promise<ArticlesPage> {
+  if (typeof window === "undefined") {
+    return getArticlesDirect(options);
+  }
   const params = new URLSearchParams();
   if (options.page) params.set("page", String(options.page));
   if (options.limit) params.set("limit", String(options.limit));
@@ -723,6 +755,9 @@ export async function getArticles(options: GetArticlesOptions = {}): Promise<Art
 }
 
 export async function getArticle(slug: string): Promise<ArticleDetail> {
+  if (typeof window === "undefined") {
+    return getArticleDirect(slug);
+  }
   const data = await cmsGet<ArticleDetailOut>(`/api/v1/articles/${encodeURIComponent(slug)}`, [
     "articles",
     `articles:${slug}`,
@@ -751,6 +786,9 @@ export type CmsPage = {
 };
 
 export async function getPage(slugOrPath: string): Promise<CmsPage> {
+  if (typeof window === "undefined") {
+    return getPageDirect(slugOrPath);
+  }
   const normalized = slugOrPath.replace(/^\/+/, "").replace(/\/+$/, "");
   const asSlug = normalized.split("/").join("--");
   return cmsGet<CmsPage>(

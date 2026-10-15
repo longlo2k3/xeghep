@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useCallback, useMemo } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Car,
   MapPin,
@@ -19,21 +19,30 @@ import {
   ChevronUp,
   X,
   ArrowUpRight,
-} from 'lucide-react';
-import { useAuth } from '@/admin/context/AuthContext';
-import { Button } from '@/admin/components/ui/Button';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/admin/components/ui/Card';
-import { apiClient, getApiErrorMessage } from '@/admin/lib/api-client';
-import { formatDateTime, formatVND } from '@/admin/lib/utils';
-import type { BookingDoc } from '@/admin/types/bookings';
-import type { RouteDoc } from '@/admin/types/routes';
-import type { ArticleDoc } from '@/admin/types/articles';
-import type { PaginatedResponse } from '@/admin/types/api';
+  Volume2,
+  VolumeX,
+} from "lucide-react";
+import { useBookingPolling } from "@/admin/hooks/useBookingPolling";
+import { useAuth } from "@/admin/context/AuthContext";
+import { Button } from "@/admin/components/ui/Button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/admin/components/ui/Card";
+import { apiClient, getApiErrorMessage } from "@/admin/lib/api-client";
+import { formatDateTime, formatVND } from "@/admin/lib/utils";
+import type { BookingDoc } from "@/admin/types/bookings";
+import type { RouteDoc } from "@/admin/types/routes";
+import type { ArticleDoc } from "@/admin/types/articles";
+import type { PaginatedResponse } from "@/admin/types/api";
 
 const ROLE_NAME_MAP: Record<string, string> = {
-  admin: 'Quản trị viên (Admin)',
-  editor: 'Biên tập viên (Editor)',
-  dispatcher: 'Điều phối viên (Dispatcher)',
+  admin: "Quản trị viên (Admin)",
+  editor: "Biên tập viên (Editor)",
+  dispatcher: "Điều phối viên (Dispatcher)",
 };
 
 export function DashboardOverview() {
@@ -57,19 +66,25 @@ export function DashboardOverview() {
       setError(null);
 
       const [bookingsRes, routesRes, articlesRes] = await Promise.allSettled([
-        apiClient.get<PaginatedResponse<BookingDoc> | BookingDoc[]>('/bookings', {
-          params: { limit: 100, sort: '-createdAt' },
-        }),
-        apiClient.get<PaginatedResponse<RouteDoc> | RouteDoc[]>('/routes', {
+        apiClient.get<PaginatedResponse<BookingDoc> | BookingDoc[]>(
+          "/bookings",
+          {
+            params: { limit: 100, sort: "-createdAt" },
+          },
+        ),
+        apiClient.get<PaginatedResponse<RouteDoc> | RouteDoc[]>("/routes", {
           params: { limit: 100 },
         }),
-        apiClient.get<PaginatedResponse<ArticleDoc> | ArticleDoc[]>('/articles', {
-          params: { limit: 100 },
-        }),
+        apiClient.get<PaginatedResponse<ArticleDoc> | ArticleDoc[]>(
+          "/articles",
+          {
+            params: { limit: 100 },
+          },
+        ),
       ]);
 
       // Trích xuất bookings
-      if (bookingsRes.status === 'fulfilled') {
+      if (bookingsRes.status === "fulfilled") {
         const data = bookingsRes.value.data;
         if (Array.isArray(data)) {
           setBookings(data);
@@ -79,7 +94,7 @@ export function DashboardOverview() {
       }
 
       // Trích xuất routes
-      if (routesRes.status === 'fulfilled') {
+      if (routesRes.status === "fulfilled") {
         const data = routesRes.value.data;
         if (Array.isArray(data)) {
           setRoutes(data);
@@ -89,7 +104,7 @@ export function DashboardOverview() {
       }
 
       // Trích xuất articles
-      if (articlesRes.status === 'fulfilled') {
+      if (articlesRes.status === "fulfilled") {
         const data = articlesRes.value.data;
         if (Array.isArray(data)) {
           setArticles(data);
@@ -100,9 +115,9 @@ export function DashboardOverview() {
 
       // Nếu tất cả API cùng lỗi
       if (
-        bookingsRes.status === 'rejected' &&
-        routesRes.status === 'rejected' &&
-        articlesRes.status === 'rejected'
+        bookingsRes.status === "rejected" &&
+        routesRes.status === "rejected" &&
+        articlesRes.status === "rejected"
       ) {
         setError(getApiErrorMessage(bookingsRes.reason));
       }
@@ -117,26 +132,56 @@ export function DashboardOverview() {
     fetchDashboardData();
   }, [fetchDashboardData]);
 
+  const [newBookingAlert, setNewBookingAlert] = useState<string | null>(null);
+
+  const { soundEnabled, toggleSound, requestNotificationPermission } =
+    useBookingPolling({
+      intervalMs: 15000,
+      onNewBooking: (newest) => {
+        const routeName =
+          typeof newest.route === "object" && newest.route?.name
+            ? newest.route.name
+            : `${newest.pickupLocation} → ${newest.dropoffLocation}`;
+        setNewBookingAlert(
+          `Khách ${newest.customerName || "mới"} vừa đặt xe tuyến ${routeName}!`,
+        );
+        setTimeout(() => setNewBookingAlert(null), 10000);
+      },
+      onUpdateBookings: (latestDocs) => {
+        setBookings((prev) => {
+          const map = new Map<string | number, BookingDoc>();
+          latestDocs.forEach((d) => map.set(d.id, d));
+          prev.forEach((d) => {
+            if (!map.has(d.id)) map.set(d.id, d);
+          });
+          return Array.from(map.values()).sort(
+            (a, b) =>
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+          );
+        });
+      },
+    });
+
   // KPI Calculations
   const pendingBookingsCount = useMemo(() => {
-    return bookings.filter((b) => b.status === 'pending').length;
+    return bookings.filter((b) => b.status === "pending").length;
   }, [bookings]);
 
   const activeRoutesCount = useMemo(() => {
-    return routes.filter((r) => r.status === 'active').length;
+    return routes.filter((r) => r.status === "active").length;
   }, [routes]);
 
   const publishedArticlesCount = useMemo(() => {
-    return articles.filter((a) => a.status === 'published').length;
+    return articles.filter((a) => a.status === "published").length;
   }, [articles]);
 
   const completedBookingsCount = useMemo(() => {
-    return bookings.filter((b) => b.status === 'completed').length;
+    return bookings.filter((b) => b.status === "completed").length;
   }, [bookings]);
 
   // Widget: 5 đơn pending mới nhất cần xử lý
   const pendingBookingsList = useMemo(() => {
-    return bookings.filter((b) => b.status === 'pending').slice(0, 5);
+    return bookings.filter((b) => b.status === "pending").slice(0, 5);
   }, [bookings]);
 
   // Widget: Tuyến xe nổi bật (Banner Top)
@@ -147,60 +192,69 @@ export function DashboardOverview() {
   // Dynamic greeting according to time of day
   const timeGreeting = useMemo(() => {
     const currentHour = new Date().getHours();
-    if (currentHour < 12) return 'Chào buổi sáng';
-    if (currentHour < 18) return 'Chào buổi chiều';
-    return 'Chào buổi tối';
+    if (currentHour < 12) return "Chào buổi sáng";
+    if (currentHour < 18) return "Chào buổi chiều";
+    return "Chào buổi tối";
   }, []);
 
-  const roleDisplayName = (user?.role && ROLE_NAME_MAP[user.role]) || user?.role || 'Người dùng';
+  const roleDisplayName =
+    (user?.role && ROLE_NAME_MAP[user.role]) || user?.role || "Người dùng";
 
   // Onboarding Checklist Steps with distinct non-conflicting link labels
   const onboardingSteps = useMemo(() => {
     const allSteps = [
       {
         id: 1,
-        title: 'Thiết lập các tuyến xe liên tỉnh trọng điểm',
-        desc: 'Kiểm tra tuyến xe kèm khoảng cách và giá cước (Ví dụ: Hà Nội — Hải Phòng)',
-        link: '/routes',
-        linkText: 'Xem danh sách tuyến',
+        title: "Thiết lập các tuyến xe liên tỉnh trọng điểm",
+        desc: "Kiểm tra tuyến xe kèm khoảng cách và giá cước (Ví dụ: Hà Nội — Hải Phòng)",
+        link: "/routes",
+        linkText: "Xem danh sách tuyến",
         isCompleted: activeRoutesCount > 0,
-        roles: ['admin', 'editor'],
+        roles: ["admin", "editor"],
       },
       {
         id: 2,
-        title: 'Quy trình tiếp nhận & xử lý đơn đặt xe',
+        title: "Quy trình tiếp nhận & xử lý đơn đặt xe",
         desc: 'Khách gửi đơn -> Gọi điện chốt giá & điểm đón -> Chuyển sang "Đã xác nhận"',
-        link: '/bookings',
-        linkText: 'Đến danh sách đơn xe',
+        link: "/bookings",
+        linkText: "Đến danh sách đơn xe",
         isCompleted: completedBookingsCount > 0 || bookings.length > 0,
-        roles: ['admin', 'dispatcher'],
+        roles: ["admin", "dispatcher"],
       },
       {
         id: 3,
-        title: 'Đăng bài viết cẩm nang & tin tức xe ghép',
-        desc: 'Viết bài chia sẻ kinh nghiệm đi xe để tăng uy tín và điểm SEO Google',
-        link: '/articles',
-        linkText: 'Đến trang Bài viết',
+        title: "Đăng bài viết cẩm nang & tin tức xe ghép",
+        desc: "Viết bài chia sẻ kinh nghiệm đi xe để tăng uy tín và điểm SEO Google",
+        link: "/articles",
+        linkText: "Đến trang Bài viết",
         isCompleted: publishedArticlesCount > 0,
-        roles: ['admin', 'editor'],
+        roles: ["admin", "editor"],
       },
       {
         id: 4,
-        title: 'Cấu hình thông tin Hotline & Zalo nhà xe',
-        desc: 'Cập nhật số điện thoại nhận khách và thông tin liên hệ công ty',
-        link: '/settings',
-        linkText: 'Đến trang Cài đặt',
+        title: "Cấu hình thông tin Hotline & Zalo nhà xe",
+        desc: "Cập nhật số điện thoại nhận khách và thông tin liên hệ công ty",
+        link: "/settings",
+        linkText: "Đến trang Cài đặt",
         isCompleted: false,
-        roles: ['admin'],
+        roles: ["admin"],
       },
     ];
 
     return allSteps.filter((step) => hasRole(step.roles as any));
-  }, [activeRoutesCount, completedBookingsCount, bookings.length, publishedArticlesCount, hasRole]);
+  }, [
+    activeRoutesCount,
+    completedBookingsCount,
+    bookings.length,
+    publishedArticlesCount,
+    hasRole,
+  ]);
 
-  const completedStepsCount = onboardingSteps.filter((s) => s.isCompleted).length;
+  const completedStepsCount = onboardingSteps.filter(
+    (s) => s.isCompleted,
+  ).length;
   const onboardingProgressPercent = Math.round(
-    (completedStepsCount / Math.max(onboardingSteps.length, 1)) * 100
+    (completedStepsCount / Math.max(onboardingSteps.length, 1)) * 100,
   );
 
   return (
@@ -212,10 +266,8 @@ export function DashboardOverview() {
             <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
               {roleDisplayName}
             </span>
-            <span className="text-xs text-slate-500 font-medium">Xe Ghép Liên Tỉnh</span>
-            <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              {timeGreeting} • Hệ thống trực tuyến
+            <span className="text-xs text-slate-500 font-medium">
+              Xe Ghép Liên Tỉnh
             </span>
           </div>
 
@@ -224,15 +276,44 @@ export function DashboardOverview() {
           </h1>
 
           <p className="text-sm text-slate-500 mt-1">
-            Chào mừng bạn đến với hệ thống Quản trị CMS Xe Ghép Liên Tỉnh. Tổng quan hoạt động hôm nay:
+            Chào mừng bạn đến với hệ thống Quản trị CMS Xe Ghép Liên Tỉnh. Tổng
+            quan hoạt động hôm nay:
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5 shrink-0">
+        <div className="flex items-center gap-2.5 shrink-0 flex-wrap">
           <Button
             variant="outline"
             size="sm"
-            onClick={() => navigate('/help')}
+            onClick={() => {
+              toggleSound();
+              requestNotificationPermission();
+            }}
+            title={
+              soundEnabled
+                ? "Chuông báo đơn mới đang BẬT. Nhấn để tắt"
+                : "Chuông báo đơn mới đang TẮT. Nhấn để bật"
+            }
+            className={`text-xs rounded-xl cursor-pointer ${
+              soundEnabled
+                ? "border-amber-200 bg-amber-50/80 hover:bg-amber-100 text-amber-800"
+                : "border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-500"
+            }`}
+            leftIcon={
+              soundEnabled ? (
+                <Volume2 className="w-3.5 h-3.5 text-amber-600" />
+              ) : (
+                <VolumeX className="w-3.5 h-3.5 text-slate-400" />
+              )
+            }
+          >
+            {soundEnabled ? "Chuông: Bật" : "Chuông: Tắt"}
+          </Button>
+
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => navigate("/help")}
             className="border-blue-200 bg-blue-50/50 hover:bg-blue-100 text-blue-700 text-xs rounded-xl"
             leftIcon={<HelpCircle className="w-3.5 h-3.5" />}
           >
@@ -246,11 +327,40 @@ export function DashboardOverview() {
             disabled={isLoading}
             className="border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs rounded-xl"
           >
-            <RefreshCw className={`w-3.5 h-3.5 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
+            <RefreshCw
+              className={`w-3.5 h-3.5 mr-2 ${isLoading ? "animate-spin" : ""}`}
+            />
             Làm mới
           </Button>
         </div>
       </div>
+
+      {/* Banner thông báo Realtime khi có đơn mới vừa xuất hiện */}
+      {newBookingAlert && (
+        <div
+          data-testid="realtime-new-booking-banner"
+          className="p-4 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 text-white flex items-center justify-between shadow-lg shadow-amber-500/20 border border-amber-400/40 animate-pulse"
+        >
+          <div className="flex items-center gap-3 font-bold text-sm">
+            <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
+              <Car className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-wider text-amber-100 font-extrabold">
+                🔔 Có đơn đặt xe mới trực tuyến!
+              </p>
+              <p className="text-sm font-black">{newBookingAlert}</p>
+            </div>
+          </div>
+          <button
+            onClick={() => setNewBookingAlert(null)}
+            className="p-1.5 rounded-lg hover:bg-white/20 text-white transition cursor-pointer"
+            title="Đóng thông báo"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      )}
 
       {/* Thông báo lỗi nếu có */}
       {error && (
@@ -288,7 +398,8 @@ export function DashboardOverview() {
                   </span>
                 </div>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  Các bước thiết lập và quy trình chuẩn giúp bạn vận hành hệ thống xe ghép dễ dàng ngay từ ngày đầu tiên.
+                  Các bước thiết lập và quy trình chuẩn giúp bạn vận hành hệ
+                  thống xe ghép dễ dàng ngay từ ngày đầu tiên.
                 </p>
               </div>
             </div>
@@ -298,8 +409,16 @@ export function DashboardOverview() {
                 type="button"
                 onClick={() => setIsOnboardingCollapsed((prev) => !prev)}
                 className="p-1.5 rounded-lg text-slate-500 hover:bg-white hover:text-slate-800 transition cursor-pointer"
-                title={isOnboardingCollapsed ? 'Mở rộng checklist' : 'Thu gọn checklist'}
-                aria-label={isOnboardingCollapsed ? 'Mở rộng checklist' : 'Thu gọn checklist'}
+                title={
+                  isOnboardingCollapsed
+                    ? "Mở rộng checklist"
+                    : "Thu gọn checklist"
+                }
+                aria-label={
+                  isOnboardingCollapsed
+                    ? "Mở rộng checklist"
+                    : "Thu gọn checklist"
+                }
               >
                 {isOnboardingCollapsed ? (
                   <ChevronDown className="w-4 h-4" />
@@ -323,7 +442,9 @@ export function DashboardOverview() {
           <div className="mt-3.5 space-y-1.5">
             <div className="flex items-center justify-between text-xs font-medium text-slate-600">
               <span>Tiến độ làm quen:</span>
-              <span className="font-bold text-indigo-600">{onboardingProgressPercent}% hoàn tất</span>
+              <span className="font-bold text-indigo-600">
+                {onboardingProgressPercent}% hoàn tất
+              </span>
             </div>
             <div className="w-full h-2 rounded-full bg-slate-200/80 overflow-hidden">
               <div
@@ -341,23 +462,29 @@ export function DashboardOverview() {
                   key={step.id}
                   className={`p-3.5 rounded-xl border transition-all flex items-start gap-3 ${
                     step.isCompleted
-                      ? 'bg-emerald-50/50 border-emerald-200/80 text-emerald-950'
-                      : 'bg-white border-slate-200 hover:border-indigo-300 text-slate-800 shadow-2xs'
+                      ? "bg-emerald-50/50 border-emerald-200/80 text-emerald-950"
+                      : "bg-white border-slate-200 hover:border-indigo-300 text-slate-800 shadow-2xs"
                   }`}
                 >
                   <div
                     className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold ${
                       step.isCompleted
-                        ? 'bg-emerald-600 text-white'
-                        : 'bg-slate-100 text-slate-600 border border-slate-300'
+                        ? "bg-emerald-600 text-white"
+                        : "bg-slate-100 text-slate-600 border border-slate-300"
                     }`}
                   >
-                    {step.isCompleted ? <Check className="w-3.5 h-3.5" /> : step.id}
+                    {step.isCompleted ? (
+                      <Check className="w-3.5 h-3.5" />
+                    ) : (
+                      step.id
+                    )}
                   </div>
 
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between gap-2">
-                      <h4 className="text-xs font-bold truncate">{step.title}</h4>
+                      <h4 className="text-xs font-bold truncate">
+                        {step.title}
+                      </h4>
                       {step.isCompleted && (
                         <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-100/80 px-1.5 py-0.2 rounded shrink-0">
                           Đã xong
@@ -385,7 +512,10 @@ export function DashboardOverview() {
       )}
 
       {/* 3. Khối KPI Cards tóm tắt (Visual Hierarchy & Micro-interactions) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-testid="kpi-cards-grid">
+      <div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+        data-testid="kpi-cards-grid"
+      >
         {/* KPI 1: Đơn chờ xác nhận (Màu cam nổi bật) */}
         <div
           data-testid="kpi-card-pending"
@@ -402,11 +532,13 @@ export function DashboardOverview() {
           </div>
           <div className="mt-3">
             <div className="text-3xl font-extrabold text-amber-600 tracking-tight">
-              {isLoading ? '...' : pendingBookingsCount}
+              {isLoading ? "..." : pendingBookingsCount}
             </div>
             <div className="text-xs text-slate-500 mt-1 flex items-center justify-between">
               <span>Đơn đặt xe mới đang chờ duyệt</span>
-              <span className="text-[10px] text-amber-600 font-semibold">Ưu tiên số 1</span>
+              <span className="text-[10px] text-amber-600 font-semibold">
+                Ưu tiên số 1
+              </span>
             </div>
           </div>
         </div>
@@ -417,18 +549,22 @@ export function DashboardOverview() {
           className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-300 shadow-sm transition-all hover:-translate-y-0.5 relative overflow-hidden group"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-600">Tuyến xe hoạt động</span>
+            <span className="text-xs font-semibold text-slate-600">
+              Tuyến xe hoạt động
+            </span>
             <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center group-hover:scale-105 transition-transform">
               <MapPin className="w-5 h-5" />
             </div>
           </div>
           <div className="mt-3">
             <div className="text-3xl font-extrabold text-emerald-600 tracking-tight">
-              {isLoading ? '...' : activeRoutesCount}
+              {isLoading ? "..." : activeRoutesCount}
             </div>
             <div className="text-xs text-slate-500 mt-1 flex items-center justify-between">
               <span>Tuyến xe liên tỉnh đang mở</span>
-              <span className="text-[10px] text-emerald-600 font-semibold">Đang nhận khách</span>
+              <span className="text-[10px] text-emerald-600 font-semibold">
+                Đang nhận khách
+              </span>
             </div>
           </div>
         </div>
@@ -439,18 +575,22 @@ export function DashboardOverview() {
           className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-indigo-300 shadow-sm transition-all hover:-translate-y-0.5 relative overflow-hidden group"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-600">Bài viết xuất bản</span>
+            <span className="text-xs font-semibold text-slate-600">
+              Bài viết xuất bản
+            </span>
             <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-600 flex items-center justify-center group-hover:scale-105 transition-transform">
               <FileText className="w-5 h-5" />
             </div>
           </div>
           <div className="mt-3">
             <div className="text-3xl font-extrabold text-indigo-600 tracking-tight">
-              {isLoading ? '...' : publishedArticlesCount}
+              {isLoading ? "..." : publishedArticlesCount}
             </div>
             <div className="text-xs text-slate-500 mt-1 flex items-center justify-between">
               <span>Cẩm nang & tin tức trực tuyến</span>
-              <span className="text-[10px] text-indigo-600 font-semibold">Tăng SEO</span>
+              <span className="text-[10px] text-indigo-600 font-semibold">
+                Tăng SEO
+              </span>
             </div>
           </div>
         </div>
@@ -461,35 +601,44 @@ export function DashboardOverview() {
           className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-300 shadow-sm transition-all hover:-translate-y-0.5 relative overflow-hidden group"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-600">Đơn hoàn thành</span>
+            <span className="text-xs font-semibold text-slate-600">
+              Đơn hoàn thành
+            </span>
             <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center group-hover:scale-105 transition-transform">
               <CheckCircle2 className="w-5 h-5" />
             </div>
           </div>
           <div className="mt-3">
             <div className="text-3xl font-extrabold text-emerald-600 tracking-tight">
-              {isLoading ? '...' : completedBookingsCount}
+              {isLoading ? "..." : completedBookingsCount}
             </div>
             <div className="text-xs text-slate-500 mt-1 flex items-center justify-between">
               <span>Chuyến đi thành công</span>
-              <span className="text-[10px] text-emerald-600 font-semibold">Doanh thu đạt</span>
+              <span className="text-[10px] text-emerald-600 font-semibold">
+                Doanh thu đạt
+              </span>
             </div>
           </div>
         </div>
       </div>
 
       {/* 4. Khối Lối tắt nhanh (Quick Actions) */}
-      <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm" data-testid="quick-actions-section">
+      <div
+        className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm"
+        data-testid="quick-actions-section"
+      >
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-xs font-bold text-slate-700 uppercase tracking-wider">
             Lối tắt nhanh
           </h2>
-          <span className="text-[11px] text-slate-400">Các thao tác thường dùng nhất</span>
+          <span className="text-[11px] text-slate-400">
+            Các thao tác thường dùng nhất
+          </span>
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
           {/* Duyệt đơn đặt xe: Admin & Dispatcher */}
-          {hasRole(['admin', 'dispatcher']) && (
+          {hasRole(["admin", "dispatcher"]) && (
             <Link
               to="/bookings?status=pending"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-800 text-sm font-medium transition cursor-pointer shadow-2xs hover:shadow-xs"
@@ -505,7 +654,7 @@ export function DashboardOverview() {
           )}
 
           {/* Tạo tuyến đường mới: Admin & Editor */}
-          {hasRole(['admin', 'editor']) && (
+          {hasRole(["admin", "editor"]) && (
             <Link
               to="/routes/new"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 text-sm font-medium transition cursor-pointer shadow-2xs hover:shadow-xs"
@@ -516,7 +665,7 @@ export function DashboardOverview() {
           )}
 
           {/* Viết bài mới: Admin & Editor */}
-          {hasRole(['admin', 'editor']) && (
+          {hasRole(["admin", "editor"]) && (
             <Link
               to="/articles/new"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-indigo-800 text-sm font-medium transition cursor-pointer shadow-2xs hover:shadow-xs"
@@ -527,7 +676,7 @@ export function DashboardOverview() {
           )}
 
           {/* Thư viện Media: Admin & Editor */}
-          {hasRole(['admin', 'editor']) && (
+          {hasRole(["admin", "editor"]) && (
             <Link
               to="/media"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-800 text-sm font-medium transition cursor-pointer shadow-2xs hover:shadow-xs"
@@ -538,7 +687,7 @@ export function DashboardOverview() {
           )}
 
           {/* Cấu hình hệ thống: Chỉ Admin */}
-          {hasRole('admin') && (
+          {hasRole("admin") && (
             <Link
               to="/settings"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-sm font-medium transition cursor-pointer shadow-2xs hover:shadow-xs"
@@ -562,7 +711,8 @@ export function DashboardOverview() {
                   Đơn đặt xe mới nhất cần xử lý
                 </CardTitle>
                 <CardDescription>
-                  Danh sách 5 đơn hàng trạng thái Chờ duyệt (Pending) gần đây nhất
+                  Danh sách 5 đơn hàng trạng thái Chờ duyệt (Pending) gần đây
+                  nhất
                 </CardDescription>
               </div>
               <Link
@@ -581,18 +731,25 @@ export function DashboardOverview() {
                   Đang nạp danh sách đơn chờ xử lý...
                 </div>
               ) : pendingBookingsList.length === 0 ? (
-                <div className="p-8 text-center text-slate-500 space-y-2" data-testid="empty-pending-bookings">
+                <div
+                  className="p-8 text-center text-slate-500 space-y-2"
+                  data-testid="empty-pending-bookings"
+                >
                   <CheckCircle2 className="w-8 h-8 text-emerald-600 mx-auto" />
                   <p className="text-sm font-medium text-slate-700">
                     Hiện không có đơn nào đang chờ duyệt
                   </p>
                   <p className="text-xs text-slate-500">
-                    Tất cả đơn đặt xe đều đã được xác nhận hoặc điều phối thành công.
+                    Tất cả đơn đặt xe đều đã được xác nhận hoặc điều phối thành
+                    công.
                   </p>
                 </div>
               ) : (
                 <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs" data-testid="pending-bookings-table">
+                  <table
+                    className="w-full text-left text-xs"
+                    data-testid="pending-bookings-table"
+                  >
                     <thead className="bg-slate-50 text-slate-600 font-medium uppercase border-b border-slate-200">
                       <tr>
                         <th className="px-4 py-3">Mã đơn</th>
@@ -606,7 +763,8 @@ export function DashboardOverview() {
                     <tbody className="divide-y divide-slate-100">
                       {pendingBookingsList.map((booking) => {
                         const routeName =
-                          typeof booking.route === 'object' && booking.route?.name
+                          typeof booking.route === "object" &&
+                          booking.route?.name
                             ? booking.route.name
                             : `${booking.pickupLocation} → ${booking.dropoffLocation}`;
 
@@ -622,19 +780,28 @@ export function DashboardOverview() {
                             <td className="px-4 py-3.5 whitespace-nowrap">
                               <div className="flex items-center gap-2">
                                 <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-700 font-bold flex items-center justify-center text-[10px] shrink-0 border border-blue-100">
-                                  {booking.customerName ? booking.customerName[0] : 'K'}
+                                  {booking.customerName
+                                    ? booking.customerName[0]
+                                    : "K"}
                                 </div>
-                                <span className="text-slate-900 font-medium">{booking.customerName}</span>
+                                <span className="text-slate-900 font-medium">
+                                  {booking.customerName}
+                                </span>
                               </div>
                             </td>
-                            <td className="px-4 py-3.5 text-slate-600 max-w-[200px] truncate" title={routeName}>
+                            <td
+                              className="px-4 py-3.5 text-slate-600 max-w-[200px] truncate"
+                              title={routeName}
+                            >
                               {routeName}
                             </td>
                             <td className="px-4 py-3.5 text-slate-500 whitespace-nowrap">
                               {formatDateTime(booking.pickupDatetime)}
                             </td>
                             <td className="px-4 py-3.5 text-right font-semibold text-emerald-600 whitespace-nowrap">
-                              {booking.estimatedPrice ? formatVND(booking.estimatedPrice) : 'Chưa có'}
+                              {booking.estimatedPrice
+                                ? formatVND(booking.estimatedPrice)
+                                : "Chưa có"}
                             </td>
                             <td className="px-4 py-3.5 text-center whitespace-nowrap">
                               <Link
@@ -683,7 +850,10 @@ export function DashboardOverview() {
                   Đang nạp danh sách tuyến nổi bật...
                 </div>
               ) : bannerTopRoutes.length === 0 ? (
-                <div className="p-6 text-center text-slate-500 text-xs" data-testid="empty-banner-routes">
+                <div
+                  className="p-6 text-center text-slate-500 text-xs"
+                  data-testid="empty-banner-routes"
+                >
                   Chưa có tuyến xe nào được ghim Banner Top.
                 </div>
               ) : (
@@ -705,11 +875,18 @@ export function DashboardOverview() {
                         )}
                       </div>
                       <div className="flex items-center gap-3 text-xs text-slate-500 mt-1">
-                        <span>Cự ly: <strong className="text-slate-700">{route.distance || 'Đang cập nhật'}</strong></span>
+                        <span>
+                          Cự ly:{" "}
+                          <strong className="text-slate-700">
+                            {route.distance || "Đang cập nhật"}
+                          </strong>
+                        </span>
                         <span>•</span>
                         <span>
                           {route.priceFrom ? (
-                            <span className="text-emerald-600 font-semibold">{formatVND(route.priceFrom)}</span>
+                            <span className="text-emerald-600 font-semibold">
+                              {formatVND(route.priceFrom)}
+                            </span>
                           ) : (
                             <span className="text-slate-500">Liên hệ</span>
                           )}
@@ -740,21 +917,30 @@ export function DashboardOverview() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           <div className="p-3 bg-white rounded-xl border border-slate-200/80 shadow-2xs space-y-1">
-            <span className="font-semibold text-slate-900 block">📞 Quy tắc gọi điện 5 phút</span>
+            <span className="font-semibold text-slate-900 block">
+              📞 Quy tắc gọi điện 5 phút
+            </span>
             <p className="text-slate-500">
-              Khách đặt xe trực tuyến thường muốn chốt chuyến ngay. Hãy gọi xác nhận sớm nhất để tránh khách tìm nhà xe khác.
+              Khách đặt xe trực tuyến thường muốn chốt chuyến ngay. Hãy gọi xác
+              nhận sớm nhất để tránh khách tìm nhà xe khác.
             </p>
           </div>
           <div className="p-3 bg-white rounded-xl border border-slate-200/80 shadow-2xs space-y-1">
-            <span className="font-semibold text-slate-900 block">⭐ Ghim Banner Top đúng thời điểm</span>
+            <span className="font-semibold text-slate-900 block">
+              ⭐ Ghim Banner Top đúng thời điểm
+            </span>
             <p className="text-slate-500">
-              Vào dịp cuối tuần hoặc lễ tết, hãy ghim các tuyến Sân bay và Cao tốc trọng điểm lên đầu để tăng tối đa lượng booking.
+              Vào dịp cuối tuần hoặc lễ tết, hãy ghim các tuyến Sân bay và Cao
+              tốc trọng điểm lên đầu để tăng tối đa lượng booking.
             </p>
           </div>
           <div className="p-3 bg-white rounded-xl border border-slate-200/80 shadow-2xs space-y-1">
-            <span className="font-semibold text-slate-900 block">⌨️ Tận dụng phím tắt Ctrl + K</span>
+            <span className="font-semibold text-slate-900 block">
+              ⌨️ Tận dụng phím tắt Ctrl + K
+            </span>
             <p className="text-slate-500">
-              Nhấn <code>Ctrl + K</code> để tìm nhanh mọi mã đơn hàng, tuyến xe hoặc bài viết mà không cần lội qua từng menu.
+              Nhấn <code>Ctrl + K</code> để tìm nhanh mọi mã đơn hàng, tuyến xe
+              hoặc bài viết mà không cần lội qua từng menu.
             </p>
           </div>
         </div>

@@ -43,7 +43,7 @@ describe("SEO Utilities & Metadata Compliance", () => {
   });
 
   it("robots.ts never disallows noindex paths on production", async () => {
-    const robotsModule = await import("../src/app/(site)/robots");
+    const robotsModule = await import("../src/app/robots");
     const robotsFn = robotsModule.default;
     const prodRobots = robotsFn();
     const rules = Array.isArray(prodRobots.rules) ? prodRobots.rules[0] : prodRobots.rules;

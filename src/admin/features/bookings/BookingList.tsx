@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo } from "react";
 import {
   CalendarCheck,
   RefreshCw,
@@ -7,66 +7,70 @@ import {
   Car,
   CheckCircle2,
   AlertCircle,
-} from 'lucide-react';
-import { Button } from '@/admin/components/ui/Button';
-import { Select } from '@/admin/components/ui/Select';
-import { Input } from '@/admin/components/ui/Input';
-import { DataTable, type Column } from '@/admin/components/common/DataTable';
-import { StatusBadge } from '@/admin/components/common/StatusBadge';
-import { BookingDetailModal } from './BookingDetailModal';
-import { apiClient, getApiErrorMessage } from '@/admin/lib/api-client';
-import { useAuth } from '@/admin/context/AuthContext';
-import { formatDateTime, formatVND, maskPhone } from '@/admin/lib/utils';
-import type { BookingDoc } from '@/admin/types/bookings';
-import type { PaginatedResponse } from '@/admin/types/api';
+  Volume2,
+  VolumeX,
+} from "lucide-react";
+import { useBookingPolling } from "@/admin/hooks/useBookingPolling";
+import { Button } from "@/admin/components/ui/Button";
+import { Select } from "@/admin/components/ui/Select";
+import { Input } from "@/admin/components/ui/Input";
+import { DataTable, type Column } from "@/admin/components/common/DataTable";
+import { StatusBadge } from "@/admin/components/common/StatusBadge";
+import { BookingDetailModal } from "./BookingDetailModal";
+import { apiClient, getApiErrorMessage } from "@/admin/lib/api-client";
+import { useAuth } from "@/admin/context/AuthContext";
+import { formatDateTime, formatVND, maskPhone } from "@/admin/lib/utils";
+import type { BookingDoc } from "@/admin/types/bookings";
+import type { PaginatedResponse } from "@/admin/types/api";
 
 const STATUS_FILTER_OPTIONS = [
-  { value: 'all', label: 'Tất cả trạng thái' },
-  { value: 'pending', label: 'Chờ duyệt (Pending)' },
-  { value: 'confirmed', label: 'Đã xác nhận (Confirmed)' },
-  { value: 'in_progress', label: 'Đang chạy (In Progress)' },
-  { value: 'completed', label: 'Hoàn thành (Completed)' },
-  { value: 'cancelled', label: 'Đã hủy (Cancelled)' },
+  { value: "all", label: "Tất cả trạng thái" },
+  { value: "pending", label: "Chờ duyệt (Pending)" },
+  { value: "confirmed", label: "Đã xác nhận (Confirmed)" },
+  { value: "in_progress", label: "Đang chạy (In Progress)" },
+  { value: "completed", label: "Hoàn thành (Completed)" },
+  { value: "cancelled", label: "Đã hủy (Cancelled)" },
 ];
 
 const VEHICLE_TYPE_MAP: Record<string, string> = {
-  '4cho': '4 chỗ',
-  '5cho': '5 chỗ',
-  '7cho': '7 chỗ',
-  '16cho': '16 chỗ',
-  guihang: 'Gửi hàng',
+  "4cho": "4 chỗ",
+  "5cho": "5 chỗ",
+  "7cho": "7 chỗ",
+  "16cho": "16 chỗ",
+  guihang: "Gửi hàng",
 };
 
 export function BookingList() {
   const { user } = useAuth();
-  const isEditor = user?.role === 'editor';
+  const isEditor = user?.role === "editor";
 
   const [bookings, setBookings] = useState<BookingDoc[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   // Bộ lọc
-  const [selectedStatus, setSelectedStatus] = useState<string>('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [pickupDateFilter, setPickupDateFilter] = useState('');
+  const [selectedStatus, setSelectedStatus] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [pickupDateFilter, setPickupDateFilter] = useState("");
 
   // Modal Chi tiết & Xử lý
-  const [selectedBooking, setSelectedBooking] = useState<BookingDoc | null>(null);
+  const [selectedBooking, setSelectedBooking] = useState<BookingDoc | null>(
+    null,
+  );
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
 
   const fetchBookings = useCallback(async () => {
     try {
       setIsLoading(true);
       setError(null);
-      const res = await apiClient.get<PaginatedResponse<BookingDoc> | BookingDoc[]>(
-        '/bookings',
-        {
-          params: {
-            limit: 200,
-            sort: '-createdAt',
-          },
-        }
-      );
+      const res = await apiClient.get<
+        PaginatedResponse<BookingDoc> | BookingDoc[]
+      >("/bookings", {
+        params: {
+          limit: 200,
+          sort: "-createdAt",
+        },
+      });
 
       const data = res.data;
       if (Array.isArray(data)) {
@@ -87,10 +91,44 @@ export function BookingList() {
     fetchBookings();
   }, [fetchBookings]);
 
+  const [newBookingToast, setNewBookingToast] = useState<string | null>(null);
+
+  const {
+    soundEnabled,
+    toggleSound,
+    requestNotificationPermission,
+    isPolling,
+  } = useBookingPolling({
+    intervalMs: 15000,
+    onNewBooking: (newest) => {
+      const routeName =
+        typeof newest.route === "object" && newest.route?.name
+          ? newest.route.name
+          : `${newest.pickupLocation} → ${newest.dropoffLocation}`;
+      setNewBookingToast(
+        `Khách ${newest.customerName || "mới"} vừa đặt xe tuyến ${routeName}!`,
+      );
+      setTimeout(() => setNewBookingToast(null), 10000);
+    },
+    onUpdateBookings: (latestDocs) => {
+      setBookings((prev) => {
+        const map = new Map<string | number, BookingDoc>();
+        latestDocs.forEach((d) => map.set(d.id, d));
+        prev.forEach((d) => {
+          if (!map.has(d.id)) map.set(d.id, d);
+        });
+        return Array.from(map.values()).sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+        );
+      });
+    },
+  });
+
   // Cập nhật khi xử lý xong trong modal
   const handleBookingUpdated = (updated: BookingDoc) => {
     setBookings((prev) =>
-      prev.map((b) => (b.id === updated.id ? { ...b, ...updated } : b))
+      prev.map((b) => (b.id === updated.id ? { ...b, ...updated } : b)),
     );
     setSelectedBooking(updated);
   };
@@ -98,12 +136,14 @@ export function BookingList() {
   // Tính toán tóm tắt thống kê
   const stats = useMemo(() => {
     const todayStr = new Date().toISOString().slice(0, 10);
-    const pending = bookings.filter((b) => b.status === 'pending').length;
-    const inProgress = bookings.filter((b) => b.status === 'in_progress').length;
+    const pending = bookings.filter((b) => b.status === "pending").length;
+    const inProgress = bookings.filter(
+      (b) => b.status === "in_progress",
+    ).length;
     const completedToday = bookings.filter((b) => {
-      if (b.status !== 'completed') return false;
-      const pickupDate = b.pickupDatetime ? b.pickupDatetime.slice(0, 10) : '';
-      const updatedDate = b.updatedAt ? b.updatedAt.slice(0, 10) : '';
+      if (b.status !== "completed") return false;
+      const pickupDate = b.pickupDatetime ? b.pickupDatetime.slice(0, 10) : "";
+      const updatedDate = b.updatedAt ? b.updatedAt.slice(0, 10) : "";
       return pickupDate === todayStr || updatedDate === todayStr;
     }).length;
 
@@ -114,13 +154,16 @@ export function BookingList() {
   const filteredBookings = useMemo(() => {
     return bookings.filter((item) => {
       // 1. Lọc theo trạng thái
-      if (selectedStatus !== 'all' && item.status !== selectedStatus) {
+      if (selectedStatus !== "all" && item.status !== selectedStatus) {
         return false;
       }
 
       // 2. Lọc theo ngày đón (pickupDatetime dạng YYYY-MM-DD...)
       if (pickupDateFilter) {
-        if (!item.pickupDatetime || !item.pickupDatetime.startsWith(pickupDateFilter)) {
+        if (
+          !item.pickupDatetime ||
+          !item.pickupDatetime.startsWith(pickupDateFilter)
+        ) {
           return false;
         }
       }
@@ -128,11 +171,11 @@ export function BookingList() {
       // 3. Tìm kiếm theo mã đơn, tên khách, số điện thoại
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase().trim();
-        const code = String(item.bookingCode || item.id || '').toLowerCase();
-        const name = String(item.customerName || '').toLowerCase();
-        const phone = String(item.customerPhone || '').toLowerCase();
-        const pickup = String(item.pickupLocation || '').toLowerCase();
-        const dropoff = String(item.dropoffLocation || '').toLowerCase();
+        const code = String(item.bookingCode || item.id || "").toLowerCase();
+        const name = String(item.customerName || "").toLowerCase();
+        const phone = String(item.customerPhone || "").toLowerCase();
+        const pickup = String(item.pickupLocation || "").toLowerCase();
+        const dropoff = String(item.dropoffLocation || "").toLowerCase();
 
         const match =
           code.includes(q) ||
@@ -150,10 +193,10 @@ export function BookingList() {
 
   const columns: Column<BookingDoc>[] = [
     {
-      key: 'bookingCode',
-      header: 'Mã đơn',
+      key: "bookingCode",
+      header: "Mã đơn",
       sortable: true,
-      className: 'w-28 font-mono font-medium',
+      className: "w-28 font-mono font-medium",
       render: (item) => (
         <span className="text-blue-400 font-semibold">
           {item.bookingCode ? item.bookingCode : `#${item.id}`}
@@ -161,21 +204,25 @@ export function BookingList() {
       ),
     },
     {
-      key: 'customerName',
-      header: 'Khách hàng',
+      key: "customerName",
+      header: "Khách hàng",
       sortable: true,
       render: (item) => (
         <div>
-          <span className="font-semibold text-white block">{item.customerName}</span>
+          <span className="font-semibold text-white block">
+            {item.customerName}
+          </span>
         </div>
       ),
     },
     {
-      key: 'customerPhone',
-      header: 'Số điện thoại',
-      className: 'w-32',
+      key: "customerPhone",
+      header: "Số điện thoại",
+      className: "w-32",
       render: (item) => {
-        const phone = isEditor ? maskPhone(item.customerPhone) : item.customerPhone;
+        const phone = isEditor
+          ? maskPhone(item.customerPhone)
+          : item.customerPhone;
         return (
           <span
             data-testid={`booking-phone-${item.id}`}
@@ -187,8 +234,8 @@ export function BookingList() {
       },
     },
     {
-      key: 'route',
-      header: 'Lộ trình đón trả',
+      key: "route",
+      header: "Lộ trình đón trả",
       render: (item) => (
         <div className="max-w-xs space-y-0.5">
           <div className="text-slate-200 truncate font-medium">
@@ -201,10 +248,10 @@ export function BookingList() {
       ),
     },
     {
-      key: 'pickupDatetime',
-      header: 'Ngày giờ đón',
+      key: "pickupDatetime",
+      header: "Ngày giờ đón",
       sortable: true,
-      className: 'w-36',
+      className: "w-36",
       render: (item) => (
         <span className="text-slate-600">
           {formatDateTime(item.pickupDatetime)}
@@ -212,9 +259,9 @@ export function BookingList() {
       ),
     },
     {
-      key: 'vehicleType',
-      header: 'Loại xe',
-      className: 'w-24',
+      key: "vehicleType",
+      header: "Loại xe",
+      className: "w-24",
       render: (item) => (
         <span className="text-slate-700 font-medium">
           {VEHICLE_TYPE_MAP[item.vehicleType] || item.vehicleType}
@@ -222,11 +269,11 @@ export function BookingList() {
       ),
     },
     {
-      key: 'estimatedPrice',
-      header: 'Giá dự tính',
+      key: "estimatedPrice",
+      header: "Giá dự tính",
       sortable: true,
-      className: 'w-28 text-right',
-      align: 'right',
+      className: "w-28 text-right",
+      align: "right",
       render: (item) => (
         <span className="font-semibold text-amber-400">
           {formatVND(item.estimatedPrice)}
@@ -234,17 +281,17 @@ export function BookingList() {
       ),
     },
     {
-      key: 'status',
-      header: 'Trạng thái',
+      key: "status",
+      header: "Trạng thái",
       sortable: true,
-      className: 'w-32',
+      className: "w-32",
       render: (item) => <StatusBadge status={item.status} type="booking" />,
     },
     {
-      key: 'actions',
-      header: 'Thao tác',
-      align: 'center',
-      className: 'w-28',
+      key: "actions",
+      header: "Thao tác",
+      align: "center",
+      className: "w-28",
       render: (item) => (
         <Button
           type="button"
@@ -278,20 +325,69 @@ export function BookingList() {
           </p>
         </div>
 
-        <Button
-          type="button"
-          variant="outline"
-          size="sm"
-          onClick={fetchBookings}
-          disabled={isLoading}
-          className="self-start sm:self-auto"
-        >
-          <RefreshCw
-            className={`w-3.5 h-3.5 mr-1.5 ${isLoading ? 'animate-spin' : ''}`}
-          />
-          Làm mới
-        </Button>
+        <div className="flex items-center gap-2.5 self-start sm:self-auto flex-wrap">
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => {
+              toggleSound();
+              requestNotificationPermission();
+            }}
+            title={
+              soundEnabled
+                ? "Chuông báo đơn mới đang BẬT. Nhấn để tắt"
+                : "Chuông báo đơn mới đang TẮT. Nhấn để bật"
+            }
+            className={`text-xs rounded-xl cursor-pointer ${
+              soundEnabled
+                ? "border-amber-200 bg-amber-50/80 hover:bg-amber-100 text-amber-800"
+                : "border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-500"
+            }`}
+            leftIcon={
+              soundEnabled ? (
+                <Volume2 className="w-3.5 h-3.5 text-amber-600" />
+              ) : (
+                <VolumeX className="w-3.5 h-3.5 text-slate-400" />
+              )
+            }
+          >
+            {soundEnabled ? "Chuông: Bật" : "Chuông: Tắt"}
+          </Button>
+
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={fetchBookings}
+            disabled={isLoading}
+            className="self-start sm:self-auto"
+          >
+            <RefreshCw
+              className={`w-3.5 h-3.5 mr-1.5 ${isLoading ? "animate-spin" : ""}`}
+            />
+            Làm mới
+          </Button>
+        </div>
       </div>
+
+      {/* Banner thông báo Realtime đơn mới */}
+      {newBookingToast && (
+        <div className="p-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-white flex items-center justify-between shadow-lg shadow-amber-500/20 border border-amber-400/40 animate-pulse">
+          <div className="flex items-center gap-2.5 font-bold text-xs sm:text-sm">
+            <Car className="w-4 h-4 shrink-0" />
+            <span>🔔 {newBookingToast}</span>
+          </div>
+          <button
+            type="button"
+            onClick={() => setNewBookingToast(null)}
+            className="p-1 rounded text-white hover:bg-white/20 transition cursor-pointer"
+            title="Đóng thông báo"
+          >
+            ✕
+          </button>
+        </div>
+      )}
 
       {/* Thông báo lỗi nếu có */}
       {error && (
@@ -320,11 +416,15 @@ export function BookingList() {
           className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-between"
         >
           <div>
-            <p className="text-xs font-medium text-slate-500">Đơn mới chờ duyệt</p>
+            <p className="text-xs font-medium text-slate-500">
+              Đơn mới chờ duyệt
+            </p>
             <p className="text-2xl font-bold text-amber-600 mt-1">
               {stats.pending}
             </p>
-            <p className="text-[11px] text-slate-500 mt-0.5">Cần tiếp nhận & xác nhận</p>
+            <p className="text-[11px] text-slate-500 mt-0.5">
+              Cần tiếp nhận & xác nhận
+            </p>
           </div>
           <div className="w-11 h-11 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-600">
             <Clock className="w-5 h-5" />
@@ -341,7 +441,9 @@ export function BookingList() {
             <p className="text-2xl font-bold text-indigo-600 mt-1">
               {stats.inProgress}
             </p>
-            <p className="text-[11px] text-slate-500 mt-0.5">Tài xế đang vận chuyển</p>
+            <p className="text-[11px] text-slate-500 mt-0.5">
+              Tài xế đang vận chuyển
+            </p>
           </div>
           <div className="w-11 h-11 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-center text-indigo-600">
             <Car className="w-5 h-5" />
@@ -354,11 +456,15 @@ export function BookingList() {
           className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-between"
         >
           <div>
-            <p className="text-xs font-medium text-slate-500">Hoàn thành hôm nay</p>
+            <p className="text-xs font-medium text-slate-500">
+              Hoàn thành hôm nay
+            </p>
             <p className="text-2xl font-bold text-emerald-600 mt-1">
               {stats.completedToday}
             </p>
-            <p className="text-[11px] text-slate-500 mt-0.5">Chuyến xe đã kết thúc</p>
+            <p className="text-[11px] text-slate-500 mt-0.5">
+              Chuyến xe đã kết thúc
+            </p>
           </div>
           <div className="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600">
             <CheckCircle2 className="w-5 h-5" />
@@ -402,7 +508,7 @@ export function BookingList() {
                 type="button"
                 variant="ghost"
                 size="sm"
-                onClick={() => setPickupDateFilter('')}
+                onClick={() => setPickupDateFilter("")}
                 className="text-xs text-slate-500 hover:text-slate-800"
                 title="Bỏ lọc ngày"
               >

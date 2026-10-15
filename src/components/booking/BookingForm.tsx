@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { COMPANY_INFO } from "@/data/company-info";
 import { type RouteItem } from "@/lib/types";
-import { isApiError, postBooking, type CompanyInfoData } from "@/lib/api";
+import { isApiError, postBooking, type CompanyInfoData } from "@/lib/api/client";
 import {
   buildBookingPayload,
   createIdempotencyKey,

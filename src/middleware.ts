@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-import { getRedirects, type RedirectEntry } from "@/lib/api";
+import { getRedirects, type RedirectEntry } from "@/lib/api/redirects";
 import { resolveRedirect } from "@/lib/redirects";
 
 const CACHE_MS = 60_000;

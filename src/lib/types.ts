@@ -25,3 +25,25 @@ export interface RouteItem {
   regions: string[];
   isBannerTop?: boolean;
 }
+
+export interface CompanyInfoData {
+  name: string;
+  brandName: string;
+  hotline: string;
+  hotlineRaw: string;
+  hotlineHref: string;
+  zaloHref: string;
+  smsHref: string;
+  email: string;
+  website: string;
+  domainName: string;
+  fanpage: string;
+  fanpageUrl: string;
+  topBannerLine1: string;
+  topBannerLine2: string;
+  coverage: string;
+  workingHours: string;
+  fleetDescription: string;
+  bookingPromise: string;
+  summary: string;
+}
