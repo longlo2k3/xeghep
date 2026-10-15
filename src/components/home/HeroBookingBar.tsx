@@ -616,16 +616,6 @@ export function HeroBookingBar({ routes = [] }: HeroBookingBarProps) {
                   >
                     {displayPrice}
                   </span>
-                  {unitDisplay && (
-                    <span className="text-red-100 font-semibold">
-                      {unitDisplay}
-                    </span>
-                  )}
-                  {activeRoute && hasCalculated && (
-                    <span className="hidden sm:inline-block ml-1 text-[11px] font-medium text-red-100 bg-white/15 px-2 py-0.5 rounded border border-white/20">
-                      {activeRoute.name}
-                    </span>
-                  )}
                 </>
               )}
             </div>

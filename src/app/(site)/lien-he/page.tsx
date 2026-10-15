@@ -5,7 +5,7 @@ import { BookingForm } from "@/components/booking/BookingForm";
 import { COMPANY_INFO } from "@/data/company-info";
 import { getRoutes, getCompanySettings } from "@/lib/api";
 import { constructMetadata } from "@/lib/seo";
-import { Phone, Clock, MessageSquare, Mail, Globe, MapPin } from "lucide-react";
+import { Phone, Clock, MessageSquare, Mail, Globe } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
   title: "Liên Hệ Đặt Xe Ghép - Phục Vụ 24/7 Toàn Tuyến Liên Tỉnh",
@@ -28,7 +28,6 @@ export default async function ContactPage() {
     getRoutes(),
   ]);
   const info = companySettings.info ?? COMPANY_INFO;
-  const address = companySettings.address;
   const mapEmbedUrl =
     companySettings.mapEmbedUrl ||
     "https://maps.google.com/maps?q=Le+Chan,+Hai+Phong,+Vietnam&t=&z=14&ie=UTF8&iwloc=&output=embed";
@@ -84,42 +83,6 @@ export default async function ContactPage() {
                   </h2>
 
                   <div className="space-y-3.5 text-sm text-slate-900">
-                    {address && (
-                      <div className="flex items-start gap-3.5 bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl border border-white/70 shadow-2xs">
-                        <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0 shadow-xs">
-                          <MapPin className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <strong className="block text-slate-900 font-bold mb-0.5">
-                            Địa Chỉ Văn Phòng:
-                          </strong>
-                          <p className="text-xs sm:text-sm text-slate-800 font-medium">
-                            {address}
-                          </p>
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="flex items-start gap-3.5 bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl border border-white/70 shadow-2xs">
-                      <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0 shadow-xs">
-                        <Phone className="w-5 h-5 animate-pulse" />
-                      </div>
-                      <div>
-                        <strong className="block text-slate-900 font-bold mb-0.5">
-                          Hotline Tổng Đài 24/7:
-                        </strong>
-                        <a
-                          href={info.hotlineHref}
-                          className="text-lg font-black text-red-600 hover:underline block"
-                        >
-                          {info.hotline}
-                        </a>
-                        <span className="text-xs text-slate-600 font-medium">
-                          Phục vụ 24/7 liên tục cả ngày và đêm
-                        </span>
-                      </div>
-                    </div>
-
                     <div className="flex items-start gap-3.5 bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl border border-white/70 shadow-2xs">
                       <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0 shadow-xs">
                         <Mail className="w-5 h-5" />
@@ -157,21 +120,7 @@ export default async function ContactPage() {
                     </div>
 
                     <div className="flex items-start gap-3.5 bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl border border-white/70 shadow-2xs">
-                      <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0 shadow-xs">
-                        <Globe className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <strong className="block text-slate-900 font-bold mb-0.5">
-                          Website Chính Thức:
-                        </strong>
-                        <p className="text-xs sm:text-sm text-slate-800 font-semibold">
-                          {info.domainName}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3.5 bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl border border-white/70 shadow-2xs">
-                      <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0 shadow-xs">
+                      <div className="w-10 h-10 rounded-xl bg-red-50 text-orange-600 flex items-center justify-center flex-shrink-0 shadow-xs">
                         <Clock className="w-5 h-5" />
                       </div>
                       <div>
