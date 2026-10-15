@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { constructMetadata } from "@/lib/seo";
-import { PriceBannerSection } from "@/components/home/PriceBannerSection";
 import { HeroSection } from "@/components/home/HeroSection";
+import { HeroBookingBar } from "@/components/home/HeroBookingBar";
 import { RoutePricingGrid } from "@/components/home/RoutePricingGrid";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 import { IntroTeaser } from "@/components/home/IntroTeaser";
@@ -24,17 +24,18 @@ export default async function HomePage() {
     getCompanySettings(),
     getRoutes(),
   ]);
-  const bannerRoutes = routes.filter((route) => route.isBannerTop);
 
   return (
     <>
-      {/* Section 1 — Banner Bảng Giá Các Tuyến Chính */}
-      <PriceBannerSection routes={bannerRoutes} />
-
-      {/* Section 2 — Hero + Đặt Xe Trực Tuyến (Gộp chung vào 1 section tối ưu) */}
+      {/* Section 1 — Header / Hero Banner */}
       <HeroSection routes={routes} companyInfo={companySettings.info} />
 
-      {/* Section 3 — Bảng Giá Xe Ghép (Lưới 9 RouteCard) */}
+      {/* Booking Form đặt ở giữa Header và Bảng Giá Xe Ghép */}
+      <section className="relative z-20 -mt-10 sm:-mt-14 lg:-mt-16 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 mb-4 sm:mb-8 flex justify-center">
+        <HeroBookingBar routes={routes} />
+      </section>
+
+      {/* Section 2 — Bảng Giá Xe Ghép (Lưới 9 RouteCard) */}
       <RoutePricingGrid routes={routes} />
 
       {/* Section 4 — Vì Sao Chọn Xe Ghép Liên Tỉnh (Khung vàng) */}

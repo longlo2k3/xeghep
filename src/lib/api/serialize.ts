@@ -136,6 +136,8 @@ export function serializeRouteCard(route: Route) {
     isBannerTop: route.isBannerTop ?? false,
     sortOrder: route.sortOrder,
     thumbnail: serializeImage(route.thumbnail),
+    pickups: (route.pickups ?? []).map((p) => p.text),
+    dropoffs: (route.dropoffs ?? []).map((d) => d.text),
   };
 }
 

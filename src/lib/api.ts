@@ -213,6 +213,8 @@ export type RouteCardOut = {
   isBannerTop: boolean;
   sortOrder: number;
   thumbnail: CmsImage | null;
+  pickups?: string[];
+  dropoffs?: string[];
 };
 
 export type RouteSeo = {

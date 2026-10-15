@@ -1,128 +1,100 @@
 import Image from "next/image";
-import dynamic from "next/dynamic";
-import { Phone, Star, ShieldCheck, CheckCircle2, Award, Zap } from "lucide-react";
+import { CheckCircle2, Zap, Award, Phone } from "lucide-react";
 import { COMPANY_INFO } from "@/data/company-info";
 import type { CompanyInfoData } from "@/lib/api";
 import type { RouteItem } from "@/lib/types";
 
-const BookingForm = dynamic(
-  () => import("@/components/booking/BookingForm").then((mod) => mod.BookingForm),
-  {
-    loading: () => (
-      <div className="w-full min-h-[460px] rounded-2xl bg-slate-900/60 border border-white/10 animate-pulse flex flex-col items-center justify-center text-slate-400 gap-3 p-6 backdrop-blur-sm">
-        <div className="w-8 h-8 rounded-full border-2 border-red-500 border-t-transparent animate-spin" />
-        <span className="text-xs font-semibold text-slate-300">
-          Đang chuẩn bị biểu mẫu đặt xe...
-        </span>
-      </div>
-    ),
-  }
-);
+interface HeroSectionProps {
+  routes?: RouteItem[];
+  companyInfo?: CompanyInfoData;
+}
 
 export function HeroSection({
-  routes,
+  routes = [],
   companyInfo = COMPANY_INFO,
-}: {
-  routes: RouteItem[];
-  companyInfo?: CompanyInfoData;
-}) {
+}: HeroSectionProps) {
   const info = companyInfo ?? COMPANY_INFO;
 
   return (
-    <section className="relative bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950 text-white py-10 sm:py-14 lg:py-16 overflow-hidden border-b border-slate-800">
-      {/* Background Car Image + Soft Lighter Overlay (Lazy loaded to avoid competing with LCP) */}
-      <div className="absolute inset-0 z-0">
+    <section className="relative w-full overflow-hidden bg-slate-50 border-b border-slate-200">
+      {/* Background: Ảnh đội xe màu trắng + Scrim gradient */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <Image
-          src="/banner2.webp"
-          alt="Đội xe riêng đời mới Xe Ghép Liên Tỉnh"
+          src="/banner3.png"
+          alt="Đội xe riêng đời mới phục vụ xe ghép liên tỉnh"
           fill
-          loading="lazy"
-          decoding="async"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1280px"
-          quality={75}
-          className="object-cover object-center opacity-65 select-none pointer-events-none"
+          priority
+          sizes="100vw"
+          quality={85}
+          className="object-cover object-[80%_center] sm:object-right select-none"
         />
-        {/* Left-focused gradient: readable text on left, clear see-through glass view on right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/65 to-slate-900/35" />
+
+        {/* Gradient làm mờ dần phần ảnh phía trái để chữ và thanh tìm kiếm luôn đọc rõ */}
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-white via-white/95 sm:via-white/80 via-45% to-transparent hidden lg:block"
+          aria-hidden="true"
+        />
+
+        {/* Mobile (< sm): gradient trắng chỉ chiếm 50% chiều ngang bên trái.
+            Tablet (sm → lg): overlay trắng 80% như cũ để bảo đảm tương phản chữ. */}
+        <div
+          className="absolute inset-0 [background-image:linear-gradient(to_right,#ffffff_0%,rgba(255,255,255,0)_60%)] sm:[background-image:none] sm:bg-white/80 lg:hidden"
+          aria-hidden="true"
+        />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-          {/* Main Hero Content */}
-          <div className="lg:col-span-6 xl:col-span-7 space-y-5 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-600/20 border border-red-500/40 text-red-300 text-xs sm:text-sm font-bold backdrop-blur-sm">
-              <ShieldCheck
-                className="w-4 h-4 text-red-400"
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10 lg:pt-12 pb-14 sm:pb-20 lg:pb-24">
+        {/* Banner nội dung phía trên */}
+        <div className="flex flex-col gap-2.5 sm:gap-3.5 max-w-2xl">
+          {/* H1 gồm 2 dòng, in hoa, font-black, line-height sát */}
+          <h1 className="text-3xl sm:text-4xl lg:text-[44px] xl:text-5xl font-black tracking-tight uppercase leading-[1.08]">
+            <span className="block text-red-600">XE GHÉP LIÊN TỈNH</span>
+            <span className="block text-slate-900 mt-0.5 sm:mt-1">
+              GIÁ CHỈ TỪ 200K
+            </span>
+          </h1>
+
+          {/* Đoạn mô tả bên dưới H1 — mobile: ẩn nhưng vẫn giữ chiều cao */}
+          <p className="invisible sm:visible text-xs sm:text-sm lg:text-[15px] text-slate-700 leading-relaxed font-normal max-w-lg">
+            Dịch vụ xe ghép – xe tiện chuyến Móng Cái, Hạ Long, Hải Phòng, Hà
+            Nội, Bắc Ninh, Bắc Giang... Xe chạy thẳng, nhanh, đón trả tận nơi,
+            phục vụ 24/7.
+          </p>
+
+          {/* Hotline & cam kết tiện ích — mobile: ẩn nhưng vẫn giữ chiều cao */}
+          <div className="invisible sm:visible flex pt-1.5 flex-wrap items-center gap-x-4 gap-y-2 text-xs text-slate-700">
+            <a
+              href={info.hotlineHref}
+              className="inline-flex items-center gap-1.5 font-bold text-red-600 hover:text-red-700 transition-colors mr-1"
+              aria-label={`Hotline liên hệ 24/7: ${info.hotline}`}
+            >
+              <Phone
+                className="w-3.5 h-3.5 text-red-600 animate-pulse"
                 aria-hidden="true"
               />
-              <span>Cam kết 100% xe riêng đời mới • Đưa đón tận nhà</span>
+              <span>Hotline 24/7: {info.hotline}</span>
+            </a>
+            <div className="flex items-center gap-1 font-medium">
+              <CheckCircle2
+                className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"
+                aria-hidden="true"
+              />
+              <span>Đón trả tận nhà</span>
             </div>
-
-            {/* H1 per spec_v2.md Section 3 */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight text-white uppercase leading-tight drop-shadow-md">
-              XE GHÉP <span className="text-red-500">LIÊN TỈNH</span>
-            </h1>
-
-            {/* Sub content per spec_v2.md Section 3 */}
-            <div className="space-y-2.5 max-w-2xl mx-auto lg:mx-0">
-              <p className="text-sm sm:text-base lg:text-lg font-extrabold text-amber-300 uppercase tracking-wide">
-                CHUYÊN MÓNG CÁI – HẠ LONG – HẢI PHÒNG – BẮC NINH – BẮC GIANG – HÀ NỘI.
-              </p>
-
-              <div className="flex items-center justify-center lg:justify-start gap-1 text-amber-400">
-                <span className="text-xs sm:text-sm font-bold text-white mr-1.5">
-                  Chất lượng dịch vụ 5 sao
-                </span>
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-4 h-4 fill-amber-400 text-amber-400"
-                    aria-hidden="true"
-                  />
-                ))}
-              </div>
-
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
-                Cam kết 100% xe riêng đời mới, đưa đón tận nhà, giá trọn gói niêm yết không phát sinh. Giảm 10% cho khách hàng cũ.
-              </p>
+            <div className="flex items-center gap-1 font-medium">
+              <Zap
+                className="w-3.5 h-3.5 text-amber-600 flex-shrink-0"
+                aria-hidden="true"
+              />
+              <span>Chỉ 1–3 khách</span>
             </div>
-
-            {/* CTA Hotline Button per spec_v2.md */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1">
-              <a
-                href={info.hotlineHref}
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-red-600 hover:bg-red-700 active:bg-red-800 text-white font-black text-sm sm:text-base shadow-xl shadow-red-600/30 transition-all hover:scale-105 cursor-pointer border border-red-500/50"
-                aria-label={`Gọi ngay ${info.hotline}`}
-              >
-                <Phone className="w-4 h-4 animate-pulse" aria-hidden="true" />
-                <span>HOTLINE 24/7: {info.hotline}</span>
-              </a>
+            <div className="flex items-center gap-1 font-medium">
+              <Award
+                className="w-3.5 h-3.5 text-sky-600 flex-shrink-0"
+                aria-hidden="true"
+              />
+              <span>100% xe đời mới</span>
             </div>
-
-            {/* Value checklist & perks */}
-            <div className="grid grid-cols-2 sm:grid-cols-2 gap-2.5 pt-2 text-xs text-slate-300 max-w-xl text-left mx-auto lg:mx-0">
-              <div className="flex items-center gap-2 p-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>Đón trả tận cửa nhà</span>
-              </div>
-              <div className="flex items-center gap-2 p-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>Chỉ 1–3 khách / chuyến</span>
-              </div>
-              <div className="flex items-center gap-2 p-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
-                <Zap className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                <span>Gửi hàng hỏa tốc từ 150k</span>
-              </div>
-              <div className="flex items-center gap-2 p-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
-                <Award className="w-4 h-4 text-sky-400 flex-shrink-0" />
-                <span>Hoàn 100% nếu sai cam kết</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Embedded Booking Form */}
-          <div className="lg:col-span-6 xl:col-span-5 w-full">
-            <BookingForm compact routes={routes} companyInfo={info} />
           </div>
         </div>
       </div>

@@ -13,7 +13,17 @@ export const metadata: Metadata = constructMetadata({
   path: "/dat-xe",
 });
 
-export default async function BookingPage() {
+interface BookingPageProps {
+  searchParams?: Promise<{
+    pickup?: string;
+    dropoff?: string;
+    route?: string;
+    rideType?: string;
+  }>;
+}
+
+export default async function BookingPage({ searchParams }: BookingPageProps) {
+  const resolvedParams = searchParams ? await searchParams : {};
   const [companySettings, routes] = await Promise.all([
     getCompanySettings(),
     getRoutes(),
@@ -62,6 +72,10 @@ export default async function BookingPage() {
             title="THÔNG TIN ĐẶT CHUYẾN"
             routes={routes}
             companyInfo={info}
+            initialOrigin={resolvedParams.pickup}
+            initialDestination={resolvedParams.dropoff}
+            initialRouteSlug={resolvedParams.route}
+            initialRideType={resolvedParams.rideType === "bao" ? "bao" : "ghep"}
           />
         </div>
       </div>
