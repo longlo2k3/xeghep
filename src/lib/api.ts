@@ -16,10 +16,6 @@ import {
   getCompanySettingsDirect,
   getArticlesDirect,
   getArticleDirect,
-  getAirportPricingDirect,
-  getDistanceRatesDirect,
-  getPricingSettingsDirect,
-  getPageDirect,
 } from "./api/server";
 
 export type { RouteItem, RoutePriceDetail };
@@ -194,26 +190,6 @@ async function cmsGet<T>(
 ): Promise<T> {
   const { data } = await request<T>(path, {
     next: { revalidate, tags },
-    timeoutMs,
-  });
-  return data;
-}
-
-async function cmsPost<T>(
-  path: string,
-  body: unknown,
-  idempotencyKey?: string,
-  timeoutMs?: number,
-): Promise<T> {
-  const headers: Record<string, string> = {
-    "content-type": "application/json; charset=utf-8",
-  };
-  if (idempotencyKey) headers["idempotency-key"] = idempotencyKey;
-  const { data } = await request<T>(path, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-    cache: "no-store",
     timeoutMs,
   });
   return data;
@@ -662,11 +638,6 @@ export async function getCompanySettings(): Promise<CompanySettingsData> {
   }
 }
 
-export async function getCompanyInfo(): Promise<CompanyInfoData> {
-  const settings = await getCompanySettings();
-  return settings.info;
-}
-
 export type VehiclePriceGroup = {
   sedan5Seats: number | null;
   suv7Seats: number | null;
@@ -726,33 +697,6 @@ export type PricingSettings = {
   holidayNote: string | null;
   priceValidUntilWarning: string | null;
 };
-
-export function getAirportPricing(): Promise<AirportPricingRow[]> {
-  if (typeof window === "undefined") {
-    return getAirportPricingDirect();
-  }
-  return cmsGet<AirportPricingRow[]>("/api/v1/pricing/airport", [
-    "pricing",
-    "airport-pricing",
-  ]);
-}
-
-export function getDistanceRates(): Promise<DistancePricing> {
-  if (typeof window === "undefined") {
-    return getDistanceRatesDirect();
-  }
-  return cmsGet<DistancePricing>("/api/v1/pricing/distance", [
-    "pricing",
-    "distance-rates",
-  ]);
-}
-
-export function getPricingSettings(): Promise<PricingSettings> {
-  if (typeof window === "undefined") {
-    return getPricingSettingsDirect();
-  }
-  return cmsGet<PricingSettings>("/api/v1/settings/pricing", ["pricing"]);
-}
 
 export type ArticleCategory = Article["category"];
 
@@ -872,18 +816,6 @@ export type CmsPage = {
   updatedAt: string;
 };
 
-export async function getPage(slugOrPath: string): Promise<CmsPage> {
-  if (typeof window === "undefined") {
-    return getPageDirect(slugOrPath);
-  }
-  const normalized = slugOrPath.replace(/^\/+/, "").replace(/\/+$/, "");
-  const asSlug = normalized.split("/").join("--");
-  return cmsGet<CmsPage>(
-    `/api/v1/pages/${encodeURIComponent(asSlug)}?path=${encodeURIComponent(normalized)}`,
-    ["pages", `pages:${normalized}`, "sitemap"],
-  );
-}
-
 export type BookingInput = {
   customerName: string;
   customerPhone: string;
@@ -946,13 +878,6 @@ export type BookingLookupResult = {
   statusLabel: string;
 };
 
-export function postBooking(
-  body: BookingInput,
-  idempotencyKey?: string,
-): Promise<BookingCreateResult> {
-  return cmsPost<BookingCreateResult>("/api/v1/bookings", body, idempotencyKey);
-}
-
 export function lookupBooking(
   code: string,
   options: { token?: string; phoneLast4?: string } = {},
@@ -972,17 +897,6 @@ export type RedirectEntry = {
   to: string;
   statusCode: number;
 };
-
-export function getRedirects(
-  options: { timeoutMs?: number } = {},
-): Promise<RedirectEntry[]> {
-  return cmsGet<RedirectEntry[]>(
-    "/api/v1/redirects",
-    ["redirects"],
-    REVALIDATE_SECONDS,
-    options.timeoutMs ?? 1000,
-  );
-}
 
 export type SitemapEntry = {
   path: string;

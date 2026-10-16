@@ -92,8 +92,6 @@ export const SIX_COMMITMENTS: Commitment[] = [
   },
 ];
 
-export const FIVE_COMMITMENTS = SIX_COMMITMENTS;
-
 export const PAYMENT_METHODS: PaymentMethod[] = [
   {
     id: "tien-mat",
