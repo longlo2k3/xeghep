@@ -54,21 +54,28 @@ export function RoutePricingCard({ route }: { route: RouteItem }) {
             </span>
           </div>
 
-          {/* Xếp thành từng dòng ngang giúp chữ to rõ (11px-12px) ngay cả khi chia 2 cột ngoài */}
-          <div className="space-y-1">
+          {/* Mobile: lưới 2 cột theo mẫu; từ sm trở lên giữ các dòng ngang hiện tại. */}
+          <div
+            data-testid="pricing-details"
+            className="grid grid-cols-2 gap-x-2 gap-y-2 sm:block sm:space-y-1"
+          >
             {route.pricingDetails.map((detail, idx) => (
               <div
                 key={idx}
-                className="flex items-center justify-between text-[11px] sm:text-xs py-1 px-1.5 sm:px-2 rounded odd:bg-white even:bg-slate-100/80"
+                className="min-w-0 px-1 py-0.5 sm:flex sm:items-center sm:justify-between sm:py-1 sm:px-2 sm:rounded sm:odd:bg-white sm:even:bg-slate-100/80"
               >
-                <span className="text-slate-700 font-medium flex items-center gap-1.5 truncate pr-1">
+                <span className="flex min-w-0 items-start gap-1.5 text-[10px] font-medium leading-tight text-slate-700 sm:items-center sm:text-xs sm:truncate sm:pr-1">
+                  <span
+                    aria-hidden="true"
+                    className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-[#d9261c] sm:hidden"
+                  />
                   {getServiceIcon(
                     detail.label,
                     "hidden sm:block w-3.5 h-3.5 text-slate-400 flex-shrink-0",
                   )}
-                  <span className="truncate">{detail.label}</span>
+                  <span className="min-w-0 sm:truncate">{detail.label}</span>
                 </span>
-                <span className="font-extrabold text-[#d9261c] text-right flex-shrink-0">
+                <span className="mt-0.5 block pl-3 text-left text-xs font-extrabold leading-tight text-[#d9261c] sm:mt-0 sm:pl-0 sm:text-right sm:flex-shrink-0">
                   {detail.price}
                 </span>
               </div>
