@@ -111,7 +111,7 @@ export function RoutePricingGrid({ routes }: { routes: RouteItem[] }) {
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         {/* H2 Title per spec_v2.md Section 4 */}
         <div className="text-center max-w-3xl mx-auto mb-4 sm:mb-12 space-y-2 sm:space-y-3">
-          <span className="inline-block px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-red-50 text-red-600 border border-red-200 font-bold text-[10px] sm:text-xs uppercase tracking-wider shadow-sm">
+          <span className="inline-block px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-red-50 text-red-700 border border-red-200 font-bold text-[10px] sm:text-xs uppercase tracking-wider shadow-sm">
             Niêm Yết Minh Bạch • Không Phụ Phí Ẩn
           </span>
           <h2 className="text-xl sm:text-4xl font-black text-slate-900 tracking-tight uppercase">

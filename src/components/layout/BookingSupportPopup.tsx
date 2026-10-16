@@ -93,7 +93,7 @@ export function BookingSupportPopup({
           <X className="h-5 w-5" aria-hidden="true" />
         </button>
 
-        <p className="mx-auto mb-3 inline-flex items-center gap-1 rounded-full bg-red-50 px-3 py-1 text-[11px] font-black uppercase tracking-wide text-red-600 sm:text-xs">
+        <p className="mx-auto mb-3 inline-flex items-center gap-1 rounded-full bg-red-50 px-3 py-1 text-[11px] font-black uppercase tracking-wide text-red-700 sm:text-xs">
           <Zap
             className="h-3.5 w-3.5 fill-orange-400 text-orange-400"
             aria-hidden="true"

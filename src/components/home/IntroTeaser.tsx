@@ -44,7 +44,7 @@ export function IntroTeaser() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header Title căn giữa chuẩn SEO (AGENTS.md Rule 3.2) */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-2">
-          <span className="inline-block px-3 py-0.5 rounded-full bg-red-50 text-red-600 border border-red-200 font-bold text-xs uppercase tracking-wider shadow-sm">
+          <span className="inline-block px-3 py-0.5 rounded-full bg-red-50 text-red-700 border border-red-200 font-bold text-xs uppercase tracking-wider shadow-sm">
             Về Chúng Tôi
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight uppercase">
