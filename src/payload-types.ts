@@ -335,6 +335,19 @@ export interface Route {
         id?: string | null;
       }[]
     | null;
+  useCustomPricingHtml?: boolean | null;
+  /**
+   * Chỉ hiển thị ở trang chi tiết tuyến khi bật tùy chọn HTML. Script và thuộc tính không an toàn sẽ bị loại.
+   */
+  customPricingHtml?: string | null;
+  /**
+   * CSS chỉ áp dụng trong bảng giá chi tiết; hỗ trợ class, :scope, @media và @supports.
+   */
+  customPricingCss?: string | null;
+  /**
+   * Chạy trong iframe sandbox trên trang tuyến, chỉ tác động đến bảng giá. Không truy cập trang chính; fetch/XHR và tài nguyên ngoài bị chặn.
+   */
+  customPricingJs?: string | null;
   /**
    * Mô tả hero tuyến, fallback meta description (≤ 300 ký tự).
    */
@@ -1004,6 +1017,10 @@ export interface RoutesSelect<T extends boolean = true> {
         note?: T;
         id?: T;
       };
+  useCustomPricingHtml?: T;
+  customPricingHtml?: T;
+  customPricingCss?: T;
+  customPricingJs?: T;
   description?: T;
   detailedContent?: T;
   operatingHoursText?: T;

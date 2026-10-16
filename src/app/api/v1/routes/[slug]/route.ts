@@ -45,7 +45,7 @@ export async function GET(req: Request, ctx: { params: Promise<{ slug: string }>
         collection: 'routes',
         limit: 3,
         depth: 2,
-        sort: 'sortOrder',
+        sort: 'createdAt',
         where: { status: { equals: 'active' }, slug: { not_equals: route.slug } },
         overrideAccess: true,
       });

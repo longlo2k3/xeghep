@@ -177,6 +177,32 @@ export const Routes: CollectionConfig = {
       ],
     },
     {
+      name: "useCustomPricingHtml",
+      type: "checkbox",
+      label: "Dùng HTML tùy chỉnh cho bảng giá chi tiết",
+      defaultValue: false,
+    },
+    {
+      name: "customPricingHtml",
+      type: "textarea",
+      label: "HTML bảng giá chi tiết",
+      admin: { description: "Chỉ hiển thị ở trang chi tiết tuyến khi bật tùy chọn HTML. Script và thuộc tính không an toàn sẽ bị loại." },
+    },
+    {
+      name: "customPricingCss",
+      type: "textarea",
+      label: "CSS bảng giá chi tiết",
+      maxLength: 30000,
+      admin: { description: "CSS chỉ áp dụng trong bảng giá chi tiết; hỗ trợ class, :scope, @media và @supports." },
+    },
+    {
+      name: "customPricingJs",
+      type: "textarea",
+      label: "JavaScript bảng giá chi tiết",
+      maxLength: 30000,
+      admin: { description: "Chạy trong iframe sandbox trên trang tuyến, chỉ tác động đến bảng giá. Không truy cập trang chính; fetch/XHR và tài nguyên ngoài bị chặn." },
+    },
+    {
       name: "description",
       type: "textarea",
       label: "Mô tả ngắn",

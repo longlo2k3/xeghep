@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body><h1>Pricing browser probe</h1><iframe sandbox="allow-scripts" srcdoc="&lt;!doctype html>&lt;html lang=&quot;vi&quot;>&lt;head>&lt;meta charset=&quot;utf-8&quot;>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;>&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval'; style-src 'unsafe-inline'; img-src data:; font-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'; frame-src 'none'&quot;>&lt;style>html,body{margin:0;padding:0}body{overflow:hidden}[data-route-pricing]{font-family:ui-sans-serif, system-ui, -apple-system, &quot;Segoe UI&quot;, sans-serif;color:#334155}[data-route-pricing] .fare-box{padding:24px;border:1px solid #e2e8f0;border-radius:18px;background:#ffffff;box-shadow:0 12px 36px rgb(15 23 42 / 6%)}[data-route-pricing] .fare-box h3{margin:0 0 22px;padding-left:14px;border-left:4px solid #dc2626;color:#0f172a;font-size:22px;font-weight:800;line-height:1.35;letter-spacing:-0.02em;text-transform:uppercase}[data-route-pricing] .fare-tabs{display:none}[data-route-pricing] .fare-table{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;font-size:15px}[data-route-pricing] .fare-table thead th{padding:15px 16px;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;background:#f8fafc;color:#334155;font-weight:700;text-align:left}[data-route-pricing] .fare-table thead th:first-child{border-left:1px solid #e2e8f0;border-top-left-radius:10px}[data-route-pricing] .fare-table thead th:last-child{border-right:1px solid #e2e8f0;border-top-right-radius:10px}[data-route-pricing] .fare-table tbody th,[data-route-pricing] .fare-table tbody td{padding:15px 16px;border-bottom:1px solid #e2e8f0;text-align:left}[data-route-pricing] .fare-table tbody th{color:#334155;font-weight:600}[data-route-pricing] .fare-table tbody td{color:#0f172a;font-weight:700;font-variant-numeric:tabular-nums}[data-route-pricing] .fare-table tbody tr:nth-child(even){background:#f8fafc}[data-route-pricing] .fare-table tbody tr:hover{background:#fff7ed}[data-route-pricing] .fare-notes{margin-top:20px;padding:14px 18px;border-left:3px solid #dc2626;border-radius:8px;background:#fef2f2;color:#b91c1c;font-size:14px;font-weight:600;line-height:1.6}[data-route-pricing] .fare-notes p{margin:0}[data-route-pricing] .fare-notes p + p{margin-top:4px}@media (max-width: 640px){[data-route-pricing] .fare-box{padding:16px;border-radius:14px}[data-route-pricing] .fare-box h3{margin-bottom:16px;font-size:17px}[data-route-pricing] .fare-tabs{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:5px;margin-bottom:16px;padding:4px;border-radius:12px;background:#f1f5f9}[data-route-pricing] .fare-tab{min-height:44px;padding:6px;border:0;border-radius:9px;background:transparent;color:#475569;font-size:11px;font-weight:700;line-height:1.25;cursor:pointer}[data-route-pricing] .fare-tab[aria-pressed=&quot;true&quot;]{background:#dc2626;color:#ffffff;box-shadow:0 3px 8px rgb(220 38 38 / 22%)}[data-route-pricing] .fare-table{font-size:13px}[data-route-pricing] .fare-table th,[data-route-pricing] .fare-table td{padding:12px 8px}[data-route-pricing] .fare-table th:first-child{width:48%}[data-route-pricing] .fare-table th[data-fare],[data-route-pricing] .fare-table td[data-fare]{display:none}[data-route-pricing] .fare-table [data-fare].is-active{display:table-cell;text-align:right}[data-route-pricing] .fare-notes{margin-top:16px;padding:12px;font-size:12px}}&lt;/style>&lt;/head>&lt;body>&lt;div data-route-pricing>&lt;section class=&quot;fare-box&quot;>
+  &lt;h3>Nội Bài – Hà Nội – Ninh Bình&lt;/h3>
+
+  &lt;div class=&quot;fare-tabs&quot; role=&quot;group&quot; aria-label=&quot;Chọn loại xe&quot;>
+    &lt;button class=&quot;fare-tab&quot; type=&quot;button&quot; data-select=&quot;one&quot; aria-pressed=&quot;true&quot;>01 ghế ghép&lt;/button>
+    &lt;button class=&quot;fare-tab&quot; type=&quot;button&quot; data-select=&quot;two&quot; aria-pressed=&quot;false&quot;>02 ghế ghép&lt;/button>
+    &lt;button class=&quot;fare-tab&quot; type=&quot;button&quot; data-select=&quot;car&quot; aria-pressed=&quot;false&quot;>Bao xe 05 chỗ&lt;/button>
+  &lt;/div>
+
+  &lt;table class=&quot;fare-table&quot; aria-label=&quot;Bảng giá tuyến Nội Bài Hà Nội Ninh Bình&quot;>
+    &lt;thead>
+      &lt;tr>
+        &lt;th scope=&quot;col&quot;>Điểm đến&lt;/th>
+        &lt;th scope=&quot;col&quot; data-fare=&quot;one&quot; class=&quot;is-active&quot;>01 ghế ghép&lt;/th>
+        &lt;th scope=&quot;col&quot; data-fare=&quot;two&quot;>02 ghế ghép&lt;/th>
+        &lt;th scope=&quot;col&quot; data-fare=&quot;car&quot;>Bao xe 05 chỗ&lt;/th>
+      &lt;/tr>
+    &lt;/thead>
+    &lt;tbody>
+      &lt;tr>&lt;th scope=&quot;row&quot;>TP Ninh Bình&lt;/th>&lt;td data-fare=&quot;one&quot; class=&quot;is-active&quot;>300.000&lt;/td>&lt;td data-fare=&quot;two&quot;>600.000&lt;/td>&lt;td data-fare=&quot;car&quot;>850.000&lt;/td>&lt;/tr>
+      &lt;tr>&lt;th scope=&quot;row&quot;>Hoa Lư&lt;/th>&lt;td data-fare=&quot;one&quot; class=&quot;is-active&quot;>300.000&lt;/td>&lt;td data-fare=&quot;two&quot;>600.000&lt;/td>&lt;td data-fare=&quot;car&quot;>850.000&lt;/td>&lt;/tr>
+      &lt;tr>&lt;th scope=&quot;row&quot;>Gia Viễn&lt;/th>&lt;td data-fare=&quot;one&quot; class=&quot;is-active&quot;>300.000&lt;/td>&lt;td data-fare=&quot;two&quot;>600.000&lt;/td>&lt;td data-fare=&quot;car&quot;>800.000&lt;/td>&lt;/tr>
+      &lt;tr>&lt;th scope=&quot;row&quot;>Nho Quan&lt;/th>&lt;td data-fare=&quot;one&quot; class=&quot;is-active&quot;>300.000&lt;/td>&lt;td data-fare=&quot;two&quot;>600.000&lt;/td>&lt;td data-fare=&quot;car&quot;>800.000&lt;/td>&lt;/tr>
+      &lt;tr>&lt;th scope=&quot;row&quot;>Tam Điệp&lt;/th>&lt;td data-fare=&quot;one&quot; class=&quot;is-active&quot;>350.000&lt;/td>&lt;td data-fare=&quot;two&quot;>700.000&lt;/td>&lt;td data-fare=&quot;car&quot;>1.000.000&lt;/td>&lt;/tr>
+      &lt;tr>&lt;th scope=&quot;row&quot;>Kim Sơn&lt;/th>&lt;td data-fare=&quot;one&quot; class=&quot;is-active&quot;>350.000&lt;/td>&lt;td data-fare=&quot;two&quot;>700.000&lt;/td>&lt;td data-fare=&quot;car&quot;>1.150.000&lt;/td>&lt;/tr>
+      &lt;tr>&lt;th scope=&quot;row&quot;>Yên Mô&lt;/th>&lt;td data-fare=&quot;one&quot; class=&quot;is-active&quot;>300.000&lt;/td>&lt;td data-fare=&quot;two&quot;>600.000&lt;/td>&lt;td data-fare=&quot;car&quot;>1.000.000&lt;/td>&lt;/tr>
+      &lt;tr>&lt;th scope=&quot;row&quot;>Yên Khánh&lt;/th>&lt;td data-fare=&quot;one&quot; class=&quot;is-active&quot;>300.000&lt;/td>&lt;td data-fare=&quot;two&quot;>600.000&lt;/td>&lt;td data-fare=&quot;car&quot;>950.000&lt;/td>&lt;/tr>
+    &lt;/tbody>
+  &lt;/table>
+
+  &lt;div class=&quot;fare-notes&quot;>
+    &lt;p>Nội Bài: Cộng thêm 50.000đ/khách ghép hoặc 100.000đ/bao xe.&lt;/p>
+    &lt;p>Giá đã bao gồm chi phí trọn gói cao tốc.&lt;/p>
+  &lt;/div>
+&lt;/section>&lt;/div>&lt;script>
+    const sendHeight = () => parent.postMessage({ type: 'route-pricing-height', token: &quot;probe-token&quot;, height: document.documentElement.scrollHeight }, '*');
+    new ResizeObserver(sendHeight).observe(document.body);
+    window.addEventListener('load', sendHeight);
+    try { (0, eval)(&quot;(() => {\n  const root = document.querySelector(\&quot;.fare-box\&quot;);\n  if (!root) return;\n\n  const tabs = root.querySelectorAll(\&quot;.fare-tab\&quot;);\n  const columns = root.querySelectorAll(\&quot;[data-fare]\&quot;);\n\n  tabs.forEach((tab) => {\n    tab.addEventListener(\&quot;click\&quot;, () => {\n      const selected = tab.getAttribute(\&quot;data-select\&quot;);\n\n      tabs.forEach((item) => {\n        item.setAttribute(\n          \&quot;aria-pressed\&quot;,\n          String(item.getAttribute(\&quot;data-select\&quot;) === selected)\n        );\n      });\n\n      columns.forEach((cell) => {\n        cell.classList.toggle(\n          \&quot;is-active\&quot;,\n          cell.getAttribute(\&quot;data-fare\&quot;) === selected\n        );\n      });\n    });\n  });\n})();&quot;); } catch (error) { console.error('Route pricing script error:', error); }
+    sendHeight();
+  &lt;/script>&lt;/body>&lt;/html>" style="width:100%;height:850px;border:1px solid #888"></iframe></body></html>

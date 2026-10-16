@@ -506,6 +506,39 @@ describe('Routes & Pricing Tiers Module (Task T114 & T115)', () => {
       expect(screen.queryByTestId('slug-redirect-warning')).toBeNull();
     });
 
+    it('gửi CSS và JavaScript mới khi sửa tuyến đang dùng bảng giá HTML', async () => {
+      vi.mocked(apiClient.get).mockResolvedValueOnce({
+        data: {
+          ...mockRoutes[0],
+          useCustomPricingHtml: true,
+          customPricingHtml: '<div class="price">300.000</div>',
+          customPricingCss: '.price { color: red }',
+          customPricingJs: '',
+        },
+      });
+      vi.mocked(apiClient.patch).mockResolvedValueOnce({ data: mockRoutes[0] });
+
+      render(
+        <MemoryRouter initialEntries={['/routes/1']}>
+          <Routes>
+            <Route path="/routes/:id" element={<RouteForm />} />
+            <Route path="/routes" element={<div>Danh sách tuyến</div>} />
+          </Routes>
+        </MemoryRouter>
+      );
+
+      await waitFor(() => expect((screen.getByTestId('route-name-input') as HTMLInputElement).value).toBe(mockRoutes[0].name));
+      fireEvent.click(screen.getByRole('tab', { name: 'HTML, CSS & JS bảng giá' }));
+      fireEvent.change(screen.getByTestId('route-custom-pricing-css'), { target: { value: '.price { color: blue }' } });
+      fireEvent.change(screen.getByTestId('route-custom-pricing-js'), { target: { value: 'document.querySelector(".price").textContent = "600.000"' } });
+      fireEvent.click(screen.getByTestId('save-route-btn'));
+
+      await waitFor(() => expect(apiClient.patch).toHaveBeenCalledWith('/routes/1', expect.objectContaining({
+        customPricingCss: '.price { color: blue }',
+        customPricingJs: 'document.querySelector(".price").textContent = "600.000"',
+      })));
+    });
+
     it('gọi POST /routes khi tạo mới thành công với đầy đủ thông tin hợp lệ', async () => {
       vi.mocked(apiClient.post).mockResolvedValueOnce({
         data: { id: 10, name: 'Bắc Ninh ⇄ Hà Nội' },
@@ -542,6 +575,18 @@ describe('Routes & Pricing Tiers Module (Task T114 & T115)', () => {
         target: { value: '180000' },
       });
 
+      fireEvent.click(screen.getByRole('tab', { name: 'HTML, CSS & JS bảng giá' }));
+      fireEvent.change(screen.getByTestId('route-custom-pricing-html'), {
+        target: { value: '<table><tr><td>Giá tuyến</td></tr></table>' },
+      });
+      fireEvent.change(screen.getByTestId('route-custom-pricing-css'), {
+        target: { value: 'table { width: 100%; }' },
+      });
+      fireEvent.change(screen.getByTestId('route-custom-pricing-js'), {
+        target: { value: 'document.querySelector("table")?.classList.add("ready")' },
+      });
+      fireEvent.click(screen.getByTestId('route-custom-pricing-active'));
+
       // Bấm Lưu tuyến
       fireEvent.click(screen.getByTestId('save-route-btn'));
 
@@ -555,9 +600,18 @@ describe('Routes & Pricing Tiers Module (Task T114 & T115)', () => {
             destination: 'Hà Nội',
             priceValidUntil: '2026-12-31',
             priceFrom: 180000,
+            useCustomPricingHtml: true,
+            customPricingHtml: '<table><tr><td>Giá tuyến</td></tr></table>',
+            customPricingCss: 'table { width: 100%; }',
+            customPricingJs: 'document.querySelector("table")?.classList.add("ready")',
           })
         );
       });
+
+      const submittedRoute = vi.mocked(apiClient.post).mock.calls[0]?.[1] as Record<string, unknown>;
+      expect(submittedRoute).not.toHaveProperty('tierShare2');
+      expect(submittedRoute).not.toHaveProperty('tierCharter45');
+      expect(submittedRoute).not.toHaveProperty('tierCharter7');
     });
   });
 });

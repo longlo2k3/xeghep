@@ -1,6 +1,8 @@
 import { formatTier, vnd } from '../pricing/formatTier';
 import type { PriceTier } from '../pricing/types';
 import type { Media, Route } from '../../payload-types';
+import { sanitizeRoutePricingHtml } from '../seo/sanitize';
+import { sanitizeRoutePricingCss } from '../seo/sanitizeRoutePricingCss';
 
 export const NO_STORE_HEADER = { 'Cache-Control': 'private, no-store' } as const;
 export const PUBLIC_CACHE_HEADERS = {
@@ -127,7 +129,12 @@ export function serializeRouteCard(route: Route) {
     priceCharter4to5Text: tierText(route.tierCharter45),
     priceCharter7Text: tierText(route.tierCharter7),
     tiers,
-    pricingDetails: (route.pricingDetails ?? []).map((row) => ({
+    pricingDetails: (route.pricingDetails?.length ? route.pricingDetails : [
+      { tierKey: 'share1' as const, label: 'Xe ghép 1 người', note: null },
+      { tierKey: 'share2' as const, label: 'Xe ghép 2 người', note: null },
+      { tierKey: 'charter45' as const, label: 'Bao xe 4-5 chỗ', note: null },
+      { tierKey: 'charter7' as const, label: 'Bao xe 7 chỗ', note: null },
+    ].filter((row) => toTier(tierByKey[row.tierKey]) !== null)).map((row) => ({
       label: row.label,
       price: tierText(tierByKey[row.tierKey]),
       note: row.note ?? null,
@@ -157,6 +164,15 @@ export function serializeRouteDetail(
   return {
     ...card,
     description: route.description,
+    customPricingHtml: route.useCustomPricingHtml && route.customPricingHtml?.trim()
+      ? sanitizeRoutePricingHtml(route.customPricingHtml)
+      : null,
+    customPricingCss: route.useCustomPricingHtml && route.customPricingHtml?.trim()
+      ? sanitizeRoutePricingCss(route.customPricingCss)
+      : null,
+    customPricingJs: route.useCustomPricingHtml && route.customPricingHtml?.trim()
+      ? (route.customPricingJs ?? null)
+      : null,
     detailedContent: hasDetailed ? detailed : null,
     operatingHoursText: route.operatingHoursText ?? null,
     frequencyText: route.frequencyText ?? null,

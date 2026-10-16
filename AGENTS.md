@@ -1294,3 +1294,17 @@ npx linkinator https://example.com --recurse --skip "^(?!https://example.com)"
 - Thêm: link crawlable, JS SEO, faceted navigation, slug tiếng Việt, subset font, third-party scripts, TTFB/bfcache, AI crawlers, IndexNow, `@graph`, lệnh kiểm tra, Lighthouse CI, thêm SvelteKit/Remix/Angular/Gatsby.
 
 **1.0.0 (2026-10-06)** — Bản đầu tiên.
+
+## Agent skills
+
+### Issue tracker
+
+Track issues in GitHub Issues for this repo. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Use the five default triage labels. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Use the single-context layout at the repo root. See `docs/agents/domain.md`.

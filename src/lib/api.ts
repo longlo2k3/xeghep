@@ -27,9 +27,9 @@ export { FALLBACK_ROUTES };
 
 const CMS =
   typeof window === "undefined"
-    // Dự án gộp: API chạy cùng app (D6) — SSR/middleware tự trỏ về chính nó
-    ? process.env.CMS_URL ?? "http://localhost:3000"
-    : process.env.NEXT_PUBLIC_CMS_URL ?? "";
+    ? // Dự án gộp: API chạy cùng app (D6) — SSR/middleware tự trỏ về chính nó
+      (process.env.CMS_URL ?? "http://localhost:3000")
+    : (process.env.NEXT_PUBLIC_CMS_URL ?? "");
 
 const REVALIDATE_SECONDS = process.env.NODE_ENV === "development" ? 0 : 60;
 
@@ -99,18 +99,30 @@ type ErrorEnvelope = {
   };
 };
 
-type CmsResponse<T> = { data: T; message: string; meta?: Record<string, unknown> };
+type CmsResponse<T> = {
+  data: T;
+  message: string;
+  meta?: Record<string, unknown>;
+};
 
 const DEFAULT_GET_TIMEOUT_MS = 2500;
 const DEFAULT_POST_TIMEOUT_MS = 8000;
 
-async function request<T>(path: string, init?: CmsFetchInit): Promise<CmsResponse<T>> {
+async function request<T>(
+  path: string,
+  init?: CmsFetchInit,
+): Promise<CmsResponse<T>> {
   const timeoutMs =
     init?.timeoutMs ??
-    (init?.method === "POST" ? DEFAULT_POST_TIMEOUT_MS : DEFAULT_GET_TIMEOUT_MS);
+    (init?.method === "POST"
+      ? DEFAULT_POST_TIMEOUT_MS
+      : DEFAULT_GET_TIMEOUT_MS);
 
   let signal: AbortSignal | undefined;
-  if (typeof AbortSignal !== "undefined" && typeof AbortSignal.timeout === "function") {
+  if (
+    typeof AbortSignal !== "undefined" &&
+    typeof AbortSignal.timeout === "function"
+  ) {
     const timeoutSignal = AbortSignal.timeout(timeoutMs);
     signal =
       init?.signal && typeof AbortSignal.any === "function"
@@ -126,9 +138,17 @@ async function request<T>(path: string, init?: CmsFetchInit): Promise<CmsRespons
     });
   } catch (err: unknown) {
     if (err instanceof Error && err.name === "TimeoutError") {
-      throw new ApiError("CMS_TIMEOUT", `Máy chủ phản hồi quá lâu (${timeoutMs}ms)`, 504);
+      throw new ApiError(
+        "CMS_TIMEOUT",
+        `Máy chủ phản hồi quá lâu (${timeoutMs}ms)`,
+        504,
+      );
     }
-    throw new ApiError("CMS_UNREACHABLE", "Không thể kết nối máy chủ dữ liệu", 503);
+    throw new ApiError(
+      "CMS_UNREACHABLE",
+      "Không thể kết nối máy chủ dữ liệu",
+      503,
+    );
   }
 
   let body: unknown = null;
@@ -139,12 +159,27 @@ async function request<T>(path: string, init?: CmsFetchInit): Promise<CmsRespons
   }
 
   const envelope = body as (SuccessEnvelope<T> | ErrorEnvelope) | null;
-  if (!res.ok || !envelope || typeof envelope !== "object" || envelope.success !== true) {
-    const errorBody = envelope && typeof envelope === "object" && envelope.success === false ? envelope : null;
+  if (
+    !res.ok ||
+    !envelope ||
+    typeof envelope !== "object" ||
+    envelope.success !== true
+  ) {
+    const errorBody =
+      envelope && typeof envelope === "object" && envelope.success === false
+        ? envelope
+        : null;
     const code = errorBody?.error?.code ?? "INTERNAL_ERROR";
-    const message = errorBody?.error?.message ?? `Không lấy được dữ liệu (HTTP ${res.status})`;
+    const message =
+      errorBody?.error?.message ??
+      `Không lấy được dữ liệu (HTTP ${res.status})`;
     const status = errorBody?.statusCode ?? res.status;
-    throw new ApiError(code, message, status || 500, errorBody?.error?.fields ?? []);
+    throw new ApiError(
+      code,
+      message,
+      status || 500,
+      errorBody?.error?.fields ?? [],
+    );
   }
 
   const success = envelope as SuccessEnvelope<T>;
@@ -157,7 +192,10 @@ async function cmsGet<T>(
   revalidate = REVALIDATE_SECONDS,
   timeoutMs?: number,
 ): Promise<T> {
-  const { data } = await request<T>(path, { next: { revalidate, tags }, timeoutMs });
+  const { data } = await request<T>(path, {
+    next: { revalidate, tags },
+    timeoutMs,
+  });
   return data;
 }
 
@@ -167,7 +205,9 @@ async function cmsPost<T>(
   idempotencyKey?: string,
   timeoutMs?: number,
 ): Promise<T> {
-  const headers: Record<string, string> = { "content-type": "application/json; charset=utf-8" };
+  const headers: Record<string, string> = {
+    "content-type": "application/json; charset=utf-8",
+  };
   if (idempotencyKey) headers["idempotency-key"] = idempotencyKey;
   const { data } = await request<T>(path, {
     method: "POST",
@@ -236,6 +276,9 @@ export type RouteSlide = {
 
 export type RouteDetailOut = RouteCardOut & {
   description: string;
+  customPricingHtml: string | null;
+  customPricingCss: string | null;
+  customPricingJs: string | null;
   detailedContent: unknown;
   operatingHoursText: string | null;
   frequencyText: string | null;
@@ -253,6 +296,9 @@ export type RouteDetailOut = RouteCardOut & {
 
 export type RouteDetail = RouteItem & {
   bannerLabel: string;
+  customPricingHtml: string | null;
+  customPricingCss: string | null;
+  customPricingJs: string | null;
   operatingHoursText: string | null;
   frequencyText: string | null;
   priceValidUntil: string | null;
@@ -300,6 +346,9 @@ function toRouteDetail(detail: RouteDetailOut): RouteDetail {
   return {
     ...toRouteItem(detail),
     description: detail.description ?? "",
+    customPricingHtml: detail.customPricingHtml ?? null,
+    customPricingCss: detail.customPricingCss ?? null,
+    customPricingJs: detail.customPricingJs ?? null,
     pickups: detail.pickups ?? [],
     dropoffs: detail.dropoffs ?? [],
     faqs: detail.faqs ?? [],
@@ -314,10 +363,13 @@ function toRouteDetail(detail: RouteDetailOut): RouteDetail {
   };
 }
 
-export function buildRoutesQuery(options: GetRoutesOptions & { fields?: string } = {}): string {
+export function buildRoutesQuery(
+  options: GetRoutesOptions & { fields?: string } = {},
+): string {
   const params = new URLSearchParams();
   if (options.status) params.set("status", options.status);
-  if (options.isBannerTop !== undefined) params.set("isBannerTop", String(options.isBannerTop));
+  if (options.isBannerTop !== undefined)
+    params.set("isBannerTop", String(options.isBannerTop));
   if (options.region) params.set("region", options.region);
   if (options.fields) params.set("fields", options.fields);
   const query = params.toString();
@@ -325,8 +377,12 @@ export function buildRoutesQuery(options: GetRoutesOptions & { fields?: string }
 }
 
 export async function getRoutes(): Promise<RouteItem[]>;
-export async function getRoutes(options: GetRoutesOptions & { fields: "slug" }): Promise<{ slug: string }[]>;
-export async function getRoutes(options: GetRoutesOptions & { fields?: "card" | "full" }): Promise<RouteItem[]>;
+export async function getRoutes(
+  options: GetRoutesOptions & { fields: "slug" },
+): Promise<{ slug: string }[]>;
+export async function getRoutes(
+  options: GetRoutesOptions & { fields?: "card" | "full" },
+): Promise<RouteItem[]>;
 export async function getRoutes(
   options: GetRoutesOptions & { fields?: "card" | "slug" | "full" } = {},
 ): Promise<RouteItem[] | { slug: string }[]> {
@@ -335,10 +391,10 @@ export async function getRoutes(
   }
   const query = buildRoutesQuery({ fields: "card", ...options });
   try {
-    const data = await cmsGet<RouteCardOut[] | { slug: string }[]>(`/api/v1/routes${query}`, [
-      "routes",
-      "sitemap",
-    ]);
+    const data = await cmsGet<RouteCardOut[] | { slug: string }[]>(
+      `/api/v1/routes${query}`,
+      ["routes", "sitemap"],
+    );
     if (options.fields === "slug") return data as { slug: string }[];
     return (data as RouteCardOut[]).map(toRouteItem);
   } catch {
@@ -355,6 +411,9 @@ function fallbackRouteDetail(slug: string): RouteDetail | null {
   if (!item) return null;
   return {
     ...item,
+    customPricingHtml: null,
+    customPricingCss: null,
+    customPricingJs: null,
     bannerLabel: item.bannerLabel ?? item.name,
     operatingHoursText: "24/7 liên tục ngày đêm",
     frequencyText: "Chuyến mới sau mỗi 30 - 60 phút",
@@ -377,11 +436,10 @@ export async function getRoute(slug: string): Promise<RouteDetail> {
     return getRouteDirect(slug);
   }
   try {
-    const data = await cmsGet<RouteDetailOut>(`/api/v1/routes/${encodeURIComponent(slug)}`, [
-      "routes",
-      `routes:${slug}`,
-      "sitemap",
-    ]);
+    const data = await cmsGet<RouteDetailOut>(
+      `/api/v1/routes/${encodeURIComponent(slug)}`,
+      ["routes", `routes:${slug}`, "sitemap"],
+    );
     return toRouteDetail(data);
   } catch (err) {
     const fallback = fallbackRouteDetail(slug);
@@ -448,7 +506,9 @@ export type CompanySettingsOut = {
   };
   commitments?: (Omit<Commitment, "id"> & { id?: string })[] | null;
   paymentMethods?: (Omit<PaymentMethod, "id"> & { id?: string })[] | null;
-  testimonials?: (Omit<Testimonial, "id"> & { id?: string; isVisible?: boolean | null })[] | null;
+  testimonials?:
+    | (Omit<Testimonial, "id"> & { id?: string; isVisible?: boolean | null })[]
+    | null;
   hotlineHref?: string | null;
   zaloHref?: string | null;
   smsHref?: string | null;
@@ -498,7 +558,9 @@ export async function getCompanySettings(): Promise<CompanySettingsData> {
     return getCompanySettingsDirect();
   }
   try {
-    const doc = await cmsGet<CompanySettingsOut>("/api/v1/settings/company", ["company"]);
+    const doc = await cmsGet<CompanySettingsOut>("/api/v1/settings/company", [
+      "company",
+    ]);
     const identity = doc.identity ?? {};
     const contact = doc.contact ?? {};
     const location = doc.location ?? {};
@@ -519,12 +581,16 @@ export async function getCompanySettings(): Promise<CompanySettingsData> {
       domainName: text(doc.domainName) || COMPANY_INFO.domainName,
       fanpage: text(contact.fanpageName) || COMPANY_INFO.fanpage,
       fanpageUrl: text(contact.fanpageUrl) || COMPANY_INFO.fanpageUrl,
-      topBannerLine1: text(banner.topBannerLine1) || COMPANY_INFO.topBannerLine1,
-      topBannerLine2: text(banner.topBannerLine2) || COMPANY_INFO.topBannerLine2,
+      topBannerLine1:
+        text(banner.topBannerLine1) || COMPANY_INFO.topBannerLine1,
+      topBannerLine2:
+        text(banner.topBannerLine2) || COMPANY_INFO.topBannerLine2,
       coverage: text(banner.coverage) || COMPANY_INFO.coverage,
       workingHours: text(banner.workingHours) || COMPANY_INFO.workingHours,
-      fleetDescription: text(banner.fleetDescription) || COMPANY_INFO.fleetDescription,
-      bookingPromise: text(banner.bookingPromise) || COMPANY_INFO.bookingPromise,
+      fleetDescription:
+        text(banner.fleetDescription) || COMPANY_INFO.fleetDescription,
+      bookingPromise:
+        text(banner.bookingPromise) || COMPANY_INFO.bookingPromise,
       summary: text(banner.summary) || COMPANY_INFO.summary,
     };
 
@@ -564,19 +630,28 @@ export async function getCompanySettings(): Promise<CompanySettingsData> {
 
     const cmsAreaServed = (brandSeo.areaServed ?? [])
       .filter((item) => typeof item?.name === "string" && item.name.length > 0)
-      .map((item) => ({ type: item.type ?? "City", name: item.name as string }));
+      .map((item) => ({
+        type: item.type ?? "City",
+        name: item.name as string,
+      }));
 
     return {
       info,
       address: location.address ?? FALLBACK_COMPANY_SETTINGS.address,
-      mapEmbedUrl: location.mapEmbedUrl ?? FALLBACK_COMPANY_SETTINGS.mapEmbedUrl,
+      mapEmbedUrl:
+        location.mapEmbedUrl ?? FALLBACK_COMPANY_SETTINGS.mapEmbedUrl,
       latitude: location.latitude ?? FALLBACK_COMPANY_SETTINGS.latitude,
       longitude: location.longitude ?? FALLBACK_COMPANY_SETTINGS.longitude,
       secondaryPhone: secondaryPhone
-        ? { label: secondaryPhone.label ?? null, number: secondaryPhone.number ?? null }
+        ? {
+            label: secondaryPhone.label ?? null,
+            number: secondaryPhone.number ?? null,
+          }
         : null,
       areaServed:
-        cmsAreaServed.length > 0 ? cmsAreaServed : FALLBACK_COMPANY_SETTINGS.areaServed,
+        cmsAreaServed.length > 0
+          ? cmsAreaServed
+          : FALLBACK_COMPANY_SETTINGS.areaServed,
       priceRange: brandSeo.priceRange ?? FALLBACK_COMPANY_SETTINGS.priceRange,
       commitments,
       paymentMethods,
@@ -656,14 +731,20 @@ export function getAirportPricing(): Promise<AirportPricingRow[]> {
   if (typeof window === "undefined") {
     return getAirportPricingDirect();
   }
-  return cmsGet<AirportPricingRow[]>("/api/v1/pricing/airport", ["pricing", "airport-pricing"]);
+  return cmsGet<AirportPricingRow[]>("/api/v1/pricing/airport", [
+    "pricing",
+    "airport-pricing",
+  ]);
 }
 
 export function getDistanceRates(): Promise<DistancePricing> {
   if (typeof window === "undefined") {
     return getDistanceRatesDirect();
   }
-  return cmsGet<DistancePricing>("/api/v1/pricing/distance", ["pricing", "distance-rates"]);
+  return cmsGet<DistancePricing>("/api/v1/pricing/distance", [
+    "pricing",
+    "distance-rates",
+  ]);
 }
 
 export function getPricingSettings(): Promise<PricingSettings> {
@@ -731,7 +812,9 @@ function toArticle(card: ArticleCardOut): Article {
   };
 }
 
-export async function getArticles(options: GetArticlesOptions = {}): Promise<ArticlesPage> {
+export async function getArticles(
+  options: GetArticlesOptions = {},
+): Promise<ArticlesPage> {
   if (typeof window === "undefined") {
     return getArticlesDirect(options);
   }
@@ -741,9 +824,12 @@ export async function getArticles(options: GetArticlesOptions = {}): Promise<Art
   if (options.category) params.set("category", options.category);
   if (options.excludeSlug) params.set("excludeSlug", options.excludeSlug);
   const query = params.toString();
-  const { data, meta } = await request<ArticleCardOut[]>(`/api/v1/articles${query ? `?${query}` : ""}`, {
-    next: { revalidate: REVALIDATE_SECONDS, tags: ["articles", "sitemap"] },
-  });
+  const { data, meta } = await request<ArticleCardOut[]>(
+    `/api/v1/articles${query ? `?${query}` : ""}`,
+    {
+      next: { revalidate: REVALIDATE_SECONDS, tags: ["articles", "sitemap"] },
+    },
+  );
   const pagination = (meta ?? {}) as Partial<ArticlesPage["meta"]>;
   return {
     items: data.map(toArticle),
@@ -760,11 +846,10 @@ export async function getArticle(slug: string): Promise<ArticleDetail> {
   if (typeof window === "undefined") {
     return getArticleDirect(slug);
   }
-  const data = await cmsGet<ArticleDetailOut>(`/api/v1/articles/${encodeURIComponent(slug)}`, [
-    "articles",
-    `articles:${slug}`,
-    "sitemap",
-  ]);
+  const data = await cmsGet<ArticleDetailOut>(
+    `/api/v1/articles/${encodeURIComponent(slug)}`,
+    ["articles", `articles:${slug}`, "sitemap"],
+  );
   return {
     ...toArticle(data),
     content: data.contentHtml ?? "",
@@ -861,7 +946,10 @@ export type BookingLookupResult = {
   statusLabel: string;
 };
 
-export function postBooking(body: BookingInput, idempotencyKey?: string): Promise<BookingCreateResult> {
+export function postBooking(
+  body: BookingInput,
+  idempotencyKey?: string,
+): Promise<BookingCreateResult> {
   return cmsPost<BookingCreateResult>("/api/v1/bookings", body, idempotencyKey);
 }
 
@@ -885,7 +973,9 @@ export type RedirectEntry = {
   statusCode: number;
 };
 
-export function getRedirects(options: { timeoutMs?: number } = {}): Promise<RedirectEntry[]> {
+export function getRedirects(
+  options: { timeoutMs?: number } = {},
+): Promise<RedirectEntry[]> {
   return cmsGet<RedirectEntry[]>(
     "/api/v1/redirects",
     ["redirects"],

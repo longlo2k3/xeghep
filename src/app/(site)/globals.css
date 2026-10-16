@@ -1,3 +1,5 @@
+@config "../../../tailwind.config.ts";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -29,4 +31,24 @@ iframe {
 /* Prevent unwanted focus outlines on mouse click while preserving keyboard accessibility */
 :focus:not(:focus-visible) {
   outline: none;
+}
+
+@keyframes booking-popup-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes booking-popup-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }

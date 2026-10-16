@@ -48,4 +48,15 @@ describe("RoutePricingCard", () => {
       html.indexOf("Bao xe 7 chỗ"),
     );
   });
+
+  it("keeps mobile pricing labels and prices compact on one line", () => {
+    const html = renderToStaticMarkup(
+      React.createElement(RoutePricingCard, { route }),
+    );
+
+    expect(html).toContain("gap-y-1.5");
+    expect(html.match(/whitespace-nowrap/g)).toHaveLength(
+      route.pricingDetails.length * 2,
+    );
+  });
 });

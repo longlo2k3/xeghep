@@ -4,6 +4,8 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingContact } from "@/components/layout/FloatingContact";
+import { BookingSupportPopup } from "@/components/layout/BookingSupportPopup";
+import { BookingActivityToast } from "@/components/layout/BookingActivityToast";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildGlobalBusinessSchema } from "@/lib/schema";
 import { SITE_DOMAIN, BRAND_NAME } from "@/lib/seo";
@@ -84,6 +86,8 @@ export default async function RootLayout({
         </main>
         <Footer companyInfo={companySettings.info} />
         <FloatingContact companyInfo={companySettings.info} />
+        <BookingActivityToast />
+        <BookingSupportPopup companyInfo={companySettings.info} />
       </body>
     </html>
   );

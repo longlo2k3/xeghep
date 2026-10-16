@@ -107,6 +107,9 @@ export function toRouteDetail(detail: RouteDetailOut): RouteDetail {
   return {
     ...toRouteItem(detail),
     description: detail.description ?? "",
+    customPricingHtml: detail.customPricingHtml ?? null,
+    customPricingCss: detail.customPricingCss ?? null,
+    customPricingJs: detail.customPricingJs ?? null,
     pickups: detail.pickups ?? [],
     dropoffs: detail.dropoffs ?? [],
     faqs: detail.faqs ?? [],
@@ -126,6 +129,9 @@ export function fallbackRouteDetail(slug: string): RouteDetail | null {
   if (!item) return null;
   return {
     ...item,
+    customPricingHtml: null,
+    customPricingCss: null,
+    customPricingJs: null,
     bannerLabel: item.bannerLabel ?? item.name,
     operatingHoursText: "24/7 liên tục ngày đêm",
     frequencyText: "Chuyến mới sau mỗi 30 - 60 phút",
@@ -257,7 +263,7 @@ export async function getRoutesDirect(
       collection: "routes",
       limit: 100,
       depth: 2,
-      sort: "sortOrder",
+      sort: "createdAt",
       where,
       overrideAccess: true,
     });
@@ -312,7 +318,7 @@ export async function getRouteDirect(slug: string): Promise<RouteDetail> {
         collection: "routes",
         limit: 3,
         depth: 2,
-        sort: "sortOrder",
+        sort: "createdAt",
         where: { status: { equals: "active" }, slug: { not_equals: route.slug } },
         overrideAccess: true,
       });

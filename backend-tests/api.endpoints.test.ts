@@ -238,6 +238,37 @@ describe('serializeRouteCard / serializeRouteDetail (pure)', () => {
     expect(card.priceCharter7Text).toBe('Liên hệ thỏa thuận');
   });
 
+  it('builds public price rows from saved tiers when a new route has no pricingDetails', () => {
+    const route = { ...fakeRoute, pricingDetails: null, tierShare2: null } as unknown as Route;
+    const card = serializeRouteCard(route);
+    expect(card.pricingDetails.map((row) => [row.label, row.price])).toEqual([
+      ['Xe ghép 1 người', '400k'],
+      ['Bao xe 4-5 chỗ', 'từ 899k'],
+      ['Bao xe 7 chỗ', 'từ 999k'],
+    ]);
+  });
+
+  it('serves custom pricing HTML only when enabled and sanitizes executable markup', () => {
+    const route = {
+      ...fakeRoute,
+      useCustomPricingHtml: true,
+      customPricingHtml: '<table><tr><td>400k</td></tr></table><script>alert(1)</script><a href="javascript:alert(1)" onclick="alert(2)">Xem thêm</a>',
+      customPricingCss: '.price { color: #dc2626 }',
+      customPricingJs: 'document.querySelector("table")?.classList.add("ready")',
+    } as unknown as Route;
+    const enabled = serializeRouteDetail(route).customPricingHtml;
+    expect(enabled).toContain('<table>');
+    expect(enabled).toContain('400k');
+    expect(enabled).not.toContain('script');
+    expect(enabled).not.toContain('onclick');
+    expect(enabled).not.toContain('javascript:');
+    expect(serializeRouteDetail(route).customPricingCss).toContain('[data-route-pricing] .price');
+    expect(serializeRouteDetail(route).customPricingJs).toContain('classList.add');
+    expect(serializeRouteDetail({ ...route, useCustomPricingHtml: false }).customPricingHtml).toBeNull();
+    expect(serializeRouteDetail({ ...route, useCustomPricingHtml: false }).customPricingCss).toBeNull();
+    expect(serializeRouteDetail({ ...route, useCustomPricingHtml: false }).customPricingJs).toBeNull();
+  });
+
   it('missing tier group → text Liên hệ thỏa thuận, tier null', () => {
     const card = serializeRouteCard(rangeRoute);
     expect(card.tiers.charter7).toEqual({ min: null, max: null, from: false, negotiable: true });

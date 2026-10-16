@@ -53,6 +53,10 @@ interface FormState {
   operatingHoursText: string;
   frequencyText: string;
   pricing: PricingTiersState;
+  useCustomPricingHtml: boolean;
+  customPricingHtml: string;
+  customPricingCss: string;
+  customPricingJs: string;
   thumbnail: MediaDoc | null;
   pickups: LocationAlias[];
   dropoffs: LocationAlias[];
@@ -89,6 +93,10 @@ const initialFormState: FormState = {
     tierCharter4to5: null,
     tierCharter7: null,
   },
+  useCustomPricingHtml: false,
+  customPricingHtml: '',
+  customPricingCss: '',
+  customPricingJs: '',
   thumbnail: null,
   pickups: [{ text: '' }],
   dropoffs: [{ text: '' }],
@@ -111,6 +119,7 @@ export function RouteForm() {
   const isEdit = Boolean(id && id !== 'new');
 
   const [form, setForm] = useState<FormState>(initialFormState);
+  const [pricingTab, setPricingTab] = useState<'tiers' | 'html'>('tiers');
   const [initialRoute, setInitialRoute] = useState<RouteDoc | null>(null);
   const [isLoadingDoc, setIsLoadingDoc] = useState(isEdit);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -170,6 +179,10 @@ export function RouteForm() {
           tierCharter4to5: doc.tierCharter45 ?? doc.tierCharter4to5 ?? null,
           tierCharter7: doc.tierCharter7 ?? null,
         },
+        useCustomPricingHtml: Boolean(doc.useCustomPricingHtml),
+        customPricingHtml: doc.customPricingHtml ?? '',
+        customPricingCss: doc.customPricingCss ?? '',
+        customPricingJs: doc.customPricingJs ?? '',
         thumbnail: thumbnailObj,
         pickups:
           Array.isArray(doc.pickups) && doc.pickups.length > 0
@@ -351,6 +364,9 @@ export function RouteForm() {
       errors.pricing =
         'Cần ít nhất một mức giá hợp lệ cho "Xe ghép 1 người" hoặc "Bao xe 4-5 chỗ" (FR-D05).';
     }
+    if (form.useCustomPricingHtml && !form.customPricingHtml.trim()) {
+      errors.customPricingHtml = 'Vui lòng nhập HTML bảng giá trước khi kích hoạt.';
+    }
 
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
@@ -374,6 +390,14 @@ export function RouteForm() {
       const cleanFaqs = form.faqs.filter((f) => f.question.trim() && f.answer.trim());
 
       const computedPrice = computePriceFrom(form.pricing);
+      const clearedTier = { min: null, max: null, from: false, negotiable: false };
+      const tierShare1 = form.pricing.tierShare1 ?? (isEdit ? clearedTier : undefined);
+      const tierShare2 = form.pricing.tierShare2 ?? (isEdit ? clearedTier : undefined);
+      const tierCharter45 =
+        form.pricing.tierCharter45 ??
+        form.pricing.tierCharter4to5 ??
+        (isEdit ? clearedTier : undefined);
+      const tierCharter7 = form.pricing.tierCharter7 ?? (isEdit ? clearedTier : undefined);
 
       const payload = {
         name: form.name.trim(),
@@ -391,10 +415,14 @@ export function RouteForm() {
         priceValidUntil: form.priceValidUntil,
         operatingHoursText: form.operatingHoursText.trim() || null,
         frequencyText: form.frequencyText.trim() || null,
-        tierShare1: form.pricing.tierShare1 || null,
-        tierShare2: form.pricing.tierShare2 || null,
-        tierCharter45: form.pricing.tierCharter45 ?? form.pricing.tierCharter4to5 ?? null,
-        tierCharter7: form.pricing.tierCharter7 || null,
+        ...(tierShare1 ? { tierShare1 } : {}),
+        ...(tierShare2 ? { tierShare2 } : {}),
+        ...(tierCharter45 ? { tierCharter45 } : {}),
+        ...(tierCharter7 ? { tierCharter7 } : {}),
+        useCustomPricingHtml: form.useCustomPricingHtml,
+        customPricingHtml: form.customPricingHtml,
+        customPricingCss: form.customPricingCss,
+        customPricingJs: form.customPricingJs,
         priceFrom: computedPrice,
         thumbnail: form.thumbnail ? form.thumbnail.id : null,
         pickups: cleanPickups,
@@ -848,17 +876,87 @@ export function RouteForm() {
 
       {/* KHỐI 4: CẤU HÌNH 4 HẠNG VÉ (PRICING TIERS SECTION) */}
       <Card className="p-6">
-        <PricingTiersSection
-          value={form.pricing}
-          readOnly={isViewMode}
-          onChange={(newPricing) => {
-            setForm((prev) => ({ ...prev, pricing: newPricing }));
-            if (formErrors.pricing) {
-              setFormErrors((prev) => ({ ...prev, pricing: '' }));
-            }
-          }}
-          error={formErrors.pricing}
-        />
+        <div role="tablist" aria-label="Cách nhập bảng giá" className="flex gap-2 border-b border-slate-200 mb-5">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={pricingTab === 'tiers'}
+            onClick={() => setPricingTab('tiers')}
+            className={`px-4 py-2 text-sm font-semibold cursor-pointer ${pricingTab === 'tiers' ? 'border-b-2 border-blue-600 text-blue-700' : 'text-slate-600'}`}
+          >
+            Mức giá
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={pricingTab === 'html'}
+            onClick={() => setPricingTab('html')}
+            className={`px-4 py-2 text-sm font-semibold cursor-pointer ${pricingTab === 'html' ? 'border-b-2 border-blue-600 text-blue-700' : 'text-slate-600'}`}
+          >
+            HTML, CSS & JS bảng giá
+          </button>
+        </div>
+        <div hidden={pricingTab !== 'tiers'}>
+          <PricingTiersSection
+            value={form.pricing}
+            readOnly={isViewMode}
+            onChange={(newPricing) => {
+              setForm((prev) => ({ ...prev, pricing: newPricing }));
+              if (formErrors.pricing) {
+                setFormErrors((prev) => ({ ...prev, pricing: '' }));
+              }
+            }}
+            error={formErrors.pricing}
+          />
+        </div>
+        {pricingTab === 'html' && (
+          <div className="space-y-4">
+            <label className="flex items-center gap-2 text-sm font-medium text-slate-800">
+              <input
+                type="checkbox"
+                checked={form.useCustomPricingHtml}
+                disabled={isViewMode}
+                onChange={(e) => setForm((prev) => ({ ...prev, useCustomPricingHtml: e.target.checked }))}
+                data-testid="route-custom-pricing-active"
+              />
+              Kích hoạt HTML tùy chỉnh cho “Bảng Giá Chi Tiết Tuyến”
+            </label>
+            <p className="text-xs text-slate-500">Giá các hạng vé vẫn được lưu để dùng ở các vị trí khác. HTML chỉ thay bảng giá chi tiết trên trang tuyến. Nhấn Lưu tuyến để áp dụng thay đổi lên website.</p>
+            <Textarea
+              label="HTML bảng giá"
+              value={form.customPricingHtml}
+              disabled={isViewMode}
+              onChange={(e) => setForm((prev) => ({ ...prev, customPricingHtml: e.target.value }))}
+              rows={12}
+              placeholder={'<div class="price-table"><button type="button" id="price-tab">Xem giá</button><span id="price">300.000đ</span></div>'}
+              error={formErrors.customPricingHtml}
+              data-testid="route-custom-pricing-html"
+            />
+            <p className="text-xs text-slate-500">Nhập HTML thuần với <code>class</code>, <code>id</code> và <code>data-*</code>. <code>className</code> sẽ được đổi thành <code>class</code>; tiêu đề <code>h1</code>/<code>h2</code> được đổi thành <code>h3</code> để giữ cấu trúc SEO của trang. Mã JSX và <code>onClick</code> không chạy trong ô này.</p>
+            <Textarea
+              label="CSS bảng giá"
+              value={form.customPricingCss}
+              disabled={isViewMode}
+              onChange={(e) => setForm((prev) => ({ ...prev, customPricingCss: e.target.value }))}
+              rows={10}
+              maxLength={30000}
+              placeholder={'.price-table { display: grid; gap: 12px; background: #fff5f5; }\n@media (max-width: 640px) { .price-table { display: block; } }'}
+              data-testid="route-custom-pricing-css"
+            />
+            <p className="text-xs text-slate-500">Dùng class trong HTML để viết CSS; <code>:scope</code> hoặc <code>:root</code> chọn khung bảng giá. Viết <code>display: none</code> không có dấu nháy. CSS tự giới hạn trong khu vực này; import và URL bên ngoài bị loại. Khi dùng JS, bảng giá chạy trong iframe riêng và không nạp stylesheet Tailwind của website; hãy viết quy tắc CSS ở ô này.</p>
+            <Textarea
+              label="JavaScript bảng giá"
+              value={form.customPricingJs}
+              disabled={isViewMode}
+              onChange={(e) => setForm((prev) => ({ ...prev, customPricingJs: e.target.value }))}
+              rows={10}
+              maxLength={30000}
+              placeholder={'document.querySelector("#price-tab")?.addEventListener("click", () => { document.querySelector("#price").textContent = "600.000đ"; });'}
+              data-testid="route-custom-pricing-js"
+            />
+            <p className="text-xs text-slate-500">Nhập JavaScript thuần, không bọc thẻ <code>&lt;script&gt;</code>, không dán JSX, import hoặc React component. JS chạy trong khung riêng khi bật HTML tùy chỉnh và đã lưu tuyến. Có thể xử lý sự kiện, đổi nội dung bảng giá trong khung; không truy cập trang chính. Fetch/XHR và tài nguyên ngoài bị chặn.</p>
+          </div>
+        )}
       </Card>
 
       {/* KHỐI 5: ẢNH THUMBNAIL ĐẠI DIỆN */}

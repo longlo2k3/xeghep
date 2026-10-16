@@ -14,6 +14,7 @@ import { COMPANY_INFO } from "@/data/company-info";
 import { buildRouteServiceSchema } from "@/lib/schema";
 import { BookingForm } from "@/components/booking/BookingForm";
 import { RouteImageSlideshow } from "@/components/routes/RouteImageSlideshow";
+import { RoutePricingDisplay } from "@/components/routes/RoutePricingDisplay";
 import {
   Clock,
   MapPin,
@@ -189,7 +190,7 @@ export default async function RouteDetailPage({ params }: Props) {
               <span>Bảng Giá Chi Tiết Tuyến {route.name}</span>
             </h2>
 
-            <div className="overflow-x-auto">
+            <RoutePricingDisplay customHtml={route.customPricingHtml} customCss={route.customPricingCss} customJs={route.customPricingJs}>
               <table className="w-full text-left text-sm text-slate-700 border-collapse">
                 <thead>
                   <tr className="bg-slate-100 text-slate-900 font-extrabold border-b border-slate-200 text-xs sm:text-sm">
@@ -255,7 +256,7 @@ export default async function RouteDetailPage({ params }: Props) {
                   </tr>
                 </tbody>
               </table>
-            </div>
+            </RoutePricingDisplay>
 
             <p className="text-xs text-slate-500 italic flex items-center gap-1.5 pt-2 border-t border-slate-100">
               <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />

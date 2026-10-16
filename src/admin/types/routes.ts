@@ -62,6 +62,10 @@ export interface RouteDoc {
   priceFrom?: number | null;
   priceValidUntil?: string | null;
   pricingDetails?: PricingDetail[] | null;
+  useCustomPricingHtml?: boolean | null;
+  customPricingHtml?: string | null;
+  customPricingCss?: string | null;
+  customPricingJs?: string | null;
   description: string;
   detailedContent?: Record<string, unknown> | null;
   operatingHoursText?: string | null;

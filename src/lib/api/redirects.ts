@@ -6,13 +6,18 @@ export type RedirectEntry = {
 
 const CMS =
   typeof window === "undefined"
-    ? process.env.CMS_URL ?? "http://localhost:3000"
-    : process.env.NEXT_PUBLIC_CMS_URL ?? "";
+    ? (process.env.CMS_URL ?? "http://localhost:3000")
+    : (process.env.NEXT_PUBLIC_CMS_URL ?? "");
 
-export async function getRedirects(options: { timeoutMs?: number } = {}): Promise<RedirectEntry[]> {
+export async function getRedirects(
+  options: { timeoutMs?: number } = {},
+): Promise<RedirectEntry[]> {
   const timeoutMs = options.timeoutMs ?? 1000;
   let signal: AbortSignal | undefined;
-  if (typeof AbortSignal !== "undefined" && typeof AbortSignal.timeout === "function") {
+  if (
+    typeof AbortSignal !== "undefined" &&
+    typeof AbortSignal.timeout === "function"
+  ) {
     signal = AbortSignal.timeout(timeoutMs);
   }
 

@@ -46,7 +46,7 @@ export function RoutePricingCard({ route }: { route: RouteItem }) {
         </div>
 
         {/* --- BẢNG GIÁ UNIFIED (Tự nhiên trên cả Mobile & Desktop, không cần tách 2 khối DOM) --- */}
-        <div className="bg-slate-50/70 rounded-lg sm:rounded-xl p-2 sm:p-3 border border-slate-200/80 space-y-1.5">
+        <div className="bg-slate-50/70 rounded-lg sm:rounded-xl p-1.5 sm:p-3 border border-slate-200/80 space-y-1 sm:space-y-1.5">
           <div className="text-[10px] font-extrabold uppercase tracking-wider text-[#881313] border-b border-slate-200 pb-1 flex items-center justify-between">
             <span>BẢNG GIÁ</span>
             <span className="text-[9px] text-slate-500 font-medium lowercase bg-white px-1.5 py-0.5 rounded border border-slate-200/70">
@@ -57,17 +57,17 @@ export function RoutePricingCard({ route }: { route: RouteItem }) {
           {/* Mobile: lưới 2 cột theo mẫu; từ sm trở lên giữ các dòng ngang hiện tại. */}
           <div
             data-testid="pricing-details"
-            className="grid grid-cols-2 gap-x-2 gap-y-2 sm:block sm:space-y-1"
+            className="grid grid-cols-2 gap-x-1.5 gap-y-1.5 sm:block sm:space-y-1"
           >
             {route.pricingDetails.map((detail, idx) => (
               <div
                 key={idx}
-                className="min-w-0 px-1 py-0.5 sm:flex sm:items-center sm:justify-between sm:py-1 sm:px-2 sm:rounded sm:odd:bg-white sm:even:bg-slate-100/80"
+                className="min-w-0 px-0.5 sm:flex sm:items-center sm:justify-between sm:py-1 sm:px-2 sm:rounded sm:odd:bg-white sm:even:bg-slate-100/80"
               >
-                <span className="flex min-w-0 items-start gap-1.5 text-[10px] font-medium leading-tight text-slate-700 sm:items-center sm:text-xs sm:truncate sm:pr-1">
+                <span className="flex min-w-0 items-center gap-1 whitespace-nowrap text-[9px] font-medium leading-none text-slate-700 sm:text-xs sm:truncate sm:pr-1">
                   <span
                     aria-hidden="true"
-                    className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-[#d9261c] sm:hidden"
+                    className="h-1.5 w-1.5 flex-none rounded-full bg-[#fcd34d] sm:hidden"
                   />
                   {getServiceIcon(
                     detail.label,
@@ -75,7 +75,7 @@ export function RoutePricingCard({ route }: { route: RouteItem }) {
                   )}
                   <span className="min-w-0 sm:truncate">{detail.label}</span>
                 </span>
-                <span className="mt-0.5 block pl-3 text-left text-xs font-extrabold leading-tight text-[#d9261c] sm:mt-0 sm:pl-0 sm:text-right sm:flex-shrink-0">
+                <span className="mt-0.5 block whitespace-nowrap pl-2.5 text-left text-[11px] font-extrabold leading-tight text-[#d9261c] sm:mt-0 sm:pl-0 sm:text-right sm:text-xs sm:flex-shrink-0">
                   {detail.price}
                 </span>
               </div>
