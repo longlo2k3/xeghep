@@ -7,3 +7,17 @@ out
 .env.local
 .env*.local
 
+# OS / editor junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temp/debug files
+.tmp-*
+
+# Test coverage
+coverage/
+

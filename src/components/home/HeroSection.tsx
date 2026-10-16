@@ -20,7 +20,7 @@ export function HeroSection({
       {/* Background: Ảnh đội xe màu trắng + Scrim gradient */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <Image
-          src="/banner3.png"
+          src="/banner3.webp"
           alt="Đội xe riêng đời mới phục vụ xe ghép liên tỉnh"
           fill
           priority
