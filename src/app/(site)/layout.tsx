@@ -11,6 +11,9 @@ import { buildGlobalBusinessSchema } from "@/lib/schema";
 import { SITE_DOMAIN, BRAND_NAME } from "@/lib/seo";
 import { getRoutes, getCompanySettings } from "@/lib/api";
 
+// Đồng bộ lại nội dung Payload/Postgres định kỳ mà không cần build lại toàn bộ site.
+export const revalidate = 60;
+
 const fontSans = Be_Vietnam_Pro({
   weight: ["400", "600", "700", "900"],
   subsets: ["vietnamese"],

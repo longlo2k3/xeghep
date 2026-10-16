@@ -31,6 +31,7 @@ import {
 } from "@/data/company-info";
 import { FALLBACK_ROUTES } from "@/data/fallback-routes";
 import { ApiError } from "@/lib/api/client";
+import { collectSitemapData } from "@/lib/seo/sitemap";
 import type {
   RouteItem,
   RouteDetail,
@@ -553,6 +554,16 @@ export async function getPricingSettingsDirect(): Promise<PricingSettings> {
   } catch (err) {
     console.warn("[getPricingSettingsDirect] error:", err);
     return {} as PricingSettings;
+  }
+}
+
+export async function getSitemapEntriesDirect() {
+  try {
+    const payload = await getPayloadInstance();
+    return await collectSitemapData(payload);
+  } catch (err) {
+    console.warn("[getSitemapEntriesDirect] fallback to static:", err);
+    return [];
   }
 }
 

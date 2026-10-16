@@ -3,6 +3,9 @@ import { SITE_DOMAIN } from "@/lib/seo";
 import { getSitemapEntries, getRoutes, type SitemapEntry } from "@/lib/api";
 import { ARTICLES as FALLBACK_ARTICLES } from "@/data/articles";
 
+// Cập nhật URL từ CMS sau khi app production kết nối được Postgres.
+export const revalidate = 60;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const currentDate = new Date();
 

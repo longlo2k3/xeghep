@@ -16,6 +16,7 @@ import {
   getCompanySettingsDirect,
   getArticlesDirect,
   getArticleDirect,
+  getSitemapEntriesDirect,
 } from "./api/server";
 
 export type { RouteItem, RoutePriceDetail };
@@ -905,5 +906,8 @@ export type SitemapEntry = {
 };
 
 export function getSitemapEntries(): Promise<SitemapEntry[]> {
+  if (typeof window === "undefined") {
+    return getSitemapEntriesDirect();
+  }
   return cmsGet<SitemapEntry[]>("/api/v1/seo/sitemap", ["sitemap"]);
 }

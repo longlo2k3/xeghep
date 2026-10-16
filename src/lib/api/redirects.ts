@@ -12,6 +12,10 @@ const CMS =
 export async function getRedirects(
   options: { timeoutMs?: number } = {},
 ): Promise<RedirectEntry[]> {
+  // Trong `next build` chưa có HTTP server để middleware tự gọi /api/v1/redirects.
+  // Runtime sẽ tải lại danh sách này ngay từ request đầu tiên.
+  if (process.env.NEXT_PHASE === "phase-production-build") return [];
+
   const timeoutMs = options.timeoutMs ?? 1000;
   let signal: AbortSignal | undefined;
   if (
