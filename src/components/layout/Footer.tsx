@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, Globe, Car, ArrowRight } from "lucide-react";
 import { COMPANY_INFO } from "@/data/company-info";
+import { splitBrandName, toMediaSrc } from "@/lib/brand";
 import type { CompanyInfoData } from "@/lib/api";
 
 function FacebookIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -17,6 +19,8 @@ export function Footer({
   companyInfo?: CompanyInfoData;
 }) {
   const info = companyInfo ?? COMPANY_INFO;
+  const [brandLead, brandAccent] = splitBrandName(info.brandName);
+  const logo = toMediaSrc(info.logoUrl);
 
   return (
     <footer className="bg-slate-950 text-slate-300 pt-14 pb-28 sm:pb-20 border-t border-slate-800">
@@ -26,19 +30,30 @@ export function Footer({
           {/* Cột 1: XE GHÉP LIÊN TỈNH */}
           <div className="space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center text-white shadow-md shadow-red-500/20">
-                <Car className="w-6 h-6 text-white" aria-hidden="true" />
+              <div className="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center text-white shadow-md shadow-red-500/20 overflow-hidden">
+                {logo ? (
+                  <Image
+                    src={logo}
+                    alt={info.brandName}
+                    width={40}
+                    height={40}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <Car className="w-6 h-6 text-white" aria-hidden="true" />
+                )}
               </div>
               <div>
                 <span className="text-xl font-black text-white tracking-tight uppercase">
-                  XE GHÉP <span className="text-red-500">LIÊN TỈNH</span>
+                  {brandLead}{" "}
+                  {brandAccent && <span className="text-red-500">{brandAccent}</span>}
                 </span>
                 <p className="text-xs text-slate-400">{info.domainName}</p>
               </div>
             </div>
 
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Dịch vụ xe ghép, xe tiện chuyến Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang. Xe chạy thẳng, nhanh, giá rõ ràng, đón trả tận nơi, phục vụ 24/7.
+              {info.summary}
             </p>
           </div>
 

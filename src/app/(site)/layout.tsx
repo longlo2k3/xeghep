@@ -32,38 +32,45 @@ export const viewport: Viewport = {
  * NOTE: Strictly obeys AGENTS.md rule 1.3 & 14.1:
  * DO NOT define `alternates.canonical` in root layout to prevent incorrect inheritance across child routes!
  */
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_DOMAIN),
-  title: {
-    template: `%s | ${BRAND_NAME}`,
-    default: `Xe Ghép Liên Tỉnh - Tiện Chuyến, Bao Xe 4-7 Chỗ Đời Mới 24/7 | ${BRAND_NAME}`,
-  },
-  description:
-    "Dịch vụ xe ghép liên tỉnh chuyên tuyến Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội. Đưa đón tận nhà, xe đời mới, giá trọn gói, phục vụ 24/7.",
-  openGraph: {
-    type: "website",
-    locale: "vi_VN",
-    siteName: BRAND_NAME,
-    images: [
-      {
-        url: `${SITE_DOMAIN}/images/og-xe-ghep-lien-tinh.webp`,
-        width: 1200,
-        height: 630,
-        alt: `${BRAND_NAME} - Dịch vụ xe ghép liên tỉnh đón trả tận nơi`,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-  },
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
-      { url: "/icon.svg", type: "image/svg+xml" },
-    ],
-    apple: "/icon.svg",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { info } = await getCompanySettings();
+  const brandName = info.brandName || BRAND_NAME;
+  const ogImage = info.defaultOgImageUrl || `${SITE_DOMAIN}/images/og-xe-ghep-lien-tinh.webp`;
+
+  return {
+    metadataBase: new URL(SITE_DOMAIN),
+    title: {
+      template: `%s | ${brandName}`,
+      default: `${brandName} - Tiện Chuyến, Bao Xe 4-7 Chỗ Đời Mới 24/7`,
+    },
+    description:
+      info.summary ||
+      "Dịch vụ xe ghép liên tỉnh chuyên tuyến Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội. Đưa đón tận nhà, xe đời mới, giá trọn gói, phục vụ 24/7.",
+    openGraph: {
+      type: "website",
+      locale: "vi_VN",
+      siteName: brandName,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${brandName} - Dịch vụ xe ghép liên tỉnh đón trả tận nơi`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+    },
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "48x48" },
+        { url: "/icon.svg", type: "image/svg+xml" },
+      ],
+      apple: "/icon.svg",
+    },
+  };
+}
 
 export default async function RootLayout({
   children,

@@ -18,10 +18,13 @@ import { COMPANY_INFO } from "@/data/company-info";
 import type { RouteItem } from "@/lib/types";
 import {
   buildBookingPayload,
+  buildLocationOptions,
   createIdempotencyKey,
   isValidVietnamPhone,
+  matchRoute,
   deriveStaticPrice,
 } from "@/lib/booking";
+import { DateTimeField } from "./DateTimeField";
 import {
   isApiError,
   postBooking,
@@ -48,66 +51,6 @@ function submitErrorMessage(error: unknown): string {
     error.message ||
     "Đặt xe chưa thành công. Vui lòng thử lại hoặc gọi hotline."
   );
-}
-
-function getMinDateTime() {
-  const d = new Date();
-  d.setMinutes(d.getMinutes() + 20);
-  d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
-  return d.toISOString().slice(0, 16);
-}
-
-// Khớp tuyến từ điểm đón / điểm đến
-function findMatchingRoute(
-  routes: RouteItem[],
-  pickupStr: string,
-  dropoffStr: string,
-  explicitSlug?: string,
-): RouteItem | undefined {
-  if (explicitSlug && explicitSlug !== "custom") {
-    const bySlug = routes.find((r) => r.slug === explicitSlug);
-    if (bySlug) return bySlug;
-  }
-
-  if (!pickupStr || !dropoffStr || routes.length === 0) return undefined;
-
-  const normalize = (s: string) =>
-    s
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/đ/g, "d")
-      .trim();
-
-  const p = normalize(pickupStr);
-  const d = normalize(dropoffStr);
-
-  return routes.find((r) => {
-    const o = normalize(r.origin);
-    const dest = normalize(r.destination);
-
-    const direct =
-      (p.includes(o) || o.includes(p)) &&
-      (d.includes(dest) ||
-        dest.includes(d) ||
-        (r.dropoffs &&
-          r.dropoffs.some((item) => {
-            const normItem = normalize(item);
-            return d.includes(normItem) || normItem.includes(d);
-          })));
-
-    const reverse =
-      (d.includes(o) || o.includes(d)) &&
-      (p.includes(dest) ||
-        dest.includes(p) ||
-        (r.pickups &&
-          r.pickups.some((item) => {
-            const normItem = normalize(item);
-            return p.includes(normItem) || normItem.includes(p);
-          })));
-
-    return direct || reverse;
-  });
 }
 
 interface BookingFormProps {
@@ -161,7 +104,6 @@ export function BookingForm({
 
   // Ngày đi, Số người / Số ghế, Số điện thoại
   const [pickupDateTime, setPickupDateTime] = useState("");
-  const [isDateActive, setIsDateActive] = useState(false);
   const [serviceOption, setServiceOption] = useState("");
   const [phone, setPhone] = useState("");
   const [website, setWebsite] = useState("");
@@ -175,41 +117,16 @@ export function BookingForm({
     null,
   );
 
-  // Trích xuất danh sách các điểm đi chính từ các tuyến đường trong database
-  const pickupLocations = useMemo(() => {
-    const list: string[] = [];
-    routes.forEach((r) => {
-      if (r.origin) list.push(r.origin.trim());
-      if (r.destination) list.push(r.destination.trim());
-    });
-    return Array.from(new Set(list)).filter(Boolean);
-  }, [routes]);
-
-  // Trích xuất danh sách các điểm đến chính từ database (ưu tiên điểm kết nối với điểm đi đã chọn)
-  const dropoffLocations = useMemo(() => {
-    if (pickup.trim()) {
-      const norm = pickup.toLowerCase().trim();
-      const connected: string[] = [];
-      routes.forEach((r) => {
-        const o = (r.origin || "").toLowerCase();
-        const d = (r.destination || "").toLowerCase();
-        if (norm.includes(o) || o.includes(norm)) {
-          if (r.destination) connected.push(r.destination.trim());
-        } else if (norm.includes(d) || d.includes(norm)) {
-          if (r.origin) connected.push(r.origin.trim());
-        }
-      });
-      if (connected.length > 0) {
-        return Array.from(new Set(connected)).filter(Boolean);
-      }
-    }
-    const list: string[] = [];
-    routes.forEach((r) => {
-      if (r.destination) list.push(r.destination.trim());
-      if (r.origin) list.push(r.origin.trim());
-    });
-    return Array.from(new Set(list)).filter(Boolean);
-  }, [routes, pickup]);
+  // Tuyến 2 chiều: mọi `origin`/`destination` đều là điểm đi/đến hợp lệ.
+  // Loại trừ điểm đã chọn ở ô đối diện để không trùng nhau.
+  const pickupLocations = useMemo(
+    () => buildLocationOptions(routes, dropoff),
+    [routes, dropoff],
+  );
+  const dropoffLocations = useMemo(
+    () => buildLocationOptions(routes, pickup),
+    [routes, pickup],
+  );
 
   // Bộ lọc tìm kiếm theo từ khóa gõ
   const filteredPickups = useMemo(() => {
@@ -266,7 +183,7 @@ export function BookingForm({
 
   // Khớp tuyến đường từ dữ liệu nhập
   const activeRoute = useMemo(() => {
-    return findMatchingRoute(routes, pickup, dropoff, initialRouteSlug);
+    return matchRoute(routes, pickup, dropoff, initialRouteSlug);
   }, [routes, pickup, dropoff, initialRouteSlug]);
 
   // Tính giá cước tĩnh niêm yết
@@ -645,32 +562,19 @@ export function BookingForm({
                     <Calendar className="w-3.5 h-3.5 text-slate-500" />
                     <span>Ngày đi *</span>
                   </label>
-                  <div className="relative">
-                    <input
-                      type={
-                        isDateActive || pickupDateTime
-                          ? "datetime-local"
-                          : "text"
-                      }
-                      onFocus={() => setIsDateActive(true)}
-                      onBlur={() => {
-                        if (!pickupDateTime) setIsDateActive(false);
-                      }}
-                      value={pickupDateTime}
-                      min={getMinDateTime()}
-                      onChange={(e) => {
-                        setPickupDateTime(e.target.value);
-                        if (error) setError("");
-                      }}
-                      placeholder="Chọn ngày & giờ"
-                      aria-label="Ngày đi"
-                      required
-                      className={`w-full h-11 sm:h-12 text-slate-900 font-medium text-xs sm:text-sm pl-3 sm:pl-3.5 pr-8 rounded-xl border border-slate-300 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500 shadow-sm transition-all ${
-                        isGlass ? "bg-white/95" : "bg-white"
-                      }`}
-                    />
-                    <Calendar className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-                  </div>
+                  <DateTimeField
+                    value={pickupDateTime}
+                    onChange={(next) => {
+                      setPickupDateTime(next);
+                      if (error) setError("");
+                    }}
+                    placeholder="Chọn ngày & giờ"
+                    ariaLabel="Ngày đi"
+                    iconClassName="w-4 h-4 text-slate-400"
+                    className={`h-11 sm:h-12 border border-slate-300 font-medium text-xs sm:text-sm pl-3 sm:pl-3.5 pr-3 rounded-xl shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-red-500 ${
+                      isGlass ? "bg-white/95" : "bg-white"
+                    }`}
+                  />
                 </div>
 
                 {/* Số người / Số ghế */}

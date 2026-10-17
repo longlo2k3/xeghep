@@ -24,6 +24,8 @@ export interface Testimonial {
 export const COMPANY_INFO = {
   name: "Xe Ghép Liên Tỉnh",
   brandName: "Xe Ghép Liên Tỉnh",
+  logoUrl: null as string | null,
+  defaultOgImageUrl: null as string | null,
   hotline: "0962.298.293",
   hotlineRaw: "0962298293",
   hotlineHref: "tel:0962298293",

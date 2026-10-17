@@ -230,6 +230,7 @@ export type RouteCardOut = {
   isBannerTop: boolean;
   sortOrder: number;
   thumbnail: CmsImage | null;
+  ogImage: CmsImage | null;
   pickups?: string[];
   dropoffs?: string[];
 };
@@ -311,11 +312,12 @@ function toRouteItem(card: RouteCardOut): RouteItem {
       note: detail.note ?? undefined,
     })),
     description: "",
-    pickups: [],
-    dropoffs: [],
+    pickups: card.pickups ?? [],
+    dropoffs: card.dropoffs ?? [],
     faqs: [],
     regions: card.regions ?? [],
     isBannerTop: card.isBannerTop,
+    imageUrl: card.ogImage?.url ?? card.thumbnail?.url ?? undefined,
   };
 }
 
@@ -428,6 +430,8 @@ export async function getRoute(slug: string): Promise<RouteDetail> {
 export type CompanyInfoData = {
   name: string;
   brandName: string;
+  logoUrl: string | null;
+  defaultOgImageUrl: string | null;
   hotline: string;
   hotlineRaw: string;
   hotlineHref: string;
@@ -478,6 +482,8 @@ export type CompanySettingsOut = {
     summary?: string | null;
   };
   brandSeo?: {
+    logo?: { url?: string | null } | number | null;
+    defaultOgImage?: { url?: string | null } | number | null;
     areaServed?: { type?: string | null; name?: string }[] | null;
     priceRange?: string | null;
   };
@@ -530,6 +536,15 @@ export const FALLBACK_COMPANY_SETTINGS: CompanySettingsData = {
 
 const text = (value: string | null | undefined): string => value ?? "";
 
+/** Ảnh CMS lưu dạng quan hệ media (populated) — trả về URL tương đối/absolute nếu có. */
+const mediaUrl = (value: unknown): string | null => {
+  if (value && typeof value === "object" && "url" in value) {
+    const url = (value as { url?: unknown }).url;
+    return typeof url === "string" && url.length > 0 ? url : null;
+  }
+  return null;
+};
+
 export async function getCompanySettings(): Promise<CompanySettingsData> {
   if (typeof window === "undefined") {
     return getCompanySettingsDirect();
@@ -548,6 +563,8 @@ export async function getCompanySettings(): Promise<CompanySettingsData> {
     const info: CompanyInfoData = {
       name: text(identity.companyName) || COMPANY_INFO.name,
       brandName: text(identity.brandName) || COMPANY_INFO.brandName,
+      logoUrl: mediaUrl(brandSeo.logo),
+      defaultOgImageUrl: mediaUrl(brandSeo.defaultOgImage),
       hotline: text(contact.hotline) || COMPANY_INFO.hotline,
       hotlineRaw: text(contact.hotlineRaw) || COMPANY_INFO.hotlineRaw,
       hotlineHref: text(doc.hotlineHref) || COMPANY_INFO.hotlineHref,

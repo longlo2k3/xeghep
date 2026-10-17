@@ -36,6 +36,89 @@ function clampPassengerCount(value: number): number {
   return Math.min(3, Math.max(1, Math.trunc(value)));
 }
 
+/** Chuẩn hóa địa danh để so khớp (bỏ dấu, thường hóa, gom khoảng trắng). */
+export function normalizePlace(input: string): string {
+  return String(input ?? "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function dedupePlaces(values: string[]): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const raw of values) {
+    const value = (raw ?? "").trim();
+    const key = normalizePlace(value);
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    out.push(value);
+  }
+  return out;
+}
+
+/**
+ * Danh sách địa điểm cho cả Điểm đi và Điểm đến.
+ * Tuyến là 2 chiều nên mỗi đầu `origin`/`destination` của mọi tuyến đều hợp lệ
+ * cho cả hai ô. `exclude` là giá trị đã chọn ở ô đối diện, sẽ bị loại bỏ để
+ * không cho trùng điểm đi và điểm đến.
+ */
+export function buildLocationOptions(
+  routes: RouteItem[],
+  exclude?: string,
+): string[] {
+  let options = dedupePlaces(
+    routes.flatMap((r) => [r.origin, r.destination]),
+  );
+  if (options.length === 0) {
+    // Fallback nếu tuyến chưa khai báo origin/destination.
+    options = dedupePlaces(
+      routes.flatMap((r) => [...(r.pickups ?? []), ...(r.dropoffs ?? [])]),
+    );
+  }
+
+  const excluded = exclude ? normalizePlace(exclude) : "";
+  if (!excluded) return options;
+  return options.filter((value) => normalizePlace(value) !== excluded);
+}
+
+/**
+ * Khớp tuyến từ điểm đón / điểm đến dựa trên dữ liệu routes trong database
+ * (origin/destination + mảng pickups/dropoffs chi tiết).
+ */
+export function matchRoute(
+  routes: RouteItem[],
+  pickupStr: string,
+  dropoffStr: string,
+  explicitSlug?: string,
+): RouteItem | undefined {
+  if (explicitSlug && explicitSlug !== "custom") {
+    const bySlug = routes.find((r) => r.slug === explicitSlug);
+    if (bySlug) return bySlug;
+  }
+
+  if (!pickupStr || !dropoffStr || routes.length === 0) return undefined;
+
+  const p = normalizePlace(pickupStr);
+  const d = normalizePlace(dropoffStr);
+  const matches = (values: string[] | undefined, target: string) =>
+    (values ?? []).some((value) => {
+      const nv = normalizePlace(value);
+      return nv.length > 0 && (nv.includes(target) || target.includes(nv));
+    });
+
+  return routes.find((route) => {
+    const originSide = [route.origin, ...(route.pickups ?? [])];
+    const destSide = [route.destination, ...(route.dropoffs ?? [])];
+    const direct = matches(originSide, p) && matches(destSide, d);
+    const reverse = matches(originSide, d) && matches(destSide, p);
+    return direct || reverse;
+  });
+}
+
 export type StaticPrice = {
   displayPrice: string;
   unit: string;

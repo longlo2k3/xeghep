@@ -13,7 +13,13 @@ const REGIONS = [
   "Bắc Ninh – Bắc Giang",
 ];
 
-export function RouteListing({ routes }: { routes: RouteItem[] }) {
+export function RouteListing({
+  routes,
+  hotlineHref,
+}: {
+  routes: RouteItem[];
+  hotlineHref?: string;
+}) {
   const [activeTab, setActiveTab] = useState("Tất cả");
 
   const filteredRoutes =
@@ -44,7 +50,7 @@ export function RouteListing({ routes }: { routes: RouteItem[] }) {
       {/* Lưới 9 RouteCard thiết kế đồng bộ với trang chủ (2 cột trên mobile) */}
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6">
         {filteredRoutes.map((route) => (
-          <RoutePricingCard key={route.slug} route={route} />
+          <RoutePricingCard key={route.slug} route={route} hotlineHref={hotlineHref} />
         ))}
       </div>
     </div>

@@ -1,81 +1,83 @@
 import Link from "next/link";
+import Image from "next/image";
 import { type RouteItem } from "@/lib/types";
-import { Clock, ArrowRight, User, Users, Car } from "lucide-react";
+import { toMediaSrc } from "@/lib/brand";
+import { COMPANY_INFO } from "@/data/company-info";
+import { Clock, ArrowRight } from "lucide-react";
 
-function getServiceIcon(label: string, className: string) {
-  const lower = label.toLowerCase();
-  if (lower.includes("1 người") || lower.includes("1 khách")) {
-    return <User className={className} />;
-  }
-  if (
-    lower.includes("2 người") ||
-    lower.includes("nhóm") ||
-    lower.includes("ghép")
-  ) {
-    return <Users className={className} />;
-  }
-  return <Car className={className} />;
-}
+/** Ảnh nền dự phòng khi tuyến chưa cấu hình ảnh SEO. */
+const FALLBACK_CARD_IMAGE = "/banner3.webp";
 
-export function RoutePricingCard({ route }: { route: RouteItem }) {
+export function RoutePricingCard({
+  route,
+  hotlineHref = COMPANY_INFO.hotlineHref,
+}: {
+  route: RouteItem;
+  hotlineHref?: string;
+}) {
+  const imageSrc = toMediaSrc(route.imageUrl) ?? FALLBACK_CARD_IMAGE;
+
   return (
-    <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(15,23,42,0.06)] hover:shadow-[0_15px_35px_rgba(217,38,28,0.12)] border border-slate-200/90 hover:border-red-400 group flex flex-col justify-between bg-white transform hover:-translate-y-1 transition-all duration-300 ease-out">
-      {/* Top Header Information: Badges */}
-      <div className="relative z-10 p-2.5 sm:p-4 pb-1 sm:pb-2 flex items-center justify-between gap-1">
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-slate-100 text-[11px] sm:text-xs font-semibold text-slate-600">
-          <Clock className="w-3 h-3 text-slate-500 flex-shrink-0" />
-          <span className="truncate">{route.duration}</span>
-        </span>
+    <div className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 shadow-lg shadow-slate-900/20 group flex flex-col transform hover:-translate-y-1 transition-all duration-300 ease-out">
+      {/* Ảnh nền lấy từ ảnh SEO (ogImage) đã cấu hình khi tạo tuyến */}
+      <Image
+        src={imageSrc}
+        alt=""
+        fill
+        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
+        quality={75}
+        className="object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-b from-slate-950/75 via-slate-950/60 to-slate-950/85"
+      />
 
-        {/* Ẩn chữ 'Chạy' trên mobile nhỏ để tiết kiệm diện tích, giữ nguyên ý nghĩa */}
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] sm:text-xs font-bold">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          <span>24/7</span>
-        </span>
-      </div>
-
-      {/* Main Content Area */}
-      <div className="relative z-10 p-2.5 sm:p-4 pt-1 sm:pt-2 flex-1 flex flex-col justify-between space-y-2.5 sm:space-y-3">
-        {/* Route Title: Tăng từ 11px lên 13px (text-xs/sm) trên mobile */}
-        <div>
-          <Link href={`/tuyen-lien-tinh/${route.slug}`}>
-            <h3 className="text-[13px] sm:text-base font-black text-[#0f172a] uppercase tracking-tight leading-snug line-clamp-2 min-h-[2.25rem] sm:min-h-[2.5rem] group-hover:text-[#d9261c] transition-colors">
-              {route.name}
-            </h3>
-          </Link>
+      <div className="relative z-10 flex flex-1 flex-col gap-2 sm:gap-3 p-2.5 sm:p-4">
+        {/* Badges: thời gian gian + chạy 24/7 */}
+        <div className="flex items-center justify-between gap-1">
+          <span className="inline-flex items-center gap-1 rounded-full border border-white/15 bg-slate-900/60 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[10px] sm:text-xs font-semibold text-white backdrop-blur-sm">
+            <Clock className="w-3 h-3 flex-shrink-0 text-amber-300" />
+            <span className="truncate">{route.duration}</span>
+          </span>
+          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[10px] sm:text-xs font-bold text-white shadow-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-white/80 animate-pulse" />
+            <span>Chạy 24/7</span>
+          </span>
         </div>
 
-        {/* --- BẢNG GIÁ UNIFIED (Tự nhiên trên cả Mobile & Desktop, không cần tách 2 khối DOM) --- */}
-        <div className="bg-slate-50/70 rounded-lg sm:rounded-xl p-1.5 sm:p-3 border border-slate-200/80 space-y-1 sm:space-y-1.5">
-          <div className="text-[10px] font-extrabold uppercase tracking-wider text-[#881313] border-b border-slate-200 pb-1 flex items-center justify-between">
-            <span>BẢNG GIÁ</span>
-            <span className="text-[9px] text-slate-500 font-medium lowercase bg-white px-1.5 py-0.5 rounded border border-slate-200/70">
+        {/* Route Title */}
+        <Link href={`/tuyen-lien-tinh/${route.slug}`} className="block">
+          <h3 className="text-[13px] sm:text-base font-black uppercase tracking-tight leading-snug text-white line-clamp-2 min-h-[2.25rem] sm:min-h-[2.5rem] drop-shadow group-hover:text-amber-300 transition-colors">
+            {route.name}
+          </h3>
+        </Link>
+
+        {/* BẢNG GIÁ CHI TIẾT */}
+        <div className="mt-auto rounded-lg sm:rounded-xl border border-white/10 bg-slate-950/65 p-2 sm:p-3 backdrop-blur-sm">
+          <div className="flex items-center justify-between gap-1 border-b border-white/15 pb-1 sm:pb-1.5">
+            <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-amber-400">
+              Bảng giá chi tiết
+            </span>
+            <span className="rounded border border-white/15 px-1.5 py-0.5 text-[9px] font-medium lowercase text-slate-300">
               trọn gói
             </span>
           </div>
 
-          {/* Mobile: lưới 2 cột theo mẫu; từ sm trở lên giữ các dòng ngang hiện tại. */}
           <div
             data-testid="pricing-details"
-            className="grid grid-cols-2 gap-x-1.5 gap-y-1.5 sm:block sm:space-y-1"
+            className="mt-1.5 grid grid-cols-2 gap-x-2 gap-y-1.5 sm:gap-y-2"
           >
             {route.pricingDetails.map((detail, idx) => (
-              <div
-                key={idx}
-                className="min-w-0 px-0.5 sm:flex sm:items-center sm:justify-between sm:py-1 sm:px-2 sm:rounded sm:odd:bg-white sm:even:bg-slate-100/80"
-              >
-                <span className="flex min-w-0 items-center gap-1 whitespace-nowrap text-[9px] font-medium leading-none text-slate-700 sm:text-xs sm:truncate sm:pr-1">
+              <div key={idx} className="min-w-0">
+                <span className="flex min-w-0 items-center gap-1.5 text-[10px] sm:text-xs font-medium text-slate-200">
                   <span
                     aria-hidden="true"
-                    className="h-1.5 w-1.5 flex-none rounded-full bg-[#fcd34d] sm:hidden"
+                    className="h-1.5 w-1.5 flex-none rounded-full bg-amber-400"
                   />
-                  {getServiceIcon(
-                    detail.label,
-                    "hidden sm:block w-3.5 h-3.5 text-slate-400 flex-shrink-0",
-                  )}
-                  <span className="min-w-0 sm:truncate">{detail.label}</span>
+                  <span className="min-w-0 truncate">{detail.label}</span>
                 </span>
-                <span className="mt-0.5 block whitespace-nowrap pl-2.5 text-left text-[11px] font-extrabold leading-tight text-[#d9261c] sm:mt-0 sm:pl-0 sm:text-right sm:text-xs sm:flex-shrink-0">
+                <span className="block pl-3 text-[11px] sm:text-sm font-extrabold leading-tight text-amber-400">
                   {detail.price}
                 </span>
               </div>
@@ -83,29 +85,26 @@ export function RoutePricingCard({ route }: { route: RouteItem }) {
           </div>
         </div>
 
-        {/* Actions: Nút bấm cao ráo, chuẩn kích thước chạm ngón tay */}
-        <div className="space-y-1.5 pt-0.5">
-          <a
-            href="tel:0962298293"
-            className="w-full py-2 sm:py-2.5 px-3 rounded-lg sm:rounded-xl bg-[#d9261c] hover:bg-[#b81d14] active:scale-[0.98] text-white font-bold text-xs text-center shadow-sm shadow-red-500/20 flex items-center justify-center gap-1.5 transition-all"
-          >
-            <span>GỌI NGAY</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </a>
-
-          <Link
-            href={`/tuyen-lien-tinh/${route.slug}`}
-            className="hidden sm:block text-center text-xs font-semibold text-slate-600 hover:text-[#d9261c] transition-colors py-0.5"
-          >
-            Chi tiết tuyến &rarr;
-          </Link>
-        </div>
+        {/* CTA */}
+        <a
+          href={hotlineHref}
+          className="mt-0.5 w-full py-2 sm:py-2.5 px-3 rounded-lg sm:rounded-xl bg-[#d9261c] hover:bg-[#b81d14] active:scale-[0.98] text-white font-black uppercase tracking-wide text-xs text-center shadow-sm shadow-red-900/30 flex items-center justify-center gap-1.5 transition-all"
+        >
+          <span>Gọi ngay</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </a>
       </div>
     </div>
   );
 }
 
-export function RoutePricingGrid({ routes }: { routes: RouteItem[] }) {
+export function RoutePricingGrid({
+  routes,
+  hotlineHref,
+}: {
+  routes: RouteItem[];
+  hotlineHref?: string;
+}) {
   return (
     <section className="py-8 sm:py-20 bg-slate-100/60 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -126,7 +125,7 @@ export function RoutePricingGrid({ routes }: { routes: RouteItem[] }) {
         {/* Lưới 9 RouteCard: 2 cột trên mobile, 2 cột trên md, 3 cột trên lg */}
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-6">
           {routes.map((route) => (
-            <RoutePricingCard key={route.slug} route={route} />
+            <RoutePricingCard key={route.slug} route={route} hotlineHref={hotlineHref} />
           ))}
         </div>
       </div>

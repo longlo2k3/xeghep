@@ -1,6 +1,6 @@
 import type { RouteItem } from "@/lib/types";
 
-export const FALLBACK_ROUTES: RouteItem[] = [
+const FALLBACK_ROUTES_BASE: RouteItem[] = [
   {
     slug: "hai-phong-bac-ninh-bac-giang",
     name: "Hải Phòng ⇄ Bắc Ninh ⇄ Bắc Giang",
@@ -286,3 +286,25 @@ export const FALLBACK_ROUTES: RouteItem[] = [
     ],
   },
 ];
+
+/** Ảnh nền dự phòng (trùng ROUTE_LOCATION_IMAGES) khi CMS không khả dụng. */
+const FALLBACK_ROUTE_IMAGES: Record<string, string> = {
+  "hai-phong-bac-ninh-bac-giang": "/BacNinh.webp",
+  "hai-phong-ha-noi-noi-bai": "/NoiBai.webp",
+  "hai-phong-ha-long": "/HaLong.webp",
+  "hai-phong-mong-cai": "/MongCai.webp",
+  "ha-long-bac-ninh-bac-giang": "/BacNinh.webp",
+  "ha-noi-mong-cai": "/MongCai.webp",
+  "ha-noi-ha-long": "/HaLong.webp",
+  "hai-phong-hai-duong": "/HaiPhong.webp",
+  "hai-phong-thai-nguyen": "/BacNinh.webp",
+  "hai-phong-ha-nam": "/HaiPhong.webp",
+  "hai-phong-ninh-binh": "/HaiPhong.webp",
+  "hai-phong-nam-dinh": "/HaiPhong.webp",
+  "hai-duong-ha-noi": "/HaNoi.webp",
+};
+
+export const FALLBACK_ROUTES: RouteItem[] = FALLBACK_ROUTES_BASE.map((route) => ({
+  ...route,
+  imageUrl: FALLBACK_ROUTE_IMAGES[route.slug],
+}));

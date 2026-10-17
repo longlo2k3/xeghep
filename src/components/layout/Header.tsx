@@ -2,8 +2,10 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, ChevronDown, Menu, X, Car } from "lucide-react";
 import { COMPANY_INFO } from "@/data/company-info";
+import { splitBrandName, toMediaSrc } from "@/lib/brand";
 import type { CompanyInfoData } from "@/lib/api";
 import type { RouteItem } from "@/lib/types";
 import { TopBanner } from "./TopBanner";
@@ -16,6 +18,8 @@ export function Header({
   companyInfo?: CompanyInfoData;
 }) {
   const info = companyInfo ?? COMPANY_INFO;
+  const [brandLead, brandAccent] = splitBrandName(info.brandName);
+  const logo = toMediaSrc(info.logoUrl);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [routesDropdownOpen, setRoutesDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -74,12 +78,25 @@ export function Header({
                 href="/"
                 className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-lg p-1"
               >
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center text-white shadow-md shadow-red-700/20 group-hover:scale-105 transition-transform flex-shrink-0">
-                  <Car className="w-6 h-6 text-white" aria-hidden="true" />
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center text-white shadow-md shadow-red-700/20 group-hover:scale-105 transition-transform flex-shrink-0 overflow-hidden">
+                  {logo ? (
+                    <Image
+                      src={logo}
+                      alt={info.brandName}
+                      width={44}
+                      height={44}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <Car className="w-6 h-6 text-white" aria-hidden="true" />
+                  )}
                 </div>
                 <div className="flex flex-col">
                   <span className="text-lg sm:text-xl font-extrabold tracking-tight text-slate-900 group-hover:text-red-600 transition-colors leading-none uppercase">
-                    XE GHÉP <span className="text-red-600">LIÊN TỈNH</span>
+                    {brandLead}{" "}
+                    {brandAccent && (
+                      <span className="text-red-600">{brandAccent}</span>
+                    )}
                   </span>
                   {/* Hotline directly below logo per spec_v2.md 2.1 */}
                   <span className="text-xs sm:text-sm font-bold text-red-600 tracking-wide mt-1">

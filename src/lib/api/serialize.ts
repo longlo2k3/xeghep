@@ -143,6 +143,7 @@ export function serializeRouteCard(route: Route) {
     isBannerTop: route.isBannerTop ?? false,
     sortOrder: route.sortOrder,
     thumbnail: serializeImage(route.thumbnail),
+    ogImage: serializeImage(route.seo?.ogImage ?? null),
     pickups: (route.pickups ?? []).map((p) => p.text),
     dropoffs: (route.dropoffs ?? []).map((d) => d.text),
   };

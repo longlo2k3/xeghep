@@ -11,13 +11,17 @@ import {
   Loader2,
   AlertCircle,
   CheckCircle2,
+  Image as ImageIcon,
+  X,
 } from 'lucide-react';
 import { Button } from '@/admin/components/ui/Button';
 import { Input } from '@/admin/components/ui/Input';
 import { Textarea } from '@/admin/components/ui/Textarea';
 import { Select } from '@/admin/components/ui/Select';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/admin/components/ui/Card';
+import { MediaPickerModal } from '@/admin/components/common/MediaPickerModal';
 import { apiClient, getApiErrorMessage } from '@/admin/lib/api-client';
+import type { MediaDoc } from '@/admin/types/media';
 import type {
   CompanySettings,
   CompanyCommitment,
@@ -25,7 +29,14 @@ import type {
   CompanyTestimonial,
   CommitmentIcon,
   PaymentMethodIcon,
+  AreaServedItem,
 } from '@/admin/types/settings';
+
+const resolveMediaDoc = (value: MediaDoc | number | null | undefined): MediaDoc | null =>
+  value && typeof value === 'object' ? value : null;
+
+const resolveMediaId = (value: MediaDoc | number | null | undefined): number | null =>
+  value == null ? null : typeof value === 'object' ? value.id : value;
 
 const COMMITMENT_ICONS: { label: string; value: CommitmentIcon }[] = [
   { label: 'ShieldCheck (Bảo đảm an toàn)', value: 'ShieldCheck' },
@@ -119,6 +130,13 @@ export function CompanySettingsForm() {
 
   const [address, setAddress] = useState('Số 12 Khuất Duy Tiến, Thanh Xuân, Hà Nội');
 
+  const [logoMedia, setLogoMedia] = useState<MediaDoc | number | null>(null);
+  const [ogImageMedia, setOgImageMedia] = useState<MediaDoc | number | null>(null);
+  const [brandAreaServed, setBrandAreaServed] = useState<AreaServedItem[] | null>(null);
+  const [priceRange, setPriceRange] = useState('');
+  const [isLogoModalOpen, setIsLogoModalOpen] = useState(false);
+  const [isOgImageModalOpen, setIsOgImageModalOpen] = useState(false);
+
   const [commitments, setCommitments] = useState<CompanyCommitment[]>(DEFAULT_COMMITMENTS);
   const [paymentMethods, setPaymentMethods] = useState<CompanyPaymentMethod[]>(DEFAULT_PAYMENT_METHODS);
   const [testimonials, setTestimonials] = useState<CompanyTestimonial[]>([
@@ -165,6 +183,12 @@ export function CompanySettingsForm() {
         }
         if (data.location?.address) {
           setAddress(data.location.address);
+        }
+        if (data.brandSeo) {
+          setLogoMedia(data.brandSeo.logo ?? null);
+          setOgImageMedia(data.brandSeo.defaultOgImage ?? null);
+          setBrandAreaServed(data.brandSeo.areaServed ?? null);
+          setPriceRange(data.brandSeo.priceRange || '');
         }
         if (data.commitments && data.commitments.length > 0) {
           setCommitments(data.commitments);
@@ -306,6 +330,12 @@ export function CompanySettingsForm() {
       location: {
         address: address.trim() || null,
       },
+      brandSeo: {
+        logo: resolveMediaId(logoMedia),
+        defaultOgImage: resolveMediaId(ogImageMedia),
+        areaServed: brandAreaServed,
+        priceRange: priceRange.trim() || null,
+      },
       commitments,
       paymentMethods,
       testimonials,
@@ -395,7 +425,116 @@ export function CompanySettingsForm() {
         </CardContent>
       </Card>
 
-      {/* 2. Thông tin Liên hệ & Địa chỉ */}
+      {/* 2. Nhận diện thương hiệu & SEO (logo, ảnh chia sẻ) */}
+      <Card>
+        <CardHeader>
+          <div className="flex items-center gap-2">
+            <ImageIcon className="w-5 h-5 text-rose-400" />
+            <CardTitle>Nhận diện Thương hiệu & SEO</CardTitle>
+          </div>
+          <CardDescription>
+            Logo hiển thị trên header/footer và ảnh mặc định khi chia sẻ link lên mạng xã hội (OG Image).
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Logo */}
+            <div className="space-y-3">
+              <span className="text-sm font-medium text-slate-700">Logo thương hiệu</span>
+              <div className="flex items-center gap-4">
+                <div className="w-20 h-20 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center overflow-hidden shrink-0">
+                  {resolveMediaDoc(logoMedia)?.url ? (
+                    <img
+                      src={resolveMediaDoc(logoMedia)?.url || ''}
+                      alt={resolveMediaDoc(logoMedia)?.alt || 'Logo thương hiệu'}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <ImageIcon className="w-7 h-7 text-slate-300" />
+                  )}
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setIsLogoModalOpen(true)}
+                    className="gap-1.5"
+                  >
+                    <ImageIcon className="w-4 h-4" />
+                    {resolveMediaDoc(logoMedia) ? 'Đổi logo' : 'Chọn logo'}
+                  </Button>
+                  {logoMedia != null && (
+                    <button
+                      type="button"
+                      onClick={() => setLogoMedia(null)}
+                      className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-rose-600 transition"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                      Gỡ logo
+                    </button>
+                  )}
+                </div>
+              </div>
+              <p className="text-xs text-slate-500">
+                Nên dùng ảnh PNG/SVG nền trong suốt, tỉ lệ vuông. Bỏ trống sẽ dùng icon xe mặc định.
+              </p>
+            </div>
+
+            {/* OG Image */}
+            <div className="space-y-3">
+              <span className="text-sm font-medium text-slate-700">Ảnh chia sẻ mặc định (OG Image)</span>
+              <div className="flex items-center gap-4">
+                <div className="w-32 h-20 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center overflow-hidden shrink-0">
+                  {resolveMediaDoc(ogImageMedia)?.url ? (
+                    <img
+                      src={resolveMediaDoc(ogImageMedia)?.url || ''}
+                      alt={resolveMediaDoc(ogImageMedia)?.alt || 'Ảnh chia sẻ mặc định'}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <ImageIcon className="w-7 h-7 text-slate-300" />
+                  )}
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setIsOgImageModalOpen(true)}
+                    className="gap-1.5"
+                  >
+                    <ImageIcon className="w-4 h-4" />
+                    {resolveMediaDoc(ogImageMedia) ? 'Đổi ảnh' : 'Chọn ảnh'}
+                  </Button>
+                  {ogImageMedia != null && (
+                    <button
+                      type="button"
+                      onClick={() => setOgImageMedia(null)}
+                      className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-rose-600 transition"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                      Gỡ ảnh
+                    </button>
+                  )}
+                </div>
+              </div>
+              <p className="text-xs text-slate-500">
+                Kích thước chuẩn 1200×630px, dùng khi trang không có ảnh SEO riêng.
+              </p>
+            </div>
+          </div>
+
+          <Input
+            label="Khoảng giá (priceRange cho schema)"
+            placeholder="Ví dụ: 150.000đ - 2.500.000đ"
+            value={priceRange}
+            onChange={(e) => setPriceRange(e.target.value)}
+          />
+        </CardContent>
+      </Card>
+
+      {/* 3. Thông tin Liên hệ & Địa chỉ */}
       <Card>
         <CardHeader>
           <div className="flex items-center gap-2">
@@ -746,6 +885,22 @@ export function CompanySettingsForm() {
           Lưu cấu hình Doanh nghiệp
         </Button>
       </div>
+
+      <MediaPickerModal
+        isOpen={isLogoModalOpen}
+        onClose={() => setIsLogoModalOpen(false)}
+        onSelect={(media) => setLogoMedia(media)}
+        selectedId={resolveMediaId(logoMedia) ?? undefined}
+        title="Chọn logo thương hiệu"
+      />
+
+      <MediaPickerModal
+        isOpen={isOgImageModalOpen}
+        onClose={() => setIsOgImageModalOpen(false)}
+        onSelect={(media) => setOgImageMedia(media)}
+        selectedId={resolveMediaId(ogImageMedia) ?? undefined}
+        title="Chọn ảnh chia sẻ mặc định (OG Image)"
+      />
     </form>
   );
 }

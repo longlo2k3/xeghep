@@ -32,14 +32,13 @@ const route: RouteItem = {
 };
 
 describe("RoutePricingCard", () => {
-  it("uses a two-column pricing layout only below the sm breakpoint", () => {
+  it("renders a two-column pricing layout on every breakpoint", () => {
     const html = renderToStaticMarkup(
       React.createElement(RoutePricingCard, { route }),
     );
 
     expect(html).toContain('data-testid="pricing-details"');
     expect(html).toContain("grid grid-cols-2");
-    expect(html).toContain("sm:block");
     expect(html).toContain('aria-hidden="true"');
     expect(html.indexOf("Ghép 1 khách")).toBeLessThan(
       html.indexOf("Bao xe 4 chỗ"),
@@ -49,14 +48,38 @@ describe("RoutePricingCard", () => {
     );
   });
 
-  it("keeps mobile pricing labels and prices compact on one line", () => {
+  it("renders badges, title and a call CTA", () => {
     const html = renderToStaticMarkup(
       React.createElement(RoutePricingCard, { route }),
     );
 
-    expect(html).toContain("gap-y-1.5");
-    expect(html.match(/whitespace-nowrap/g)).toHaveLength(
-      route.pricingDetails.length * 2,
+    expect(html).toContain("Chạy 24/7");
+    expect(html).toContain("2 giờ");
+    expect(html).toContain("Hà Nội - Hải Phòng");
+    expect(html).toContain("Gọi ngay");
+    expect(html).toContain('href="tel:');
+    expect(html).toContain("/tuyen-lien-tinh/ha-noi-hai-phong");
+  });
+
+  it("normalizes local CMS media URLs to same-origin paths", () => {
+    const html = renderToStaticMarkup(
+      React.createElement(RoutePricingCard, {
+        route: {
+          ...route,
+          imageUrl: "http://localhost:3001/media/HaiPhong-2.webp",
+        },
+      }),
     );
+
+    expect(html).toContain("HaiPhong-2.webp");
+    expect(html).not.toContain("localhost:3001");
+  });
+
+  it("falls back to a bundled image when no route image is configured", () => {
+    const html = renderToStaticMarkup(
+      React.createElement(RoutePricingCard, { route }),
+    );
+
+    expect(html).toContain("banner3.webp");
   });
 });

@@ -39,6 +39,12 @@ export function buildGlobalBusinessSchema(settings?: CompanySettingsData) {
     settings?.info?.summary ||
     "Dịch vụ xe ghép, xe tiện chuyến Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang";
   const priceRange = settings?.priceRange || "150.000đ - 2.500.000đ";
+  const logoSetting = settings?.info?.logoUrl;
+  const logoUrl = logoSetting
+    ? logoSetting.startsWith("http")
+      ? logoSetting
+      : `${SITE_DOMAIN}${logoSetting}`
+    : `${SITE_DOMAIN}/icon.svg`;
   const areaServed =
     settings?.areaServed && settings.areaServed.length > 0
       ? settings.areaServed.map((item) => ({
@@ -67,7 +73,7 @@ export function buildGlobalBusinessSchema(settings?: CompanySettingsData) {
         url: SITE_DOMAIN,
         logo: {
           "@type": "ImageObject",
-          url: `${SITE_DOMAIN}/images/logo-xe-ghep-lien-tinh.png`,
+          url: logoUrl,
           width: 512,
           height: 512,
         },

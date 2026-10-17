@@ -31,6 +31,8 @@ describe("Schema.org JSON-LD Builders", () => {
       info: {
         name: "Công Ty Vận Tải VIP",
         brandName: "Xe Ghép VIP",
+        logoUrl: "/media/logo-vip.png",
+        defaultOgImageUrl: null,
         hotline: "0988.111.222",
         hotlineRaw: "0988111222",
         hotlineHref: "tel:0988111222",
@@ -68,6 +70,9 @@ describe("Schema.org JSON-LD Builders", () => {
 
     expect(org?.name).toBe("Công Ty Vận Tải VIP");
     expect(org?.alternateName).toBe("Xe Ghép VIP");
+    expect(
+      (org?.logo as { url?: string } | undefined)?.url
+    ).toBe("https://xegheplientinh.vn/media/logo-vip.png");
     expect(taxiService?.telephone).toBe("+84988111222");
     expect(taxiService?.priceRange).toBe("200.000đ - 1.000.000đ");
     expect(taxiService?.areaServed).toEqual([{ "@type": "City", name: "Hải Phòng" }]);

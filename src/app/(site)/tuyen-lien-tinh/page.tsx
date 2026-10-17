@@ -49,7 +49,7 @@ export default async function TuyenLienTinhPage() {
           </div>
 
           {/* Tab filter and RouteCard grid */}
-          <RouteListing routes={routes} />
+          <RouteListing routes={routes} hotlineHref={info.hotlineHref} />
 
           {/* Khối ghi chú chung per spec_v2.md 5.1 */}
           <div className="bg-amber-50/80 border border-amber-300 rounded-2xl p-6 sm:p-8 max-w-4xl mx-auto space-y-4">

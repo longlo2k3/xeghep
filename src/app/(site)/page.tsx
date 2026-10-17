@@ -36,7 +36,7 @@ export default async function HomePage() {
       </section>
 
       {/* Section 2 — Bảng Giá Xe Ghép (Lưới 9 RouteCard) */}
-      <RoutePricingGrid routes={routes} />
+      <RoutePricingGrid routes={routes} hotlineHref={companySettings.info.hotlineHref} />
 
       {/* Section 4 — Vì Sao Chọn Xe Ghép Liên Tỉnh (Khung vàng) */}
       <WhyChooseUs />

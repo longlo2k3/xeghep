@@ -24,6 +24,8 @@ export interface RouteItem {
   faqs: { question: string; answer: string }[];
   regions: string[];
   isBannerTop?: boolean;
+  /** Ảnh nền lấy từ ảnh SEO (ogImage) của tuyến trong CMS. */
+  imageUrl?: string;
 }
 
 export interface CompanyInfoData {

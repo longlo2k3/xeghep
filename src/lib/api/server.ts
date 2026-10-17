@@ -54,6 +54,15 @@ import type {
 
 const text = (value: string | null | undefined): string => value ?? "";
 
+/** Ảnh CMS lưu dạng quan hệ media (populated) — trả về URL tương đối/absolute nếu có. */
+const mediaUrl = (value: unknown): string | null => {
+  if (value && typeof value === "object" && "url" in value) {
+    const url = (value as { url?: unknown }).url;
+    return typeof url === "string" && url.length > 0 ? url : null;
+  }
+  return null;
+};
+
 export const FALLBACK_COMPANY_SETTINGS: CompanySettingsData = {
   info: COMPANY_INFO,
   address: "Lê Chân, Hải Phòng, Việt Nam",
@@ -101,6 +110,7 @@ export function toRouteItem(card: RouteCardOut): RouteItem {
     faqs: [],
     regions: card.regions ?? [],
     isBannerTop: card.isBannerTop,
+    imageUrl: card.ogImage?.url ?? card.thumbnail?.url ?? undefined,
   };
 }
 
@@ -161,6 +171,8 @@ export function formatCompanySettings(doc: CompanySettingsOut): CompanySettingsD
   const info: CompanyInfoData = {
     name: text(identity.companyName) || COMPANY_INFO.name,
     brandName: text(identity.brandName) || COMPANY_INFO.brandName,
+    logoUrl: mediaUrl(brandSeo.logo),
+    defaultOgImageUrl: mediaUrl(brandSeo.defaultOgImage),
     hotline: text(contact.hotline) || COMPANY_INFO.hotline,
     hotlineRaw: text(contact.hotlineRaw) || COMPANY_INFO.hotlineRaw,
     hotlineHref: text(doc.hotlineHref) || COMPANY_INFO.hotlineHref,
