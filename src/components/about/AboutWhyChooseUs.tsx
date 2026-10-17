@@ -12,8 +12,10 @@ const COMMITMENT_ICONS: Record<string, React.ElementType> = {
 
 export function AboutWhyChooseUs({
   commitments = SIX_COMMITMENTS,
+  brandName = "Xe Ghép Liên Tỉnh",
 }: {
   commitments?: Commitment[];
+  brandName?: string;
 }) {
   const items = commitments && commitments.length > 0 ? commitments : SIX_COMMITMENTS;
 
@@ -28,7 +30,7 @@ export function AboutWhyChooseUs({
       </h2>
 
       <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-        Với phương châm <strong>“Khách hàng là thượng đế – An toàn là ưu tiên số 1”</strong>, Xe Ghép Liên Tỉnh cam kết mang tới chất lượng dịch vụ vượt trội, bảo vệ quyền lợi tối đa cho hành khách trên mọi chặng đường.
+        Với phương châm <strong>“Khách hàng là thượng đế – An toàn là ưu tiên số 1”</strong>, {brandName} cam kết mang tới chất lượng dịch vụ vượt trội, bảo vệ quyền lợi tối đa cho hành khách trên mọi chặng đường.
       </p>
 
       {/* Grid 6 Cam Kết Dịch Vụ Vàng */}

@@ -14,12 +14,16 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-export const metadata: Metadata = constructMetadata({
-  title: "Giới Thiệu Về Xe Ghép Liên Tỉnh - Tiện Chuyến Đón Tận Nhà",
-  description:
-    "Giới thiệu dịch vụ Xe Ghép Liên Tỉnh chuyên tuyến Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội. 100% xe riêng đời mới, phục vụ 24/7.",
-  path: "/gioi-thieu",
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const { info } = await getCompanySettings();
+  const brandName = info.brandName || COMPANY_INFO.brandName;
+
+  return constructMetadata({
+    title: `Giới Thiệu Về ${brandName} - Tiện Chuyến Đón Tận Nhà`,
+    description: `Giới thiệu dịch vụ ${brandName} chuyên tuyến Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội. 100% xe riêng đời mới, phục vụ 24/7.`,
+    path: "/gioi-thieu",
+  });
+}
 
 export default async function GioiThieuPage() {
   const [companySettings, routes] = await Promise.all([
@@ -45,7 +49,7 @@ export default async function GioiThieuPage() {
               Uy Tín • Tận Tâm • Tiết Kiệm
             </span>
             <h1 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight uppercase">
-              Giới thiệu về Xe Ghép Liên Tỉnh
+              Giới thiệu về {info.brandName}
             </h1>
             <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">
               Giải pháp di chuyển liên tỉnh tiện lợi, tiết kiệm chi phí và an
@@ -287,7 +291,10 @@ export default async function GioiThieuPage() {
           </div>
 
           {/* 6. Cam kết vàng (AboutWhyChooseUs) */}
-          <AboutWhyChooseUs commitments={companySettings.commitments} />
+          <AboutWhyChooseUs
+            commitments={companySettings.commitments}
+            brandName={info.brandName}
+          />
         </div>
       </div>
     </>
