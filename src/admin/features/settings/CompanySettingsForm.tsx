@@ -13,7 +13,9 @@ import {
   CheckCircle2,
   Image as ImageIcon,
   X,
+  Megaphone,
 } from 'lucide-react';
+import { COMPANY_INFO } from '@/data/company-info';
 import { Button } from '@/admin/components/ui/Button';
 import { Input } from '@/admin/components/ui/Input';
 import { Textarea } from '@/admin/components/ui/Textarea';
@@ -130,6 +132,14 @@ export function CompanySettingsForm() {
 
   const [address, setAddress] = useState('Số 12 Khuất Duy Tiến, Thanh Xuân, Hà Nội');
 
+  const [topBannerLine1, setTopBannerLine1] = useState(COMPANY_INFO.topBannerLine1);
+  const [topBannerLine2, setTopBannerLine2] = useState(COMPANY_INFO.topBannerLine2);
+  const [coverage, setCoverage] = useState(COMPANY_INFO.coverage);
+  const [workingHours, setWorkingHours] = useState(COMPANY_INFO.workingHours);
+  const [fleetDescription, setFleetDescription] = useState(COMPANY_INFO.fleetDescription);
+  const [bookingPromise, setBookingPromise] = useState(COMPANY_INFO.bookingPromise);
+  const [summary, setSummary] = useState(COMPANY_INFO.summary);
+
   const [logoMedia, setLogoMedia] = useState<MediaDoc | number | null>(null);
   const [ogImageMedia, setOgImageMedia] = useState<MediaDoc | number | null>(null);
   const [brandAreaServed, setBrandAreaServed] = useState<AreaServedItem[] | null>(null);
@@ -183,6 +193,15 @@ export function CompanySettingsForm() {
         }
         if (data.location?.address) {
           setAddress(data.location.address);
+        }
+        if (data.banner) {
+          if (data.banner.topBannerLine1 != null) setTopBannerLine1(data.banner.topBannerLine1);
+          if (data.banner.topBannerLine2 != null) setTopBannerLine2(data.banner.topBannerLine2);
+          if (data.banner.coverage != null) setCoverage(data.banner.coverage);
+          if (data.banner.workingHours != null) setWorkingHours(data.banner.workingHours);
+          if (data.banner.fleetDescription != null) setFleetDescription(data.banner.fleetDescription);
+          if (data.banner.bookingPromise != null) setBookingPromise(data.banner.bookingPromise);
+          if (data.banner.summary != null) setSummary(data.banner.summary);
         }
         if (data.brandSeo) {
           setLogoMedia(data.brandSeo.logo ?? null);
@@ -329,6 +348,15 @@ export function CompanySettingsForm() {
       },
       location: {
         address: address.trim() || null,
+      },
+      banner: {
+        topBannerLine1: topBannerLine1.trim() || null,
+        topBannerLine2: topBannerLine2.trim() || null,
+        coverage: coverage.trim() || null,
+        workingHours: workingHours.trim() || null,
+        fleetDescription: fleetDescription.trim() || null,
+        bookingPromise: bookingPromise.trim() || null,
+        summary: summary.trim() || null,
       },
       brandSeo: {
         logo: resolveMediaId(logoMedia),
@@ -619,7 +647,75 @@ export function CompanySettingsForm() {
         </CardContent>
       </Card>
 
-      {/* 3. Cam kết dịch vụ (6 cam kết tiêu chuẩn) */}
+      {/* 4. Banner đầu trang & Nội dung hiển thị chung */}
+      <Card>
+        <CardHeader>
+          <div className="flex items-center gap-2">
+            <Megaphone className="w-5 h-5 text-indigo-400" />
+            <CardTitle>Banner Đầu trang & Nội dung Chung</CardTitle>
+          </div>
+          <CardDescription>
+            Cấu hình dòng chữ thông báo trên thanh dải đầu website (TopBanner), phạm vi phủ sóng và tóm tắt dịch vụ.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Input
+              label="Banner dòng 1 (Tuyến chính / Thông báo nổi bật)"
+              placeholder="Ví dụ: XE GHÉP: MÓNG CÁI - HẠ LONG - HẢI PHÒNG - BẮC NINH - BẮC GIANG - HÀ NỘI"
+              value={topBannerLine1}
+              onChange={(e) => setTopBannerLine1(e.target.value)}
+            />
+            <Input
+              label="Banner dòng 2 (Hotline / Khuyến mãi)"
+              placeholder="Ví dụ: ĐẶT XE LIÊN HỆ NGAY: 0962.298.293"
+              value={topBannerLine2}
+              onChange={(e) => setTopBannerLine2(e.target.value)}
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Input
+              label="Giờ làm việc"
+              placeholder="Ví dụ: Phục vụ 24/7 (Cả ngày lẫn đêm, các ngày lễ tết)"
+              value={workingHours}
+              onChange={(e) => setWorkingHours(e.target.value)}
+            />
+            <Input
+              label="Phạm vi phủ sóng"
+              placeholder="Ví dụ: Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội"
+              value={coverage}
+              onChange={(e) => setCoverage(e.target.value)}
+            />
+          </div>
+
+          <Textarea
+            label="Mô tả đội xe"
+            placeholder="Ví dụ: 100% xe riêng đời mới 4, 5, 7 chỗ, điều hòa mát lạnh, sạch sẽ, bảo dưỡng định kỳ"
+            rows={2}
+            value={fleetDescription}
+            onChange={(e) => setFleetDescription(e.target.value)}
+          />
+
+          <Textarea
+            label="Cam kết đặt xe"
+            placeholder="Ví dụ: Giá rõ ràng đã bao gồm cầu đường bến bãi – Đưa đón tận nhà – Miễn phí hủy chuyến"
+            rows={2}
+            value={bookingPromise}
+            onChange={(e) => setBookingPromise(e.target.value)}
+          />
+
+          <Textarea
+            label="Tóm tắt dịch vụ"
+            placeholder="Tóm tắt ngắn gọn dịch vụ đưa đón..."
+            rows={3}
+            value={summary}
+            onChange={(e) => setSummary(e.target.value)}
+          />
+        </CardContent>
+      </Card>
+
+      {/* 5. Cam kết dịch vụ (6 cam kết tiêu chuẩn) */}
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">

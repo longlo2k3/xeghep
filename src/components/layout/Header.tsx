@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Phone, ChevronDown, Menu, X, Car } from "lucide-react";
 import { COMPANY_INFO } from "@/data/company-info";
 import { splitBrandName, toMediaSrc } from "@/lib/brand";
@@ -23,6 +24,15 @@ export function Header({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [routesDropdownOpen, setRoutesDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const isSectionActive = (href: string) =>
+    href === "/"
+      ? pathname === "/"
+      : pathname === href || pathname.startsWith(`${href}/`);
+  const desktopLinkClass = (active: boolean) =>
+    `px-3 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${active ? "text-red-700" : "text-slate-700 hover:text-red-600 hover:bg-red-50/60"}`;
+  const mobileLinkClass = (active: boolean) =>
+    `block px-4 py-2.5 rounded-lg text-base font-semibold ${active ? "text-red-700" : "text-slate-800 hover:bg-red-50 hover:text-red-600"}`;
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -113,14 +123,16 @@ export function Header({
             >
               <Link
                 href="/"
-                className="px-3 py-2 text-sm font-semibold text-slate-700 hover:text-red-600 hover:bg-red-50/60 rounded-lg transition-colors cursor-pointer"
+                aria-current={pathname === "/" ? "page" : undefined}
+                className={desktopLinkClass(pathname === "/")}
               >
                 Trang chủ
               </Link>
 
               <Link
                 href="/gioi-thieu"
-                className="px-3 py-2 text-sm font-semibold text-slate-700 hover:text-red-600 hover:bg-red-50/60 rounded-lg transition-colors cursor-pointer"
+                aria-current={pathname === "/gioi-thieu" ? "page" : undefined}
+                className={desktopLinkClass(isSectionActive("/gioi-thieu"))}
               >
                 Giới thiệu
               </Link>
@@ -131,7 +143,7 @@ export function Header({
                   type="button"
                   onClick={() => setRoutesDropdownOpen(!routesDropdownOpen)}
                   onMouseEnter={() => setRoutesDropdownOpen(true)}
-                  className="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-slate-700 hover:text-red-600 hover:bg-red-50/60 rounded-lg transition-colors cursor-pointer"
+                  className={`flex items-center gap-1 ${desktopLinkClass(isSectionActive("/tuyen-lien-tinh"))}`}
                   aria-expanded={routesDropdownOpen}
                   aria-haspopup="true"
                   aria-label="Danh mục các tuyến liên tỉnh"
@@ -151,7 +163,10 @@ export function Header({
                     <Link
                       href="/tuyen-lien-tinh"
                       onClick={() => setRoutesDropdownOpen(false)}
-                      className="block px-4 py-2 text-sm font-bold text-red-600 hover:bg-red-50 border-b border-slate-100"
+                      aria-current={
+                        pathname === "/tuyen-lien-tinh" ? "page" : undefined
+                      }
+                      className={`block px-4 py-2 text-sm font-bold hover:bg-red-50 border-b border-slate-100 ${pathname === "/tuyen-lien-tinh" ? "bg-red-50 text-red-700" : "text-red-600"}`}
                     >
                       Xem tất cả các tuyến &rarr;
                     </Link>
@@ -162,7 +177,12 @@ export function Header({
                           key={route.slug}
                           href={`/tuyen-lien-tinh/${route.slug}`}
                           onClick={() => setRoutesDropdownOpen(false)}
-                          className="flex items-center justify-between px-4 py-2 text-xs font-medium text-slate-700 hover:bg-red-50 hover:text-red-700 transition-colors"
+                          aria-current={
+                            pathname === `/tuyen-lien-tinh/${route.slug}`
+                              ? "page"
+                              : undefined
+                          }
+                          className={`flex items-center justify-between px-4 py-2 text-xs font-medium hover:bg-red-50 hover:text-red-700 transition-colors ${pathname === `/tuyen-lien-tinh/${route.slug}` ? "bg-red-50 text-red-700" : "text-slate-700"}`}
                         >
                           <span className="truncate pr-2">{route.name}</span>
                           <span className="text-[11px] font-semibold text-red-600 whitespace-nowrap">
@@ -177,14 +197,16 @@ export function Header({
 
               <Link
                 href="/tin-tuc"
-                className="px-3 py-2 text-sm font-semibold text-slate-700 hover:text-red-600 hover:bg-red-50/60 rounded-lg transition-colors cursor-pointer"
+                aria-current={pathname === "/tin-tuc" ? "page" : undefined}
+                className={desktopLinkClass(isSectionActive("/tin-tuc"))}
               >
                 Tin tức
               </Link>
 
               <Link
                 href="/lien-he"
-                className="px-3 py-2 text-sm font-semibold text-slate-700 hover:text-red-600 hover:bg-red-50/60 rounded-lg transition-colors cursor-pointer"
+                aria-current={pathname === "/lien-he" ? "page" : undefined}
+                className={desktopLinkClass(isSectionActive("/lien-he"))}
               >
                 Liên hệ
               </Link>
@@ -225,7 +247,8 @@ export function Header({
             <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-800 hover:bg-red-50 hover:text-red-600"
+              aria-current={pathname === "/" ? "page" : undefined}
+              className={mobileLinkClass(pathname === "/")}
             >
               Trang chủ
             </Link>
@@ -233,7 +256,8 @@ export function Header({
             <Link
               href="/gioi-thieu"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-800 hover:bg-red-50 hover:text-red-600"
+              aria-current={pathname === "/gioi-thieu" ? "page" : undefined}
+              className={mobileLinkClass(isSectionActive("/gioi-thieu"))}
             >
               Giới thiệu
             </Link>
@@ -241,7 +265,10 @@ export function Header({
             <Link
               href="/tuyen-lien-tinh"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2.5 rounded-lg text-base font-bold text-red-600 hover:bg-red-50"
+              aria-current={
+                pathname === "/tuyen-lien-tinh" ? "page" : undefined
+              }
+              className={`block px-4 py-2.5 rounded-lg text-base font-bold hover:bg-red-50 ${isSectionActive("/tuyen-lien-tinh") ? "bg-red-50 text-red-700" : "text-red-600"}`}
             >
               Các tuyến liên tỉnh (Xem tất cả)
             </Link>
@@ -252,7 +279,12 @@ export function Header({
                   key={route.slug}
                   href={`/tuyen-lien-tinh/${route.slug}`}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-1.5 text-xs font-medium text-slate-600 hover:text-red-600"
+                  aria-current={
+                    pathname === `/tuyen-lien-tinh/${route.slug}`
+                      ? "page"
+                      : undefined
+                  }
+                  className={`block px-3 py-1.5 rounded-md text-xs font-medium hover:text-red-600 ${pathname === `/tuyen-lien-tinh/${route.slug}` ? "bg-red-50 text-red-700" : "text-slate-600"}`}
                 >
                   {route.name}
                 </Link>
@@ -262,7 +294,8 @@ export function Header({
             <Link
               href="/tin-tuc"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-800 hover:bg-red-50 hover:text-red-600"
+              aria-current={pathname === "/tin-tuc" ? "page" : undefined}
+              className={mobileLinkClass(isSectionActive("/tin-tuc"))}
             >
               Tin tức
             </Link>
@@ -270,7 +303,8 @@ export function Header({
             <Link
               href="/lien-he"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-800 hover:bg-red-50 hover:text-red-600"
+              aria-current={pathname === "/lien-he" ? "page" : undefined}
+              className={mobileLinkClass(isSectionActive("/lien-he"))}
             >
               Liên hệ
             </Link>
