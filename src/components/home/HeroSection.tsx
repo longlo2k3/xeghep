@@ -20,8 +20,8 @@ export function HeroSection({
       {/* Background: Ảnh đội xe màu trắng + Scrim gradient */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <Image
-          src="/banner3.webp"
-          alt="Đội xe riêng đời mới phục vụ xe ghép liên tỉnh"
+          src={info.heroImageUrl}
+          alt={info.heroImageAlt}
           fill
           priority
           sizes="100vw"
@@ -48,17 +48,15 @@ export function HeroSection({
         <div className="flex flex-col gap-2.5 sm:gap-3.5 max-w-2xl">
           {/* H1 gồm 2 dòng, in hoa, font-black, line-height sát */}
           <h1 className="text-3xl sm:text-4xl lg:text-[44px] xl:text-5xl font-black tracking-tight uppercase leading-[1.08]">
-            <span className="block text-red-600">XE GHÉP LIÊN TỈNH</span>
+            <span className="block text-red-600">{info.heroTitleLine1}</span>
             <span className="block text-slate-900 mt-0.5 sm:mt-1">
-              GIÁ CHỈ TỪ 200K
+              {info.heroTitleLine2}
             </span>
           </h1>
 
           {/* Đoạn mô tả bên dưới H1 — mobile: ẩn nhưng vẫn giữ chiều cao */}
           <p className="invisible sm:visible text-xs sm:text-sm lg:text-[15px] text-slate-700 leading-relaxed font-normal max-w-lg">
-            Dịch vụ xe ghép – xe tiện chuyến Móng Cái, Hạ Long, Hải Phòng, Hà
-            Nội, Bắc Ninh, Bắc Giang... Xe chạy thẳng, nhanh, đón trả tận nơi,
-            phục vụ 24/7.
+            {info.heroDescription}
           </p>
 
           {/* Hotline & cam kết tiện ích — mobile: ẩn nhưng vẫn giữ chiều cao */}
@@ -79,21 +77,21 @@ export function HeroSection({
                 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"
                 aria-hidden="true"
               />
-              <span>Đón trả tận nhà</span>
+              <span>{info.heroBenefit1}</span>
             </div>
             <div className="flex items-center gap-1 font-medium">
               <Zap
                 className="w-3.5 h-3.5 text-amber-600 flex-shrink-0"
                 aria-hidden="true"
               />
-              <span>Chỉ 1–3 khách</span>
+              <span>{info.heroBenefit2}</span>
             </div>
             <div className="flex items-center gap-1 font-medium">
               <Award
                 className="w-3.5 h-3.5 text-sky-600 flex-shrink-0"
                 aria-hidden="true"
               />
-              <span>100% xe đời mới</span>
+              <span>{info.heroBenefit3}</span>
             </div>
           </div>
         </div>

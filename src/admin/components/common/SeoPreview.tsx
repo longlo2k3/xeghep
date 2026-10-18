@@ -8,6 +8,7 @@ import {
   Car,
 } from 'lucide-react';
 import { Card } from '@/admin/components/ui/Card';
+import { SITE_DOMAIN } from '@/lib/seo';
 
 export interface SeoPreviewProps {
   title: string;
@@ -43,8 +44,8 @@ export function SeoPreview({
   const cleanPrefix = prefix ? prefix.replace(/^\/+|\/+$/g, '') : '';
   const cleanSlug = slug ? slug.replace(/^\/+|\/+$/g, '') : 'duong-dan-bai-viet';
   const displayUrl = cleanPrefix
-    ? `https://xegheplientinh.vn/${cleanPrefix}/${cleanSlug}`
-    : `https://xegheplientinh.vn/${cleanSlug}`;
+    ? `${SITE_DOMAIN}/${cleanPrefix}/${cleanSlug}`
+    : `${SITE_DOMAIN}/${cleanSlug}`;
 
   // Độ dài ký tự
   const titleLength = effectiveTitle.length;

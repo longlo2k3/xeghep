@@ -1,4 +1,7 @@
 import { loadEnv } from "payload/node";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 (process.env as Record<string, string | undefined>).NODE_ENV = "development";
 loadEnv();
@@ -17,13 +20,13 @@ export const SEED_COMPANY = {
   identity: {
     companyName: "Xe Ghép Liên Tỉnh",
     brandName: "Xe Ghép Liên Tỉnh",
-    website: "https://xegheplientinh.vn",
+    website: "https://xeghephaiphonghanoi.com",
   },
   contact: {
     hotline: "0962.298.293",
     hotlineRaw: "0962298293",
     secondaryPhone: { label: "Tổng đài lưu đêm", number: "0858.911.247" },
-    email: "xegheplientinhvip@gmail.com",
+    email: "xeghephaiphonghanoi@gmail.com",
     zaloUrl: "https://zalo.me/0962298293",
     fanpageName: "Xe Ghép Bắc Giang - Bắc Ninh - Hải Phòng",
     fanpageUrl: "https://www.facebook.com/xeghepbacgiangbacninhhaiphong",
@@ -36,6 +39,12 @@ export const SEED_COMPANY = {
   banner: {
     topBannerLine1: "XE GHÉP: MÓNG CÁI - HẠ LONG - HẢI PHÒNG - BẮC NINH - BẮC GIANG - HÀ NỘI",
     topBannerLine2: "ĐẶT XE LIÊN HỆ NGAY: 0962.298.293",
+    heroTitleLine1: "XE GHÉP LIÊN TỈNH",
+    heroTitleLine2: "GIÁ CHỈ TỪ 200K",
+    heroDescription: "Dịch vụ xe ghép – xe tiện chuyến Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang... Xe chạy thẳng, nhanh, đón trả tận nơi, phục vụ 24/7.",
+    heroBenefit1: "Đón trả tận nhà",
+    heroBenefit2: "Chỉ 1–3 khách",
+    heroBenefit3: "100% xe đời mới",
     coverage: "Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội",
     workingHours: "Phục vụ 24/7 (Cả ngày lẫn đêm, các ngày lễ tết)",
     fleetDescription:
@@ -152,9 +161,30 @@ const invokedAsScript = (process.argv[1] ?? "").replace(/\\/g, "/").endsWith("/s
 if (invokedAsScript) {
   const payload = await getPayload({ config });
 
+  // Resolve quan hệ bằng filename ổn định; ID 33 chỉ đúng trên DB hiện tại.
+  const logoFilename = "HaNam.png";
+  const found = await payload.find({
+    collection: "media",
+    limit: 1,
+    where: { filename: { like: "HaNam%" } },
+    overrideAccess: true,
+  });
+  let logoId = found.docs[0]?.id;
+  if (logoId == null) {
+    const source = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../media", logoFilename);
+    const data = fs.readFileSync(source);
+    const logo = await payload.create({
+      collection: "media",
+      data: { alt: "Xe ghép Hải Phòng Hà Nam" },
+      file: { data, mimetype: "image/png", name: logoFilename, size: data.length },
+      overrideAccess: true,
+    });
+    logoId = logo.id;
+  }
+
   const doc = await payload.updateGlobal({
     slug: "company_settings",
-    data: SEED_COMPANY,
+    data: { ...SEED_COMPANY, brandSeo: { ...SEED_COMPANY.brandSeo, logo: logoId } },
     overrideAccess: true,
   });
 

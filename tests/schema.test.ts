@@ -45,6 +45,14 @@ describe("Schema.org JSON-LD Builders", () => {
         fanpageUrl: "https://facebook.com/xeghepvip",
         topBannerLine1: "BANNER 1",
         topBannerLine2: "BANNER 2",
+        heroImageUrl: "/banner3.webp",
+        heroImageAlt: "Đội xe",
+        heroTitleLine1: "XE GHÉP VIP",
+        heroTitleLine2: "ĐẶT XE NGAY",
+        heroDescription: "Dịch vụ xe ghép cao cấp",
+        heroBenefit1: "Đón tận nơi",
+        heroBenefit2: "Xe đời mới",
+        heroBenefit3: "Phục vụ 24/7",
         coverage: "Hà Nội - Hải Phòng",
         workingHours: "24/7",
         fleetDescription: "Xe VIP",
@@ -72,7 +80,7 @@ describe("Schema.org JSON-LD Builders", () => {
     expect(org?.alternateName).toBe("Xe Ghép VIP");
     expect(
       (org?.logo as { url?: string } | undefined)?.url
-    ).toBe("https://xegheplientinh.vn/media/logo-vip.png");
+    ).toBe("https://xeghephaiphonghanoi.com/media/logo-vip.png");
     expect(taxiService?.telephone).toBe("+84988111222");
     expect(taxiService?.priceRange).toBe("200.000đ - 1.000.000đ");
     expect(taxiService?.areaServed).toEqual([{ "@type": "City", name: "Hải Phòng" }]);

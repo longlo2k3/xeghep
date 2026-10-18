@@ -77,6 +77,13 @@ export interface CompanySettings {
   banner?: {
     topBannerLine1?: string | null;
     topBannerLine2?: string | null;
+    heroImage?: (number | null) | MediaDoc;
+    heroTitleLine1?: string | null;
+    heroTitleLine2?: string | null;
+    heroDescription?: string | null;
+    heroBenefit1?: string | null;
+    heroBenefit2?: string | null;
+    heroBenefit3?: string | null;
     coverage?: string | null;
     workingHours?: string | null;
     fleetDescription?: string | null;

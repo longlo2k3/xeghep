@@ -27,7 +27,7 @@ export interface ArticleSchemaInput {
 
 /**
  * Builds the master Organization and TaxiService Schema.org @graph definition
- * Accurately represents Xe Ghép Liên Tỉnh (xegheplientinh.vn) based on spec_v2.md
+ * Represents the current company settings on the canonical website.
  */
 export function buildGlobalBusinessSchema(settings?: CompanySettingsData) {
   const telephone = settings?.info?.hotlineRaw

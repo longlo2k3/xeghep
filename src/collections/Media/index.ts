@@ -50,7 +50,7 @@ export const Media: CollectionConfig = {
     ],
   },
   upload: {
-    staticDir: "media",
+    staticDir: process.env.PAYLOAD_MEDIA_DIR || "media",
     // Chỉ chấp nhận ảnh (JPG/PNG/WebP/AVIF).
     mimeTypes: ["image/jpeg", "image/png", "image/webp", "image/avif"],
     adminThumbnail: ({ doc }: { doc: Record<string, unknown> }) => {

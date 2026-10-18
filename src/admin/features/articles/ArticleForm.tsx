@@ -19,6 +19,7 @@ import { Card } from '@/admin/components/ui/Card';
 import { MediaPickerModal } from '@/admin/components/common/MediaPickerModal';
 import { RichTextEditor } from '@/admin/components/common/RichTextEditor';
 import { SeoPreview } from '@/admin/components/common/SeoPreview';
+import { SITE_DOMAIN } from '@/lib/seo';
 import { apiClient, getApiErrorMessage } from '@/admin/lib/api-client';
 import { slugify } from '@/admin/lib/utils';
 import type { ArticleDoc, ArticleCategory } from '@/admin/types/articles';
@@ -399,7 +400,7 @@ export function ArticleForm() {
               data-testid="article-slug-input"
             />
             <p className="text-[11px] text-slate-500 font-mono">
-              Đường dẫn đầy đủ: https://xegheplientinh.vn/tin-tuc/{form.slug || 'slug-bai-viet'}
+              Đường dẫn đầy đủ: {SITE_DOMAIN}/tin-tuc/{form.slug || 'slug-bai-viet'}
             </p>
           </div>
 

@@ -41,6 +41,11 @@ const mockCompanySettings = {
   location: {
     address: '123 Đường Láng, Đống Đa, Hà Nội',
   },
+  banner: {
+    heroTitleLine1: 'XE GHÉP THEO YÊU CẦU',
+    heroTitleLine2: 'ĐẶT XE NHANH',
+    heroDescription: 'Đón khách tận nơi.',
+  },
   commitments: [
     { title: 'Cam kết 1', description: 'Mô tả cam kết 1', iconName: 'Clock' },
     { title: 'Cam kết 2', description: 'Mô tả cam kết 2', iconName: 'ShieldCheck' },
@@ -96,6 +101,7 @@ describe('Settings & Pricing Module (Task T118)', () => {
       expect(screen.getByDisplayValue('support@test.vn')).toBeDefined();
       expect(screen.getByDisplayValue('123 Đường Láng, Đống Đa, Hà Nội')).toBeDefined();
       expect(screen.getByDisplayValue('0109999999')).toBeDefined();
+      expect(screen.getByDisplayValue('XE GHÉP THEO YÊU CẦU')).toBeDefined();
     });
 
     it('cho phép thêm cam kết mới và lưu thành công qua POST /api/globals/company_settings', async () => {
@@ -114,6 +120,9 @@ describe('Settings & Pricing Module (Task T118)', () => {
 
       const addCommitmentBtn = screen.getByRole('button', { name: /Thêm cam kết/i });
       fireEvent.click(addCommitmentBtn);
+      fireEvent.change(screen.getByDisplayValue('XE GHÉP THEO YÊU CẦU'), {
+        target: { value: 'XE GHÉP MỚI' },
+      });
 
       const submitBtn = screen.getByRole('button', { name: /Lưu cấu hình Doanh nghiệp/i });
       fireEvent.click(submitBtn);
@@ -125,6 +134,7 @@ describe('Settings & Pricing Module (Task T118)', () => {
             identity: expect.objectContaining({
               companyName: 'Công ty Cổ phần Vận tải Xe Ghép Test',
             }),
+            banner: expect.objectContaining({ heroTitleLine1: 'XE GHÉP MỚI' }),
           })
         );
       });

@@ -72,7 +72,7 @@ export default buildConfig({
     "http://127.0.0.1:3000",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://xegheplientinh.vn",
+    "https://xeghephaiphonghanoi.com",
   ],
   csrf: [
     "http://localhost:4000",
@@ -83,7 +83,7 @@ export default buildConfig({
     "http://127.0.0.1:3000",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://xegheplientinh.vn",
+    "https://xeghephaiphonghanoi.com",
   ],
   editor: lexicalEditor(),
   // Payload 3 không tự nạp sharp — pass vào đây để imageSizes/resizeOptions

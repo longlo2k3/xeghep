@@ -46,7 +46,9 @@ export function Footer({
               <div>
                 <span className="text-xl font-black text-white tracking-tight uppercase">
                   {brandLead}{" "}
-                  {brandAccent && <span className="text-red-500">{brandAccent}</span>}
+                  {brandAccent && (
+                    <span className="text-red-500">{brandAccent}</span>
+                  )}
                 </span>
                 <p className="text-xs text-slate-400">{info.domainName}</p>
               </div>
@@ -65,12 +67,20 @@ export function Footer({
 
             <div className="space-y-2.5 text-xs sm:text-sm text-slate-400">
               <div className="flex items-center gap-2.5">
-                <Globe className="w-4 h-4 text-red-500 flex-shrink-0" aria-hidden="true" />
-                <span>Website: <strong>{info.domainName}</strong></span>
+                <Globe
+                  className="w-4 h-4 text-red-500 flex-shrink-0"
+                  aria-hidden="true"
+                />
+                <span>
+                  Website: <strong>{info.domainName}</strong>
+                </span>
               </div>
 
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-red-500 flex-shrink-0" aria-hidden="true" />
+                <Phone
+                  className="w-4 h-4 text-red-500 flex-shrink-0"
+                  aria-hidden="true"
+                />
                 <a
                   href={info.hotlineHref}
                   className="text-amber-400 font-bold hover:underline"
@@ -80,7 +90,10 @@ export function Footer({
               </div>
 
               <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-red-500 flex-shrink-0" aria-hidden="true" />
+                <Mail
+                  className="w-4 h-4 text-red-500 flex-shrink-0"
+                  aria-hidden="true"
+                />
                 <a
                   href={`mailto:${info.email}`}
                   className="hover:text-white transition-colors truncate"
@@ -90,7 +103,10 @@ export function Footer({
               </div>
 
               <div className="flex items-start gap-2.5">
-                <FacebookIcon className="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <FacebookIcon
+                  className="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5"
+                  aria-hidden="true"
+                />
                 <a
                   href={info.fanpageUrl}
                   target="_blank"
@@ -185,7 +201,17 @@ export function Footer({
 
         {/* Dòng cuối: Bản quyền per spec_v2.md 2.4 */}
         <div className="pt-6 border-t border-slate-900 text-center text-xs text-slate-400">
-          <p>© Bản quyền thuộc về {info.name}.</p>
+          <p>
+            © {new Date().getFullYear()} Bản quyền thuộc về{" "}
+            <a
+              href="https://hoanghadigital.vn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Hoàng Hà Digital
+            </a>
+            .
+          </p>
         </div>
       </div>
     </footer>

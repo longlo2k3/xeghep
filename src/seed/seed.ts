@@ -7,38 +7,29 @@ import { loadEnv } from "payload/node";
 loadEnv();
 
 /**
- * Seed tổng — chạy tuần tự mọi script seed (idempotent, T048).
- * Chạy: `npm run seed`. Dừng ngay khi bước nào exit ≠ 0.
- *
- * Thứ tự: admin → routes (kèm media + assertPriceFrom) → pages → articles
- * (kèm media, cần routes cho relatedRoute) → airport → distance → redirects
- * → company → pricing → users.
+ * Restore a database-synchronized content snapshot into an empty content DB,
+ * then create the environment-configured admin accounts. Schema changes are
+ * explicit because the current DB has unrelated tables/columns to preserve.
  */
 
 const SEED_DIR = path.dirname(fileURLToPath(import.meta.url));
 
 const STEPS: { name: string; file: string }[] = [
+  { name: "snapshot", file: "seedDatabaseSnapshot.ts" },
   { name: "admin", file: "seedAdmin.ts" },
-  { name: "routes", file: "seedRoutes.ts" },
-  { name: "pages", file: "seedPages.ts" },
-  { name: "articles", file: "seedArticles.ts" },
-  { name: "airport", file: "seedAirport.ts" },
-  { name: "distance", file: "seedDistance.ts" },
-  { name: "redirects", file: "seedRedirects.ts" },
-  { name: "company", file: "seedCompany.ts" },
-  { name: "pricing", file: "seedPricingSettings.ts" },
   { name: "users", file: "seedUsers.ts" },
 ];
 
 for (const step of STEPS) {
   const scriptPath = path.join(SEED_DIR, step.file);
   console.log(`\n=== Seed: ${step.name} (${step.file}) ===`);
-  const result = spawnSync(process.execPath, ["--import", "tsx", scriptPath], {
+  const bootstrapPath = path.resolve(SEED_DIR, "../scripts/tsxUserInfoFallback.cjs");
+  const result = spawnSync(process.execPath, ["--require", bootstrapPath, "--import", "tsx", scriptPath], {
     stdio: "inherit",
     env: {
       ...process.env,
       NODE_ENV: "development",
-      PAYLOAD_DB_PUSH: step.name === "admin" ? "true" : "false",
+      PAYLOAD_DB_PUSH: "false",
     },
   });
   if (result.status !== 0) {

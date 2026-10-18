@@ -72,12 +72,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "xegheplientinh.vn",
+        hostname: "xeghephaiphonghanoi.com",
         pathname: "/media/**",
       },
       {
         protocol: "https",
-        hostname: "api.xegheplientinh.vn",
+        hostname: "api.xeghephaiphonghanoi.com",
         pathname: "/media/**",
       },
     ],

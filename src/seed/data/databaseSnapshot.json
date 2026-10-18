@@ -1,0 +1,4504 @@
+{
+  "version": 1,
+  "media": [
+    {
+      "sourceId": 1,
+      "source": "media/BacGiang.webp",
+      "alt": "Xe ghép Hải Phòng Bắc Giang",
+      "caption": null
+    },
+    {
+      "sourceId": 2,
+      "source": "media/BacNinh.webp",
+      "alt": "Xe ghép Hải Phòng Bắc Ninh",
+      "caption": null
+    },
+    {
+      "sourceId": 3,
+      "source": "media/HaLong.webp",
+      "alt": "Xe ghép Hải Phòng Hạ Long",
+      "caption": null
+    },
+    {
+      "sourceId": 4,
+      "source": "media/HaNoi.webp",
+      "alt": "Xe ghép Hà Nội",
+      "caption": null
+    },
+    {
+      "sourceId": 5,
+      "source": "media/HaiPhong.webp",
+      "alt": "Xe ghép Hải Phòng Hà Nội Nội Bài",
+      "caption": null
+    },
+    {
+      "sourceId": 6,
+      "source": "media/MongCai.webp",
+      "alt": "Xe ghép Hải Phòng Móng Cái",
+      "caption": null
+    },
+    {
+      "sourceId": 7,
+      "source": "media/NoiBai.webp",
+      "alt": "Xe ghép Hải Phòng Nội Bài",
+      "caption": null
+    },
+    {
+      "sourceId": 8,
+      "source": "media/banner.png",
+      "alt": "Xe ghép liên tỉnh",
+      "caption": null
+    },
+    {
+      "sourceId": 9,
+      "source": "media/banner2.webp",
+      "alt": "Xe ghép liên tỉnh",
+      "caption": null
+    },
+    {
+      "sourceId": 10,
+      "source": "media/letan.webp",
+      "alt": "Lái xe nghiệm thu",
+      "caption": null
+    },
+    {
+      "sourceId": 11,
+      "source": "media/photo01.avif",
+      "alt": "Bảng giá xe ghép liên tỉnh mới nhất 2026",
+      "caption": null
+    },
+    {
+      "sourceId": 12,
+      "source": "media/photo02.avif",
+      "alt": "Kinh nghiệm đặt xe ghép liên tỉnh tiết kiệm",
+      "caption": null
+    },
+    {
+      "sourceId": 13,
+      "source": "media/photo03.avif",
+      "alt": "Đón trả tận nhà trên mọi tuyến xe ghép liên tỉnh",
+      "caption": null
+    },
+    {
+      "sourceId": 14,
+      "source": "media/photo04.avif",
+      "alt": "Đặt xe ghép liên tỉnh 24/7 qua tổng đài",
+      "caption": null
+    },
+    {
+      "sourceId": 15,
+      "source": "media/tongdai.webp",
+      "alt": "Tổng đài đặt xe",
+      "caption": null
+    },
+    {
+      "sourceId": 16,
+      "source": "media/BacGiang.webp",
+      "alt": "Xe ghép Hải Phòng Bắc Giang",
+      "caption": null
+    },
+    {
+      "sourceId": 17,
+      "source": "media/BacNinh.webp",
+      "alt": "Xe ghép Hải Phòng Bắc Ninh",
+      "caption": null
+    },
+    {
+      "sourceId": 18,
+      "source": "media/HaLong.webp",
+      "alt": "Xe ghép Hải Phòng Hạ Long",
+      "caption": null
+    },
+    {
+      "sourceId": 19,
+      "source": "media/HaNoi.webp",
+      "alt": "Xe ghép Hà Nội",
+      "caption": null
+    },
+    {
+      "sourceId": 20,
+      "source": "media/HaiPhong.webp",
+      "alt": "Xe ghép Hải Phòng Hà Nội Nội Bài",
+      "caption": null
+    },
+    {
+      "sourceId": 21,
+      "source": "media/MongCai.webp",
+      "alt": "Xe ghép Hải Phòng Móng Cái",
+      "caption": null
+    },
+    {
+      "sourceId": 22,
+      "source": "media/NoiBai.webp",
+      "alt": "Xe ghép Hải Phòng Nội Bài",
+      "caption": null
+    },
+    {
+      "sourceId": 23,
+      "source": "media/banner.png",
+      "alt": "Xe ghép liên tỉnh",
+      "caption": null
+    },
+    {
+      "sourceId": 24,
+      "source": "media/banner2.webp",
+      "alt": "Xe ghép liên tỉnh",
+      "caption": null
+    },
+    {
+      "sourceId": 25,
+      "source": "media/letan.webp",
+      "alt": "Lái xe nghiệm thu",
+      "caption": null
+    },
+    {
+      "sourceId": 26,
+      "source": "media/photo01.avif",
+      "alt": "Bảng giá xe ghép liên tỉnh mới nhất 2026",
+      "caption": null
+    },
+    {
+      "sourceId": 27,
+      "source": "media/photo02.avif",
+      "alt": "Kinh nghiệm đặt xe ghép liên tỉnh tiết kiệm",
+      "caption": null
+    },
+    {
+      "sourceId": 28,
+      "source": "media/photo03.avif",
+      "alt": "Đón trả tận nhà trên mọi tuyến xe ghép liên tỉnh",
+      "caption": null
+    },
+    {
+      "sourceId": 29,
+      "source": "media/photo04.avif",
+      "alt": "Đặt xe ghép liên tỉnh 24/7 qua tổng đài",
+      "caption": null
+    },
+    {
+      "sourceId": 33,
+      "source": "media/HaNam.png",
+      "alt": "Xe ghép Hải Phòng Hà Nam",
+      "caption": null
+    },
+    {
+      "sourceId": 34,
+      "source": "media/NamDinh.png",
+      "alt": "Xe ghép Hải Phòng Nam Định",
+      "caption": null
+    },
+    {
+      "sourceId": 35,
+      "source": "media/ThaiNguyen.png",
+      "alt": "Xe ghép Hải Phòng Thái Nguyên",
+      "caption": null
+    },
+    {
+      "sourceId": 36,
+      "source": "public/banner3.webp",
+      "alt": "Đội xe riêng đời mới phục vụ xe ghép liên tỉnh",
+      "caption": null
+    }
+  ],
+  "routes": [
+    {
+      "sourceId": 1,
+      "data": {
+        "slug": "hai-phong-bac-ninh-bac-giang",
+        "name": "Hải Phòng ⇄ Bắc Ninh ⇄ Bắc Giang",
+        "origin": "Hải Phòng",
+        "destination": "Bắc Ninh / Bắc Giang",
+        "distance": "95 - 110 km",
+        "duration": "1 giờ 45 phút",
+        "tierShare1": {
+          "min": 400000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "tierShare2": {
+          "min": 700000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "tierCharter45": {
+          "min": 800000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "tierCharter7": {
+          "min": 900000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "priceValidUntil": null,
+        "pricingDetails": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c2a",
+            "tierKey": "share1",
+            "label": "Ghép 1 người",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c2b",
+            "tierKey": "share2",
+            "label": "Ghép 2 người",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c2c",
+            "tierKey": "charter45",
+            "label": "Bao xe 5 chỗ",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c2d",
+            "tierKey": "charter7",
+            "label": "Bao xe 7 chỗ",
+            "note": null
+          }
+        ],
+        "useCustomPricingHtml": false,
+        "customPricingHtml": null,
+        "customPricingCss": null,
+        "customPricingJs": null,
+        "description": "Tuyến xe ghép Hải Phòng ⇄ Bắc Ninh ⇄ Bắc Giang đón trả tận nhà tại nội thành Hải Phòng, Quán Toan và trả tận nơi tại TP. Bắc Ninh, TP. Bắc Giang và các KCN Quế Võ, Yên Phong, Quang Châu.",
+        "detailedContent": null,
+        "operatingHoursText": null,
+        "frequencyText": null,
+        "pickups": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c2e",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c2f",
+            "text": "Hồng Bàng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c30",
+            "text": "Lê Chân"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c31",
+            "text": "Ngô Quyền"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c32",
+            "text": "Thủy Nguyên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c33",
+            "text": "An Dương"
+          }
+        ],
+        "dropoffs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c34",
+            "text": "TP. Bắc Ninh"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c35",
+            "text": "TP. Bắc Giang"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c36",
+            "text": "KCN Quế Võ"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c37",
+            "text": "KCN Yên Phong"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c38",
+            "text": "KCN Quang Châu"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c39",
+            "text": "KCN Đình Trám"
+          }
+        ],
+        "originAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c3a",
+            "text": "Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c3b",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c3c",
+            "text": "Hồng Bàng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c3d",
+            "text": "Lê Chân"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c3e",
+            "text": "Ngô Quyền"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c3f",
+            "text": "Thủy Nguyên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c40",
+            "text": "An Dương"
+          }
+        ],
+        "destinationAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c41",
+            "text": "Bắc Ninh"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c42",
+            "text": "Bắc Giang"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c43",
+            "text": "TP. Bắc Ninh"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c44",
+            "text": "TP. Bắc Giang"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c45",
+            "text": "KCN Quế Võ"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c46",
+            "text": "KCN Yên Phong"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c47",
+            "text": "KCN Quang Châu"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c48",
+            "text": "KCN Đình Trám"
+          }
+        ],
+        "regions": [
+          "Hải Phòng",
+          "Bắc Ninh – Bắc Giang"
+        ],
+        "thumbnail": 20,
+        "slides": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c49",
+            "image": 20,
+            "badge": "Hải Phòng",
+            "caption": "Đón trả tận nhà tại nội thành Hải Phòng, Quán Toan, Thủy Nguyên",
+            "alt": "Xe ghép Hải Phòng Bắc Ninh Bắc Giang đón trả tại Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c4a",
+            "image": 17,
+            "badge": "Bắc Ninh",
+            "caption": "Trả tận nơi tại TP. Bắc Ninh, KCN Quế Võ, KCN Yên Phong",
+            "alt": "Xe ghép Hải Phòng đi Bắc Ninh đón trả KCN"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c4b",
+            "image": 16,
+            "badge": "Bắc Giang",
+            "caption": "Trả tận nơi tại TP. Bắc Giang, KCN Quang Châu, KCN Đình Trám",
+            "alt": "Xe tiện chuyến Hải Phòng đi Bắc Giang"
+          }
+        ],
+        "faqs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c4c",
+            "question": "Xe ghép Hải Phòng - Bắc Ninh - Bắc Giang có đón trả tận nhà không?",
+            "answer": "Có, xe đón trả tận nơi tại nhà riêng, cơ quan, khách sạn hoặc các khu công nghiệp theo yêu cầu."
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c4d",
+            "question": "Một xe ghép đi tối đa bao nhiêu người?",
+            "answer": "Xe chỉ nhận từ 1 đến 3 khách/chuyến để đảm bảo không gian rộng rãi, thoáng mát, xe chạy thẳng không vòng vèo."
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c4e",
+            "question": "Có nhận chở hàng hóa trên tuyến này không?",
+            "answer": "Có, chúng tôi nhận gửi hàng hóa, bưu phẩm hỏa tốc giá chỉ từ 150k giao tận tay trong ngày."
+          }
+        ],
+        "relatedRoutes": [],
+        "isBannerTop": false,
+        "bannerLabel": null,
+        "sortOrder": 1,
+        "status": "active",
+        "seo": {
+          "metaTitle": null,
+          "appendBrand": true,
+          "metaDescription": null,
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 2,
+      "data": {
+        "slug": "hai-phong-ha-noi-noi-bai",
+        "name": "Hải Phòng ⇄ Hà Nội ⇄ Nội Bài",
+        "origin": "Hải Phòng",
+        "destination": "Hà Nội / Nội Bài",
+        "distance": "120 - 145 km",
+        "duration": "1 giờ 30 phút",
+        "tierShare1": {
+          "min": 400000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierShare2": {
+          "min": 700000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter45": {
+          "min": 900000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "tierCharter7": {
+          "min": 950000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "priceValidUntil": null,
+        "pricingDetails": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c4f",
+            "tierKey": "share1",
+            "label": "Ghép 1 người",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c50",
+            "tierKey": "share2",
+            "label": "Ghép 2 người",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c51",
+            "tierKey": "charter45",
+            "label": "Bao xe 5 chỗ",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c52",
+            "tierKey": "charter7",
+            "label": "Bao xe 7 chỗ",
+            "note": null
+          }
+        ],
+        "useCustomPricingHtml": false,
+        "customPricingHtml": null,
+        "customPricingCss": null,
+        "customPricingJs": null,
+        "description": "Dịch vụ xe ghép và xe tiện chuyến Hải Phòng ⇄ Hà Nội ⇄ Sân bay Nội Bài chạy cao tốc 5B êm ái, đón trả tận nơi tại nhà riêng và các sảnh sân bay 24/7.",
+        "detailedContent": null,
+        "operatingHoursText": null,
+        "frequencyText": null,
+        "pickups": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c53",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c54",
+            "text": "Hồng Bàng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c55",
+            "text": "Lê Chân"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c56",
+            "text": "Ngô Quyền"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c57",
+            "text": "Hải An"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c58",
+            "text": "Kiến An"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c59",
+            "text": "Thủy Nguyên"
+          }
+        ],
+        "dropoffs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c5a",
+            "text": "Các quận nội thành Hà Nội"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c5b",
+            "text": "Sảnh T1 & T2 Sân bay Nội Bài"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c5c",
+            "text": "Các bệnh viện trung ương"
+          }
+        ],
+        "originAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c5d",
+            "text": "Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c5e",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c5f",
+            "text": "Hồng Bàng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c60",
+            "text": "Lê Chân"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c61",
+            "text": "Ngô Quyền"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c62",
+            "text": "Hải An"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c63",
+            "text": "Kiến An"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c64",
+            "text": "Thủy Nguyên"
+          }
+        ],
+        "destinationAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c65",
+            "text": "Hà Nội"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c66",
+            "text": "Nội Bài"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c67",
+            "text": "Các quận nội thành Hà Nội"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c68",
+            "text": "Sảnh T1 & T2 Sân bay Nội Bài"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c69",
+            "text": "Các bệnh viện trung ương"
+          }
+        ],
+        "regions": [
+          "Hải Phòng",
+          "Hà Nội"
+        ],
+        "thumbnail": 22,
+        "slides": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c6a",
+            "image": 20,
+            "badge": "Hải Phòng",
+            "caption": "Đón trả tận nơi tại nhà riêng, văn phòng trung tâm Hải Phòng",
+            "alt": "Xe ghép Hải Phòng Hà Nội Nội Bài đón tại Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c6b",
+            "image": 19,
+            "badge": "Hà Nội",
+            "caption": "Trả tận nơi tại các quận nội thành Hà Nội, bệnh viện tuyến trung ương",
+            "alt": "Xe ghép Hải Phòng lên Hà Nội đón trả tận nhà"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c6c",
+            "image": 22,
+            "badge": "Sân bay Nội Bài",
+            "caption": "Đón trả đúng giờ tại sảnh ga T1 nội địa & T2 quốc tế 24/7",
+            "alt": "Xe tiện chuyến Hải Phòng đi Sân bay Nội Bài đón sảnh T1 T2"
+          }
+        ],
+        "faqs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c6d",
+            "question": "Xe có lên sảnh sân bay Nội Bài đón đúng giờ bay không?",
+            "answer": "Có, tài xế theo dõi lịch bay của quý khách để đón đúng sảnh ga đến hoặc đưa lên sảnh đi kịp giờ check-in."
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c6e",
+            "question": "Thời gian di chuyển từ Hải Phòng lên Hà Nội mất bao lâu?",
+            "answer": "Khoảng 1 giờ 30 phút chạy thẳng cao tốc Hà Nội - Hải Phòng không dừng đón khách dọc đường."
+          }
+        ],
+        "relatedRoutes": [],
+        "isBannerTop": true,
+        "bannerLabel": "Hải Phòng ⇔ Hà Nội ⇔ Nội Bài",
+        "sortOrder": 2,
+        "status": "active",
+        "seo": {
+          "metaTitle": null,
+          "appendBrand": true,
+          "metaDescription": null,
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 3,
+      "data": {
+        "slug": "hai-phong-ha-long",
+        "name": "Hải Phòng ⇄ Hạ Long",
+        "origin": "Hải Phòng",
+        "destination": "Hạ Long",
+        "distance": "55 km",
+        "duration": "45 phút",
+        "tierShare1": {
+          "min": 250000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierShare2": {
+          "min": 400000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter45": {
+          "min": 450000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter7": {
+          "min": 550000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "priceValidUntil": null,
+        "pricingDetails": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c6f",
+            "tierKey": "share1",
+            "label": "Ghép 1 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c70",
+            "tierKey": "charter45",
+            "label": "Bao xe 4 chỗ",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c71",
+            "tierKey": "charter7",
+            "label": "Bao xe 7 chỗ",
+            "note": null
+          }
+        ],
+        "useCustomPricingHtml": false,
+        "customPricingHtml": null,
+        "customPricingCss": null,
+        "customPricingJs": null,
+        "description": "Tuyến cao tốc Hải Phòng ⇄ Hạ Long qua cầu Bạch Đằng kết nối nhanh chóng chỉ 45 phút, phục vụ 2 chiều đón trả tận nơi, bao xe và ghép ghế 24/7.",
+        "detailedContent": null,
+        "operatingHoursText": null,
+        "frequencyText": null,
+        "pickups": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c72",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c73",
+            "text": "nội thành"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c74",
+            "text": "Thủy Nguyên"
+          }
+        ],
+        "dropoffs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c75",
+            "text": "Bãi Cháy"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c76",
+            "text": "Hòn Gai"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c77",
+            "text": "Tuần Châu"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c78",
+            "text": "Hùng Thắng"
+          }
+        ],
+        "originAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c79",
+            "text": "Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c7a",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c7b",
+            "text": "nội thành"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c7c",
+            "text": "Thủy Nguyên"
+          }
+        ],
+        "destinationAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c7d",
+            "text": "Hạ Long"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c7e",
+            "text": "TP. Hạ Long"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c7f",
+            "text": "Bãi Cháy"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c80",
+            "text": "Hòn Gai"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c81",
+            "text": "Tuần Châu"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c82",
+            "text": "Hùng Thắng"
+          }
+        ],
+        "regions": [
+          "Hải Phòng",
+          "Hạ Long"
+        ],
+        "thumbnail": 18,
+        "slides": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c83",
+            "image": 20,
+            "badge": "Hải Phòng",
+            "caption": "Đón tận nơi tại Quán Toan, Trung tâm, Thủy Nguyên, An Dương",
+            "alt": "Xe ghép Hải Phòng đi Hạ Long đón tại Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c84",
+            "image": 18,
+            "badge": "TP. Hạ Long",
+            "caption": "Trả tận nơi Bãi Cháy, Hòn Gai, Tuần Châu, các khách sạn & resort",
+            "alt": "Xe ghép Hải Phòng Hạ Long qua cầu Bạch Đằng"
+          }
+        ],
+        "faqs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c85",
+            "question": "Xe ghép Hải Phòng đi Hạ Long đón trả những khu vực nào?",
+            "answer": "Đón tại nhà ở Hải Phòng và trả tận nơi tại Bãi Cháy, Hòn Gai, Tuần Châu hoặc các điểm du lịch tại Hạ Long."
+          }
+        ],
+        "relatedRoutes": [],
+        "isBannerTop": true,
+        "bannerLabel": "Hải Phòng ⇔ Hạ Long",
+        "sortOrder": 3,
+        "status": "active",
+        "seo": {
+          "metaTitle": null,
+          "appendBrand": true,
+          "metaDescription": null,
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 4,
+      "data": {
+        "slug": "hai-phong-mong-cai",
+        "name": "Hải Phòng ⇄ Móng Cái",
+        "origin": "Hải Phòng",
+        "destination": "Móng Cái",
+        "distance": "195 km",
+        "duration": "2 giờ 30 phút",
+        "tierShare1": {
+          "min": 500000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierShare2": {
+          "min": 800000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter45": {
+          "min": 1400000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter7": {
+          "min": 1500000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "priceValidUntil": null,
+        "pricingDetails": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c86",
+            "tierKey": "share1",
+            "label": "Ghép 1 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c87",
+            "tierKey": "share2",
+            "label": "Ghép 2 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c88",
+            "tierKey": "charter45",
+            "label": "Bao xe 4 chỗ",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c89",
+            "tierKey": "charter7",
+            "label": "Bao xe 7 chỗ",
+            "note": null
+          }
+        ],
+        "useCustomPricingHtml": false,
+        "customPricingHtml": null,
+        "customPricingCss": null,
+        "customPricingJs": null,
+        "description": "Tuyến cao tốc Hải Phòng ⇄ Vân Đồn ⇄ Móng Cái chạy êm ru 2.5 tiếng. Nhận ghép khách 1-3 người, bao xe trọn gói và gửi hàng hóa hỏa tốc trong ngày.",
+        "detailedContent": null,
+        "operatingHoursText": null,
+        "frequencyText": null,
+        "pickups": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c8a",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c8b",
+            "text": "Trung tâm"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c8c",
+            "text": "Thủy Nguyên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c8d",
+            "text": "An Dương"
+          }
+        ],
+        "dropoffs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c8e",
+            "text": "TP. Móng Cái"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c8f",
+            "text": "Cửa khẩu quốc tế Móng Cái"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c90",
+            "text": "Trà Cổ"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c91",
+            "text": "Hải Hà"
+          }
+        ],
+        "originAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c92",
+            "text": "Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c93",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c94",
+            "text": "Trung tâm"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c95",
+            "text": "Thủy Nguyên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c96",
+            "text": "An Dương"
+          }
+        ],
+        "destinationAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c97",
+            "text": "Móng Cái"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c98",
+            "text": "TP. Móng Cái"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c99",
+            "text": "Cửa khẩu quốc tế Móng Cái"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c9a",
+            "text": "Trà Cổ"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c9b",
+            "text": "Hải Hà"
+          }
+        ],
+        "regions": [
+          "Hải Phòng",
+          "Móng Cái"
+        ],
+        "thumbnail": 21,
+        "slides": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c9c",
+            "image": 20,
+            "badge": "Hải Phòng",
+            "caption": "Đón tại nhà riêng toàn TP. Hải Phòng theo giờ hẹn",
+            "alt": "Xe ghép Hải Phòng Móng Cái xuất phát tại Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c9d",
+            "image": 21,
+            "badge": "TP. Móng Cái",
+            "caption": "Trả tận nơi Cửa khẩu quốc tế Móng Cái, Trà Cổ, Hải Hà",
+            "alt": "Xe ghép Hải Phòng Móng Cái đến Cửa khẩu"
+          }
+        ],
+        "faqs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c9e",
+            "question": "Xe chạy thẳng hay có chuyển xe dọc đường không?",
+            "answer": "Cam kết 100% xe chạy thẳng cao tốc, không chuyển xe, không sang khách."
+          }
+        ],
+        "relatedRoutes": [],
+        "isBannerTop": true,
+        "bannerLabel": "Hải Phòng ⇔ Móng Cái",
+        "sortOrder": 4,
+        "status": "active",
+        "seo": {
+          "metaTitle": null,
+          "appendBrand": true,
+          "metaDescription": null,
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 5,
+      "data": {
+        "slug": "ha-long-bac-ninh-bac-giang",
+        "name": "Hạ Long ⇄ Bắc Ninh ⇄ Bắc Giang",
+        "origin": "Hạ Long",
+        "destination": "Bắc Ninh / Bắc Giang",
+        "distance": "125 km",
+        "duration": "2 giờ",
+        "tierShare1": {
+          "min": 450000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "tierShare2": {
+          "min": 700000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "tierCharter45": {
+          "min": 900000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "tierCharter7": {
+          "min": 950000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "priceValidUntil": null,
+        "pricingDetails": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6c9f",
+            "tierKey": "share1",
+            "label": "Ghép 1 người",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ca0",
+            "tierKey": "share2",
+            "label": "Ghép 2 người",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ca1",
+            "tierKey": "charter45",
+            "label": "Bao xe 5 chỗ",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ca2",
+            "tierKey": "charter7",
+            "label": "Bao xe 7 chỗ",
+            "note": null
+          }
+        ],
+        "useCustomPricingHtml": false,
+        "customPricingHtml": null,
+        "customPricingCss": null,
+        "customPricingJs": null,
+        "description": "Xe tiện chuyến và ghép ghế từ Hạ Long (Bãi Cháy, Hòn Gai, Tuần Châu) đi Bắc Ninh và Bắc Giang đón trả tận nhà, phục vụ cả ngày lẫn đêm.",
+        "detailedContent": null,
+        "operatingHoursText": null,
+        "frequencyText": null,
+        "pickups": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ca3",
+            "text": "Bãi Cháy"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ca4",
+            "text": "Hòn Gai"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ca5",
+            "text": "Tuần Châu"
+          }
+        ],
+        "dropoffs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ca6",
+            "text": "TP. Bắc Ninh"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ca7",
+            "text": "TP. Bắc Giang"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ca8",
+            "text": "Việt Yên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ca9",
+            "text": "Yên Dũng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6caa",
+            "text": "Tiên Du"
+          }
+        ],
+        "originAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cab",
+            "text": "Hạ Long"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cac",
+            "text": "TP. Hạ Long"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cad",
+            "text": "Bãi Cháy"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cae",
+            "text": "Hòn Gai"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6caf",
+            "text": "Tuần Châu"
+          }
+        ],
+        "destinationAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cb0",
+            "text": "Bắc Ninh"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cb1",
+            "text": "Bắc Giang"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cb2",
+            "text": "TP. Bắc Ninh"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cb3",
+            "text": "TP. Bắc Giang"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cb4",
+            "text": "Việt Yên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cb5",
+            "text": "Yên Dũng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cb6",
+            "text": "Tiên Du"
+          }
+        ],
+        "regions": [
+          "Hạ Long",
+          "Bắc Ninh – Bắc Giang"
+        ],
+        "thumbnail": 17,
+        "slides": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cb7",
+            "image": 18,
+            "badge": "TP. Hạ Long",
+            "caption": "Đón tận nhà tại Bãi Cháy, Hòn Gai, Tuần Châu",
+            "alt": "Xe ghép Hạ Long Bắc Ninh Bắc Giang đón tại Hạ Long"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cb8",
+            "image": 17,
+            "badge": "Bắc Ninh",
+            "caption": "Trả tận nơi TP. Bắc Ninh, Tiên Du, Quế Võ",
+            "alt": "Xe ghép Hạ Long đi Bắc Ninh"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cb9",
+            "image": 16,
+            "badge": "Bắc Giang",
+            "caption": "Trả tận nơi TP. Bắc Giang, Việt Yên, Yên Dũng",
+            "alt": "Xe ghép Hạ Long đi Bắc Giang"
+          }
+        ],
+        "faqs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cba",
+            "question": "Giá bao xe 5 chỗ từ Hạ Long sang Bắc Ninh là bao nhiêu?",
+            "answer": "Bao xe 5 chỗ trọn gói từ 900k, giá đã bao gồm phí cầu đường bến bãi."
+          }
+        ],
+        "relatedRoutes": [],
+        "isBannerTop": true,
+        "bannerLabel": "Hạ Long ⇔ Bắc Ninh ⇔ Bắc Giang",
+        "sortOrder": 5,
+        "status": "active",
+        "seo": {
+          "metaTitle": null,
+          "appendBrand": true,
+          "metaDescription": null,
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 6,
+      "data": {
+        "slug": "ha-noi-mong-cai",
+        "name": "Hà Nội ⇄ Móng Cái",
+        "origin": "Hà Nội",
+        "destination": "Móng Cái",
+        "distance": "310 km",
+        "duration": "3 giờ 30 phút",
+        "tierShare1": {
+          "min": 600000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierShare2": {
+          "min": 1000000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter45": {
+          "min": 2100000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter7": {
+          "min": 2200000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "priceValidUntil": null,
+        "pricingDetails": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cbb",
+            "tierKey": "share1",
+            "label": "Ghép 1 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cbc",
+            "tierKey": "share2",
+            "label": "Ghép 2 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cbd",
+            "tierKey": "charter45",
+            "label": "Bao xe 4 chỗ",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cbe",
+            "tierKey": "charter7",
+            "label": "Bao xe 7 chỗ",
+            "note": null
+          }
+        ],
+        "useCustomPricingHtml": false,
+        "customPricingHtml": null,
+        "customPricingCss": null,
+        "customPricingJs": null,
+        "description": "Tuyến cao tốc huyết mạch Hà Nội ⇄ Hải Phòng ⇄ Vân Đồn ⇄ Móng Cái, xe riêng đời mới, đưa đón tận nhà nội thành Hà Nội và tận nơi tại TP. Móng Cái.",
+        "detailedContent": null,
+        "operatingHoursText": null,
+        "frequencyText": null,
+        "pickups": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cbf",
+            "text": "Các quận nội thành Hà Nội"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cc0",
+            "text": "Sân bay Nội Bài"
+          }
+        ],
+        "dropoffs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cc1",
+            "text": "TP. Móng Cái"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cc2",
+            "text": "Cửa khẩu quốc tế Móng Cái"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cc3",
+            "text": "Khu du lịch Trà Cổ"
+          }
+        ],
+        "originAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cc4",
+            "text": "Hà Nội"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cc5",
+            "text": "Các quận nội thành Hà Nội"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cc6",
+            "text": "Sân bay Nội Bài"
+          }
+        ],
+        "destinationAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cc7",
+            "text": "Móng Cái"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cc8",
+            "text": "TP. Móng Cái"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cc9",
+            "text": "Cửa khẩu quốc tế Móng Cái"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cca",
+            "text": "Khu du lịch Trà Cổ"
+          }
+        ],
+        "regions": [
+          "Hà Nội",
+          "Móng Cái"
+        ],
+        "thumbnail": 21,
+        "slides": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ccb",
+            "image": 19,
+            "badge": "Hà Nội",
+            "caption": "Đón tại nhà các quận nội thành Hà Nội & Sân bay Nội Bài",
+            "alt": "Xe ghép Hà Nội Móng Cái đón tại Hà Nội"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ccc",
+            "image": 21,
+            "badge": "Móng Cái",
+            "caption": "Trả tận nơi Cửa khẩu quốc tế Móng Cái, bãi biển Trà Cổ",
+            "alt": "Xe ghép Hà Nội Móng Cái đến cửa khẩu"
+          }
+        ],
+        "faqs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ccd",
+            "question": "Xe xuất phát vào những khung giờ nào?",
+            "answer": "Chúng tôi phục vụ 24/7 liên tục cả ngày lẫn đêm, chỉ cần đặt trước tổng đài sẽ sắp xếp chuyến phù hợp nhất."
+          }
+        ],
+        "relatedRoutes": [],
+        "isBannerTop": true,
+        "bannerLabel": "Hà Nội ⇔ Móng Cái",
+        "sortOrder": 6,
+        "status": "active",
+        "seo": {
+          "metaTitle": null,
+          "appendBrand": true,
+          "metaDescription": null,
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 7,
+      "data": {
+        "slug": "ha-noi-ha-long",
+        "name": "Hà Nội ⇄ Hạ Long",
+        "origin": "Hà Nội",
+        "destination": "Hạ Long",
+        "distance": "155 km",
+        "duration": "2 giờ 15 phút",
+        "tierShare1": {
+          "min": 450000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierShare2": {
+          "min": 800000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter45": {
+          "min": 1100000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter7": {
+          "min": 1200000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "priceValidUntil": null,
+        "pricingDetails": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cce",
+            "tierKey": "share1",
+            "label": "Ghép 1 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ccf",
+            "tierKey": "share2",
+            "label": "Ghép 2 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cd0",
+            "tierKey": "charter45",
+            "label": "Bao xe 4 chỗ",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cd1",
+            "tierKey": "charter7",
+            "label": "Bao xe 7 chỗ",
+            "note": null
+          }
+        ],
+        "useCustomPricingHtml": false,
+        "customPricingHtml": null,
+        "customPricingCss": null,
+        "customPricingJs": null,
+        "description": "Tuyến cao tốc Hà Nội ⇄ Hạ Long đưa đón tận nhà hoặc sảnh khách sạn. Xe đời mới êm ái, máy lạnh sạch sẽ, tài xế lịch sự chu đáo.",
+        "detailedContent": null,
+        "operatingHoursText": null,
+        "frequencyText": null,
+        "pickups": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cd2",
+            "text": "Các quận nội thành Hà Nội"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cd3",
+            "text": "Sân bay Nội Bài"
+          }
+        ],
+        "dropoffs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cd4",
+            "text": "TP. Hạ Long"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cd5",
+            "text": "Bãi Cháy"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cd6",
+            "text": "Hòn Gai"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cd7",
+            "text": "Cảng tàu khách Tuần Châu"
+          }
+        ],
+        "originAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cd8",
+            "text": "Hà Nội"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cd9",
+            "text": "Các quận nội thành Hà Nội"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cda",
+            "text": "Sân bay Nội Bài"
+          }
+        ],
+        "destinationAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cdb",
+            "text": "Hạ Long"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cdc",
+            "text": "TP. Hạ Long"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cdd",
+            "text": "Bãi Cháy"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cde",
+            "text": "Hòn Gai"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cdf",
+            "text": "Cảng tàu khách Tuần Châu"
+          }
+        ],
+        "regions": [
+          "Hà Nội",
+          "Hạ Long"
+        ],
+        "thumbnail": 18,
+        "slides": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ce0",
+            "image": 19,
+            "badge": "Hà Nội",
+            "caption": "Đón tại nhà riêng, văn phòng công ty, sảnh khách sạn trung tâm Hà Nội",
+            "alt": "Xe ghép Hà Nội Hạ Long đón tại Hà Nội"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ce1",
+            "image": 18,
+            "badge": "TP. Hạ Long",
+            "caption": "Trả tận sảnh khách sạn Bãi Cháy, Hòn Gai, cảng tàu khách Tuần Châu",
+            "alt": "Xe tiện chuyến Hà Nội Hạ Long"
+          }
+        ],
+        "faqs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ce2",
+            "question": "Có đón trả tại resort, khách sạn ở Bãi Cháy không?",
+            "answer": "Có, tài xế đón trả tận sảnh resort, khách sạn theo yêu cầu của hành khách."
+          }
+        ],
+        "relatedRoutes": [],
+        "isBannerTop": false,
+        "bannerLabel": null,
+        "sortOrder": 7,
+        "status": "active",
+        "seo": {
+          "metaTitle": null,
+          "appendBrand": true,
+          "metaDescription": null,
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 8,
+      "data": {
+        "slug": "hai-phong-hai-duong",
+        "name": "Hải Phòng ⇄ Hải Dương",
+        "origin": "Hải Phòng",
+        "destination": "Hải Dương",
+        "distance": "45 km",
+        "duration": "40 phút",
+        "tierShare1": {
+          "min": 250000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierShare2": {
+          "min": 400000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter45": {
+          "min": 500000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter7": {
+          "min": 550000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "priceValidUntil": null,
+        "pricingDetails": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ce3",
+            "tierKey": "share1",
+            "label": "Ghép 1 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ce4",
+            "tierKey": "share2",
+            "label": "Ghép 2 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ce5",
+            "tierKey": "charter45",
+            "label": "Bao xe 4 chỗ",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ce6",
+            "tierKey": "charter7",
+            "label": "Bao xe 7 chỗ",
+            "note": null
+          }
+        ],
+        "useCustomPricingHtml": false,
+        "customPricingHtml": null,
+        "customPricingCss": null,
+        "customPricingJs": null,
+        "description": "Tuyến xe ghép nhanh Hải Phòng ⇄ Hải Dương qua Quốc lộ 5 hoặc cao tốc, phục vụ đi làm, công tác, thăm thân đón trả tận nơi.",
+        "detailedContent": null,
+        "operatingHoursText": null,
+        "frequencyText": null,
+        "pickups": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ce7",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ce8",
+            "text": "Trung tâm"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ce9",
+            "text": "An Dương"
+          }
+        ],
+        "dropoffs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cea",
+            "text": "TP. Hải Dương"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ceb",
+            "text": "Kim Thành"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cec",
+            "text": "Cẩm Giàng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6ced",
+            "text": "KCN Nam Sách"
+          }
+        ],
+        "originAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cee",
+            "text": "Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cef",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cf0",
+            "text": "Trung tâm"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cf1",
+            "text": "An Dương"
+          }
+        ],
+        "destinationAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cf2",
+            "text": "Hải Dương"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cf3",
+            "text": "TP. Hải Dương"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cf4",
+            "text": "Kim Thành"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cf5",
+            "text": "Cẩm Giàng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cf6",
+            "text": "KCN Nam Sách"
+          }
+        ],
+        "regions": [
+          "Hải Phòng"
+        ],
+        "thumbnail": 20,
+        "slides": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cf7",
+            "image": 20,
+            "badge": "Hải Phòng",
+            "caption": "Đón tận nơi tại Quán Toan, Hồng Bàng, An Dương, trung tâm Hải Phòng",
+            "alt": "Xe ghép Hải Phòng Hải Dương đón tại Hải Phòng"
+          }
+        ],
+        "faqs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cf8",
+            "question": "Bao xe riêng Hải Phòng - Hải Dương giá bao nhiêu?",
+            "answer": "Bao trọn xe riêng chỉ 500k trọn gói đón trả tận nhà."
+          }
+        ],
+        "relatedRoutes": [],
+        "isBannerTop": true,
+        "bannerLabel": "Hải Phòng ⇔ Hải Dương",
+        "sortOrder": 8,
+        "status": "active",
+        "seo": {
+          "metaTitle": null,
+          "appendBrand": true,
+          "metaDescription": null,
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 9,
+      "data": {
+        "slug": "hai-phong-thai-nguyen",
+        "name": "Hải Phòng ⇄ Thái Nguyên",
+        "origin": "Hải Phòng",
+        "destination": "Thái Nguyên",
+        "distance": "150 km",
+        "duration": "2 giờ 15 phút",
+        "tierShare1": {
+          "min": 600000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierShare2": {
+          "min": 900000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter45": {
+          "min": 1400000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter7": {
+          "min": 1500000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "priceValidUntil": null,
+        "pricingDetails": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cf9",
+            "tierKey": "share1",
+            "label": "Ghép 1 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cfa",
+            "tierKey": "share2",
+            "label": "Ghép 2 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cfb",
+            "tierKey": "charter45",
+            "label": "Bao xe 4 chỗ",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cfc",
+            "tierKey": "charter7",
+            "label": "Bao xe 7 chỗ",
+            "note": null
+          }
+        ],
+        "useCustomPricingHtml": false,
+        "customPricingHtml": null,
+        "customPricingCss": null,
+        "customPricingJs": null,
+        "description": "Xe ghép tiện chuyến Hải Phòng ⇄ Thái Nguyên chạy cao tốc kết nối đón trả tận nhà tại Hải Phòng và các quận huyện Thái Nguyên, KCN Samsung Yên Bình.",
+        "detailedContent": null,
+        "operatingHoursText": null,
+        "frequencyText": null,
+        "pickups": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cfd",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cfe",
+            "text": "trung tâm thành phố"
+          }
+        ],
+        "dropoffs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6cff",
+            "text": "TP. Thái Nguyên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d00",
+            "text": "TP. Sông Công"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d01",
+            "text": "TP. Phổ Yên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d02",
+            "text": "KCN Samsung Phổ Yên"
+          }
+        ],
+        "originAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d03",
+            "text": "Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d04",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d05",
+            "text": "trung tâm thành phố"
+          }
+        ],
+        "destinationAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d06",
+            "text": "Thái Nguyên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d07",
+            "text": "TP. Thái Nguyên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d08",
+            "text": "TP. Sông Công"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d09",
+            "text": "TP. Phổ Yên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d0a",
+            "text": "KCN Samsung Phổ Yên"
+          }
+        ],
+        "regions": [
+          "Hải Phòng"
+        ],
+        "thumbnail": 35,
+        "slides": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d0b",
+            "image": 20,
+            "badge": "Hải Phòng",
+            "caption": "Đón tại nhà ở Hải Phòng đưa lên Thái Nguyên",
+            "alt": "Xe ghép Hải Phòng Thái Nguyên đón tại Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d0c",
+            "image": 35,
+            "badge": "Thái Nguyên",
+            "caption": "Trả tận nơi TP. Thái Nguyên, Sông Công, KCN Samsung",
+            "alt": "Xe ghép Hải Phòng đi Thái Nguyên"
+          }
+        ],
+        "faqs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d0d",
+            "question": "Xe chạy hết bao nhiêu thời gian?",
+            "answer": "Khoảng 2 giờ 15 phút chạy cao tốc êm ái, xe sạch sẽ không mùi."
+          }
+        ],
+        "relatedRoutes": [],
+        "isBannerTop": true,
+        "bannerLabel": "Hải Phòng ⇔ Thái Nguyên",
+        "sortOrder": 9,
+        "status": "active",
+        "seo": {
+          "metaTitle": null,
+          "appendBrand": true,
+          "metaDescription": null,
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 10,
+      "data": {
+        "slug": "hai-phong-ha-nam",
+        "name": "Hải Phòng ⇄ Hà Nam",
+        "origin": "Hải Phòng",
+        "destination": "Hà Nam",
+        "distance": "105 km",
+        "duration": "1 giờ 45 phút",
+        "tierShare1": {
+          "min": 400000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierShare2": {
+          "min": 700000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter45": {
+          "min": 800000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "tierCharter7": {
+          "min": 900000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "priceValidUntil": null,
+        "pricingDetails": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d0e",
+            "tierKey": "share1",
+            "label": "Ghép 1 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d0f",
+            "tierKey": "share2",
+            "label": "Ghép 2 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d10",
+            "tierKey": "charter45",
+            "label": "Bao xe 4 chỗ",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d11",
+            "tierKey": "charter7",
+            "label": "Bao xe 7 chỗ",
+            "note": null
+          }
+        ],
+        "useCustomPricingHtml": false,
+        "customPricingHtml": null,
+        "customPricingCss": null,
+        "customPricingJs": null,
+        "description": "Dịch vụ xe ghép và xe tiện chuyến Hải Phòng ⇄ Hà Nam đón trả tận nhà nội thành Hải Phòng đi TP. Phủ Lý, Duy Tiên, KCN Đồng Văn 24/7.",
+        "detailedContent": null,
+        "operatingHoursText": null,
+        "frequencyText": null,
+        "pickups": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d12",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d13",
+            "text": "Hồng Bàng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d14",
+            "text": "Lê Chân"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d15",
+            "text": "Ngô Quyền"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d16",
+            "text": "Thủy Nguyên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d17",
+            "text": "An Dương"
+          }
+        ],
+        "dropoffs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d18",
+            "text": "TP. Phủ Lý"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d19",
+            "text": "Duy Tiên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d1a",
+            "text": "KCN Đồng Văn"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d1b",
+            "text": "Kim Bảng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d1c",
+            "text": "Thanh Liêm"
+          }
+        ],
+        "originAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d1d",
+            "text": "Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d1e",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d1f",
+            "text": "Hồng Bàng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d20",
+            "text": "Lê Chân"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d21",
+            "text": "Ngô Quyền"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d22",
+            "text": "Thủy Nguyên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d23",
+            "text": "An Dương"
+          }
+        ],
+        "destinationAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d24",
+            "text": "Hà Nam"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d25",
+            "text": "TP. Phủ Lý"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d26",
+            "text": "Duy Tiên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d27",
+            "text": "KCN Đồng Văn"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d28",
+            "text": "Kim Bảng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d29",
+            "text": "Thanh Liêm"
+          }
+        ],
+        "regions": [
+          "Hải Phòng"
+        ],
+        "thumbnail": 33,
+        "slides": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d2a",
+            "image": 20,
+            "badge": "Hải Phòng",
+            "caption": "Đón trả tận nơi tại nhà riêng nội thành Hải Phòng",
+            "alt": "Xe ghép Hải Phòng đi Hà Nam đón tại Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d2b",
+            "image": 33,
+            "badge": "Hà Nam",
+            "caption": "Trả tận nơi TP. Phủ Lý, Duy Tiên, KCN Đồng Văn",
+            "alt": "Xe ghép Hải Phòng trả tại Hà Nam"
+          }
+        ],
+        "faqs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d2c",
+            "question": "Xe ghép Hải Phòng - Hà Nam có đón trả tận nhà không?",
+            "answer": "Có, xe đón trả tận nơi tại nhà riêng nội thành Hải Phòng và các huyện thị tại Hà Nam."
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d2d",
+            "question": "Thời gian di chuyển từ Hải Phòng về Phủ Lý (Hà Nam) mất bao lâu?",
+            "answer": "Khoảng 1 giờ 45 phút chạy thẳng qua các trục cao tốc thông thoáng."
+          }
+        ],
+        "relatedRoutes": [],
+        "isBannerTop": true,
+        "bannerLabel": "Hải Phòng ⇔ Hà Nam",
+        "sortOrder": 10,
+        "status": "active",
+        "seo": {
+          "metaTitle": null,
+          "appendBrand": true,
+          "metaDescription": null,
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 11,
+      "data": {
+        "slug": "hai-phong-ninh-binh",
+        "name": "Hải Phòng ⇄ Ninh Bình",
+        "origin": "Hải Phòng",
+        "destination": "Ninh Bình",
+        "distance": "130 km",
+        "duration": "2 giờ 15 phút",
+        "tierShare1": {
+          "min": 450000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierShare2": {
+          "min": 700000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter45": {
+          "min": 900000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "tierCharter7": {
+          "min": 1000000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "priceValidUntil": null,
+        "pricingDetails": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d2e",
+            "tierKey": "share1",
+            "label": "Ghép 1 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d2f",
+            "tierKey": "share2",
+            "label": "Ghép 2 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d30",
+            "tierKey": "charter45",
+            "label": "Bao xe 4 chỗ",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d31",
+            "tierKey": "charter7",
+            "label": "Bao xe 7 chỗ",
+            "note": null
+          }
+        ],
+        "useCustomPricingHtml": false,
+        "customPricingHtml": null,
+        "customPricingCss": null,
+        "customPricingJs": null,
+        "description": "Tuyến xe ghép Hải Phòng ⇄ Ninh Bình đón trả tận nơi tại nhà ở Hải Phòng và TP. Ninh Bình, Tam Điệp, Tràng An, Bái Đính 24/7.",
+        "detailedContent": null,
+        "operatingHoursText": null,
+        "frequencyText": null,
+        "pickups": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d32",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d33",
+            "text": "Hồng Bàng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d34",
+            "text": "Lê Chân"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d35",
+            "text": "Ngô Quyền"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d36",
+            "text": "Thủy Nguyên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d37",
+            "text": "An Dương"
+          }
+        ],
+        "dropoffs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d38",
+            "text": "TP. Ninh Bình"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d39",
+            "text": "TP. Tam Điệp"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d3a",
+            "text": "Tràng An"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d3b",
+            "text": "Bái Đính"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d3c",
+            "text": "Hoa Lư"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d3d",
+            "text": "Yên Khánh"
+          }
+        ],
+        "originAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d3e",
+            "text": "Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d3f",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d40",
+            "text": "Hồng Bàng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d41",
+            "text": "Lê Chân"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d42",
+            "text": "Ngô Quyền"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d43",
+            "text": "Thủy Nguyên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d44",
+            "text": "An Dương"
+          }
+        ],
+        "destinationAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d45",
+            "text": "Ninh Bình"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d46",
+            "text": "TP. Ninh Bình"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d47",
+            "text": "TP. Tam Điệp"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d48",
+            "text": "Tràng An"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d49",
+            "text": "Bái Đính"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d4a",
+            "text": "Hoa Lư"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d4b",
+            "text": "Yên Khánh"
+          }
+        ],
+        "regions": [
+          "Hải Phòng"
+        ],
+        "thumbnail": 20,
+        "slides": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d4c",
+            "image": 20,
+            "badge": "Hải Phòng",
+            "caption": "Đón tại nhà riêng toàn TP. Hải Phòng theo giờ hẹn",
+            "alt": "Xe ghép Hải Phòng đi Ninh Bình đón tại Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d4d",
+            "image": 28,
+            "badge": "Ninh Bình",
+            "caption": "Trả tận nơi TP. Ninh Bình, Tam Điệp, Tràng An, Bái Đính",
+            "alt": "Xe tiện chuyến Hải Phòng đi Ninh Bình"
+          }
+        ],
+        "faqs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d4e",
+            "question": "Xe có trả tận nơi các điểm du lịch tại Ninh Bình không?",
+            "answer": "Có, tài xế trả tận nơi tại khách sạn, resort, Tràng An, Bái Đính, Tam Cốc theo yêu cầu."
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d4f",
+            "question": "Bao xe 4 chỗ Hải Phòng đi Ninh Bình giá bao nhiêu?",
+            "answer": "Giá bao trọn xe 4 chỗ chỉ từ 900k, giá trọn gói không phát sinh thêm chi phí."
+          }
+        ],
+        "relatedRoutes": [],
+        "isBannerTop": true,
+        "bannerLabel": "Hải Phòng ⇔ Ninh Bình",
+        "sortOrder": 11,
+        "status": "active",
+        "seo": {
+          "metaTitle": null,
+          "appendBrand": true,
+          "metaDescription": null,
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 12,
+      "data": {
+        "slug": "hai-phong-nam-dinh",
+        "name": "Hải Phòng ⇄ Nam Định",
+        "origin": "Hải Phòng",
+        "destination": "Nam Định",
+        "distance": "90 km",
+        "duration": "1 giờ 45 phút",
+        "tierShare1": {
+          "min": 400000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierShare2": {
+          "min": 700000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter45": {
+          "min": 900000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "tierCharter7": {
+          "min": 1000000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "priceValidUntil": null,
+        "pricingDetails": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d50",
+            "tierKey": "share1",
+            "label": "Ghép 1 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d51",
+            "tierKey": "share2",
+            "label": "Ghép 2 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d52",
+            "tierKey": "charter45",
+            "label": "Bao xe 4 chỗ",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d53",
+            "tierKey": "charter7",
+            "label": "Bao xe 7 chỗ",
+            "note": null
+          }
+        ],
+        "useCustomPricingHtml": false,
+        "customPricingHtml": null,
+        "customPricingCss": null,
+        "customPricingJs": null,
+        "description": "Xe tiện chuyến Hải Phòng ⇄ Nam Định đón trả tận nhà tại Hải Phòng và TP. Nam Định, Ý Yên, Vụ Bản, KCN Hòa Xá an toàn, đúng hẹn.",
+        "detailedContent": null,
+        "operatingHoursText": null,
+        "frequencyText": null,
+        "pickups": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d54",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d55",
+            "text": "Hồng Bàng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d56",
+            "text": "Lê Chân"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d57",
+            "text": "Ngô Quyền"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d58",
+            "text": "Kiến An"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d59",
+            "text": "Thủy Nguyên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d5a",
+            "text": "An Dương"
+          }
+        ],
+        "dropoffs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d5b",
+            "text": "TP. Nam Định"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d5c",
+            "text": "Ý Yên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d5d",
+            "text": "Vụ Bản"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d5e",
+            "text": "KCN Hòa Xá"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d5f",
+            "text": "Mỹ Lộc"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d60",
+            "text": "Nam Trực"
+          }
+        ],
+        "originAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d61",
+            "text": "Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d62",
+            "text": "Quán Toan"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d63",
+            "text": "Hồng Bàng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d64",
+            "text": "Lê Chân"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d65",
+            "text": "Ngô Quyền"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d66",
+            "text": "Kiến An"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d67",
+            "text": "Thủy Nguyên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d68",
+            "text": "An Dương"
+          }
+        ],
+        "destinationAliases": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d69",
+            "text": "Nam Định"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d6a",
+            "text": "TP. Nam Định"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d6b",
+            "text": "Ý Yên"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d6c",
+            "text": "Vụ Bản"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d6d",
+            "text": "KCN Hòa Xá"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d6e",
+            "text": "Mỹ Lộc"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d6f",
+            "text": "Nam Trực"
+          }
+        ],
+        "regions": [
+          "Hải Phòng"
+        ],
+        "thumbnail": 34,
+        "slides": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d70",
+            "image": 20,
+            "badge": "Hải Phòng",
+            "caption": "Đón tận nơi tại Hải Phòng, đưa thẳng Nam Định",
+            "alt": "Xe ghép Hải Phòng đi Nam Định đón tại Hải Phòng"
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d71",
+            "image": 34,
+            "badge": "Nam Định",
+            "caption": "Trả tận nơi TP. Nam Định, Ý Yên, Vụ Bản, KCN Hòa Xá",
+            "alt": "Xe tiện chuyến Hải Phòng đi Nam Định"
+          }
+        ],
+        "faqs": [
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d72",
+            "question": "Xe ghép Hải Phòng - Nam Định chạy những khung giờ nào?",
+            "answer": "Xe phục vụ liên tục 24/7 theo giờ hẹn của quý khách."
+          },
+          {
+            "id": "6ad0d7b0bbf2fedcac8e6d73",
+            "question": "Có nhận gửi hàng hỏa tốc tuyến Hải Phòng - Nam Định không?",
+            "answer": "Có, chúng tôi nhận gửi hàng hỏa tốc trong ngày giao tận tay người nhận với giá tốt."
+          }
+        ],
+        "relatedRoutes": [],
+        "isBannerTop": true,
+        "bannerLabel": "Hải Phòng ⇔ Nam Định",
+        "sortOrder": 12,
+        "status": "active",
+        "seo": {
+          "metaTitle": null,
+          "appendBrand": true,
+          "metaDescription": null,
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 13,
+      "data": {
+        "slug": "hai-duong-ha-noi",
+        "name": "Hải Dương ⇄ Hà Nội",
+        "origin": "Hải Dương",
+        "destination": "Hà Nội",
+        "distance": "65 km",
+        "duration": "50 phút",
+        "tierShare1": {
+          "min": 200000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierShare2": {
+          "min": 300000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter45": {
+          "min": 550000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "tierCharter7": {
+          "min": 600000,
+          "max": null,
+          "from": true,
+          "negotiable": false
+        },
+        "priceValidUntil": null,
+        "pricingDetails": [
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d74",
+            "tierKey": "share1",
+            "label": "Ghép 1 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d75",
+            "tierKey": "share2",
+            "label": "Ghép 2 khách",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d76",
+            "tierKey": "charter45",
+            "label": "Bao xe 4 chỗ",
+            "note": null
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d77",
+            "tierKey": "charter7",
+            "label": "Bao xe 7 chỗ",
+            "note": null
+          }
+        ],
+        "useCustomPricingHtml": false,
+        "customPricingHtml": null,
+        "customPricingCss": null,
+        "customPricingJs": null,
+        "description": "Tuyến xe ghép siêu tốc Hải Dương ⇄ Hà Nội qua cao tốc 5B đón trả tận nhà tại TP. Hải Dương và các quận nội thành Hà Nội chỉ 50 phút.",
+        "detailedContent": null,
+        "operatingHoursText": null,
+        "frequencyText": null,
+        "pickups": [
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d78",
+            "text": "TP. Hải Dương"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d79",
+            "text": "Cẩm Giàng"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d7a",
+            "text": "Bình Giang"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d7b",
+            "text": "Nam Sách"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d7c",
+            "text": "Kim Thành"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d7d",
+            "text": "Gia Lộc"
+          }
+        ],
+        "dropoffs": [
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d7e",
+            "text": "Các quận nội thành Hà Nội"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d7f",
+            "text": "Sân bay Nội Bài"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d80",
+            "text": "Các bệnh viện trung ương"
+          }
+        ],
+        "originAliases": [
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d81",
+            "text": "Hải Dương"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d82",
+            "text": "TP. Hải Dương"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d83",
+            "text": "Cẩm Giàng"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d84",
+            "text": "Bình Giang"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d85",
+            "text": "Nam Sách"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d86",
+            "text": "Kim Thành"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d87",
+            "text": "Gia Lộc"
+          }
+        ],
+        "destinationAliases": [
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d88",
+            "text": "Hà Nội"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d89",
+            "text": "Các quận nội thành Hà Nội"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d8a",
+            "text": "Sân bay Nội Bài"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d8b",
+            "text": "Các bệnh viện trung ương"
+          }
+        ],
+        "regions": [
+          "Hà Nội"
+        ],
+        "thumbnail": 19,
+        "slides": [
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d8c",
+            "image": 20,
+            "badge": "Hải Dương",
+            "caption": "Đón tận nơi TP. Hải Dương, Cẩm Giàng, Bình Giang",
+            "alt": "Xe ghép Hải Dương đi Hà Nội đón tại Hải Dương"
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d8d",
+            "image": 19,
+            "badge": "Hà Nội",
+            "caption": "Trả tận nơi các quận nội thành Hà Nội, Sân bay Nội Bài",
+            "alt": "Xe ghép Hải Dương lên Hà Nội"
+          }
+        ],
+        "faqs": [
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d8e",
+            "question": "Xe đi cao tốc 5B hay Quốc lộ 5 cũ?",
+            "answer": "Cam kết 100% chạy cao tốc Hà Nội - Hải Phòng (5B) êm ái, nhanh chóng chỉ khoảng 50 phút."
+          },
+          {
+            "id": "6ad0d7b1bbf2fedcac8e6d8f",
+            "question": "Bao xe 4 chỗ trọn gói Hải Dương lên Hà Nội là bao nhiêu?",
+            "answer": "Bao xe 4 chỗ trọn gói đón trả tận nhà chỉ từ 550k."
+          }
+        ],
+        "relatedRoutes": [],
+        "isBannerTop": true,
+        "bannerLabel": "Hải Dương ⇔ Hà Nội",
+        "sortOrder": 13,
+        "status": "active",
+        "seo": {
+          "metaTitle": null,
+          "appendBrand": true,
+          "metaDescription": null,
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 15,
+      "data": {
+        "slug": "ha-noi-ninh-binh",
+        "name": "Hà Nội ⇄ Ninh Bình",
+        "origin": "Hà Nội",
+        "destination": "Ninh Bình",
+        "distance": "100km",
+        "duration": "1 giờ 30 phút",
+        "tierShare1": {
+          "min": 300000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierShare2": {
+          "min": 500000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter45": {
+          "min": 800000,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "tierCharter7": {
+          "min": null,
+          "max": null,
+          "from": false,
+          "negotiable": false
+        },
+        "priceValidUntil": "2027-12-02T17:00:00.000Z",
+        "pricingDetails": [],
+        "useCustomPricingHtml": true,
+        "customPricingHtml": "<table style=\"width:100%; border:none; border-collapse:collapse; font-family:Arial,sans-serif; font-size:16px; line-height:1.6; color:#333; text-align:center;\">\n  <thead>\n    <tr style=\"background-color:#f5f5f5;\">\n      <th scope=\"col\" style=\"padding:12px 8px; border:none; text-align:left;\">Điểm đến</th>\n      <th scope=\"col\" style=\"padding:12px 8px; border:none;\">01 ghế ghép</th>\n      <th scope=\"col\" style=\"padding:12px 8px; border:none;\">02 ghế ghép</th>\n      <th scope=\"col\" style=\"padding:12px 8px; border:none;\">Bao xe 05 chỗ</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th scope=\"row\" style=\"padding:10px 8px; border:none; text-align:left; font-weight:600;\">TP Ninh Bình</th>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600; font-weight:600\">300K</td>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">600K</td>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">850K</td>\n    </tr>\n    <tr style=\"background-color:#fafafa;\">\n      <th scope=\"row\" style=\"padding:10px 8px; border:none; text-align:left; font-weight:600;\">Hoa Lư</th>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">300K</td>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">600K</td>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">850K</td>\n    </tr>\n    <tr>\n      <th scope=\"row\" style=\"padding:10px 8px; border:none; text-align:left; font-weight:600;\">Gia Viễn</th>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">300K</td>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">600K</td>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">800K</td>\n    </tr>\n    <tr style=\"background-color:#fafafa;\">\n      <th scope=\"row\" style=\"padding:10px 8px; border:none; text-align:left; font-weight:600;\">Nho Quan</th>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">300K</td>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">600K</td>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">800K</td>\n    </tr>\n    <tr>\n      <th scope=\"row\" style=\"padding:10px 8px; border:none; text-align:left; font-weight:600;\">Tam Điệp</th>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">350K</td>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">700K</td>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">1.000K</td>\n    </tr>\n    <tr style=\"background-color:#fafafa;\">\n      <th scope=\"row\" style=\"padding:10px 8px; border:none; text-align:left; font-weight:600;\">Kim Sơn</th>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">350K</td>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">700K</td>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">1.150K</td>\n    </tr>\n    <tr>\n      <th scope=\"row\" style=\"padding:10px 8px; border:none; text-align:left; font-weight:600;\">Yên Mô</th>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">300K</td>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">600K</td>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">1.000K</td>\n    </tr>\n    <tr style=\"background-color:#fafafa;\">\n      <th scope=\"row\" style=\"padding:10px 8px; border:none; text-align:left; font-weight:600;\">Yên Khánh</th>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">300K</td>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">600K</td>\n      <td style=\"padding:10px 8px; border:none; color: #d97706; font-weight:600\">950K</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <td colspan=\"4\" style=\"padding:14px 8px 6px; border:none; text-align:center; color:#dc2626; font-weight:600;\">\n        Phụ thu đón/trả tại sân bay Nội Bài: 50K/khách ghép hoặc 100K/xe bao.\n      </td>\n    </tr>\n    <tr>\n      <td colspan=\"4\" style=\"padding:4px 8px 12px; border:none; text-align:center; color:#555; font-size:14px;\">\n        Giá đã bao gồm chi phí trọn gói cao tốc.\n      </td>\n    </tr>\n  </tfoot>\n</table>",
+        "customPricingCss": "",
+        "customPricingJs": "(() => {\n  const root = document.querySelector(\".fare-box\");\n  if (!root) return;\n\n  const tabs = root.querySelectorAll(\".fare-tab\");\n  const columns = root.querySelectorAll(\"[data-fare]\");\n\n  tabs.forEach((tab) => {\n    tab.addEventListener(\"click\", () => {\n      const selected = tab.getAttribute(\"data-select\");\n\n      tabs.forEach((item) => {\n        item.setAttribute(\n          \"aria-pressed\",\n          String(item.getAttribute(\"data-select\") === selected)\n        );\n      });\n\n      columns.forEach((cell) => {\n        cell.classList.toggle(\n          \"is-active\",\n          cell.getAttribute(\"data-fare\") === selected\n        );\n      });\n    });\n  });\n})();",
+        "description": "Tuyến Hà Nội ↔ Ninh Bình cung cấp dịch vụ xe ghép, xe riêng tiện lợi, đáp ứng nhu cầu đi lại, công tác, về quê và du lịch. Với quãng đường khoảng 90–100 km, hành khách có thể di chuyển nhanh chóng, linh hoạt thời gian và lựa chọn điểm đón trả phù hợp tại hai đầu tuyến.",
+        "detailedContent": null,
+        "operatingHoursText": "24/7",
+        "frequencyText": "30–60 phút / chuyến",
+        "pickups": [
+          {
+            "id": "6ad1d72c4f2b0a5acc72d7d1",
+            "text": "TP. Ninh Bình"
+          },
+          {
+            "id": "6ad1d72c4f2b0a5acc72d7d2",
+            "text": "Tam Điệp"
+          },
+          {
+            "id": "6ad1d72c4f2b0a5acc72d7d3",
+            "text": "Hoa Lư"
+          },
+          {
+            "id": "6ad1d72c4f2b0a5acc72d7d4",
+            "text": "Tràng An"
+          },
+          {
+            "id": "6ad1d72c4f2b0a5acc72d7d5",
+            "text": "Tam Cốc – Bích Động"
+          },
+          {
+            "id": "6ad1d72c4f2b0a5acc72d7d6",
+            "text": "Chùa Bái Đính"
+          }
+        ],
+        "dropoffs": [
+          {
+            "id": "6ad1d72c4f2b0a5acc72d7d7",
+            "text": "Mỹ Đình"
+          },
+          {
+            "id": "6ad1d72c4f2b0a5acc72d7d8",
+            "text": "Cầu Giấy"
+          },
+          {
+            "id": "6ad1d72c4f2b0a5acc72d7d9",
+            "text": "Thanh Xuân"
+          },
+          {
+            "id": "6ad1d72c4f2b0a5acc72d7da",
+            "text": "Hoàn Kiếm"
+          },
+          {
+            "id": "6ad1d72c4f2b0a5acc72d7db",
+            "text": "Long Biên"
+          },
+          {
+            "id": "6ad1d72c4f2b0a5acc72d7dc",
+            "text": "Giáp Bát"
+          },
+          {
+            "id": "6ad1d72c4f2b0a5acc72d7dd",
+            "text": "Nước Ngầm"
+          }
+        ],
+        "originAliases": [],
+        "destinationAliases": [],
+        "regions": [
+          "Hà Nội"
+        ],
+        "thumbnail": 33,
+        "slides": [],
+        "faqs": [
+          {
+            "id": "6ad1d72c4f2b0a5acc72d7de",
+            "question": "Di chuyển từ Hà Nội đến Ninh Bình mất bao lâu?",
+            "answer": "Thời gian di chuyển khoảng 1,5–2 giờ, tùy điểm đón trả và tình hình giao thông."
+          },
+          {
+            "id": "6ad1d72c4f2b0a5acc72d7df",
+            "question": "Có thể đón trả khách tận nơi không?",
+            "answer": "Tùy khu vực phục vụ và lịch trình của xe, bạn nên xác nhận trước khi đặt."
+          },
+          {
+            "id": "6ad1d72c4f2b0a5acc72d7e0",
+            "question": "Giá xe Hà Nội – Ninh Bình là bao nhiêu?",
+            "answer": "Giá phụ thuộc vào loại xe, điểm đón trả và thời gian di chuyển. Vui lòng liên hệ để được báo giá cụ thể."
+          }
+        ],
+        "relatedRoutes": [],
+        "isBannerTop": false,
+        "bannerLabel": null,
+        "sortOrder": 0,
+        "status": "active",
+        "seo": {
+          "metaTitle": "Xe Ghép Hà Nội ⇄ Ninh Bình Giá Rẻ",
+          "appendBrand": true,
+          "metaDescription": "Dịch vụ xe ghép Hà Nội – Ninh Bình tiện lợi, đón trả linh hoạt, tiết kiệm chi phí. Đặt xe nhanh chóng, phục vụ cả hai chiều mỗi ngày.",
+          "ogImage": 33,
+          "noindex": false
+        }
+      }
+    }
+  ],
+  "pages": [
+    {
+      "sourceId": 1,
+      "data": {
+        "slug": "home",
+        "kind": "system",
+        "title": "Xe Ghép Liên Tỉnh",
+        "content": null,
+        "contentHtml": null,
+        "status": "published",
+        "seo": {
+          "metaTitle": "Xe Ghép Liên Tỉnh - Móng Cái, Hạ Long, Hải Phòng, Bắc Ninh, Bắc Giang",
+          "appendBrand": false,
+          "metaDescription": "Dịch vụ xe ghép liên tỉnh chuyên tuyến Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội. 100% xe riêng đời mới, giá trọn gói, phục vụ 24/7.",
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 2,
+      "data": {
+        "slug": "gioi-thieu",
+        "kind": "system",
+        "title": "Giới thiệu về Xe Ghép Liên Tỉnh",
+        "content": null,
+        "contentHtml": null,
+        "status": "published",
+        "seo": {
+          "metaTitle": "Giới Thiệu Về Xe Ghép Liên Tỉnh - Tiện Chuyến Đón Tận Nhà",
+          "appendBrand": false,
+          "metaDescription": "Giới thiệu dịch vụ Xe Ghép Liên Tỉnh chuyên tuyến Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội. 100% xe riêng đời mới, phục vụ 24/7.",
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 3,
+      "data": {
+        "slug": "lien-he",
+        "kind": "system",
+        "title": "Liên hệ",
+        "content": null,
+        "contentHtml": null,
+        "status": "published",
+        "seo": {
+          "metaTitle": "Liên Hệ Đặt Xe Ghép - Phục Vụ 24/7 Toàn Tuyến Liên Tỉnh",
+          "appendBrand": false,
+          "metaDescription": "Tổng đài liên hệ và đặt xe ghép liên tỉnh 24/7. Hỗ trợ đón trả tận nhà, bao xe riêng, gửi hàng hỏa tốc các tuyến Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh.",
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 4,
+      "data": {
+        "slug": "tuyen-lien-tinh",
+        "kind": "system",
+        "title": "Các tuyến xe ghép liên tỉnh",
+        "content": null,
+        "contentHtml": null,
+        "status": "published",
+        "seo": {
+          "metaTitle": "Các Tuyến Xe Ghép Liên Tỉnh - Bảng Giá Mới Nhất 2026",
+          "appendBrand": false,
+          "metaDescription": "Danh sách các tuyến xe ghép liên tỉnh đón trả tận nhà: Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang, Thái Nguyên, Hải Dương.",
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 5,
+      "data": {
+        "slug": "tin-tuc",
+        "kind": "system",
+        "title": "Tin tức",
+        "content": null,
+        "contentHtml": null,
+        "status": "published",
+        "seo": {
+          "metaTitle": "Tin Tức & Cẩm Nang Xe Ghép Liên Tỉnh 2026",
+          "appendBrand": true,
+          "metaDescription": "Cập nhật tin tức, cẩm nang và kinh nghiệm đi xe ghép liên tỉnh Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang đón trả tận nơi.",
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 6,
+      "data": {
+        "slug": "dat-xe",
+        "kind": "system",
+        "title": "Đặt Xe Trực Tuyến",
+        "content": null,
+        "contentHtml": null,
+        "status": "published",
+        "seo": {
+          "metaTitle": "Đặt Xe Trực Tuyến - Xe Ghép Liên Tỉnh",
+          "appendBrand": true,
+          "metaDescription": "Đặt xe ghép liên tỉnh Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang 24/7. Nhận báo giá tức thì, đón trả tận nhà, miễn phí hủy chuyến.",
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 7,
+      "data": {
+        "slug": "chinh-sach/bao-mat",
+        "kind": "content",
+        "title": "Chính Sách Bảo Mật Thông Tin - Xe Ghép Liên Tỉnh",
+        "content": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Xe Ghép Liên Tỉnh tôn trọng và cam kết bảo vệ quyền riêng tư cũng như dữ liệu cá nhân của quý khách hàng.",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "tag": "h2",
+                "type": "heading",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "1. Mục Đích Thu Thập Dữ Liệu",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Khi quý khách đặt xe trực tuyến hoặc liên hệ tổng đài, chúng tôi chỉ thu thập các thông tin tối thiểu cần thiết để phục vụ hành trình:",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "tag": "ul",
+                "type": "list",
+                "start": 1,
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "type": "listitem",
+                    "value": 1,
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "text": "Họ và tên hành khách.",
+                        "type": "text",
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr"
+                  },
+                  {
+                    "type": "listitem",
+                    "value": 2,
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "text": "Số điện thoại liên lạc để tài xế hẹn giờ và đón trả.",
+                        "type": "text",
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr"
+                  },
+                  {
+                    "type": "listitem",
+                    "value": 3,
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "text": "Địa chỉ điểm đón và điểm đến mong muốn.",
+                        "type": "text",
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr"
+                  },
+                  {
+                    "type": "listitem",
+                    "value": 4,
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "text": "Thời gian xuất phát và loại dịch vụ lựa chọn (ghép ghế / bao xe).",
+                        "type": "text",
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr"
+                  }
+                ],
+                "listType": "bullet",
+                "direction": "ltr"
+              },
+              {
+                "tag": "h2",
+                "type": "heading",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "2. Phạm Vi Sử Dụng Thông Tin",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Thông tin của quý khách chỉ được sử dụng nội bộ nhằm mục đích:",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "tag": "ul",
+                "type": "list",
+                "start": 1,
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "type": "listitem",
+                    "value": 1,
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "text": "Điều phối tài xế gần nhất đến đón khách đúng giờ.",
+                        "type": "text",
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr"
+                  },
+                  {
+                    "type": "listitem",
+                    "value": 2,
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "text": "Liên lạc xác nhận chuyến đi hoặc xử lý khiếu nại, phản hồi chất lượng.",
+                        "type": "text",
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr"
+                  },
+                  {
+                    "type": "listitem",
+                    "value": 3,
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "text": "Áp dụng chính sách ưu đãi giảm 10% cước phí cho khách hàng cũ.",
+                        "type": "text",
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr"
+                  }
+                ],
+                "listType": "bullet",
+                "direction": "ltr"
+              },
+              {
+                "tag": "h2",
+                "type": "heading",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "3. Cam Kết Tuyệt Đối Không Chia Sẻ Dữ Liệu",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Chúng tôi cam kết ",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  },
+                  {
+                    "text": "không bán, không chia sẻ, không chuyển nhượng",
+                    "type": "text",
+                    "format": 1,
+                    "version": 1
+                  },
+                  {
+                    "text": " thông tin số điện thoại hay địa chỉ nhà của quý khách cho bất kỳ bên thứ ba nào vì mục đích quảng cáo hoặc tiếp thị làm phiền.",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "tag": "h2",
+                "type": "heading",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "4. Quyền Yêu Cầu Xóa Dữ Liệu Của Khách Hàng",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Bất kỳ lúc nào sau khi chuyến đi kết thúc, quý khách có quyền yêu cầu xóa bỏ toàn bộ lịch sử thông tin chuyến đi và số điện thoại khỏi hệ thống tổng đài bằng cách gọi trực tiếp đến hotline ",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  },
+                  {
+                    "text": "0962.298.293",
+                    "type": "text",
+                    "format": 1,
+                    "version": 1
+                  },
+                  {
+                    "text": " hoặc gửi email tới ",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  },
+                  {
+                    "text": "xegheplientinhvip@gmail.com",
+                    "type": "text",
+                    "format": 1,
+                    "version": 1
+                  },
+                  {
+                    "text": ".",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Thắc mắc về quyền riêng tư? Liên hệ tổng đài 24/7.",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "0962.298.293",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              }
+            ],
+            "direction": "ltr"
+          }
+        },
+        "contentHtml": "<p style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240);\">Xe Ghép Liên Tỉnh tôn trọng và cam kết bảo vệ quyền riêng tư cũng như dữ liệu cá nhân của quý khách hàng.</p><h2 id=\"1-muc-dich-thu-thap-du-lieu\">1. Mục Đích Thu Thập Dữ Liệu</h2><p style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240); margin: 8px 0px 0px; --tw-space-y-reverse: 0;\">Khi quý khách đặt xe trực tuyến hoặc liên hệ tổng đài, chúng tôi chỉ thu thập các thông tin tối thiểu cần thiết để phục vụ hành trình:</p><ul style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240); margin: 8px 0px 0px; --tw-space-y-reverse: 0;\"><li style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240);\">Họ và tên hành khách.</li><li style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240);\">Số điện thoại liên lạc để tài xế hẹn giờ và đón trả.</li><li style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240);\">Địa chỉ điểm đón và điểm đến mong muốn.</li><li style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240);\">Thời gian xuất phát và loại dịch vụ lựa chọn (ghép ghế / bao xe).</li></ul><h2 id=\"2-pham-vi-su-dung-thong-tin\">2. Phạm Vi Sử Dụng Thông Tin</h2><p style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240); margin: 8px 0px 0px; --tw-space-y-reverse: 0;\">Thông tin của quý khách chỉ được sử dụng nội bộ nhằm mục đích:</p><ul style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240); margin: 8px 0px 0px; --tw-space-y-reverse: 0;\"><li style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240);\">Điều phối tài xế gần nhất đến đón khách đúng giờ.</li><li style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240);\">Liên lạc xác nhận chuyến đi hoặc xử lý khiếu nại, phản hồi chất lượng.</li><li style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240);\">Áp dụng chính sách ưu đãi giảm 10% cước phí cho khách hàng cũ.</li></ul><h2 id=\"3-cam-ket-tuyet-doi-khong-chia-se-du-lieu\">3. Cam Kết Tuyệt Đối Không Chia Sẻ Dữ Liệu</h2><p style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240); margin: 8px 0px 0px; --tw-space-y-reverse: 0;\">Chúng tôi cam kết <span style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240); font-weight: bolder;\">không bán, không chia sẻ, không chuyển nhượng</span> thông tin số điện thoại hay địa chỉ nhà của quý khách cho bất kỳ bên thứ ba nào vì mục đích quảng cáo hoặc tiếp thị làm phiền.</p><h2 id=\"4-quyen-yeu-cau-xoa-du-lieu-cua-khach-hang\">4. Quyền Yêu Cầu Xóa Dữ Liệu Của Khách Hàng</h2><p style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240); margin: 8px 0px 0px; --tw-space-y-reverse: 0;\">Bất kỳ lúc nào sau khi chuyến đi kết thúc, quý khách có quyền yêu cầu xóa bỏ toàn bộ lịch sử thông tin chuyến đi và số điện thoại khỏi hệ thống tổng đài bằng cách gọi trực tiếp đến hotline <span style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240); font-weight: bolder;\">0962.298.293</span> hoặc gửi email tới <span style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240); font-weight: bolder;\">xegheplientinhvip@gmail.com</span>.</p><p style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240); margin: 8px 0px 0px; --tw-space-y-reverse: 0;\">Thắc mắc về quyền riêng tư? Liên hệ tổng đài 24/7.</p><p style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240); margin: 8px 0px 0px; --tw-space-y-reverse: 0;\"><a href=\"tel:0962298293\" style=\"--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; border-color: rgb(226, 232, 240);\">0962.298.293</a></p>",
+        "status": "published",
+        "seo": {
+          "metaTitle": "Chính Sách Bảo Mật Thông Tin - Xe Ghép Liên Tỉnh",
+          "appendBrand": true,
+          "metaDescription": "Chính sách bảo mật thông tin hành khách tại Xe Ghép Liên Tỉnh. Cam kết bảo mật số điện thoại, địa chỉ nhà, lộ trình di chuyển 100%.",
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 8,
+      "data": {
+        "slug": "chinh-sach/dam-bao",
+        "kind": "content",
+        "title": "Chính Sách Đảm Bảo & Cam Kết Hoàn Tiền - Xe Ghép Liên Tỉnh",
+        "content": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Cam kết dịch vụ 5 sao, chính sách hoàn tiền 100% và đền bù 200% vì quyền lợi tối thượng của hành khách.",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "tag": "h2",
+                "type": "heading",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Cam Kết Hoàn Tiền 100% – Đền Bù 200%",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Chúng tôi khẳng định chất lượng vượt trội bằng cam kết rõ ràng: nếu chuyến đi không đảm bảo chất lượng như đã thỏa thuận (nhồi nhét khách, tự ý bỏ khách, lái xe có thái độ thiếu tôn trọng, xe không đúng tiêu chuẩn sạch sẽ mát mẻ), Xe Ghép Liên Tỉnh sẵn sàng ",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  },
+                  {
+                    "text": "hoàn tiền 100% và đền 200%",
+                    "type": "text",
+                    "format": 1,
+                    "version": 1
+                  },
+                  {
+                    "text": " cước phí cho hành khách.",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "tag": "h2",
+                "type": "heading",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Nội Dung Cam Kết Tiêu Chuẩn",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "tag": "h2",
+                "type": "heading",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Quy Định Đổi Và Hủy Chuyến Miễn Phí",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Khi có sự thay đổi lịch trình công tác, việc gia đình hoặc vấn đề phát sinh đột xuất, quý khách chỉ cần thông báo cho tổng đài qua hotline ",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  },
+                  {
+                    "text": "0962.298.293",
+                    "type": "text",
+                    "format": 1,
+                    "version": 1
+                  },
+                  {
+                    "text": " trước giờ xe chạy ít nhất 30 phút. Chúng tôi hỗ trợ dời giờ hoặc hủy chuyến hoàn toàn miễn phí, không thu phí phạt hủy chuyến.",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Kênh tiếp nhận phản ánh & hỗ trợ bảo hành dịch vụ 24/7",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Hotline 24/7: ",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  },
+                  {
+                    "text": "0962.298.293",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              }
+            ],
+            "direction": "ltr"
+          }
+        },
+        "contentHtml": "<p>Cam kết dịch vụ 5 sao, chính sách hoàn tiền 100% và đền bù 200% vì quyền lợi tối thượng của hành khách.</p>\n<h2>Cam Kết Hoàn Tiền 100% – Đền Bù 200%</h2>\n<p>Chúng tôi khẳng định chất lượng vượt trội bằng cam kết rõ ràng: nếu chuyến đi không đảm bảo chất lượng như đã thỏa thuận (nhồi nhét khách, tự ý bỏ khách, lái xe có thái độ thiếu tôn trọng, xe không đúng tiêu chuẩn sạch sẽ mát mẻ), Xe Ghép Liên Tỉnh sẵn sàng <strong>hoàn tiền 100% và đền 200%</strong> cước phí cho hành khách.</p>\n<h2>Nội Dung Cam Kết Tiêu Chuẩn</h2>\n<h2>Quy Định Đổi Và Hủy Chuyến Miễn Phí</h2>\n<p>Khi có sự thay đổi lịch trình công tác, việc gia đình hoặc vấn đề phát sinh đột xuất, quý khách chỉ cần thông báo cho tổng đài qua hotline <strong>0962.298.293</strong> trước giờ xe chạy ít nhất 30 phút. Chúng tôi hỗ trợ dời giờ hoặc hủy chuyến hoàn toàn miễn phí, không thu phí phạt hủy chuyến.</p>\n<p>Kênh tiếp nhận phản ánh &amp; hỗ trợ bảo hành dịch vụ 24/7</p>\n<p>Hotline 24/7: <a href=\"tel:0962298293\">0962.298.293</a></p>",
+        "status": "published",
+        "seo": {
+          "metaTitle": "Chính Sách Đảm Bảo & Cam Kết Hoàn Tiền - Xe Ghép Liên Tỉnh",
+          "appendBrand": false,
+          "metaDescription": "Chính sách đảm bảo chất lượng dịch vụ tại Xe Ghép Liên Tỉnh. Cam kết hoàn tiền 100%, đền 200% nếu dịch vụ không đúng cam kết, đổi hủy chuyến miễn phí.",
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 9,
+      "data": {
+        "slug": "chinh-sach/thanh-toan",
+        "kind": "content",
+        "title": "Chính Sách Thanh Toán - Xe Ghép Liên Tỉnh",
+        "content": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Xe Ghép Liên Tỉnh áp dụng chính sách thanh toán linh hoạt, minh bạch và an toàn tuyệt đối cho khách hàng.",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "tag": "h2",
+                "type": "heading",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "1. Nguyên Tắc Thanh Toán Sau Chuyến Đi",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Để đảm bảo quyền lợi tối đa cho quý khách, đối với các chuyến xe đi ghép ghế thông thường, quý khách ",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  },
+                  {
+                    "text": "không cần phải đặt cọc trước",
+                    "type": "text",
+                    "format": 1,
+                    "version": 1
+                  },
+                  {
+                    "text": ". Quý khách chỉ thanh toán cước phí sau khi chuyến đi kết thúc an toàn tại đúng điểm đến đã thỏa thuận.",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Giá cước báo cho khách hàng đã bao gồm toàn bộ phí cầu đường bến bãi cao tốc. Cam kết không thu thêm bất kỳ phụ phí ngoài thỏa thuận.",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "tag": "h2",
+                "type": "heading",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "2. Các Hình Thức Thanh Toán Chấp Nhận",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "tag": "h2",
+                "type": "heading",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "3. Đối Với Hợp Đồng Bao Xe & Gửi Hàng Hóa",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "tag": "ul",
+                "type": "list",
+                "start": 1,
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "type": "listitem",
+                    "value": 1,
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "text": "Bao xe hợp đồng nhiều ngày hoặc lộ trình xa:",
+                        "type": "text",
+                        "format": 1,
+                        "version": 1
+                      },
+                      {
+                        "text": " Quý khách có thể được yêu cầu đặt cọc trước từ 10% – 20% giá trị hợp đồng để đảm bảo xe giữ chỗ đúng ngày giờ yêu cầu.",
+                        "type": "text",
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr"
+                  },
+                  {
+                    "type": "listitem",
+                    "value": 2,
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "text": "Gửi hàng hóa hỏa tốc:",
+                        "type": "text",
+                        "format": 1,
+                        "version": 1
+                      },
+                      {
+                        "text": " Người gửi có thể thanh toán trước khi gửi hàng hoặc người nhận thanh toán khi nhận hàng tận tay (Ship COD cước vận chuyển).",
+                        "type": "text",
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr"
+                  }
+                ],
+                "listType": "bullet",
+                "direction": "ltr"
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Cần hóa đơn VAT hoặc xuất chứng từ thanh toán cho doanh nghiệp?",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Liên hệ Hotline: ",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  },
+                  {
+                    "text": "0962.298.293",
+                    "type": "text",
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr"
+              }
+            ],
+            "direction": "ltr"
+          }
+        },
+        "contentHtml": "<p>Xe Ghép Liên Tỉnh áp dụng chính sách thanh toán linh hoạt, minh bạch và an toàn tuyệt đối cho khách hàng.</p>\n<h2>1. Nguyên Tắc Thanh Toán Sau Chuyến Đi</h2>\n<p>Để đảm bảo quyền lợi tối đa cho quý khách, đối với các chuyến xe đi ghép ghế thông thường, quý khách <strong>không cần phải đặt cọc trước</strong>. Quý khách chỉ thanh toán cước phí sau khi chuyến đi kết thúc an toàn tại đúng điểm đến đã thỏa thuận.</p>\n<p>Giá cước báo cho khách hàng đã bao gồm toàn bộ phí cầu đường bến bãi cao tốc. Cam kết không thu thêm bất kỳ phụ phí ngoài thỏa thuận.</p>\n<h2>2. Các Hình Thức Thanh Toán Chấp Nhận</h2>\n<h2>3. Đối Với Hợp Đồng Bao Xe &amp; Gửi Hàng Hóa</h2>\n<ul><li><strong>Bao xe hợp đồng nhiều ngày hoặc lộ trình xa:</strong> Quý khách có thể được yêu cầu đặt cọc trước từ 10% – 20% giá trị hợp đồng để đảm bảo xe giữ chỗ đúng ngày giờ yêu cầu.</li><li><strong>Gửi hàng hóa hỏa tốc:</strong> Người gửi có thể thanh toán trước khi gửi hàng hoặc người nhận thanh toán khi nhận hàng tận tay (Ship COD cước vận chuyển).</li></ul>\n<p>Cần hóa đơn VAT hoặc xuất chứng từ thanh toán cho doanh nghiệp?</p>\n<p>Liên hệ Hotline: <a href=\"tel:0962298293\">0962.298.293</a></p>",
+        "status": "published",
+        "seo": {
+          "metaTitle": "Chính Sách Thanh Toán - Xe Ghép Liên Tỉnh",
+          "appendBrand": true,
+          "metaDescription": "Quy định và chính sách thanh toán dịch vụ xe ghép, bao xe tại Xe Ghép Liên Tỉnh. Thanh toán sau chuyến đi, tiền mặt hoặc chuyển khoản minh bạch.",
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    }
+  ],
+  "articles": [
+    {
+      "sourceId": 1,
+      "data": {
+        "slug": "kinh-nghiem-dat-xe-ghep-lien-tinh-tiet-kiem",
+        "title": "Kinh Nghiệm Đặt Xe Ghép Liên Tỉnh Tiết Kiệm, Nhanh Chóng và An Toàn",
+        "category": "kinh-nghiem",
+        "excerpt": "Bí quyết đặt xe ghép tiện chuyến Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang đón trả tận nhà, tiết kiệm chi phí và an tâm đổi hủy miễn phí.",
+        "content": "\n      <p>Trong những năm gần đây, dịch vụ <strong>xe ghép liên tỉnh</strong> đã trở thành xu hướng di chuyển tiện lợi hàng đầu kết nối các tỉnh thành trọng điểm như Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang.</p>\n\n      <h2 id=\"1-xe-ghep-lien-tinh-la-gi\">1. Xe ghép liên tỉnh là gì?</h2>\n      <p>Xe ghép là hình thức chia sẻ không gian trên cùng một chuyến xe ô tô 4, 5 hoặc 7 chỗ đời mới. Khác với xe khách truyền thống phải ra bến bãi đông đúc, xe ghép đón và trả khách tận nơi tại cửa nhà hoặc địa chỉ yêu cầu.</p>\n      <p>Mỗi chuyến xe tại Xe Ghép Liên Tỉnh chỉ nhận giới hạn từ 1 đến 3 khách để đảm bảo không gian rộng rãi, thoáng mát, xe chạy thẳng cao tốc không vòng vèo bắt khách.</p>\n\n      <h2 id=\"2-uu-diem-noi-bat-cua-xe-ghep-lien-tinh\">2. Ưu điểm nổi bật của xe ghép liên tỉnh</h2>\n      <ul>\n        <li><strong>Chỉ 1–3 khách/chuyến:</strong> Tuyệt đối không nhồi nhét, chỗ ngồi êm ái rộng rãi.</li>\n        <li><strong>Xuất phát nhanh chóng:</strong> Xe chạy thẳng đường cao tốc, không bắt khách dọc đường.</li>\n        <li><strong>Giá rõ ràng trọn gói:</strong> Đã bao gồm vé cầu đường bến bãi, không có phụ phí ẩn.</li>\n        <li><strong>100% xe đời mới:</strong> Điều hòa mát lạnh, sạch sẽ không mùi.</li>\n        <li><strong>Đón trả tận nơi 24/7:</strong> Phục vụ 2 chiều cả ngày lẫn đêm.</li>\n      </ul>\n\n      <h2 id=\"3-gia-cuoc-cac-tuyen-trong-diem\">3. Giá cước các tuyến trọng điểm</h2>\n      <p>Mức giá ghép 1 khách chỉ từ 250k - 600k tùy tuyến. Quý khách vui lòng tham khảo chi tiết tại mục Các tuyến liên tỉnh của chúng tôi.</p>\n\n      <h2 id=\"4-luu-y-quan-trong-khi-dat-chuyen\">4. Lưu ý quan trọng khi đặt chuyến</h2>\n      <p>Để chuyến đi diễn ra thuận lợi, quý khách nên đặt xe trước 30 phút - 1 tiếng hoặc liên hệ tổng đài 24/7 qua hotline <strong>0962.298.293</strong>.</p>\n    ",
+        "contentHtml": "\n      <p>Trong những năm gần đây, dịch vụ <strong>xe ghép liên tỉnh</strong> đã trở thành xu hướng di chuyển tiện lợi hàng đầu kết nối các tỉnh thành trọng điểm như Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang.</p>\n\n      <h2 id=\"1-xe-ghep-lien-tinh-la-gi\">1. Xe ghép liên tỉnh là gì?</h2>\n      <p>Xe ghép là hình thức chia sẻ không gian trên cùng một chuyến xe ô tô 4, 5 hoặc 7 chỗ đời mới. Khác với xe khách truyền thống phải ra bến bãi đông đúc, xe ghép đón và trả khách tận nơi tại cửa nhà hoặc địa chỉ yêu cầu.</p>\n      <p>Mỗi chuyến xe tại Xe Ghép Liên Tỉnh chỉ nhận giới hạn từ 1 đến 3 khách để đảm bảo không gian rộng rãi, thoáng mát, xe chạy thẳng cao tốc không vòng vèo bắt khách.</p>\n\n      <h2 id=\"2-uu-diem-noi-bat-cua-xe-ghep-lien-tinh\">2. Ưu điểm nổi bật của xe ghép liên tỉnh</h2>\n      <ul>\n        <li><strong>Chỉ 1–3 khách/chuyến:</strong> Tuyệt đối không nhồi nhét, chỗ ngồi êm ái rộng rãi.</li>\n        <li><strong>Xuất phát nhanh chóng:</strong> Xe chạy thẳng đường cao tốc, không bắt khách dọc đường.</li>\n        <li><strong>Giá rõ ràng trọn gói:</strong> Đã bao gồm vé cầu đường bến bãi, không có phụ phí ẩn.</li>\n        <li><strong>100% xe đời mới:</strong> Điều hòa mát lạnh, sạch sẽ không mùi.</li>\n        <li><strong>Đón trả tận nơi 24/7:</strong> Phục vụ 2 chiều cả ngày lẫn đêm.</li>\n      </ul>\n\n      <h2 id=\"3-gia-cuoc-cac-tuyen-trong-diem\">3. Giá cước các tuyến trọng điểm</h2>\n      <p>Mức giá ghép 1 khách chỉ từ 250k - 600k tùy tuyến. Quý khách vui lòng tham khảo chi tiết tại mục Các tuyến liên tỉnh của chúng tôi.</p>\n\n      <h2 id=\"4-luu-y-quan-trong-khi-dat-chuyen\">4. Lưu ý quan trọng khi đặt chuyến</h2>\n      <p>Để chuyến đi diễn ra thuận lợi, quý khách nên đặt xe trước 30 phút - 1 tiếng hoặc liên hệ tổng đài 24/7 qua hotline <strong>0962.298.293</strong>.</p>\n    ",
+        "tableOfContents": [
+          {
+            "id": "1-xe-ghep-lien-tinh-la-gi",
+            "text": "1. Xe ghép liên tỉnh là gì?",
+            "level": 2
+          },
+          {
+            "id": "2-uu-diem-noi-bat-cua-xe-ghep-lien-tinh",
+            "text": "2. Ưu điểm nổi bật của xe ghép liên tỉnh",
+            "level": 2
+          },
+          {
+            "id": "3-gia-cuoc-cac-tuyen-trong-diem",
+            "text": "3. Giá cước các tuyến trọng điểm",
+            "level": 2
+          },
+          {
+            "id": "4-luu-y-quan-trong-khi-dat-chuyen",
+            "text": "4. Lưu ý quan trọng khi đặt chuyến",
+            "level": 2
+          }
+        ],
+        "author": "Ban Biên Tập Xe Ghép Liên Tỉnh",
+        "authorType": "Organization",
+        "featuredImage": 27,
+        "relatedRoute": 2,
+        "status": "published",
+        "publishedAt": "2026-02-15T01:00:00.000Z",
+        "seo": {
+          "metaTitle": "Kinh Nghiệm Đặt Xe Ghép Liên Tỉnh Tiết Kiệm, Nhanh Chóng và An Toàn",
+          "appendBrand": false,
+          "metaDescription": "Bí quyết đặt xe ghép tiện chuyến Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang đón trả tận nhà, tiết kiệm chi phí và an tâm đổi hủy miễn phí.",
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    },
+    {
+      "sourceId": 2,
+      "data": {
+        "slug": "bang-gia-xe-ghep-lien-tinh-moi-nhat-2026",
+        "title": "Bảng Giá Xe Ghép Liên Tỉnh Mới Nhất 2026: 9 Tuyến Trọng Điểm Miền Bắc",
+        "category": "tin-tuyen",
+        "excerpt": "Bảng giá niêm yết 9 tuyến xe ghép liên tỉnh Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang, Hải Dương, Thái Nguyên.",
+        "content": "\n      <p>Xe Ghép Liên Tỉnh xin gửi tới quý khách bảng giá niêm yết công khai trên 9 tuyến di chuyển chính, áp dụng cho xe riêng 4, 5 và 7 chỗ đời mới phục vụ 24/7.</p>\n\n      <h2 id=\"1-bang-gia-cac-tuyen-xe-ghep-chinh\">1. Bảng giá các tuyến xe ghép chính</h2>\n      <p>Mức giá ghép ghế chỉ từ 250k/khách. Bao xe riêng 4/5 chỗ chỉ từ 400k - 2.200k tùy cự ly lộ trình. Chi tiết niêm yết tại trang Các tuyến liên tỉnh.</p>\n\n      <h2 id=\"2-dich-vu-gui-hang-hoa-toc-tu-150k\">2. Dịch vụ gửi hàng hỏa tốc từ 150k</h2>\n      <p>Bên cạnh đưa đón hành khách, chúng tôi cung cấp dịch vụ gửi hàng hóa, bưu phẩm, tài liệu hỏa tốc giá chỉ từ 150k trên tất cả các tuyến đường, giao nhận tận tay người nhận trong ngày.</p>\n\n      <h2 id=\"3-chinh-sach-hoan-tien-va-doi-huy-mien-phi\">3. Chính sách hoàn tiền và đổi hủy miễn phí</h2>\n      <p>Cam kết hoàn tiền 100%, đền 200% nếu xe không đảm bảo chất lượng dịch vụ. Miễn phí đổi hoặc hủy chuyến khi quý khách thay đổi lịch trình.</p>\n    ",
+        "contentHtml": "\n      <p>Xe Ghép Liên Tỉnh xin gửi tới quý khách bảng giá niêm yết công khai trên 9 tuyến di chuyển chính, áp dụng cho xe riêng 4, 5 và 7 chỗ đời mới phục vụ 24/7.</p>\n\n      <h2 id=\"1-bang-gia-cac-tuyen-xe-ghep-chinh\">1. Bảng giá các tuyến xe ghép chính</h2>\n      <p>Mức giá ghép ghế chỉ từ 250k/khách. Bao xe riêng 4/5 chỗ chỉ từ 400k - 2.200k tùy cự ly lộ trình. Chi tiết niêm yết tại trang Các tuyến liên tỉnh.</p>\n\n      <h2 id=\"2-dich-vu-gui-hang-hoa-toc-tu-150k\">2. Dịch vụ gửi hàng hỏa tốc từ 150k</h2>\n      <p>Bên cạnh đưa đón hành khách, chúng tôi cung cấp dịch vụ gửi hàng hóa, bưu phẩm, tài liệu hỏa tốc giá chỉ từ 150k trên tất cả các tuyến đường, giao nhận tận tay người nhận trong ngày.</p>\n\n      <h2 id=\"3-chinh-sach-hoan-tien-va-doi-huy-mien-phi\">3. Chính sách hoàn tiền và đổi hủy miễn phí</h2>\n      <p>Cam kết hoàn tiền 100%, đền 200% nếu xe không đảm bảo chất lượng dịch vụ. Miễn phí đổi hoặc hủy chuyến khi quý khách thay đổi lịch trình.</p>\n    ",
+        "tableOfContents": [
+          {
+            "id": "1-bang-gia-cac-tuyen-xe-ghep-chinh",
+            "text": "1. Bảng giá các tuyến xe ghép chính",
+            "level": 2
+          },
+          {
+            "id": "2-dich-vu-gui-hang-hoa-toc-tu-150k",
+            "text": "2. Dịch vụ gửi hàng hỏa tốc từ 150k",
+            "level": 2
+          },
+          {
+            "id": "3-chinh-sach-hoan-tien-va-doi-huy-mien-phi",
+            "text": "3. Chính sách hoàn tiền và đổi hủy miễn phí",
+            "level": 2
+          }
+        ],
+        "author": "Phòng Điều Hành Xe Ghép Liên Tỉnh",
+        "authorType": "Organization",
+        "featuredImage": 26,
+        "relatedRoute": 1,
+        "status": "published",
+        "publishedAt": "2026-03-01T02:00:00.000Z",
+        "seo": {
+          "metaTitle": "Bảng Giá Xe Ghép Liên Tỉnh Mới Nhất 2026: 9 Tuyến Trọng Điểm Miền Bắc",
+          "appendBrand": false,
+          "metaDescription": "Bảng giá niêm yết 9 tuyến xe ghép liên tỉnh Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang, Hải Dương, Thái Nguyên.",
+          "ogImage": null,
+          "noindex": false
+        }
+      }
+    }
+  ],
+  "airportPricing": [
+    {
+      "sourceId": 1,
+      "data": {
+        "slug": "quan-cau-giay",
+        "district": "Quận Cầu Giấy",
+        "fromHanoiToAirport": {
+          "sedan5Seats": 190000,
+          "suv7Seats": 230000,
+          "van16Seats": 450000
+        },
+        "fromAirportToHanoi": {
+          "sedan5Seats": 240000,
+          "suv7Seats": 280000,
+          "van16Seats": 500000
+        },
+        "roundTrip": {
+          "sedan5Seats": 390000,
+          "suv7Seats": 480000,
+          "van16Seats": 850000
+        },
+        "isActive": true,
+        "sortOrder": 1
+      }
+    },
+    {
+      "sourceId": 2,
+      "data": {
+        "slug": "quan-ba-dinh",
+        "district": "Quận Ba Đình",
+        "fromHanoiToAirport": {
+          "sedan5Seats": 190000,
+          "suv7Seats": 230000,
+          "van16Seats": 450000
+        },
+        "fromAirportToHanoi": {
+          "sedan5Seats": 240000,
+          "suv7Seats": 280000,
+          "van16Seats": 500000
+        },
+        "roundTrip": {
+          "sedan5Seats": 390000,
+          "suv7Seats": 480000,
+          "van16Seats": 850000
+        },
+        "isActive": true,
+        "sortOrder": 2
+      }
+    },
+    {
+      "sourceId": 3,
+      "data": {
+        "slug": "quan-tay-ho",
+        "district": "Quận Tây Hồ",
+        "fromHanoiToAirport": {
+          "sedan5Seats": 180000,
+          "suv7Seats": 220000,
+          "van16Seats": 430000
+        },
+        "fromAirportToHanoi": {
+          "sedan5Seats": 230000,
+          "suv7Seats": 270000,
+          "van16Seats": 480000
+        },
+        "roundTrip": {
+          "sedan5Seats": 380000,
+          "suv7Seats": 460000,
+          "van16Seats": 800000
+        },
+        "isActive": true,
+        "sortOrder": 3
+      }
+    },
+    {
+      "sourceId": 4,
+      "data": {
+        "slug": "quan-dong-da",
+        "district": "Quận Đống Đa",
+        "fromHanoiToAirport": {
+          "sedan5Seats": 200000,
+          "suv7Seats": 240000,
+          "van16Seats": 470000
+        },
+        "fromAirportToHanoi": {
+          "sedan5Seats": 250000,
+          "suv7Seats": 290000,
+          "van16Seats": 520000
+        },
+        "roundTrip": {
+          "sedan5Seats": 410000,
+          "suv7Seats": 500000,
+          "van16Seats": 900000
+        },
+        "isActive": true,
+        "sortOrder": 4
+      }
+    },
+    {
+      "sourceId": 5,
+      "data": {
+        "slug": "quan-hoan-kiem",
+        "district": "Quận Hoàn Kiếm",
+        "fromHanoiToAirport": {
+          "sedan5Seats": 200000,
+          "suv7Seats": 240000,
+          "van16Seats": 470000
+        },
+        "fromAirportToHanoi": {
+          "sedan5Seats": 250000,
+          "suv7Seats": 290000,
+          "van16Seats": 520000
+        },
+        "roundTrip": {
+          "sedan5Seats": 410000,
+          "suv7Seats": 500000,
+          "van16Seats": 900000
+        },
+        "isActive": true,
+        "sortOrder": 5
+      }
+    },
+    {
+      "sourceId": 6,
+      "data": {
+        "slug": "quan-hai-ba-trung",
+        "district": "Quận Hai Bà Trưng",
+        "fromHanoiToAirport": {
+          "sedan5Seats": 210000,
+          "suv7Seats": 250000,
+          "van16Seats": 480000
+        },
+        "fromAirportToHanoi": {
+          "sedan5Seats": 260000,
+          "suv7Seats": 300000,
+          "van16Seats": 530000
+        },
+        "roundTrip": {
+          "sedan5Seats": 430000,
+          "suv7Seats": 520000,
+          "van16Seats": 920000
+        },
+        "isActive": true,
+        "sortOrder": 6
+      }
+    },
+    {
+      "sourceId": 7,
+      "data": {
+        "slug": "quan-thanh-xuan",
+        "district": "Quận Thanh Xuân",
+        "fromHanoiToAirport": {
+          "sedan5Seats": 210000,
+          "suv7Seats": 250000,
+          "van16Seats": 480000
+        },
+        "fromAirportToHanoi": {
+          "sedan5Seats": 260000,
+          "suv7Seats": 300000,
+          "van16Seats": 530000
+        },
+        "roundTrip": {
+          "sedan5Seats": 430000,
+          "suv7Seats": 520000,
+          "van16Seats": 920000
+        },
+        "isActive": true,
+        "sortOrder": 7
+      }
+    },
+    {
+      "sourceId": 8,
+      "data": {
+        "slug": "quan-nam-tu-liem",
+        "district": "Quận Nam Từ Liêm",
+        "fromHanoiToAirport": {
+          "sedan5Seats": 200000,
+          "suv7Seats": 240000,
+          "van16Seats": 470000
+        },
+        "fromAirportToHanoi": {
+          "sedan5Seats": 250000,
+          "suv7Seats": 290000,
+          "van16Seats": 520000
+        },
+        "roundTrip": {
+          "sedan5Seats": 410000,
+          "suv7Seats": 500000,
+          "van16Seats": 900000
+        },
+        "isActive": true,
+        "sortOrder": 8
+      }
+    },
+    {
+      "sourceId": 9,
+      "data": {
+        "slug": "quan-bac-tu-liem",
+        "district": "Quận Bắc Từ Liêm",
+        "fromHanoiToAirport": {
+          "sedan5Seats": 190000,
+          "suv7Seats": 230000,
+          "van16Seats": 450000
+        },
+        "fromAirportToHanoi": {
+          "sedan5Seats": 240000,
+          "suv7Seats": 280000,
+          "van16Seats": 500000
+        },
+        "roundTrip": {
+          "sedan5Seats": 390000,
+          "suv7Seats": 480000,
+          "van16Seats": 850000
+        },
+        "isActive": true,
+        "sortOrder": 9
+      }
+    },
+    {
+      "sourceId": 10,
+      "data": {
+        "slug": "quan-ha-dong",
+        "district": "Quận Hà Đông",
+        "fromHanoiToAirport": {
+          "sedan5Seats": 230000,
+          "suv7Seats": 270000,
+          "van16Seats": 520000
+        },
+        "fromAirportToHanoi": {
+          "sedan5Seats": 280000,
+          "suv7Seats": 330000,
+          "van16Seats": 580000
+        },
+        "roundTrip": {
+          "sedan5Seats": 470000,
+          "suv7Seats": 560000,
+          "van16Seats": 1000000
+        },
+        "isActive": true,
+        "sortOrder": 10
+      }
+    },
+    {
+      "sourceId": 11,
+      "data": {
+        "slug": "quan-hoang-mai",
+        "district": "Quận Hoàng Mai",
+        "fromHanoiToAirport": {
+          "sedan5Seats": 220000,
+          "suv7Seats": 260000,
+          "van16Seats": 500000
+        },
+        "fromAirportToHanoi": {
+          "sedan5Seats": 270000,
+          "suv7Seats": 320000,
+          "van16Seats": 560000
+        },
+        "roundTrip": {
+          "sedan5Seats": 450000,
+          "suv7Seats": 540000,
+          "van16Seats": 960000
+        },
+        "isActive": true,
+        "sortOrder": 11
+      }
+    },
+    {
+      "sourceId": 12,
+      "data": {
+        "slug": "quan-long-bien",
+        "district": "Quận Long Biên",
+        "fromHanoiToAirport": {
+          "sedan5Seats": 200000,
+          "suv7Seats": 240000,
+          "van16Seats": 470000
+        },
+        "fromAirportToHanoi": {
+          "sedan5Seats": 250000,
+          "suv7Seats": 290000,
+          "van16Seats": 520000
+        },
+        "roundTrip": {
+          "sedan5Seats": 410000,
+          "suv7Seats": 500000,
+          "van16Seats": 900000
+        },
+        "isActive": true,
+        "sortOrder": 12
+      }
+    }
+  ],
+  "distanceRates": [
+    {
+      "sourceId": 1,
+      "data": {
+        "label": "Dưới 30 km (tối thiểu)",
+        "minKm": 0,
+        "maxKm": 30,
+        "sedan5Seats": 11000,
+        "suv7Seats": 13000,
+        "van16Seats": 18000,
+        "sortOrder": 1
+      }
+    },
+    {
+      "sourceId": 2,
+      "data": {
+        "label": "Từ 31 km - 100 km",
+        "minKm": 31,
+        "maxKm": 100,
+        "sedan5Seats": 9500,
+        "suv7Seats": 11500,
+        "van16Seats": 16000,
+        "sortOrder": 2
+      }
+    },
+    {
+      "sourceId": 3,
+      "data": {
+        "label": "Từ 101 km - 200 km",
+        "minKm": 101,
+        "maxKm": 200,
+        "sedan5Seats": 8500,
+        "suv7Seats": 10500,
+        "van16Seats": 14500,
+        "sortOrder": 3
+      }
+    },
+    {
+      "sourceId": 4,
+      "data": {
+        "label": "Trên 200 km",
+        "minKm": 201,
+        "maxKm": null,
+        "sedan5Seats": 8000,
+        "suv7Seats": 9500,
+        "van16Seats": 13500,
+        "sortOrder": 4
+      }
+    }
+  ],
+  "redirects": [
+    {
+      "sourceId": 1,
+      "data": {
+        "fromUrl": "/dich-vu-xe-ghep",
+        "toUrl": "/tuyen-lien-tinh",
+        "statusCode": "301",
+        "source": "seed",
+        "isActive": true,
+        "note": "Seed từ next.config.ts cũ — trang dịch vụ gộp vào listing tuyến."
+      }
+    },
+    {
+      "sourceId": 2,
+      "data": {
+        "fromUrl": "/bang-gia",
+        "toUrl": "/tuyen-lien-tinh",
+        "statusCode": "301",
+        "source": "seed",
+        "isActive": true,
+        "note": "Seed từ next.config.ts cũ — trang bảng giá gộp vào listing tuyến."
+      }
+    },
+    {
+      "sourceId": 3,
+      "data": {
+        "fromUrl": "/taxi-dua-don-san-bay-noi-bai",
+        "toUrl": "/tuyen-lien-tinh/hai-phong-ha-noi-noi-bai",
+        "statusCode": "301",
+        "source": "seed",
+        "isActive": true,
+        "note": "Seed từ next.config.ts cũ — trang sân bay Nội Bài -> chi tiết tuyến."
+      }
+    },
+    {
+      "sourceId": 4,
+      "data": {
+        "fromUrl": "/taxi-duong-dai",
+        "toUrl": "/tuyen-lien-tinh",
+        "statusCode": "301",
+        "source": "seed",
+        "isActive": true,
+        "note": "Seed từ next.config.ts cũ — trang taxi đường dài gộp listing tuyến."
+      }
+    },
+    {
+      "sourceId": 5,
+      "data": {
+        "fromUrl": "/dang-ky-doi-tac",
+        "toUrl": "/lien-he",
+        "statusCode": "301",
+        "source": "seed",
+        "isActive": true,
+        "note": "Seed từ next.config.ts cũ — đăng ký đối tác chuyển trang liên hệ."
+      }
+    }
+  ],
+  "companySettings": {
+    "identity": {
+      "companyName": "Xe Ghép Liên Tỉnh",
+      "brandName": "Xe Ghép Liên Tỉnh",
+      "website": "https://xeghephaiphonghanoi.com"
+    },
+    "contact": {
+      "hotline": "0962.298.293",
+      "hotlineRaw": "0962298293",
+      "secondaryPhone": {
+        "label": "Tổng đài lưu đêm",
+        "number": "0858.911.247"
+      },
+      "email": "xeghephaiphonghanoi@gmail.com",
+      "zaloUrl": "https://zalo.me/0962298293",
+      "fanpageName": "Xe Ghép Bắc Giang - Bắc Ninh - Hải Phòng",
+      "fanpageUrl": "https://www.facebook.com/xeghepbacgiangbacninhhaiphong"
+    },
+    "location": {
+      "address": "Hải Phòng",
+      "mapEmbedUrl": null,
+      "latitude": 20.8449115,
+      "longitude": 106.6880842
+    },
+    "banner": {
+      "topBannerLine1": "XE GHÉP: MÓNG CÁI - HẠ LONG - HẢI PHÒNG - BẮC NINH - BẮC GIANG - HÀ NỘI",
+      "topBannerLine2": "ĐẶT XE LIÊN HỆ NGAY: 0962.298.293",
+      "heroImage": null,
+      "heroTitleLine1": "XE GHÉP LIÊN TỈNH",
+      "heroTitleLine2": "GIÁ CHỈ TỪ 200K",
+      "heroDescription": "Dịch vụ xe ghép – xe tiện chuyến Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang... Xe chạy thẳng, nhanh, đón trả tận nơi, phục vụ 24/7.",
+      "heroBenefit1": "Đón trả tận nhà",
+      "heroBenefit2": "Chỉ 1–3 khách",
+      "heroBenefit3": "100% xe đời mới",
+      "coverage": "Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội",
+      "workingHours": "Phục vụ 24/7 (Cả ngày lẫn đêm, các ngày lễ tết)",
+      "fleetDescription": "100% xe riêng đời mới 4, 5, 7 chỗ, điều hòa mát lạnh, sạch sẽ, bảo dưỡng định kỳ",
+      "bookingPromise": "Giá rõ ràng đã bao gồm cầu đường bến bãi – Đưa đón tận nhà – Miễn phí hủy chuyến",
+      "summary": "Dịch vụ xe ghép, xe tiện chuyến Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang. Xe chạy thẳng, nhanh, giá rõ ràng, đón trả tận nơi, phục vụ 24/7."
+    },
+    "brandSeo": {
+      "logo": 33,
+      "defaultOgImage": null,
+      "areaServed": [
+        {
+          "id": "6ad504cd2d71ff04619a4c4b",
+          "type": "City",
+          "name": "Hải Phòng"
+        },
+        {
+          "id": "6ad504cd2d71ff04619a4c4c",
+          "type": "City",
+          "name": "Hà Nội"
+        },
+        {
+          "id": "6ad504cd2d71ff04619a4c4d",
+          "type": "AdministrativeArea",
+          "name": "Quảng Ninh"
+        },
+        {
+          "id": "6ad504cd2d71ff04619a4c4e",
+          "type": "AdministrativeArea",
+          "name": "Bắc Ninh"
+        },
+        {
+          "id": "6ad504cd2d71ff04619a4c4f",
+          "type": "AdministrativeArea",
+          "name": "Bắc Giang"
+        }
+      ],
+      "priceRange": "₫"
+    },
+    "commitments": [
+      {
+        "id": "6ad504cd2d71ff04619a4c50",
+        "title": "Cam kết hoàn tiền 100%",
+        "description": "Chúng tôi cam kết 100% hoàn tiền nếu xe không đảm bảo chất lượng chuyến đi của quý khách.",
+        "iconName": "ShieldCheck"
+      },
+      {
+        "id": "6ad504cd2d71ff04619a4c51",
+        "title": "Đưa đón tận nhà",
+        "description": "Phục vụ đưa đón tận nhà cả 2 chiều, tối ưu lộ trình và giảm tối đa chi phí đi lại cho khách hàng.",
+        "iconName": "MapPin"
+      },
+      {
+        "id": "6ad504cd2d71ff04619a4c52",
+        "title": "Lái xe dày dạn kinh nghiệm",
+        "description": "Đội ngũ lái xe chuyên nghiệp, nhiệt tình, nhiều năm kinh nghiệm lái xe đường trường an toàn.",
+        "iconName": "Users"
+      },
+      {
+        "id": "6ad504cd2d71ff04619a4c53",
+        "title": "Mức giá tốt nhất",
+        "description": "Luôn cam kết với mức giá tốt nhất cho khách hàng, minh bạch không phát sinh phụ phí vô lý.",
+        "iconName": "BadgePercent"
+      },
+      {
+        "id": "6ad504cd2d71ff04619a4c54",
+        "title": "Miễn phí hủy chuyến",
+        "description": "Miễn phí hủy chuyến khi khách hàng có sự thay đổi lộ trình hoặc công việc phát sinh đột xuất.",
+        "iconName": "Clock"
+      },
+      {
+        "id": "6ad504cd2d71ff04619a4c55",
+        "title": "Đền 200% chất lượng dịch vụ",
+        "description": "Chính sách hoàn lại tiền 100% và đền 200% nếu dịch vụ không đúng như cam kết và thỏa thuận.",
+        "iconName": "Award"
+      }
+    ],
+    "paymentMethods": [
+      {
+        "id": "6ad504cd2d71ff04619a4c56",
+        "title": "Tiền mặt trực tiếp",
+        "description": "Thanh toán bằng tiền mặt cho tài xế sau khi chuyến đi hoàn thành an toàn.",
+        "iconName": "Banknote"
+      },
+      {
+        "id": "6ad504cd2d71ff04619a4c57",
+        "title": "Chuyển khoản trực tuyến",
+        "description": "Chuyển khoản qua Internet Banking / quét mã QR sau chuyến đi hoặc khi đặt cọc bao xe.",
+        "iconName": "CreditCard"
+      }
+    ],
+    "testimonials": [
+      {
+        "id": "6ad504cd2d71ff04619a4c58",
+        "author": "Anh Nguyễn Tuấn Anh",
+        "location": "Bắc Ninh",
+        "content": "Đi từ KCN Quế Võ về Hải Phòng công tác thường xuyên, giá ghép chỉ 400k - 500k mà xe đón tận sảnh, chỉ 1-2 khách trên xe rất thoáng đãng.",
+        "rating": 5,
+        "avatarText": "TA",
+        "isVisible": true
+      },
+      {
+        "id": "6ad504cd2d71ff04619a4c59",
+        "author": "Chị Hoàng Mai Lan",
+        "location": "Móng Cái, Quảng Ninh",
+        "content": "Tuyến Móng Cái đi Hà Nội chạy cao tốc rất nhanh, tài xế lái cẩn thận, xe 7 chỗ sạch sẽ. Gửi hàng bưu phẩm cũng rất uy tín chỉ từ 150k.",
+        "rating": 5,
+        "avatarText": "ML",
+        "isVisible": true
+      },
+      {
+        "id": "6ad504cd2d71ff04619a4c5a",
+        "author": "Bác Lê Văn Thắng",
+        "location": "Hạ Long, Quảng Ninh",
+        "content": "Bao xe 5 chỗ sang Bắc Giang ăn cưới trọn gói 900k, xe riêng đời mới, bác tài nhiệt tình chu đáo, đúng giờ.",
+        "rating": 5,
+        "avatarText": "VT",
+        "isVisible": true
+      },
+      {
+        "id": "6ad504cd2d71ff04619a4c5b",
+        "author": "Chị Đỗ Thu Trang",
+        "location": "Hà Nội",
+        "content": "Đặt xe đi sân bay Nội Bài và Hải Phòng được tổng đài hỗ trợ nhanh chóng, cam kết hoàn tiền và xe riêng không mùi làm tôi rất an tâm.",
+        "rating": 5,
+        "avatarText": "TT",
+        "isVisible": true
+      }
+    ],
+    "globalType": "company_settings"
+  },
+  "pricingSettings": {
+    "parcelFromPrice": 150000,
+    "parcelDeliveryText": "2–4 giờ",
+    "maxPassengersPerShareTrip": 3,
+    "minLeadTimeMinutes": 15,
+    "freeCancelMinutes": 30,
+    "returningCustomerDiscountPercent": 10,
+    "priceValidUntil": "2027-12-31T00:00:00.000Z",
+    "roundTripDiscountText": "Giảm 60% - 70% giá cước chiều về khi khách hàng đi khứ hồi trong ngày.",
+    "waitingTimeText": "Miễn phí 1 giờ chờ đầu tiên. Các giờ chờ tiếp theo tính 60.000đ/giờ (tối đa 3 giờ chờ ban ngày).",
+    "waitingFreeMinutes": 60,
+    "waitingFeePerHour": 60000,
+    "waitingMaxHours": 3,
+    "tollsNote": "Giá cước tính theo km chưa bao gồm phí cầu đường, cao tốc và vé phà (nếu có). Quý khách thanh toán trực tiếp theo hóa đơn BOT.",
+    "tollsNoteShort": "Giá chưa bao gồm phí cầu đường, cao tốc, vé phà.",
+    "overnightNote": "Khách có nhu cầu lưu đêm qua ngày vui lòng liên hệ tổng đài 0858.911.247 để nhận báo giá ưu đãi trọn gói gồm chi phí lưu đêm tài xế.",
+    "overnightPhone": "0858.911.247",
+    "holidayNote": "Giá có thể thay đổi dịp lễ, tết.",
+    "globalType": "pricing_settings"
+  }
+}

@@ -51,7 +51,7 @@ describe('Editor & SEO Utilities (Task T111)', () => {
 
       expect(screen.getByTestId('google-serp-preview')).toBeDefined();
       expect(screen.getByText('Xe Ghép Liên Tỉnh')).toBeDefined();
-      expect(screen.getByText('https://xegheplientinh.vn/tuyen-duong/xe-ghep-hai-phong-ha-noi')).toBeDefined();
+      expect(screen.getByText('https://xeghephaiphonghanoi.com/tuyen-duong/xe-ghep-hai-phong-ha-noi')).toBeDefined();
       expect(screen.getByTestId('serp-title').textContent).toBe('Xe ghép Hải Phòng Hà Nội giá rẻ');
       expect(screen.getByTestId('serp-description').textContent).toContain('Dịch vụ xe ghép');
     });

@@ -444,6 +444,14 @@ export type CompanyInfoData = {
   fanpageUrl: string;
   topBannerLine1: string;
   topBannerLine2: string;
+  heroImageUrl: string;
+  heroImageAlt: string;
+  heroTitleLine1: string;
+  heroTitleLine2: string;
+  heroDescription: string;
+  heroBenefit1: string;
+  heroBenefit2: string;
+  heroBenefit3: string;
   coverage: string;
   workingHours: string;
   fleetDescription: string;
@@ -475,6 +483,13 @@ export type CompanySettingsOut = {
   banner?: {
     topBannerLine1?: string | null;
     topBannerLine2?: string | null;
+    heroImage?: { url?: string | null; alt?: string | null } | number | null;
+    heroTitleLine1?: string | null;
+    heroTitleLine2?: string | null;
+    heroDescription?: string | null;
+    heroBenefit1?: string | null;
+    heroBenefit2?: string | null;
+    heroBenefit3?: string | null;
     coverage?: string | null;
     workingHours?: string | null;
     fleetDescription?: string | null;
@@ -544,6 +559,13 @@ const mediaUrl = (value: unknown): string | null => {
   }
   return null;
 };
+const mediaAlt = (value: unknown): string | null => {
+  if (value && typeof value === "object" && "alt" in value) {
+    const alt = (value as { alt?: unknown }).alt;
+    return typeof alt === "string" && alt.trim() ? alt : null;
+  }
+  return null;
+};
 
 export async function getCompanySettings(): Promise<CompanySettingsData> {
   if (typeof window === "undefined") {
@@ -579,6 +601,14 @@ export async function getCompanySettings(): Promise<CompanySettingsData> {
         text(banner.topBannerLine1) || COMPANY_INFO.topBannerLine1,
       topBannerLine2:
         text(banner.topBannerLine2) || COMPANY_INFO.topBannerLine2,
+      heroImageUrl: mediaUrl(banner.heroImage) || COMPANY_INFO.heroImageUrl,
+      heroImageAlt: mediaAlt(banner.heroImage) || COMPANY_INFO.heroImageAlt,
+      heroTitleLine1: text(banner.heroTitleLine1) || COMPANY_INFO.heroTitleLine1,
+      heroTitleLine2: text(banner.heroTitleLine2) || COMPANY_INFO.heroTitleLine2,
+      heroDescription: text(banner.heroDescription) || COMPANY_INFO.heroDescription,
+      heroBenefit1: text(banner.heroBenefit1) || COMPANY_INFO.heroBenefit1,
+      heroBenefit2: text(banner.heroBenefit2) || COMPANY_INFO.heroBenefit2,
+      heroBenefit3: text(banner.heroBenefit3) || COMPANY_INFO.heroBenefit3,
       coverage: text(banner.coverage) || COMPANY_INFO.coverage,
       workingHours: text(banner.workingHours) || COMPANY_INFO.workingHours,
       fleetDescription:

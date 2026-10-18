@@ -1284,7 +1284,7 @@ export interface CompanySetting {
     companyName: string;
     brandName: string;
     /**
-     * Ví dụ: https://xegheplientinh.vn
+     * Ví dụ: https://xeghephaiphonghanoi.com
      */
     website: string;
   };
@@ -1321,6 +1321,13 @@ export interface CompanySetting {
   banner?: {
     topBannerLine1?: string | null;
     topBannerLine2?: string | null;
+    heroImage?: (number | null) | Media;
+    heroTitleLine1?: string | null;
+    heroTitleLine2?: string | null;
+    heroDescription?: string | null;
+    heroBenefit1?: string | null;
+    heroBenefit2?: string | null;
+    heroBenefit3?: string | null;
     coverage?: string | null;
     workingHours?: string | null;
     fleetDescription?: string | null;
@@ -1476,6 +1483,13 @@ export interface CompanySettingsSelect<T extends boolean = true> {
     | {
         topBannerLine1?: T;
         topBannerLine2?: T;
+        heroImage?: T;
+        heroTitleLine1?: T;
+        heroTitleLine2?: T;
+        heroDescription?: T;
+        heroBenefit1?: T;
+        heroBenefit2?: T;
+        heroBenefit3?: T;
         coverage?: T;
         workingHours?: T;
         fleetDescription?: T;

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const SITE_DOMAIN = "https://xegheplientinh.vn";
+export const SITE_DOMAIN = "https://xeghephaiphonghanoi.com";
 export const BRAND_NAME = "Xe Ghép Liên Tỉnh";
 export const DEFAULT_OG_IMAGE = `${SITE_DOMAIN}/images/og-xe-ghep-lien-tinh.webp`;
 

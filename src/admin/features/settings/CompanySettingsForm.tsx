@@ -118,14 +118,14 @@ export function CompanySettingsForm() {
   // Form State
   const [companyName, setCompanyName] = useState('Công ty Cổ phần Vận tải Xe Ghép Liên Tỉnh');
   const [brandName, setBrandName] = useState('Xe Ghép Liên Tỉnh');
-  const [website, setWebsite] = useState('https://xegheplientinh.vn');
+  const [website, setWebsite] = useState(COMPANY_INFO.website);
   const [taxCode, setTaxCode] = useState('0109876543');
 
   const [hotline, setHotline] = useState('0962.298.293');
   const [hotlineRaw, setHotlineRaw] = useState('0962298293');
   const [secondaryLabel, setSecondaryLabel] = useState('Tổng đài hỗ trợ đêm');
   const [secondaryNumber, setSecondaryNumber] = useState('0858.911.247');
-  const [email, setEmail] = useState('support@xegheplientinh.vn');
+  const [email, setEmail] = useState(COMPANY_INFO.email);
   const [zaloUrl, setZaloUrl] = useState('https://zalo.me/0962298293');
   const [fanpageName, setFanpageName] = useState('Xe Ghép Liên Tỉnh');
   const [fanpageUrl, setFanpageUrl] = useState('https://facebook.com/xegheplientinh');
@@ -134,6 +134,13 @@ export function CompanySettingsForm() {
 
   const [topBannerLine1, setTopBannerLine1] = useState(COMPANY_INFO.topBannerLine1);
   const [topBannerLine2, setTopBannerLine2] = useState(COMPANY_INFO.topBannerLine2);
+  const [heroImageMedia, setHeroImageMedia] = useState<MediaDoc | number | null>(null);
+  const [heroTitleLine1, setHeroTitleLine1] = useState(COMPANY_INFO.heroTitleLine1);
+  const [heroTitleLine2, setHeroTitleLine2] = useState(COMPANY_INFO.heroTitleLine2);
+  const [heroDescription, setHeroDescription] = useState(COMPANY_INFO.heroDescription);
+  const [heroBenefit1, setHeroBenefit1] = useState(COMPANY_INFO.heroBenefit1);
+  const [heroBenefit2, setHeroBenefit2] = useState(COMPANY_INFO.heroBenefit2);
+  const [heroBenefit3, setHeroBenefit3] = useState(COMPANY_INFO.heroBenefit3);
   const [coverage, setCoverage] = useState(COMPANY_INFO.coverage);
   const [workingHours, setWorkingHours] = useState(COMPANY_INFO.workingHours);
   const [fleetDescription, setFleetDescription] = useState(COMPANY_INFO.fleetDescription);
@@ -146,6 +153,7 @@ export function CompanySettingsForm() {
   const [priceRange, setPriceRange] = useState('');
   const [isLogoModalOpen, setIsLogoModalOpen] = useState(false);
   const [isOgImageModalOpen, setIsOgImageModalOpen] = useState(false);
+  const [isHeroImageModalOpen, setIsHeroImageModalOpen] = useState(false);
 
   const [commitments, setCommitments] = useState<CompanyCommitment[]>(DEFAULT_COMMITMENTS);
   const [paymentMethods, setPaymentMethods] = useState<CompanyPaymentMethod[]>(DEFAULT_PAYMENT_METHODS);
@@ -197,6 +205,13 @@ export function CompanySettingsForm() {
         if (data.banner) {
           if (data.banner.topBannerLine1 != null) setTopBannerLine1(data.banner.topBannerLine1);
           if (data.banner.topBannerLine2 != null) setTopBannerLine2(data.banner.topBannerLine2);
+          setHeroImageMedia(data.banner.heroImage ?? null);
+          if (data.banner.heroTitleLine1 != null) setHeroTitleLine1(data.banner.heroTitleLine1);
+          if (data.banner.heroTitleLine2 != null) setHeroTitleLine2(data.banner.heroTitleLine2);
+          if (data.banner.heroDescription != null) setHeroDescription(data.banner.heroDescription);
+          if (data.banner.heroBenefit1 != null) setHeroBenefit1(data.banner.heroBenefit1);
+          if (data.banner.heroBenefit2 != null) setHeroBenefit2(data.banner.heroBenefit2);
+          if (data.banner.heroBenefit3 != null) setHeroBenefit3(data.banner.heroBenefit3);
           if (data.banner.coverage != null) setCoverage(data.banner.coverage);
           if (data.banner.workingHours != null) setWorkingHours(data.banner.workingHours);
           if (data.banner.fleetDescription != null) setFleetDescription(data.banner.fleetDescription);
@@ -352,6 +367,13 @@ export function CompanySettingsForm() {
       banner: {
         topBannerLine1: topBannerLine1.trim() || null,
         topBannerLine2: topBannerLine2.trim() || null,
+        heroImage: resolveMediaId(heroImageMedia),
+        heroTitleLine1: heroTitleLine1.trim() || null,
+        heroTitleLine2: heroTitleLine2.trim() || null,
+        heroDescription: heroDescription.trim() || null,
+        heroBenefit1: heroBenefit1.trim() || null,
+        heroBenefit2: heroBenefit2.trim() || null,
+        heroBenefit3: heroBenefit3.trim() || null,
         coverage: coverage.trim() || null,
         workingHours: workingHours.trim() || null,
         fleetDescription: fleetDescription.trim() || null,
@@ -438,7 +460,7 @@ export function CompanySettingsForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Input
               label="Website chính thức"
-              placeholder="https://xegheplientinh.vn"
+              placeholder="https://xeghephaiphonghanoi.com"
               value={website}
               onChange={(e) => setWebsite(e.target.value)}
               required
@@ -595,7 +617,7 @@ export function CompanySettingsForm() {
             <Input
               label="Email hỗ trợ"
               type="email"
-              placeholder="support@xegheplientinh.vn"
+              placeholder="xeghephaiphonghanoi@gmail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -672,6 +694,38 @@ export function CompanySettingsForm() {
               value={topBannerLine2}
               onChange={(e) => setTopBannerLine2(e.target.value)}
             />
+          </div>
+
+          <div className="space-y-3 border-t border-slate-200 pt-4">
+            <span className="text-sm font-semibold text-slate-800">Banner lớn trang chủ</span>
+            <div className="flex flex-wrap items-center gap-4">
+              <div className="w-40 h-24 rounded-xl border border-slate-200 bg-slate-50 overflow-hidden flex items-center justify-center">
+                <img
+                  src={resolveMediaDoc(heroImageMedia)?.url || COMPANY_INFO.heroImageUrl}
+                  alt={resolveMediaDoc(heroImageMedia)?.alt || COMPANY_INFO.heroImageAlt}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <Button type="button" variant="outline" size="sm" onClick={() => setIsHeroImageModalOpen(true)}>
+                {heroImageMedia ? 'Đổi ảnh banner' : 'Chọn ảnh banner'}
+              </Button>
+              {heroImageMedia != null && (
+                <button type="button" onClick={() => setHeroImageMedia(null)} className="text-xs text-slate-500 hover:text-rose-600">
+                  Dùng ảnh mặc định
+                </button>
+              )}
+            </div>
+            <p className="text-xs text-slate-500">Ảnh ngang, rõ trên điện thoại và máy tính. Mô tả ảnh (alt) được lấy từ thư viện ảnh.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Input label="Tiêu đề dòng 1" value={heroTitleLine1} onChange={(e) => setHeroTitleLine1(e.target.value)} />
+              <Input label="Tiêu đề dòng 2" value={heroTitleLine2} onChange={(e) => setHeroTitleLine2(e.target.value)} />
+            </div>
+            <Textarea label="Mô tả banner" rows={3} value={heroDescription} onChange={(e) => setHeroDescription(e.target.value)} />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <Input label="Điểm nổi bật 1" value={heroBenefit1} onChange={(e) => setHeroBenefit1(e.target.value)} />
+              <Input label="Điểm nổi bật 2" value={heroBenefit2} onChange={(e) => setHeroBenefit2(e.target.value)} />
+              <Input label="Điểm nổi bật 3" value={heroBenefit3} onChange={(e) => setHeroBenefit3(e.target.value)} />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -996,6 +1050,13 @@ export function CompanySettingsForm() {
         onSelect={(media) => setOgImageMedia(media)}
         selectedId={resolveMediaId(ogImageMedia) ?? undefined}
         title="Chọn ảnh chia sẻ mặc định (OG Image)"
+      />
+      <MediaPickerModal
+        isOpen={isHeroImageModalOpen}
+        onClose={() => setIsHeroImageModalOpen(false)}
+        onSelect={(media) => setHeroImageMedia(media)}
+        selectedId={resolveMediaId(heroImageMedia) ?? undefined}
+        title="Chọn ảnh banner trang chủ"
       />
     </form>
   );

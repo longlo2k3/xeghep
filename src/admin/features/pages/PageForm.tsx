@@ -20,6 +20,7 @@ import { Badge } from '@/admin/components/ui/Badge';
 import { MediaPickerModal } from '@/admin/components/common/MediaPickerModal';
 import { RichTextEditor } from '@/admin/components/common/RichTextEditor';
 import { SeoPreview } from '@/admin/components/common/SeoPreview';
+import { SITE_DOMAIN } from '@/lib/seo';
 import { apiClient, getApiErrorMessage } from '@/admin/lib/api-client';
 import { slugify } from '@/admin/lib/utils';
 import type { PageDoc, PageKind } from '@/admin/types/pages';
@@ -359,7 +360,7 @@ export function PageForm() {
               data-testid="page-slug-input"
             />
             <p className="text-[11px] text-slate-500 font-mono">
-              URL trang: https://xegheplientinh.vn/{form.slug || 'slug-trang'}
+              URL trang: {SITE_DOMAIN}/{form.slug || 'slug-trang'}
             </p>
           </div>
 
