@@ -1,13 +1,41 @@
 import fs from "node:fs";
 import path from "node:path";
+import { Client } from "pg";
 
 import { loadEnv } from "payload/node";
 
 import { PROJECT_ROOT, readSnapshot, type SnapshotDoc } from "./databaseSnapshot";
 
 (process.env as Record<string, string | undefined>).NODE_ENV = "development";
-process.env.PAYLOAD_DB_PUSH = "false";
 loadEnv();
+
+// Payload's schema push is safe on a completely empty database. Never run it
+// against an existing schema: Drizzle may propose dropping unrelated tables.
+const connectionString = process.env.DATABASE_URI;
+if (!connectionString) throw new Error("DATABASE_URI is required to seed the database.");
+const client = new Client({ connectionString });
+await client.connect();
+let tableNames: string[];
+try {
+  const result = await client.query<{ tablename: string }>(
+    "SELECT tablename FROM pg_catalog.pg_tables WHERE schemaname = current_schema()",
+  );
+  tableNames = result.rows.map((row) => row.tablename);
+} finally {
+  await client.end();
+}
+
+if (tableNames.length === 0) {
+  console.log("Seed: empty database detected; creating Payload schema first.");
+  process.env.PAYLOAD_DB_PUSH = "true";
+} else {
+  const required = ["media", "routes", "pages", "articles", "airport_pricing", "distance_rates", "redirects", "users", "company_settings", "pricing_settings"];
+  const missing = required.filter((table) => !tableNames.includes(table));
+  if (missing.length > 0) {
+    throw new Error(`Database has existing tables but is missing Payload tables: ${missing.join(", ")}. Apply the project migrations to this database before seeding; automatic schema push is disabled to protect existing data.`);
+  }
+  process.env.PAYLOAD_DB_PUSH = "false";
+}
 
 const { getPayload } = await import("payload");
 const { default: config } = await import("../payload.config");
