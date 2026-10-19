@@ -52,12 +52,13 @@ export function injectTocIds(html: string | null | undefined): {
   const toc: TocEntry[] = [];
   const used = new Set<string>();
 
-  const output = html.replace(H2_PATTERN, (_match, _attrs: string | undefined, inner: string) => {
+  const output = html.replace(H2_PATTERN, (_match, attrs: string | undefined, inner: string) => {
     const text = headingText(inner);
     const base = slugify(text) || `phan-${toc.length + 1}`;
     const id = uniqueId(base, used);
     toc.push({ id, text, level: 2 });
-    return `<h2 id="${id}">${inner}</h2>`;
+    const preservedAttributes = (attrs ?? "").replace(/\s+id\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/i, "");
+    return `<h2${preservedAttributes} id="${id}">${inner}</h2>`;
   });
 
   return { html: output, toc };

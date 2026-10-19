@@ -2,6 +2,15 @@ import sanitizeHtml from "sanitize-html";
 
 /** Allowlist theo spec 4.2.2 / data-model §articles (FR-D01). */
 export const ARTICLE_ALLOWED_TAGS = [
+  "article",
+  "section",
+  "div",
+  "span",
+  "header",
+  "footer",
+  "aside",
+  "figure",
+  "figcaption",
   "p",
   "h2",
   "h3",
@@ -21,9 +30,11 @@ export const ARTICLE_ALLOWED_TAGS = [
   "td",
   "blockquote",
   "br",
+  "hr",
 ];
 
 const ALLOWED_ATTRIBUTES: sanitizeHtml.IOptions["allowedAttributes"] = {
+  "*": ["style", "class", "title", "aria-*"],
   a: ["href", "name", "title", "rel"],
   img: ["src", "alt", "width", "height", "title"],
   h2: ["id"],
@@ -33,6 +44,41 @@ const ALLOWED_ATTRIBUTES: sanitizeHtml.IOptions["allowedAttributes"] = {
   th: ["colspan", "rowspan"],
   td: ["colspan", "rowspan"],
 };
+
+// Keep presentation CSS in articles while excluding properties that can fetch
+// resources, cover the page, or execute browser-specific CSS extensions.
+const ARTICLE_STYLE_PROPERTIES = [
+  "color", "background", "background-color", "border", "border-top",
+  "border-right", "border-bottom", "border-left", "border-color",
+  "border-style", "border-width", "border-radius", "border-collapse",
+  "box-sizing", "display", "flex", "flex-direction", "flex-wrap",
+  "flex-grow", "flex-shrink", "flex-basis", "align-items", "align-self",
+  "align-content", "justify-content", "gap", "row-gap", "column-gap",
+  "grid-template-columns", "grid-template-rows", "grid-column", "grid-row",
+  "width", "height", "min-width", "min-height", "max-width", "max-height",
+  "margin", "margin-top", "margin-right", "margin-bottom", "margin-left",
+  "padding", "padding-top", "padding-right", "padding-bottom", "padding-left",
+  "font-family", "font-size", "font-weight", "font-style", "line-height",
+  "letter-spacing", "text-align", "text-decoration", "text-transform",
+  "vertical-align", "white-space", "word-break", "overflow-wrap",
+  "overflow", "overflow-x", "overflow-y", "opacity", "list-style-type",
+] as const;
+
+// sanitize-html parses each declaration before applying these rules. Block
+// external CSS resources and escapes while allowing var(), clamp() and gradients.
+const SAFE_ARTICLE_STYLE_VALUE =
+  /^(?!.*(?:url\s*\(|expression\s*\(|image-set\s*\(|https?:|[;{}<>\\@!]))[a-z0-9#%.,():+*/\s-]+$/i;
+
+function articleAllowedStyles(input: string): sanitizeHtml.IOptions["allowedStyles"] {
+  const properties: Record<string, RegExp[]> = Object.fromEntries(
+    ARTICLE_STYLE_PROPERTIES.map((property) => [property, [SAFE_ARTICLE_STYLE_VALUE]]),
+  );
+  // Custom properties are scoped to the article element that defines them.
+  for (const match of input.matchAll(/(?:^|[;"'])\s*(--[a-z][a-z0-9-]*)\s*:/gi)) {
+    properties[match[1]] = [SAFE_ARTICLE_STYLE_VALUE];
+  }
+  return { "*": properties };
+}
 
 /** Thẻ bị loại kèm nội dung bên trong (không giữ text con). */
 const NON_TEXT_TAGS = [
@@ -66,6 +112,7 @@ export function sanitizeArticleHtml(input: string | null | undefined): string {
   return sanitizeHtml(input, {
     allowedTags: [...ARTICLE_ALLOWED_TAGS],
     allowedAttributes: ALLOWED_ATTRIBUTES,
+    allowedStyles: articleAllowedStyles(input),
     allowedSchemes: ["http", "https", "mailto", "tel"],
     allowedSchemesAppliedToAttributes: ["href", "src"],
     allowProtocolRelative: false,

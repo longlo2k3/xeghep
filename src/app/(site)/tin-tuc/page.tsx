@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { notFound, permanentRedirect } from "next/navigation";
 import { constructMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ARTICLES as FALLBACK_ARTICLES } from "@/data/articles";
@@ -10,33 +11,67 @@ import { Calendar, User, ArrowRight, Tag, Phone, ShieldCheck } from "lucide-reac
 
 export const revalidate = 60;
 
-export const metadata: Metadata = constructMetadata({
-  title: "Tin Tức & Cẩm Nang Xe Ghép Liên Tỉnh 2026",
-  description:
-    "Cập nhật tin tức, cẩm nang và kinh nghiệm đi xe ghép liên tỉnh Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang đón trả tận nơi.",
-  path: "/tin-tuc",
-});
+const PAGE_SIZE = 12;
+const NEWS_DESCRIPTION =
+  "Cập nhật tin tức, cẩm nang và kinh nghiệm đi xe ghép liên tỉnh Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang đón trả tận nơi.";
 
-export default async function NewsIndexPage() {
+type Props = {
+  searchParams: Promise<{ page?: string | string[] }>;
+};
+
+function parsePage(value: string | string[] | undefined): number | null {
+  if (value === undefined) return 1;
+  if (typeof value !== "string" || !/^[1-9]\d*$/.test(value)) return null;
+  const page = Number(value);
+  return Number.isSafeInteger(page) ? page : null;
+}
+
+function pageHref(page: number): string {
+  return page === 1 ? "/tin-tuc" : `/tin-tuc?page=${page}`;
+}
+
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+  const { page: rawPage } = await searchParams;
+  const page = parsePage(rawPage);
+  if (page === null) notFound();
+
+  return constructMetadata({
+    title: page === 1
+      ? "Tin Tức & Cẩm Nang Xe Ghép Liên Tỉnh 2026"
+      : `Tin Tức & Cẩm Nang Xe Ghép - Trang ${page}`,
+    description: page === 1 ? NEWS_DESCRIPTION : `${NEWS_DESCRIPTION} Trang ${page}.`,
+    path: pageHref(page),
+  });
+}
+
+export default async function NewsIndexPage({ searchParams }: Props) {
+  const { page: rawPage } = await searchParams;
+  const page = parsePage(rawPage);
+  if (page === null) notFound();
+  if (rawPage !== undefined && rawPage !== String(page)) permanentRedirect(pageHref(page));
+
   const [routes, articlesRes, companySettings] = await Promise.all([
     getRoutes().catch(() => []),
-    getArticles({ limit: 12 }).catch(() => null),
+    getArticles({ page, limit: PAGE_SIZE }).catch(() => null),
     getCompanySettings(),
   ]);
   const info = companySettings.info ?? COMPANY_INFO;
 
-  const articles =
-    articlesRes?.items && articlesRes.items.length > 0
-      ? articlesRes.items
-      : FALLBACK_ARTICLES;
+  const articles = articlesRes?.items ?? FALLBACK_ARTICLES;
+  const totalPages = Math.max(1, articlesRes?.meta.totalPages ?? 1);
+  if (page > totalPages || (page > 1 && articles.length === 0)) notFound();
+
+  const visiblePages = [...new Set([1, page - 1, page, page + 1, totalPages])]
+    .filter((value) => value >= 1 && value <= totalPages)
+    .sort((a, b) => a - b);
 
   const breadcrumbs = [
     { name: "Trang chủ", path: "/" },
     { name: "Tin tức", path: "/tin-tuc" },
   ];
 
-  const featuredArticle = articles[0];
-  const otherArticles = articles.slice(1);
+  const featuredArticle = page === 1 ? articles[0] : null;
+  const otherArticles = page === 1 ? articles.slice(1) : articles;
 
   return (
     <>
@@ -179,6 +214,36 @@ export default async function NewsIndexPage() {
                   ))}
                 </div>
               </div>
+
+              {totalPages > 1 && (
+                <nav aria-label="Phân trang tin tức" className="flex flex-wrap items-center justify-center gap-2 pt-2">
+                  {page > 1 && (
+                    <Link href={pageHref(page - 1)} className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 hover:border-red-300 hover:text-red-700">
+                      Trang trước
+                    </Link>
+                  )}
+                  {visiblePages.map((visiblePage, index) => (
+                    <div key={visiblePage} className="flex items-center gap-2">
+                      {index > 0 && visiblePage - visiblePages[index - 1] > 1 && (
+                        <span aria-hidden="true" className="px-1 text-slate-500">…</span>
+                      )}
+                      <Link
+                        href={pageHref(visiblePage)}
+                        aria-label={`Trang ${visiblePage}`}
+                        aria-current={visiblePage === page ? "page" : undefined}
+                        className={`flex min-w-10 items-center justify-center rounded-lg border px-3 py-2 text-sm font-semibold ${visiblePage === page ? "border-red-600 bg-red-600 text-white" : "border-slate-200 bg-white text-slate-700 hover:border-red-300 hover:text-red-700"}`}
+                      >
+                        {visiblePage}
+                      </Link>
+                    </div>
+                  ))}
+                  {page < totalPages && (
+                    <Link href={pageHref(page + 1)} className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 hover:border-red-300 hover:text-red-700">
+                      Trang sau
+                    </Link>
+                  )}
+                </nav>
+              )}
             </div>
 
             {/* Sidebar: Tuyến nổi bật & Hotline per spec_v2.md Section 6 */}

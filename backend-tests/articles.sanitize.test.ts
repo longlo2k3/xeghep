@@ -45,18 +45,44 @@ describe('sanitizeArticleHtml — allowlist (spec 4.2.2 / FR-D01)', () => {
     expect(out).not.toContain('bật JS');
   });
 
-  it('strips event handler attributes and other non-allowlisted attributes', () => {
+  it('keeps presentation attributes but strips event handlers', () => {
     expect(sanitizeArticleHtml('<p onclick="steal()" style="color:red" class="x">Nội dung</p>')).toBe(
-      '<p>Nội dung</p>',
+      '<p style="color:red" class="x">Nội dung</p>',
     );
     expect(
       sanitizeArticleHtml('<a href="/gioi-thieu" onmouseover="steal()" target="_blank">liên kết</a>'),
     ).toBe('<a href="/gioi-thieu">liên kết</a>');
   });
 
-  it('unwraps disallowed tags but keeps their text', () => {
+  it('keeps layout tags and their inline styles', () => {
     const out = sanitizeArticleHtml('<div><span>giữ nguyên text</span></div>');
-    expect(out).toBe('giữ nguyên text');
+    expect(out).toBe('<div><span>giữ nguyên text</span></div>');
+  });
+
+  it('preserves article CSS variables, gradients and responsive font sizes', () => {
+    const { contentHtml } = processArticleContent(
+      '<article style="--primary:#0756a5;display:flex;gap:16px">' +
+        '<section style="background:linear-gradient(135deg,#f0f7ff,#ffffff);border-left:4px solid var(--primary)">' +
+        '<h2 style="color:var(--primary);font-size:clamp(21px,3vw,27px)">Tuyến xe</h2>' +
+        '</section></article>',
+    );
+    expect(contentHtml).toContain('<article style="--primary:#0756a5;display:flex;gap:16px">');
+    expect(contentHtml).toContain('<section style="background:linear-gradient(135deg,#f0f7ff,#ffffff);border-left:4px solid var(--primary)">');
+    expect(contentHtml).toContain('style="color:var(--primary);font-size:clamp(21px,3vw,27px)"');
+    expect(contentHtml).toContain('id="tuyen-xe"');
+  });
+
+  it('rejects unsafe CSS and active HTML even with inline styles enabled', () => {
+    const out = sanitizeArticleHtml(
+      '<article style="color:red;background:url(https://evil.example/x);position:fixed" onclick="steal()">' +
+        '<script>steal()</script><p style="color:blue">Nội dung</p></article>',
+    );
+    expect(out).toContain('<article style="color:red">');
+    expect(out).toContain('<p style="color:blue">Nội dung</p>');
+    expect(out).not.toContain('evil.example');
+    expect(out).not.toContain('position:fixed');
+    expect(out).not.toContain('onclick');
+    expect(out).not.toContain('steal()');
   });
 
   it('drops javascript: and data: URLs', () => {

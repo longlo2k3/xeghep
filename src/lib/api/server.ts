@@ -411,7 +411,7 @@ export async function getArticlesDirect(options: GetArticlesOptions = {}): Promi
       overrideAccess: true,
     });
 
-    if (!res.docs || res.docs.length === 0) {
+    if (res.totalDocs === 0 && page === 1 && !options.category && !options.excludeSlug) {
       return {
         items: FALLBACK_ARTICLES,
         meta: { page: 1, limit: 12, totalDocs: FALLBACK_ARTICLES.length, totalPages: 1 },
