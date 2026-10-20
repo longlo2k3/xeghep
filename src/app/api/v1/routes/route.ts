@@ -48,7 +48,7 @@ export async function GET(req: Request): Promise<Response> {
       collection: 'routes',
       limit: 100,
       depth: 2,
-      sort: 'createdAt',
+      sort: 'sortOrder',
       where,
       overrideAccess: true,
     });

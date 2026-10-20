@@ -52,3 +52,75 @@ iframe {
     transform: translateY(0) scale(1);
   }
 }
+
+.contact-button--zalo {
+  --contact-wave-color: #0068ff;
+}
+
+.contact-button--phone {
+  --contact-wave-color: #dc2626;
+}
+
+.contact-wave {
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--contact-wave-color);
+  border-radius: 9999px;
+  pointer-events: none;
+  animation: contact-wave 1.8s ease-out infinite;
+}
+
+.contact-wave--delayed {
+  animation-delay: -0.9s;
+}
+
+.contact-breathe {
+  position: absolute;
+  inset: 4px;
+  border: 2px solid rgb(255 255 255 / 55%);
+  border-radius: 9999px;
+  pointer-events: none;
+  animation: contact-heartbeat-ring 1.6s ease-in-out infinite;
+}
+
+.contact-icon {
+  transform-origin: center;
+  animation: contact-heartbeat-icon 1.6s ease-in-out infinite;
+}
+
+@keyframes contact-wave {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+@keyframes contact-heartbeat-ring {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  12%, 62% { opacity: 0.9; transform: scale(0.82); }
+  24%, 74% { opacity: 1; transform: scale(1.16); }
+  38%, 88% { opacity: 0.65; transform: scale(0.93); }
+}
+
+@keyframes contact-heartbeat-icon {
+  0%, 100% { transform: scale(1) rotate(0); }
+  12%, 62% { transform: scale(0.82) rotate(-10deg); }
+  24%, 74% { transform: scale(1.2) rotate(10deg); }
+  38%, 88% { transform: scale(0.94) rotate(-5deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-wave,
+  .contact-breathe,
+  .contact-icon {
+    animation: none;
+  }
+
+  .contact-wave {
+    opacity: 0;
+  }
+}

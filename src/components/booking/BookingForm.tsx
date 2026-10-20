@@ -313,7 +313,7 @@ export function BookingForm({
   return (
     <div
       id="form-dat-xe"
-      className={`scroll-mt-24 rounded-2xl border overflow-hidden transition-all ${
+      className={`scroll-mt-24 rounded-2xl border overflow-visible transition-all ${
         isGlass
           ? "bg-slate-950/25 backdrop-blur-[6px] border-white/25 shadow-[0_8px_32px_0_rgba(0,0,0,0.45)] ring-1 ring-white/20"
           : "bg-white rounded-2xl border-slate-200/90 shadow-xl"
@@ -321,7 +321,7 @@ export function BookingForm({
     >
       {/* Header bar */}
       <div
-        className={`text-white text-center border-b ${
+        className={`rounded-t-2xl text-white text-center border-b ${
           isGlass
             ? "bg-gradient-to-r from-[#990000] via-[#c62828] to-[#e64a19] backdrop-blur-sm border-white/20"
             : "bg-gradient-to-r from-[#990000] via-[#c62828] to-[#e64a19] border-red-800"
