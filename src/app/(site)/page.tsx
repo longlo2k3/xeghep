@@ -32,7 +32,7 @@ export default async function HomePage() {
       <HeroSection companyInfo={companySettings.info} />
 
       {/* Nội dung và form đặt xe nằm sau ảnh banner, không phủ lên ảnh. */}
-      <section className="bg-white px-3 py-6 sm:px-6 sm:py-10 lg:px-8">
+      <section className="bg-white px-3 pt-6 sm:px-6 sm:pt-10 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {companySettings.info.heroTitleLine1?.trim() && (
             <div className="mb-6 space-y-3 text-center sm:mb-8">
