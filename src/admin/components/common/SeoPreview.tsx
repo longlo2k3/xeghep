@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   Globe,
   Share2,
@@ -6,9 +6,9 @@ import {
   CheckCircle2,
   HelpCircle,
   Car,
-} from 'lucide-react';
-import { Card } from '@/admin/components/ui/Card';
-import { SITE_DOMAIN } from '@/lib/seo';
+} from "lucide-react";
+import { Card } from "@/admin/components/ui/Card";
+import { SITE_DOMAIN } from "@/lib/seo";
 
 export interface SeoPreviewProps {
   title: string;
@@ -25,24 +25,28 @@ export function SeoPreview({
   title,
   description,
   slug,
-  prefix = 'tin-tuc',
+  prefix = "tin-tuc",
   ogImage,
   appendBrand = false,
-  siteName = 'Xe Ghép Liên Tỉnh',
-  brandSuffix = ' | Xe Ghép Liên Tỉnh',
+  siteName = "Xe Ghép Liên Tỉnh",
+  brandSuffix = " | Xe Ghép Liên Tỉnh",
 }: SeoPreviewProps) {
-  const [activeTab, setActiveTab] = useState<'serp' | 'social'>('serp');
+  const [activeTab, setActiveTab] = useState<"serp" | "social">("serp");
 
   // Xử lý tiêu đề hiển thị đầy đủ
   const effectiveTitle = title
-    ? `${title}${appendBrand ? brandSuffix : ''}`
-    : 'Chưa có tiêu đề trang';
+    ? `${title}${appendBrand ? brandSuffix : ""}`
+    : "Chưa có tiêu đề trang";
 
-  const effectiveDescription = description || 'Chưa có mô tả nội dung trang. Vui lòng nhập meta description để tối ưu tỷ lệ nhấp chuột (CTR) từ công cụ tìm kiếm.';
+  const effectiveDescription =
+    description ||
+    "Chưa có mô tả nội dung trang. Vui lòng nhập meta description để tối ưu tỷ lệ nhấp chuột (CTR) từ công cụ tìm kiếm.";
 
   // Xử lý URL hiển thị
-  const cleanPrefix = prefix ? prefix.replace(/^\/+|\/+$/g, '') : '';
-  const cleanSlug = slug ? slug.replace(/^\/+|\/+$/g, '') : 'duong-dan-bai-viet';
+  const cleanPrefix = prefix ? prefix.replace(/^\/+|\/+$/g, "") : "";
+  const cleanSlug = slug
+    ? slug.replace(/^\/+|\/+$/g, "")
+    : "duong-dan-bai-viet";
   const displayUrl = cleanPrefix
     ? `${SITE_DOMAIN}/${cleanPrefix}/${cleanSlug}`
     : `${SITE_DOMAIN}/${cleanSlug}`;
@@ -75,11 +79,11 @@ export function SeoPreview({
         <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs">
           <button
             type="button"
-            onClick={() => setActiveTab('serp')}
+            onClick={() => setActiveTab("serp")}
             className={`px-3 py-1 rounded-lg font-medium transition cursor-pointer flex items-center gap-1.5 ${
-              activeTab === 'serp'
-                ? 'bg-blue-600 text-white shadow-sm'
-                : 'text-slate-600 hover:text-slate-900'
+              activeTab === "serp"
+                ? "bg-blue-600 text-white shadow-sm"
+                : "text-slate-600 hover:text-slate-900"
             }`}
             data-testid="tab-serp-btn"
           >
@@ -88,11 +92,11 @@ export function SeoPreview({
           </button>
           <button
             type="button"
-            onClick={() => setActiveTab('social')}
+            onClick={() => setActiveTab("social")}
             className={`px-3 py-1 rounded-lg font-medium transition cursor-pointer flex items-center gap-1.5 ${
-              activeTab === 'social'
-                ? 'bg-blue-600 text-white shadow-sm'
-                : 'text-slate-600 hover:text-slate-900'
+              activeTab === "social"
+                ? "bg-blue-600 text-white shadow-sm"
+                : "text-slate-600 hover:text-slate-900"
             }`}
             data-testid="tab-social-btn"
           >
@@ -107,16 +111,18 @@ export function SeoPreview({
         {/* Thanh đo Tiêu đề (≤ 70 ký tự) */}
         <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-semibold text-slate-700">Độ dài Tiêu đề (SEO Title)</span>
+            <span className="font-semibold text-slate-700">
+              Độ dài Tiêu đề (SEO Title)
+            </span>
             <span
               className={`font-mono font-bold ${
                 isTitleOver
-                  ? 'text-rose-600'
+                  ? "text-rose-600"
                   : isTitleOptimal
-                  ? 'text-emerald-600'
-                  : isTitleShort
-                  ? 'text-amber-600'
-                  : 'text-slate-500'
+                    ? "text-emerald-600"
+                    : isTitleShort
+                      ? "text-amber-600"
+                      : "text-slate-500"
               }`}
               data-testid="title-counter"
             >
@@ -129,14 +135,16 @@ export function SeoPreview({
             <div
               className={`h-full transition-all duration-300 ${
                 isTitleOver
-                  ? 'bg-rose-500'
+                  ? "bg-rose-500"
                   : isTitleOptimal
-                  ? 'bg-emerald-500'
-                  : isTitleShort
-                  ? 'bg-amber-500'
-                  : 'bg-slate-300'
+                    ? "bg-emerald-500"
+                    : isTitleShort
+                      ? "bg-amber-500"
+                      : "bg-slate-300"
               }`}
-              style={{ width: `${Math.min(100, Math.round((titleLength / 70) * 100))}%` }}
+              style={{
+                width: `${Math.min(100, Math.round((titleLength / 70) * 100))}%`,
+              }}
               data-testid="title-progress-bar"
             />
           </div>
@@ -144,7 +152,10 @@ export function SeoPreview({
           {/* Đánh giá / Cảnh báo */}
           <div className="text-[11px] flex items-center gap-1.5">
             {isTitleOver ? (
-              <span className="text-rose-600 flex items-center gap-1 font-medium" data-testid="title-warning">
+              <span
+                className="text-rose-600 flex items-center gap-1 font-medium"
+                data-testid="title-warning"
+              >
                 <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
                 Vượt quá 70 ký tự! Google sẽ cắt bớt bằng dấu '...'.
               </span>
@@ -167,16 +178,18 @@ export function SeoPreview({
         {/* Thanh đo Mô tả (≤ 160 ký tự) */}
         <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-semibold text-slate-700">Độ dài Mô tả (Meta Description)</span>
+            <span className="font-semibold text-slate-700">
+              Độ dài Mô tả (Meta Description)
+            </span>
             <span
               className={`font-mono font-bold ${
                 isDescOver
-                  ? 'text-rose-600'
+                  ? "text-rose-600"
                   : isDescOptimal
-                  ? 'text-emerald-600'
-                  : isDescShort
-                  ? 'text-amber-600'
-                  : 'text-slate-500'
+                    ? "text-emerald-600"
+                    : isDescShort
+                      ? "text-amber-600"
+                      : "text-slate-500"
               }`}
               data-testid="desc-counter"
             >
@@ -189,14 +202,16 @@ export function SeoPreview({
             <div
               className={`h-full transition-all duration-300 ${
                 isDescOver
-                  ? 'bg-rose-500'
+                  ? "bg-rose-500"
                   : isDescOptimal
-                  ? 'bg-emerald-500'
-                  : isDescShort
-                  ? 'bg-amber-500'
-                  : 'bg-slate-300'
+                    ? "bg-emerald-500"
+                    : isDescShort
+                      ? "bg-amber-500"
+                      : "bg-slate-300"
               }`}
-              style={{ width: `${Math.min(100, Math.round((descLength / 160) * 100))}%` }}
+              style={{
+                width: `${Math.min(100, Math.round((descLength / 160) * 100))}%`,
+              }}
               data-testid="desc-progress-bar"
             />
           </div>
@@ -204,7 +219,10 @@ export function SeoPreview({
           {/* Đánh giá / Cảnh báo */}
           <div className="text-[11px] flex items-center gap-1.5">
             {isDescOver ? (
-              <span className="text-rose-400 flex items-center gap-1 font-medium" data-testid="desc-warning">
+              <span
+                className="text-rose-400 flex items-center gap-1 font-medium"
+                data-testid="desc-warning"
+              >
                 <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
                 Vượt quá 160 ký tự! Nội dung sẽ bị Google cắt ngắn.
               </span>
@@ -226,7 +244,7 @@ export function SeoPreview({
       </div>
 
       {/* TAB NỘI DUNG: GOOGLE SERP PREVIEW */}
-      {activeTab === 'serp' ? (
+      {activeTab === "serp" ? (
         <div className="space-y-2">
           <p className="text-xs font-semibold text-slate-400">
             Mô phỏng hiển thị trên Google SERP (Desktop & Mobile):
@@ -285,13 +303,15 @@ export function SeoPreview({
               {ogImage ? (
                 <img
                   src={ogImage}
-                  alt={title || 'OG Image'}
+                  alt={title || "OG Image"}
                   className="w-full h-full object-cover"
                 />
               ) : (
                 <div className="flex flex-col items-center justify-center text-slate-400 p-4 text-center">
                   <Share2 className="w-8 h-8 mb-2" />
-                  <span className="text-xs">Chưa cấu hình ảnh đại diện (ogImage)</span>
+                  <span className="text-xs">
+                    Chưa cấu hình ảnh đại diện (ogImage)
+                  </span>
                 </div>
               )}
             </div>
@@ -299,7 +319,7 @@ export function SeoPreview({
             {/* Nội dung card */}
             <div className="p-4 space-y-1 bg-white border-t border-slate-100">
               <span className="text-[11px] uppercase font-bold text-slate-500 tracking-wider">
-                XEGHEPLIENTINH.VN
+                {siteName}
               </span>
               <h4 className="text-sm font-bold text-slate-900 line-clamp-2 leading-snug">
                 {effectiveTitle}
