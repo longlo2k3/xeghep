@@ -445,6 +445,8 @@ export type CompanyInfoData = {
   topBannerLine1: string;
   topBannerLine2: string;
   heroImageUrl: string;
+  heroImageWidth: number;
+  heroImageHeight: number;
   heroImageAlt: string;
   heroTitleLine1: string;
   heroTitleLine2: string;
@@ -483,7 +485,7 @@ export type CompanySettingsOut = {
   banner?: {
     topBannerLine1?: string | null;
     topBannerLine2?: string | null;
-    heroImage?: { url?: string | null; alt?: string | null } | number | null;
+    heroImage?: { url?: string | null; alt?: string | null; width?: number | null; height?: number | null } | number | null;
     heroTitleLine1?: string | null;
     heroTitleLine2?: string | null;
     heroDescription?: string | null;
@@ -567,6 +569,14 @@ const mediaAlt = (value: unknown): string | null => {
   return null;
 };
 
+const mediaDimension = (value: unknown, dimension: "width" | "height"): number | null => {
+  if (value && typeof value === "object" && dimension in value) {
+    const size = (value as { width?: unknown; height?: unknown })[dimension];
+    return typeof size === "number" && size > 0 ? size : null;
+  }
+  return null;
+};
+
 export async function getCompanySettings(): Promise<CompanySettingsData> {
   if (typeof window === "undefined") {
     return getCompanySettingsDirect();
@@ -602,6 +612,8 @@ export async function getCompanySettings(): Promise<CompanySettingsData> {
       topBannerLine2:
         text(banner.topBannerLine2) || COMPANY_INFO.topBannerLine2,
       heroImageUrl: mediaUrl(banner.heroImage) || COMPANY_INFO.heroImageUrl,
+      heroImageWidth: mediaDimension(banner.heroImage, "width") || COMPANY_INFO.heroImageWidth,
+      heroImageHeight: mediaDimension(banner.heroImage, "height") || COMPANY_INFO.heroImageHeight,
       heroImageAlt: mediaAlt(banner.heroImage) || COMPANY_INFO.heroImageAlt,
       heroTitleLine1: text(banner.heroTitleLine1) || COMPANY_INFO.heroTitleLine1,
       heroTitleLine2: text(banner.heroTitleLine2) || COMPANY_INFO.heroTitleLine2,

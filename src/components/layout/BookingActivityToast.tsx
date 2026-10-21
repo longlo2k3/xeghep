@@ -124,37 +124,37 @@ export function BookingActivityToast() {
 
   return (
     <aside
-      className={`pointer-events-none fixed bottom-3 left-3 z-40 w-[calc(100%-1.5rem)] max-w-[310px] rounded-xl border border-emerald-200/80 bg-white/95 p-2.5 shadow-[0_8px_24px_rgba(15,23,42,0.14)] backdrop-blur transition-all duration-300 ease-out sm:bottom-4 sm:left-4 sm:p-3 ${
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+      className={`pointer-events-none fixed right-4 top-20 z-30 w-[min(280px,calc(100vw-2rem))] rounded-lg border border-emerald-200/80 bg-white/95 p-2 shadow-[0_6px_20px_rgba(15,23,42,0.14)] transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none sm:right-6 sm:top-24 ${
+        isVisible ? "translate-x-0 opacity-100" : "translate-x-[calc(100%_+_1.5rem)] opacity-0"
       }`}
       role="status"
       aria-live="polite"
       aria-atomic="true"
       aria-hidden={!isVisible}
     >
-      <div className="flex items-center gap-2.5">
+      <div className="flex items-center gap-2">
         {/* Icon trạng thái */}
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-          <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+          <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
         </span>
 
         {/* Nội dung chính */}
         <div className="min-w-0 flex-1 text-left">
           {/* Dòng 1: Tên + SĐT + Badge */}
           <div className="flex items-center justify-between gap-1.5">
-            <p className="truncate text-xs font-bold text-slate-900">
+            <p className="truncate text-[11px] font-bold text-slate-900">
               {record.name}{" "}
               <span className="font-normal text-slate-500">
                 ({record.phone})
               </span>
             </p>
-            <span className="shrink-0 rounded bg-emerald-50 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-700">
+            <span className="shrink-0 rounded bg-emerald-50 px-1 py-0.5 text-[9px] font-semibold text-emerald-700">
               {record.status}
             </span>
           </div>
 
           {/* Dòng 2: Tuyến đường + Thời gian */}
-          <div className="mt-1 flex items-center justify-between gap-2 text-[11px]">
+          <div className="mt-0.5 flex items-center justify-between gap-1 text-[10px]">
             <span className="inline-flex min-w-0 items-center gap-1 truncate font-semibold text-orange-600">
               <MapPin
                 className="h-3 w-3 shrink-0 text-orange-500"
@@ -163,7 +163,7 @@ export function BookingActivityToast() {
               <span className="truncate">{record.route}</span>
             </span>
 
-            <span className="inline-flex shrink-0 items-center gap-1 text-[10px] text-slate-400">
+            <span className="inline-flex shrink-0 items-center gap-1 text-[9px] text-slate-400">
               <Clock3 className="h-2.5 w-2.5" aria-hidden="true" />
               {record.bookedAt}
             </span>

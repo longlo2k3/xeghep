@@ -40,6 +40,8 @@ export const COMPANY_INFO = {
     "XE GHÉP: MÓNG CÁI - HẠ LONG - HẢI PHÒNG - BẮC NINH - BẮC GIANG - HÀ NỘI",
   topBannerLine2: "ĐẶT XE LIÊN HỆ NGAY: 0962.298.293",
   heroImageUrl: "/banner3.webp",
+  heroImageWidth: 1677,
+  heroImageHeight: 938,
   heroImageAlt: "Đội xe riêng đời mới phục vụ xe ghép liên tỉnh",
   heroTitleLine1: "",
   heroTitleLine2: "",

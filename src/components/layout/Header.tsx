@@ -9,7 +9,6 @@ import { COMPANY_INFO } from "@/data/company-info";
 import { splitBrandName, toMediaSrc } from "@/lib/brand";
 import type { CompanyInfoData } from "@/lib/api";
 import type { RouteItem } from "@/lib/types";
-import { TopBanner } from "./TopBanner";
 
 export function Header({
   routes,
@@ -50,7 +49,6 @@ export function Header({
 
   return (
     <>
-      <TopBanner companyInfo={info} />
       {/* Accessible Skip Link per AGENTS.md rule 3.1 & WCAG 2.1 AA */}
       <a
         href="#main-content"

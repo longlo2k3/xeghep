@@ -70,6 +70,14 @@ const mediaAlt = (value: unknown): string | null => {
   return null;
 };
 
+const mediaDimension = (value: unknown, dimension: "width" | "height"): number | null => {
+  if (value && typeof value === "object" && dimension in value) {
+    const size = (value as { width?: unknown; height?: unknown })[dimension];
+    return typeof size === "number" && size > 0 ? size : null;
+  }
+  return null;
+};
+
 export const FALLBACK_COMPANY_SETTINGS: CompanySettingsData = {
   info: COMPANY_INFO,
   address: "Lê Chân, Hải Phòng, Việt Nam",
@@ -193,6 +201,8 @@ export function formatCompanySettings(doc: CompanySettingsOut): CompanySettingsD
     topBannerLine1: text(banner.topBannerLine1) || COMPANY_INFO.topBannerLine1,
     topBannerLine2: text(banner.topBannerLine2) || COMPANY_INFO.topBannerLine2,
     heroImageUrl: mediaUrl(banner.heroImage) || COMPANY_INFO.heroImageUrl,
+    heroImageWidth: mediaDimension(banner.heroImage, "width") || COMPANY_INFO.heroImageWidth,
+    heroImageHeight: mediaDimension(banner.heroImage, "height") || COMPANY_INFO.heroImageHeight,
     heroImageAlt: mediaAlt(banner.heroImage) || COMPANY_INFO.heroImageAlt,
     heroTitleLine1: text(banner.heroTitleLine1) || COMPANY_INFO.heroTitleLine1,
     heroTitleLine2: text(banner.heroTitleLine2) || COMPANY_INFO.heroTitleLine2,

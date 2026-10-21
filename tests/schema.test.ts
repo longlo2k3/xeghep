@@ -46,6 +46,8 @@ describe("Schema.org JSON-LD Builders", () => {
         topBannerLine1: "BANNER 1",
         topBannerLine2: "BANNER 2",
         heroImageUrl: "/banner3.webp",
+        heroImageWidth: 1677,
+        heroImageHeight: 938,
         heroImageAlt: "Đội xe",
         heroTitleLine1: "XE GHÉP VIP",
         heroTitleLine2: "ĐẶT XE NGAY",
