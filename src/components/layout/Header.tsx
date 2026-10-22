@@ -22,6 +22,7 @@ export function Header({
   const logo = toMediaSrc(info.logoUrl);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [routesDropdownOpen, setRoutesDropdownOpen] = useState(false);
+  const [mobileRoutesOpen, setMobileRoutesOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const isSectionActive = (href: string) =>
@@ -46,6 +47,13 @@ export function Header({
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // Reset mobile routes submenu to closed whenever mobile menu closes
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      setMobileRoutesOpen(false);
+    }
+  }, [mobileMenuOpen]);
 
   return (
     <>
@@ -260,33 +268,69 @@ export function Header({
               Giới thiệu
             </Link>
 
-            <Link
-              href="/tuyen-lien-tinh"
-              onClick={() => setMobileMenuOpen(false)}
-              aria-current={
-                pathname === "/tuyen-lien-tinh" ? "page" : undefined
-              }
-              className={`block px-4 py-2.5 rounded-lg text-base font-bold hover:bg-red-50 ${isSectionActive("/tuyen-lien-tinh") ? "bg-red-50 text-red-700" : "text-red-600"}`}
-            >
-              Các tuyến liên tỉnh (Xem tất cả)
-            </Link>
+            {/* Mobile Submenu: Các tuyến liên tỉnh (Mặc định đóng, có thể click để expand) */}
+            <div>
+              <button
+                type="button"
+                onClick={() => setMobileRoutesOpen((prev) => !prev)}
+                aria-expanded={mobileRoutesOpen}
+                aria-controls="mobile-routes-submenu"
+                className={`w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-base font-semibold transition-colors cursor-pointer ${
+                  isSectionActive("/tuyen-lien-tinh")
+                    ? "text-red-700 bg-red-50/60"
+                    : "text-slate-800 hover:bg-red-50 hover:text-red-600"
+                }`}
+              >
+                <span>Các tuyến liên tỉnh</span>
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    mobileRoutesOpen ? "rotate-180 text-red-600" : "text-slate-500"
+                  }`}
+                  aria-hidden="true"
+                />
+              </button>
 
-            <div className="pl-4 space-y-1 border-l-2 border-red-200 ml-2 py-1">
-              {routes.map((route) => (
-                <Link
-                  key={route.slug}
-                  href={`/tuyen-lien-tinh/${route.slug}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                  aria-current={
-                    pathname === `/tuyen-lien-tinh/${route.slug}`
-                      ? "page"
-                      : undefined
-                  }
-                  className={`block px-3 py-1.5 rounded-md text-xs font-medium hover:text-red-600 ${pathname === `/tuyen-lien-tinh/${route.slug}` ? "bg-red-50 text-red-700" : "text-slate-600"}`}
+              {mobileRoutesOpen && (
+                <div
+                  id="mobile-routes-submenu"
+                  className="pl-4 space-y-1 border-l-2 border-red-200 ml-3 py-1 my-1 animate-in fade-in slide-in-from-top-1 duration-150"
                 >
-                  {route.name}
-                </Link>
-              ))}
+                  <Link
+                    href="/tuyen-lien-tinh"
+                    onClick={() => setMobileMenuOpen(false)}
+                    aria-current={
+                      pathname === "/tuyen-lien-tinh" ? "page" : undefined
+                    }
+                    className={`block px-3 py-2 rounded-md text-xs font-bold hover:bg-red-50 hover:text-red-700 ${
+                      pathname === "/tuyen-lien-tinh"
+                        ? "bg-red-50 text-red-700"
+                        : "text-red-600"
+                    }`}
+                  >
+                    Xem tất cả các tuyến &rarr;
+                  </Link>
+
+                  {routes.map((route) => (
+                    <Link
+                      key={route.slug}
+                      href={`/tuyen-lien-tinh/${route.slug}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                      aria-current={
+                        pathname === `/tuyen-lien-tinh/${route.slug}`
+                          ? "page"
+                          : undefined
+                      }
+                      className={`block px-3 py-1.5 rounded-md text-xs font-medium hover:text-red-600 ${
+                        pathname === `/tuyen-lien-tinh/${route.slug}`
+                          ? "bg-red-50 text-red-700 font-semibold"
+                          : "text-slate-600"
+                      }`}
+                    >
+                      {route.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
             <Link
