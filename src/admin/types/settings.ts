@@ -164,3 +164,21 @@ export interface DistanceRateDoc {
   updatedAt: string;
 }
 
+export interface NotificationSettings {
+  emailEnabled?: boolean | null;
+  emailTo?: string | null;
+  smtpHost?: string | null;
+  smtpPort?: number | null;
+  smtpSecure?: boolean | null;
+  smtpUser?: string | null;
+  smtpPassword?: string | null;
+  senderName?: string | null;
+  senderEmail?: string | null;
+  telegramEnabled?: boolean | null;
+  telegramBotToken?: string | null;
+  telegramChatId?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+}
+
+

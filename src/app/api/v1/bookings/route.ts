@@ -14,6 +14,7 @@ import { enforceRateLimit, RATE_RULES } from '../../../../lib/api/rateLimit';
 import { statusLabel, toVietnamIso } from '../../../../lib/api/serialize';
 import { formatTier } from '../../../../lib/pricing/formatTier';
 import type { PriceTier } from '../../../../lib/pricing/types';
+import { sendBookingNotificationEmail } from '../../../../lib/notify/email';
 
 const SUCCESS_MESSAGE = 'Đặt xe thành công. Tổng đài viên sẽ gọi lại trong ít phút.';
 const HONEYPOT_MESSAGE = 'Đặt xe thành công. Tổng đài viên sẽ gọi lại trong ít phút.';
@@ -342,6 +343,26 @@ export async function POST(req: Request): Promise<Response> {
           message: SUCCESS_MESSAGE,
           data: payloadData,
         };
+
+        // Gửi email thông báo đơn đặt xe mới chạy nền (non-blocking)
+        void sendBookingNotificationEmail({
+          bookingCode,
+          customerName: data.customerName,
+          customerPhone: data.customerPhone,
+          pickupLocation: data.pickupLocation,
+          dropoffLocation: data.dropoffLocation,
+          pickupDateTime: data.pickupDateTime,
+          serviceType: isParcel ? 'parcel' : 'passenger',
+          rideType: isParcel ? null : data.rideType,
+          vehicleType: data.vehicleType,
+          passengerCount: isParcel ? 1 : data.passengerCount,
+          route: routeDoc ? { slug: routeDoc.slug, name: routeDoc.name } : null,
+          estimatedPriceFormatted: payloadData.estimatedPriceFormatted,
+          note: data.note ?? null,
+        }).catch((err) => {
+          console.error('[bookings/emailNotification]', err);
+        });
+
         return envelope;
       },
     );

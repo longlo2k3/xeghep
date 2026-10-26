@@ -104,10 +104,12 @@ export interface Config {
   globals: {
     company_settings: CompanySetting;
     pricing_settings: PricingSetting;
+    notification_settings: NotificationSetting;
   };
   globalsSelect: {
     company_settings: CompanySettingsSelect<false> | CompanySettingsSelect<true>;
     pricing_settings: PricingSettingsSelect<false> | PricingSettingsSelect<true>;
+    notification_settings: NotificationSettingsSelect<false> | NotificationSettingsSelect<true>;
   };
   locale: null;
   widgets: {
@@ -1443,6 +1445,47 @@ export interface PricingSetting {
   createdAt?: string | null;
 }
 /**
+ * Cấu hình gửi thông báo email khi có đơn đặt xe mới (spec 4.2.10).
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "notification_settings".
+ */
+export interface NotificationSetting {
+  id: number;
+  emailEnabled?: boolean | null;
+  /**
+   * Nhập các địa chỉ email nhận thông báo, cách nhau bằng dấu phẩy (ví dụ: admin@xeghep.vn, tongdai@gmail.com).
+   */
+  emailTo?: string | null;
+  /**
+   * Ví dụ: smtp.gmail.com (Gmail), smtp.resend.com, smtp.zoho.com, smtp-relay.brevo.com
+   */
+  smtpHost?: string | null;
+  /**
+   * Thường dùng: 587 (TLS/STARTTLS) hoặc 465 (SSL).
+   */
+  smtpPort?: number | null;
+  smtpSecure?: boolean | null;
+  /**
+   * Địa chỉ email dùng để gửi thư (ví dụ: hotro.xegheplientinh@gmail.com).
+   */
+  smtpUser?: string | null;
+  /**
+   * Lưu ý với Gmail: Bắt buộc dùng Mật khẩu ứng dụng 16 chữ số (App Password), không dùng mật khẩu cá nhân chính.
+   */
+  smtpPassword?: string | null;
+  senderName?: string | null;
+  /**
+   * Để trống sẽ tự động lấy theo Tài khoản đăng nhập SMTP.
+   */
+  senderEmail?: string | null;
+  telegramEnabled?: boolean | null;
+  telegramBotToken?: string | null;
+  telegramChatId?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "company_settings_select".
  */
@@ -1568,6 +1611,27 @@ export interface PricingSettingsSelect<T extends boolean = true> {
   overnightPhone?: T;
   holidayNote?: T;
   priceValidUntilWarning?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "notification_settings_select".
+ */
+export interface NotificationSettingsSelect<T extends boolean = true> {
+  emailEnabled?: T;
+  emailTo?: T;
+  smtpHost?: T;
+  smtpPort?: T;
+  smtpSecure?: T;
+  smtpUser?: T;
+  smtpPassword?: T;
+  senderName?: T;
+  senderEmail?: T;
+  telegramEnabled?: T;
+  telegramBotToken?: T;
+  telegramChatId?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

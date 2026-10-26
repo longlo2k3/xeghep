@@ -87,7 +87,7 @@ export function BookingSupportPopup({
           ref={closeButtonRef}
           type="button"
           onClick={closePopup}
-          className="absolute right-2.5 top-2.5 inline-flex h-9 w-9 items-center justify-center rounded-full text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+          className="absolute right-2.5 top-2.5 inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-yellow-400 bg-white text-slate-600 shadow-sm transition hover:border-yellow-500 hover:bg-yellow-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-offset-2"
           aria-label="Đóng cửa sổ hỗ trợ đặt xe"
         >
           <X className="h-5 w-5" aria-hidden="true" />
@@ -139,7 +139,7 @@ export function BookingSupportPopup({
         <Link
           href="/tuyen-lien-tinh"
           onClick={closePopup}
-          className="mt-4 inline-block text-xs font-medium text-slate-400 underline underline-offset-2 transition hover:text-slate-700 focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 sm:text-sm"
+          className="mt-4 inline-block text-sm font-semibold text-slate-600 underline underline-offset-4 decoration-slate-300 transition hover:text-orange-600 hover:decoration-orange-500 focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 sm:text-[15px]"
         >
           Tôi muốn xem lại bảng giá chuyến đi
         </Link>

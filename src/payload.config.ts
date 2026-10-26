@@ -16,6 +16,7 @@ import { Routes } from "./collections/Routes";
 import { Users } from "./collections/Users";
 import { CompanySettings } from "./globals/CompanySettings";
 import { PricingSettings } from "./globals/PricingSettings";
+import { NotificationSettings } from "./globals/NotificationSettings";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -62,7 +63,7 @@ export default buildConfig({
     AirportPricing,
     DistanceRates,
   ],
-  globals: [CompanySettings, PricingSettings],
+  globals: [CompanySettings, PricingSettings, NotificationSettings],
   cors: [
     "http://localhost:4000",
     "http://127.0.0.1:4000",

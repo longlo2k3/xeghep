@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Settings, Building2 } from "lucide-react";
+import { Settings, Building2, Mail } from "lucide-react";
 import { CompanySettingsForm } from "./CompanySettingsForm";
+import { NotificationSettingsForm } from "./NotificationSettingsForm";
 import { cn } from "@/admin/lib/utils";
 
-export type SettingsTab = "company";
+export type SettingsTab = "company" | "notifications";
 
 export function SettingsPage() {
   const [activeTab, setActiveTab] = useState<SettingsTab>("company");
@@ -20,8 +21,8 @@ export function SettingsPage() {
             </h1>
           </div>
           <p className="text-sm text-slate-500 mt-1">
-            Quản trị thông tin nhận diện doanh nghiệp, hotline, cam kết dịch vụ
-            và hằng số giá cước.
+            Quản trị thông tin nhận diện doanh nghiệp, hotline, cam kết dịch vụ,
+            và cấu hình gửi email thông báo đơn đặt xe.
           </p>
         </div>
       </div>
@@ -41,11 +42,26 @@ export function SettingsPage() {
           <Building2 className="w-4 h-4" />
           Thông tin Doanh nghiệp & Thương hiệu
         </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab("notifications")}
+          className={cn(
+            "flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 transition cursor-pointer",
+            activeTab === "notifications"
+              ? "border-blue-600 text-blue-600 bg-blue-50/60 rounded-t-lg"
+              : "border-transparent text-slate-500 hover:text-slate-800 hover:border-slate-300",
+          )}
+        >
+          <Mail className="w-4 h-4" />
+          Cấu hình Thông báo Email (SMTP)
+        </button>
       </div>
 
       {/* Tab content */}
       <div className="mt-4">
         {activeTab === "company" && <CompanySettingsForm />}
+        {activeTab === "notifications" && <NotificationSettingsForm />}
       </div>
     </div>
   );
