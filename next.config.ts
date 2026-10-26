@@ -11,6 +11,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   trailingSlash: false,
   compress: true,
+  serverExternalPackages: ["nodemailer"],
   typescript: {
     ignoreBuildErrors: false,
   },
