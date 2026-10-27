@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { getCompanySettings } from "@/lib/api";
 
 /**
  * Normalizes any URL or domain string into a clean origin (e.g. "https://xeghep24h.vn").
@@ -25,29 +24,6 @@ export function getFallbackSiteDomain(): string {
     normalizeSiteDomain(process.env.PAYLOAD_PUBLIC_SERVER_URL) ||
     "https://xeghephaiphonghanoi.com"
   );
-}
-
-/**
- * Resolves the primary site domain configured in Admin (CompanySettings).
- * Falls back to environment variable or default domain if unset.
- */
-export async function resolveSiteDomain(): Promise<string> {
-  if (process.env.VITEST) {
-    return getFallbackSiteDomain();
-  }
-  try {
-    const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 1500));
-    const settingsPromise = getCompanySettings().catch(() => null);
-    const settings = await Promise.race([settingsPromise, timeoutPromise]);
-    const website = settings?.info?.website;
-    if (website) {
-      const normalized = normalizeSiteDomain(website);
-      if (normalized) return normalized;
-    }
-  } catch {
-    // fallback when DB/CMS is offline
-  }
-  return getFallbackSiteDomain();
 }
 
 export const SITE_DOMAIN = getFallbackSiteDomain();

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { resolveSiteDomain } from "@/lib/seo";
+import { resolveSiteDomain } from "@/lib/seo-server";
 import { getSitemapEntries, getRoutes, type SitemapEntry } from "@/lib/api";
 import { ARTICLES as FALLBACK_ARTICLES } from "@/data/articles";
 

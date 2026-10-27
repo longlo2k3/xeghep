@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/schema";
-import { resolveSiteDomain } from "@/lib/seo";
+import { resolveSiteDomain } from "@/lib/seo-server";
 import { JsonLd } from "./JsonLd";
 
 interface BreadcrumbsProps {

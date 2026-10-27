@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { resolveSiteDomain } from "@/lib/seo";
+import { resolveSiteDomain } from "@/lib/seo-server";
 
 /**
  * Robots.txt configuration

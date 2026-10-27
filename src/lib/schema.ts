@@ -1,4 +1,4 @@
-import { SITE_DOMAIN, BRAND_NAME, normalizeSiteDomain, getFallbackSiteDomain } from "./seo";
+import { BRAND_NAME, normalizeSiteDomain, getFallbackSiteDomain } from "./seo";
 import type { CompanySettingsData } from "./api";
 
 export interface BreadcrumbItem {
