@@ -48,7 +48,7 @@ export const CompanySettings: GlobalConfig = {
           type: "text",
           label: "Website",
           required: true,
-          admin: { description: "Ví dụ: https://xeghephaiphonghanoi.com" },
+          admin: { description: "Ví dụ: https://xeghep24h.vn" },
         },
       ],
     },

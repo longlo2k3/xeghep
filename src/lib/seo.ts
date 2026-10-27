@@ -21,8 +21,7 @@ export function normalizeSiteDomain(input?: string | null): string {
 export function getFallbackSiteDomain(): string {
   return (
     normalizeSiteDomain(process.env.NEXT_PUBLIC_SITE_URL) ||
-    normalizeSiteDomain(process.env.PAYLOAD_PUBLIC_SERVER_URL) ||
-    "https://xeghephaiphonghanoi.com"
+    "https://xeghep24h.vn"
   );
 }
 

@@ -73,12 +73,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "xeghephaiphonghanoi.com",
+        hostname: "xeghep24h.vn",
         pathname: "/media/**",
       },
       {
         protocol: "https",
-        hostname: "api.xeghephaiphonghanoi.com",
+        hostname: "api.xeghep24h.vn",
         pathname: "/media/**",
       },
     ],
@@ -116,10 +116,14 @@ const nextConfig: NextConfig = {
         source: "/api/:path*",
         headers: [
           { key: "Access-Control-Allow-Origin", value: "*" },
-          { key: "Access-Control-Allow-Methods", value: "GET, POST, PUT, PATCH, DELETE, OPTIONS" },
+          {
+            key: "Access-Control-Allow-Methods",
+            value: "GET, POST, PUT, PATCH, DELETE, OPTIONS",
+          },
           {
             key: "Access-Control-Allow-Headers",
-            value: "Content-Type, Authorization, Idempotency-Key, X-Requested-With, Accept",
+            value:
+              "Content-Type, Authorization, Idempotency-Key, X-Requested-With, Accept",
           },
           { key: "Access-Control-Max-Age", value: "86400" },
         ],

@@ -121,6 +121,7 @@ export default buildConfig({
     "http://127.0.0.1:5173",
     ...(process.env.PAYLOAD_PUBLIC_SERVER_URL ? [process.env.PAYLOAD_PUBLIC_SERVER_URL.replace(/\/+$/, "")] : []),
     ...(process.env.NEXT_PUBLIC_SITE_URL ? [process.env.NEXT_PUBLIC_SITE_URL.replace(/\/+$/, "")] : []),
+    "https://xeghep24h.vn",
     "https://xeghephaiphonghanoi.com",
   ],
   csrf: [
@@ -134,6 +135,7 @@ export default buildConfig({
     "http://127.0.0.1:5173",
     ...(process.env.PAYLOAD_PUBLIC_SERVER_URL ? [process.env.PAYLOAD_PUBLIC_SERVER_URL.replace(/\/+$/, "")] : []),
     ...(process.env.NEXT_PUBLIC_SITE_URL ? [process.env.NEXT_PUBLIC_SITE_URL.replace(/\/+$/, "")] : []),
+    "https://xeghep24h.vn",
     "https://xeghephaiphonghanoi.com",
   ],
   editor: lexicalEditor(),

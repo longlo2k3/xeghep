@@ -460,7 +460,7 @@ export function CompanySettingsForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Input
               label="Website chính thức"
-              placeholder="https://xeghephaiphonghanoi.com"
+              placeholder="https://xeghep24h.vn"
               value={website}
               onChange={(e) => setWebsite(e.target.value)}
               required

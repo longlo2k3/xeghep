@@ -20,7 +20,7 @@ export const SEED_COMPANY = {
   identity: {
     companyName: "Xe Ghép Liên Tỉnh",
     brandName: "Xe Ghép Liên Tỉnh",
-    website: "https://xeghephaiphonghanoi.com",
+    website: "https://xeghep24h.vn",
   },
   contact: {
     hotline: "0962.298.293",

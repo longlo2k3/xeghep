@@ -32,8 +32,8 @@ export const COMPANY_INFO = {
   zaloHref: "https://zalo.me/0962298293",
   smsHref: "sms:0962298293",
   email: "xeghephaiphonghanoi@gmail.com",
-  website: "https://xeghephaiphonghanoi.com",
-  domainName: "xeghephaiphonghanoi.com",
+  website: "https://xeghep24h.vn",
+  domainName: "xeghep24h.vn",
   fanpage: "Xe Ghép Bắc Giang - Bắc Ninh - Hải Phòng",
   fanpageUrl: "https://www.facebook.com/xeghepbacgiangbacninhhaiphong",
   topBannerLine1:
