@@ -1286,7 +1286,7 @@ export interface CompanySetting {
     companyName: string;
     brandName: string;
     /**
-     * Ví dụ: https://xeghephaiphonghanoi.com
+     * Ví dụ: https://xeghep24h.vn
      */
     website: string;
   };

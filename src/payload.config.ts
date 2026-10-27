@@ -122,7 +122,6 @@ export default buildConfig({
     ...(process.env.PAYLOAD_PUBLIC_SERVER_URL ? [process.env.PAYLOAD_PUBLIC_SERVER_URL.replace(/\/+$/, "")] : []),
     ...(process.env.NEXT_PUBLIC_SITE_URL ? [process.env.NEXT_PUBLIC_SITE_URL.replace(/\/+$/, "")] : []),
     "https://xeghep24h.vn",
-    "https://xeghephaiphonghanoi.com",
   ],
   csrf: [
     "http://localhost:4000",
@@ -136,7 +135,6 @@ export default buildConfig({
     ...(process.env.PAYLOAD_PUBLIC_SERVER_URL ? [process.env.PAYLOAD_PUBLIC_SERVER_URL.replace(/\/+$/, "")] : []),
     ...(process.env.NEXT_PUBLIC_SITE_URL ? [process.env.NEXT_PUBLIC_SITE_URL.replace(/\/+$/, "")] : []),
     "https://xeghep24h.vn",
-    "https://xeghephaiphonghanoi.com",
   ],
   editor: lexicalEditor(),
   // Payload 3 không tự nạp sharp — pass vào đây để imageSizes/resizeOptions
