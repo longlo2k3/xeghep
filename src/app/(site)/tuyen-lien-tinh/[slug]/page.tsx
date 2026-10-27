@@ -78,6 +78,7 @@ export default async function RouteDetailPage({ params }: Props) {
     getCompanySettings(),
   ]);
   const info = companySettings.info ?? COMPANY_INFO;
+  const siteDomain = info.website || undefined;
 
   const breadcrumbs = [
     { name: "Trang chủ", path: "/" },
@@ -92,6 +93,7 @@ export default async function RouteDetailPage({ params }: Props) {
     origin: route.origin,
     destination: route.destination,
     path: `/tuyen-lien-tinh/${route.slug}`,
+    siteDomain,
   });
 
   const relatedRoutes = route.relatedRoutes.length
@@ -101,7 +103,7 @@ export default async function RouteDetailPage({ params }: Props) {
   return (
     <>
       <JsonLd data={serviceSchema} />
-      <Breadcrumbs items={breadcrumbs} />
+      <Breadcrumbs items={breadcrumbs} siteDomain={siteDomain} />
 
       <div className="py-10 sm:py-16 bg-slate-50 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">

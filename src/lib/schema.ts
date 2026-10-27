@@ -1,4 +1,4 @@
-import { SITE_DOMAIN, BRAND_NAME } from "./seo";
+import { SITE_DOMAIN, BRAND_NAME, normalizeSiteDomain, getFallbackSiteDomain } from "./seo";
 import type { CompanySettingsData } from "./api";
 
 export interface BreadcrumbItem {
@@ -13,6 +13,7 @@ export interface RouteSchemaInput {
   origin: string;
   destination: string;
   path: string;
+  siteDomain?: string;
 }
 
 export interface ArticleSchemaInput {
@@ -23,6 +24,7 @@ export interface ArticleSchemaInput {
   dateModified?: string;
   authorName?: string;
   imageUrl?: string;
+  siteDomain?: string;
 }
 
 /**
@@ -30,6 +32,7 @@ export interface ArticleSchemaInput {
  * Represents the current company settings on the canonical website.
  */
 export function buildGlobalBusinessSchema(settings?: CompanySettingsData) {
+  const siteDomain = normalizeSiteDomain(settings?.info?.website) || getFallbackSiteDomain();
   const telephone = settings?.info?.hotlineRaw
     ? `+84${settings.info.hotlineRaw.replace(/^0/, "")}`
     : "+84962298293";
@@ -43,8 +46,8 @@ export function buildGlobalBusinessSchema(settings?: CompanySettingsData) {
   const logoUrl = logoSetting
     ? logoSetting.startsWith("http")
       ? logoSetting
-      : `${SITE_DOMAIN}${logoSetting}`
-    : `${SITE_DOMAIN}/icon.svg`;
+      : `${siteDomain}${logoSetting}`
+    : `${siteDomain}/icon.svg`;
   const areaServed =
     settings?.areaServed && settings.areaServed.length > 0
       ? settings.areaServed.map((item) => ({
@@ -67,10 +70,10 @@ export function buildGlobalBusinessSchema(settings?: CompanySettingsData) {
     "@graph": [
       {
         "@type": "Organization",
-        "@id": `${SITE_DOMAIN}/#organization`,
+        "@id": `${siteDomain}/#organization`,
         name: orgName,
         alternateName: brandName,
-        url: SITE_DOMAIN,
+        url: siteDomain,
         logo: {
           "@type": "ImageObject",
           url: logoUrl,
@@ -89,11 +92,11 @@ export function buildGlobalBusinessSchema(settings?: CompanySettingsData) {
       },
       {
         "@type": "TaxiService",
-        "@id": `${SITE_DOMAIN}/#taxiservice`,
+        "@id": `${siteDomain}/#taxiservice`,
         name: `Dịch Vụ ${orgName}`,
         serviceType,
         provider: {
-          "@id": `${SITE_DOMAIN}/#organization`,
+          "@id": `${siteDomain}/#organization`,
         },
         areaServed,
         hoursAvailable: "Mo-Su 00:00-24:00",
@@ -102,11 +105,11 @@ export function buildGlobalBusinessSchema(settings?: CompanySettingsData) {
       },
       {
         "@type": "WebSite",
-        "@id": `${SITE_DOMAIN}/#website`,
-        url: SITE_DOMAIN,
+        "@id": `${siteDomain}/#website`,
+        url: siteDomain,
         name: brandName,
         publisher: {
-          "@id": `${SITE_DOMAIN}/#organization`,
+          "@id": `${siteDomain}/#organization`,
         },
         inLanguage: "vi-VN",
       },
@@ -117,7 +120,8 @@ export function buildGlobalBusinessSchema(settings?: CompanySettingsData) {
 /**
  * Builds Schema.org BreadcrumbList
  */
-export function buildBreadcrumbSchema(items: BreadcrumbItem[]) {
+export function buildBreadcrumbSchema(items: BreadcrumbItem[], siteDomain?: string) {
+  const domain = normalizeSiteDomain(siteDomain) || getFallbackSiteDomain();
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -125,7 +129,7 @@ export function buildBreadcrumbSchema(items: BreadcrumbItem[]) {
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: `${SITE_DOMAIN}${item.path}`,
+      item: `${domain}${item.path}`,
     })),
   };
 }
@@ -140,18 +144,20 @@ export function buildRouteServiceSchema({
   origin,
   destination,
   path,
+  siteDomain,
 }: RouteSchemaInput) {
+  const domain = normalizeSiteDomain(siteDomain) || getFallbackSiteDomain();
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Service",
-        "@id": `${SITE_DOMAIN}${path}#service`,
+        "@id": `${domain}${path}#service`,
         name,
         description,
         serviceType: "Xe ghép liên tỉnh & Bao xe tiện chuyến",
         provider: {
-          "@id": `${SITE_DOMAIN}/#organization`,
+          "@id": `${domain}/#organization`,
         },
         areaServed: [
           { "@type": "Place", name: origin },
@@ -163,7 +169,7 @@ export function buildRouteServiceSchema({
           priceCurrency: "VND",
           priceValidUntil: "2026-12-31",
           availability: "https://schema.org/InStock",
-          url: `${SITE_DOMAIN}${path}`,
+          url: `${domain}${path}`,
         },
       },
     ],
@@ -181,28 +187,30 @@ export function buildArticleSchema({
   dateModified,
   authorName = BRAND_NAME,
   imageUrl,
+  siteDomain,
 }: ArticleSchemaInput) {
+  const domain = normalizeSiteDomain(siteDomain) || getFallbackSiteDomain();
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Article",
-        "@id": `${SITE_DOMAIN}${path}#article`,
+        "@id": `${domain}${path}#article`,
         headline: title,
         description,
         inLanguage: "vi-VN",
-        mainEntityOfPage: `${SITE_DOMAIN}${path}`,
+        mainEntityOfPage: `${domain}${path}`,
         datePublished,
         dateModified: dateModified || datePublished,
         author: {
           "@type": "Organization",
           name: authorName,
-          url: SITE_DOMAIN,
+          url: domain,
         },
         publisher: {
-          "@id": `${SITE_DOMAIN}/#organization`,
+          "@id": `${domain}/#organization`,
         },
-        image: imageUrl || `${SITE_DOMAIN}/images/og-xe-ghep-lien-tinh.webp`,
+        image: imageUrl || `${domain}/images/og-xe-ghep-lien-tinh.webp`,
       },
     ],
   };

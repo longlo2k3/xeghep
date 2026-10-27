@@ -19,7 +19,18 @@ export interface SeoPreviewProps {
   appendBrand?: boolean;
   siteName?: string;
   brandSuffix?: string;
+  siteDomain?: string;
 }
+
+const toDomainUpper = (domainOrUrl?: string) => {
+  if (!domainOrUrl) return "";
+  try {
+    const withProto = domainOrUrl.includes("://") ? domainOrUrl : `https://${domainOrUrl}`;
+    return new URL(withProto).hostname.replace(/^www\./, "").toUpperCase();
+  } catch {
+    return domainOrUrl.toUpperCase();
+  }
+};
 
 export function SeoPreview({
   title,
@@ -30,8 +41,24 @@ export function SeoPreview({
   appendBrand = false,
   siteName = "Xe Ghép Liên Tỉnh",
   brandSuffix = " | Xe Ghép Liên Tỉnh",
+  siteDomain,
 }: SeoPreviewProps) {
   const [activeTab, setActiveTab] = useState<"serp" | "social">("serp");
+
+  const effectiveSiteDomain = siteDomain || SITE_DOMAIN;
+  const displayDomainUpper =
+    toDomainUpper(siteDomain) ||
+    toDomainUpper(process.env.NEXT_PUBLIC_SITE_URL) ||
+    toDomainUpper(process.env.PAYLOAD_PUBLIC_SERVER_URL) ||
+    toDomainUpper(
+      typeof window !== "undefined" &&
+        window.location.hostname &&
+        !window.location.hostname.includes("localhost") &&
+        !window.location.hostname.includes("127.0.0.1")
+        ? window.location.origin
+        : ""
+    ) ||
+    "XEGHEPLIENTINH.VN";
 
   // Xử lý tiêu đề hiển thị đầy đủ
   const effectiveTitle = title
@@ -48,8 +75,8 @@ export function SeoPreview({
     ? slug.replace(/^\/+|\/+$/g, "")
     : "duong-dan-bai-viet";
   const displayUrl = cleanPrefix
-    ? `${SITE_DOMAIN}/${cleanPrefix}/${cleanSlug}`
-    : `${SITE_DOMAIN}/${cleanSlug}`;
+    ? `${effectiveSiteDomain}/${cleanPrefix}/${cleanSlug}`
+    : `${effectiveSiteDomain}/${cleanSlug}`;
 
   // Độ dài ký tự
   const titleLength = effectiveTitle.length;
@@ -319,7 +346,7 @@ export function SeoPreview({
             {/* Nội dung card */}
             <div className="p-4 space-y-1 bg-white border-t border-slate-100">
               <span className="text-[11px] uppercase font-bold text-slate-500 tracking-wider">
-                {siteName}
+                {displayDomainUpper || siteName}
               </span>
               <h4 className="text-sm font-bold text-slate-900 line-clamp-2 leading-snug">
                 {effectiveTitle}

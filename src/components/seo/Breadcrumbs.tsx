@@ -1,14 +1,17 @@
 import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 import { buildBreadcrumbSchema, BreadcrumbItem } from "@/lib/schema";
+import { resolveSiteDomain } from "@/lib/seo";
 import { JsonLd } from "./JsonLd";
 
 interface BreadcrumbsProps {
   items: BreadcrumbItem[];
+  siteDomain?: string;
 }
 
-export function Breadcrumbs({ items }: BreadcrumbsProps) {
-  const schema = buildBreadcrumbSchema(items);
+export async function Breadcrumbs({ items, siteDomain }: BreadcrumbsProps) {
+  const domain = siteDomain || (await resolveSiteDomain());
+  const schema = buildBreadcrumbSchema(items, domain);
 
   return (
     <div className="bg-slate-50 border-b border-slate-200/80 py-2.5 px-4 sm:px-6 lg:px-8">

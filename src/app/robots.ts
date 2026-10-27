@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE_DOMAIN } from "@/lib/seo";
+import { resolveSiteDomain } from "@/lib/seo";
 
 /**
  * Robots.txt configuration
@@ -10,10 +10,15 @@ import { SITE_DOMAIN } from "@/lib/seo";
  * - /api/ bị Disallow (endpoint dữ liệu, không cần crawl) — giữ nguyên từ website gốc.
  * - Non-production: Disallow toàn bộ để tránh index nhầm.
  */
-export default function robots(): MetadataRoute.Robots {
+// Cập nhật cấu hình robots định kỳ đồng bộ với domain trong CMS
+export const revalidate = 60;
+
+export default async function robots(): Promise<MetadataRoute.Robots> {
   const isProd =
     process.env.VERCEL_ENV === "production" ||
     process.env.NODE_ENV === "production";
+
+  const siteDomain = await resolveSiteDomain();
 
   return isProd
     ? {
@@ -22,7 +27,7 @@ export default function robots(): MetadataRoute.Robots {
           allow: "/",
           disallow: ["/admin/", "/payload-admin/", "/api/"],
         },
-        sitemap: `${SITE_DOMAIN}/sitemap.xml`,
+        sitemap: `${siteDomain}/sitemap.xml`,
       }
     : {
         rules: {

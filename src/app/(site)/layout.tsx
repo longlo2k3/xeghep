@@ -8,7 +8,7 @@ import { BookingActivityToast } from "@/components/layout/BookingActivityToast";
 import { BookingSupportPopup } from "@/components/layout/BookingSupportPopup";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildGlobalBusinessSchema } from "@/lib/schema";
-import { SITE_DOMAIN, BRAND_NAME } from "@/lib/seo";
+import { SITE_DOMAIN, BRAND_NAME, normalizeSiteDomain, getFallbackSiteDomain } from "@/lib/seo";
 import { getRoutes, getCompanySettings } from "@/lib/api";
 
 // Đồng bộ lại nội dung Payload/Postgres định kỳ mà không cần build lại toàn bộ site.
@@ -35,10 +35,11 @@ export const viewport: Viewport = {
 export async function generateMetadata(): Promise<Metadata> {
   const { info } = await getCompanySettings();
   const brandName = info.brandName || BRAND_NAME;
-  const ogImage = info.defaultOgImageUrl || `${SITE_DOMAIN}/images/og-xe-ghep-lien-tinh.webp`;
+  const siteDomain = normalizeSiteDomain(info.website) || getFallbackSiteDomain();
+  const ogImage = info.defaultOgImageUrl || `${siteDomain}/images/og-xe-ghep-lien-tinh.webp`;
 
   return {
-    metadataBase: new URL(SITE_DOMAIN),
+    metadataBase: new URL(siteDomain),
     title: {
       template: `%s | ${brandName}`,
       default: `${brandName} - Tiện Chuyến, Bao Xe 4-7 Chỗ Đời Mới 24/7`,

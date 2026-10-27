@@ -89,6 +89,7 @@ export default async function ArticleDetailPage({ params }: Props) {
 
   const companySettings = await getCompanySettings();
   const info = companySettings.info ?? COMPANY_INFO;
+  const siteDomain = info.website || undefined;
 
   const breadcrumbs = [
     { name: "Trang chủ", path: "/" },
@@ -104,6 +105,7 @@ export default async function ArticleDetailPage({ params }: Props) {
     dateModified: article.updatedAt,
     authorName: article.author,
     imageUrl: article.image,
+    siteDomain,
   });
 
   let otherArticles: Article[] = [];
@@ -125,7 +127,7 @@ export default async function ArticleDetailPage({ params }: Props) {
   return (
     <>
       <JsonLd data={articleSchema} />
-      <Breadcrumbs items={breadcrumbs} />
+      <Breadcrumbs items={breadcrumbs} siteDomain={siteDomain} />
 
       <div className="py-10 sm:py-16 bg-slate-50 min-h-screen">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">

@@ -7,7 +7,7 @@ export function toMediaSrc(url?: string | null): string | undefined {
   if (url.startsWith("/")) return url;
   try {
     const { hostname, pathname } = new URL(url);
-    if ((hostname === "localhost" || hostname === "127.0.0.1") && pathname) {
+    if ((hostname === "localhost" || hostname === "127.0.0.1" || pathname.startsWith("/media/")) && pathname) {
       return pathname;
     }
     return url;

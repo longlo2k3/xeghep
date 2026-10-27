@@ -23,8 +23,8 @@ describe("SEO Utilities & Metadata Compliance", () => {
 
     expect(meta.title).toBe("Xe Ghép Ninh Bình");
     expect(meta.description).toBe("Dịch vụ xe ghép Hà Nội Ninh Bình giá rẻ");
-    expect(meta.alternates?.canonical).toBe(`${SITE_DOMAIN}/xe-ghep-ninh-binh`);
-    expect(meta.openGraph?.url).toBe(`${SITE_DOMAIN}/xe-ghep-ninh-binh`);
+    expect(meta.alternates?.canonical).toBe("/xe-ghep-ninh-binh");
+    expect(meta.openGraph?.url).toBe("/xe-ghep-ninh-binh");
     expect(meta.openGraph?.title).toBe(`Xe Ghép Ninh Bình | ${BRAND_NAME}`);
   });
 
@@ -45,7 +45,7 @@ describe("SEO Utilities & Metadata Compliance", () => {
   it("robots.ts never disallows noindex paths on production", async () => {
     const robotsModule = await import("../src/app/robots");
     const robotsFn = robotsModule.default;
-    const prodRobots = robotsFn();
+    const prodRobots = await robotsFn();
     const rules = Array.isArray(prodRobots.rules) ? prodRobots.rules[0] : prodRobots.rules;
     const disallowList = Array.isArray(rules?.disallow) ? rules.disallow : [rules?.disallow];
 

@@ -13,8 +13,8 @@ describe("All Routes and Articles SEO Metadata Consistency", () => {
         path,
       });
 
-      expect(meta.alternates?.canonical).toBe(`${SITE_DOMAIN}${path}`);
-      expect(meta.openGraph?.url).toBe(`${SITE_DOMAIN}${path}`);
+      expect(meta.alternates?.canonical).toBe(path);
+      expect(meta.openGraph?.url).toBe(path);
       expect(meta.title).toBe(`${route.name} - Giá Rẻ`);
       expect(meta.openGraph?.title).toContain(BRAND_NAME);
     }
@@ -31,7 +31,7 @@ describe("All Routes and Articles SEO Metadata Consistency", () => {
         author: article.author,
       });
 
-      expect(meta.alternates?.canonical).toBe(`${SITE_DOMAIN}/tin-tuc/${article.slug}`);
+      expect(meta.alternates?.canonical).toBe(`/tin-tuc/${article.slug}`);
       expect((meta.openGraph as any)?.type).toBe("article");
       expect((meta.openGraph as any)?.publishedTime).toBe(article.publishedAt);
     }
@@ -45,8 +45,8 @@ describe("All Routes and Articles SEO Metadata Consistency", () => {
       path: "/lien-he",
     });
     expect(meta.title).toBe("Liên Hệ Đặt Xe Ghép - Phục Vụ 24/7 Toàn Tuyến Liên Tỉnh");
-    expect(meta.alternates?.canonical).toBe(`${SITE_DOMAIN}/lien-he`);
-    expect(meta.openGraph?.url).toBe(`${SITE_DOMAIN}/lien-he`);
+    expect(meta.alternates?.canonical).toBe("/lien-he");
+    expect(meta.openGraph?.url).toBe("/lien-he");
     expect(meta.openGraph?.title).toContain(BRAND_NAME);
     expect(meta.description).toBeTruthy();
   });

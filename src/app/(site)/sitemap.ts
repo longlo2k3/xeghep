@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE_DOMAIN } from "@/lib/seo";
+import { resolveSiteDomain } from "@/lib/seo";
 import { getSitemapEntries, getRoutes, type SitemapEntry } from "@/lib/api";
 import { ARTICLES as FALLBACK_ARTICLES } from "@/data/articles";
 
@@ -8,12 +8,13 @@ export const revalidate = 60;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const currentDate = new Date();
+  const siteDomain = await resolveSiteDomain();
 
   try {
     const entries = await getSitemapEntries();
     if (Array.isArray(entries) && entries.length > 0) {
       return entries.map((entry: SitemapEntry) => {
-        const url = `${SITE_DOMAIN}${entry.path}`;
+        const url = `${siteDomain}${entry.path}`;
         const lastModified = entry.lastmod ? new Date(entry.lastmod) : currentDate;
 
         return {
@@ -40,7 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   const staticEntries: MetadataRoute.Sitemap = fallbackPaths.map((path) => ({
-    url: `${SITE_DOMAIN}${path}`,
+    url: `${siteDomain}${path}`,
     lastModified: currentDate,
   }));
 
@@ -48,7 +49,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const routes = await getRoutes({ fields: "slug" });
     routeEntries = routes.map((r) => ({
-      url: `${SITE_DOMAIN}/tuyen-lien-tinh/${r.slug}`,
+      url: `${siteDomain}/tuyen-lien-tinh/${r.slug}`,
       lastModified: currentDate,
     }));
   } catch {
@@ -56,7 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   const articleEntries: MetadataRoute.Sitemap = FALLBACK_ARTICLES.map((article) => ({
-    url: `${SITE_DOMAIN}/tin-tuc/${article.slug}`,
+    url: `${siteDomain}/tin-tuc/${article.slug}`,
     lastModified: new Date(article.updatedAt),
   }));
 

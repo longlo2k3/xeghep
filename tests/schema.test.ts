@@ -82,7 +82,7 @@ describe("Schema.org JSON-LD Builders", () => {
     expect(org?.alternateName).toBe("Xe Ghép VIP");
     expect(
       (org?.logo as { url?: string } | undefined)?.url
-    ).toBe("https://xeghephaiphonghanoi.com/media/logo-vip.png");
+    ).toBe("https://xegheplientinh.vn/media/logo-vip.png");
     expect(taxiService?.telephone).toBe("+84988111222");
     expect(taxiService?.priceRange).toBe("200.000đ - 1.000.000đ");
     expect(taxiService?.areaServed).toEqual([{ "@type": "City", name: "Hải Phòng" }]);
