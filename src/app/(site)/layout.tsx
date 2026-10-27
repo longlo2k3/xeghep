@@ -8,8 +8,14 @@ import { BookingActivityToast } from "@/components/layout/BookingActivityToast";
 import { BookingSupportPopup } from "@/components/layout/BookingSupportPopup";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildGlobalBusinessSchema } from "@/lib/schema";
-import { SITE_DOMAIN, BRAND_NAME, normalizeSiteDomain, getFallbackSiteDomain } from "@/lib/seo";
+import {
+  SITE_DOMAIN,
+  BRAND_NAME,
+  normalizeSiteDomain,
+  getFallbackSiteDomain,
+} from "@/lib/seo";
 import { getRoutes, getCompanySettings } from "@/lib/api";
+import Script from "next/script";
 
 // Đồng bộ lại nội dung Payload/Postgres định kỳ mà không cần build lại toàn bộ site.
 export const revalidate = 60;
@@ -35,8 +41,10 @@ export const viewport: Viewport = {
 export async function generateMetadata(): Promise<Metadata> {
   const { info } = await getCompanySettings();
   const brandName = info.brandName || BRAND_NAME;
-  const siteDomain = normalizeSiteDomain(info.website) || getFallbackSiteDomain();
-  const ogImage = info.defaultOgImageUrl || `${siteDomain}/images/og-xe-ghep-lien-tinh.webp`;
+  const siteDomain =
+    normalizeSiteDomain(info.website) || getFallbackSiteDomain();
+  const ogImage =
+    info.defaultOgImageUrl || `${siteDomain}/images/og-xe-ghep-lien-tinh.webp`;
 
   return {
     metadataBase: new URL(siteDomain),
@@ -88,6 +96,21 @@ export default async function RootLayout({
     <html lang="vi" className={fontSans.variable}>
       <head>
         <meta charSet="UTF-8" />
+        {/* Google tag - Google Ads */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18539707592"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-ads-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', 'AW-18539707592');
+          `}
+        </Script>
       </head>
       <body className="min-h-screen flex flex-col font-sans antialiased text-slate-900 bg-white selection:bg-red-100 selection:text-red-900">
         <JsonLd data={globalSchema} />
