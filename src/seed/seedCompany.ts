@@ -37,18 +37,20 @@ export const SEED_COMPANY = {
     longitude: 106.6880842,
   },
   banner: {
-    topBannerLine1: "XE GHÉP: MÓNG CÁI - HẠ LONG - HẢI PHÒNG - BẮC NINH - BẮC GIANG - HÀ NỘI",
+    topBannerLine1:
+      "XE GHÉP: MÓNG CÁI - HẠ LONG - HẢI PHÒNG - BẮC NINH - BẮC GIANG - HÀ NỘI",
     topBannerLine2: "ĐẶT XE LIÊN HỆ NGAY: 0962.298.293",
     heroTitleLine1: "XE GHÉP LIÊN TỈNH",
     heroTitleLine2: "GIÁ CHỈ TỪ 200K",
-    heroDescription: "Dịch vụ xe ghép – xe tiện chuyến Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang... Xe chạy thẳng, nhanh, đón trả tận nơi, phục vụ 24/7.",
+    heroDescription:
+      "Dịch vụ xe ghép – xe tiện chuyến Móng Cái, Hạ Long, Hải Phòng, Hà Nội, Bắc Ninh, Bắc Giang... Xe chạy thẳng, nhanh, đón trả tận nơi, phục vụ 24/7.",
     heroBenefit1: "Đón trả tận nhà",
     heroBenefit2: "Chỉ 1–3 khách",
-    heroBenefit3: "100% xe đời mới",
+    heroBenefit3: "Cam kết là xe đời mới",
     coverage: "Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội",
     workingHours: "Phục vụ 24/7 (Cả ngày lẫn đêm, các ngày lễ tết)",
     fleetDescription:
-      "100% xe riêng đời mới 4, 5, 7 chỗ, điều hòa mát lạnh, sạch sẽ, bảo dưỡng định kỳ",
+      "Cam kết xe riêng đời mới 4, 5, 7 chỗ, điều hòa mát lạnh, sạch sẽ, bảo dưỡng định kỳ",
     bookingPromise:
       "Giá rõ ràng đã bao gồm cầu đường bến bãi – Đưa đón tận nhà – Miễn phí hủy chuyến",
     summary:
@@ -156,7 +158,9 @@ export const SEED_COMPANY = {
   ],
 };
 
-const invokedAsScript = (process.argv[1] ?? "").replace(/\\/g, "/").endsWith("/seedCompany.ts");
+const invokedAsScript = (process.argv[1] ?? "")
+  .replace(/\\/g, "/")
+  .endsWith("/seedCompany.ts");
 
 if (invokedAsScript) {
   const payload = await getPayload({ config });
@@ -171,12 +175,21 @@ if (invokedAsScript) {
   });
   let logoId = found.docs[0]?.id;
   if (logoId == null) {
-    const source = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../media", logoFilename);
+    const source = path.resolve(
+      path.dirname(fileURLToPath(import.meta.url)),
+      "../../media",
+      logoFilename,
+    );
     const data = fs.readFileSync(source);
     const logo = await payload.create({
       collection: "media",
       data: { alt: "Xe ghép Hải Phòng Hà Nam" },
-      file: { data, mimetype: "image/png", name: logoFilename, size: data.length },
+      file: {
+        data,
+        mimetype: "image/png",
+        name: logoFilename,
+        size: data.length,
+      },
       overrideAccess: true,
     });
     logoId = logo.id;
@@ -184,7 +197,10 @@ if (invokedAsScript) {
 
   const doc = await payload.updateGlobal({
     slug: "company_settings",
-    data: { ...SEED_COMPANY, brandSeo: { ...SEED_COMPANY.brandSeo, logo: logoId } },
+    data: {
+      ...SEED_COMPANY,
+      brandSeo: { ...SEED_COMPANY.brandSeo, logo: logoId },
+    },
     overrideAccess: true,
   });
 

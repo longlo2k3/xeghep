@@ -50,7 +50,7 @@ const SEED_PAGES: SeedPage[] = [
     metaTitle: "Xe Ghép Liên Tỉnh - Móng Cái, Hạ Long, Hải Phòng, Bắc Ninh, Bắc Giang",
     appendBrand: false, // title gốc 77 ký tự → đã cắt về 69, không thêm hậu tố (xem báo cáo)
     metaDescription:
-      "Dịch vụ xe ghép liên tỉnh chuyên tuyến Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội. 100% xe riêng đời mới, giá trọn gói, phục vụ 24/7.",
+      "Dịch vụ xe ghép liên tỉnh chuyên tuyến Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội. Cam kết là xe riêng đời mới, giá trọn gói, phục vụ 24/7.",
   },
   {
     slug: "gioi-thieu",
@@ -59,7 +59,7 @@ const SEED_PAGES: SeedPage[] = [
     metaTitle: "Giới Thiệu Về Xe Ghép Liên Tỉnh - Tiện Chuyến Đón Tận Nhà",
     appendBrand: false, // 57 + 20 > 70
     metaDescription:
-      "Giới thiệu dịch vụ Xe Ghép Liên Tỉnh chuyên tuyến Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội. 100% xe riêng đời mới, phục vụ 24/7.",
+      "Giới thiệu dịch vụ Xe Ghép Liên Tỉnh chuyên tuyến Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội. Cam kết là xe riêng đời mới, phục vụ 24/7.",
   },
   {
     slug: "lien-he",

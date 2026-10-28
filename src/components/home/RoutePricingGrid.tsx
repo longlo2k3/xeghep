@@ -121,7 +121,7 @@ export function RoutePricingGrid({
             BẢNG GIÁ XE GHÉP
           </Heading>
           <p className="text-[11px] sm:text-sm text-slate-600 italic px-2">
-            Giá đã bao gồm phí cầu đường bến bãi – Cam kết 100% xe riêng đời
+            Giá đã bao gồm phí cầu đường bến bãi – Cam kết là xe riêng đời
             mới, đưa đón tại nhà – Miễn phí huỷ chuyến.
           </p>
         </div>

@@ -71,7 +71,7 @@ const DEFAULT_COMMITMENTS: CompanyCommitment[] = [
   },
   {
     title: 'Xe đời mới sạch sẽ',
-    description: '100% dòng xe đời mới từ 2020 trở lên, máy lạnh êm ái, bảo dưỡng định kỳ.',
+    description: 'Cam kết là xe đời mới từ 2020 trở lên, máy lạnh êm ái, bảo dưỡng định kỳ.',
     iconName: 'ShieldCheck',
   },
   {
@@ -745,7 +745,7 @@ export function CompanySettingsForm() {
 
           <Textarea
             label="Mô tả đội xe"
-            placeholder="Ví dụ: 100% xe riêng đời mới 4, 5, 7 chỗ, điều hòa mát lạnh, sạch sẽ, bảo dưỡng định kỳ"
+            placeholder="Ví dụ: Cam kết là xe riêng đời mới 4, 5, 7 chỗ, điều hòa mát lạnh, sạch sẽ, bảo dưỡng định kỳ"
             rows={2}
             value={fleetDescription}
             onChange={(e) => setFleetDescription(e.target.value)}

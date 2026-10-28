@@ -42,7 +42,7 @@ export const ARTICLES: Article[] = [
         <li><strong>Chỉ 1–3 khách/chuyến:</strong> Tuyệt đối không nhồi nhét, chỗ ngồi êm ái rộng rãi.</li>
         <li><strong>Xuất phát nhanh chóng:</strong> Xe chạy thẳng đường cao tốc, không bắt khách dọc đường.</li>
         <li><strong>Giá rõ ràng trọn gói:</strong> Đã bao gồm vé cầu đường bến bãi, không có phụ phí ẩn.</li>
-        <li><strong>100% xe đời mới:</strong> Điều hòa mát lạnh, sạch sẽ không mùi.</li>
+        <li><strong>Cam kết là xe đời mới:</strong> Điều hòa mát lạnh, sạch sẽ không mùi.</li>
         <li><strong>Đón trả tận nơi 24/7:</strong> Phục vụ 2 chiều cả ngày lẫn đêm.</li>
       </ul>
 

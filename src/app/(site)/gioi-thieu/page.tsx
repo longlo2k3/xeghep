@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return constructMetadata({
     title: `Giới Thiệu Về ${brandName} - Tiện Chuyến Đón Tận Nhà`,
-    description: `Giới thiệu dịch vụ ${brandName} chuyên tuyến Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội. 100% xe riêng đời mới, phục vụ 24/7.`,
+    description: `Giới thiệu dịch vụ ${brandName} chuyên tuyến Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội. Cam kết là xe riêng đời mới, phục vụ 24/7.`,
     path: "/gioi-thieu",
   });
 }
@@ -66,18 +66,19 @@ export default async function GioiThieuPage() {
               <span>Về Chúng Tôi</span>
             </h2>
             <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-              <strong>{info.name}</strong> là đơn vị tiên phong cung cấp
-              giải pháp xe ghép, xe tiện chuyến và bao xe riêng cao cấp kết nối
-              các tỉnh thành trọng điểm:{" "}
+              <strong>{info.name}</strong> là đơn vị tiên phong cung cấp giải
+              pháp xe ghép, xe tiện chuyến và bao xe riêng cao cấp kết nối các
+              tỉnh thành trọng điểm:{" "}
               <strong>
-                {info.coverage || "Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội"}
+                {info.coverage ||
+                  "Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội"}
               </strong>
               .
             </p>
             <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
               Với mô hình đón và trả tận nhà, chúng tôi giúp hành khách xóa bỏ
               hoàn toàn nỗi vất vả khi phải chen chúc tại bến xe, bắt xe dù dọc
-              đường hoặc trả mức chi phí đắt đỏ cho taxi truyền thống. 100%
+              đường hoặc trả mức chi phí đắt đỏ cho taxi truyền thống. Cam kết
               phương tiện vận hành đều là xe riêng đời mới, được kiểm định an
               toàn và vệ sinh sạch sẽ trước mỗi chuyến đi.
             </p>
@@ -137,7 +138,7 @@ export default async function GioiThieuPage() {
                   <Car className="w-5 h-5" />
                 </div>
                 <h3 className="font-bold text-slate-900 text-sm">
-                  100% Xe Đời Mới
+                  Cam kết Xe Đời Mới
                 </h3>
                 <p className="text-xs text-slate-600 leading-relaxed">
                   Dòng xe 4, 5, 7 chỗ sạch sẽ không mùi, điều hòa mát lạnh êm

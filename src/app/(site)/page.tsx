@@ -16,7 +16,7 @@ export const metadata: Metadata = constructMetadata({
   title:
     "Xe Ghép Liên Tỉnh - Móng Cái, Hạ Long, Hải Phòng, Bắc Ninh, Bắc Giang, Hà Nội",
   description:
-    "Dịch vụ xe ghép liên tỉnh chuyên tuyến Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội. 100% xe riêng đời mới, đưa đón tận nhà, giá trọn gói, phục vụ 24/7.",
+    "Dịch vụ xe ghép liên tỉnh chuyên tuyến Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội. Cam kết là xe riêng đời mới, đưa đón tận nhà, giá trọn gói, phục vụ 24/7.",
   path: "/",
 });
 

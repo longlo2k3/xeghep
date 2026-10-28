@@ -14,7 +14,7 @@ export function IntroTeaser() {
     "Chỉ ghép 1–3 khách/chuyến, không gian rộng rãi",
     "Xuất phát nhanh, không chờ đợi gom khách lâu",
     "Giá rõ ràng, trọn gói gồm phí cầu đường bến bãi",
-    "100% xe đời mới sạch sẽ, bảo dưỡng định kỳ",
+    "Cam kết là xe đời mới sạch sẽ, bảo dưỡng định kỳ",
     "Phục vụ 24/7 liên tục ngày đêm và các dịp lễ tết",
   ];
 
@@ -51,13 +51,13 @@ export function IntroTeaser() {
             GIỚI THIỆU VỀ XE GHÉP LIÊN TỈNH
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 italic">
-            Giải pháp di chuyển văn minh, tiện lợi, tối ưu chi phí và đưa đón tận nhà trên mọi hành trình liên tỉnh miền Bắc.
+            Giải pháp di chuyển văn minh, tiện lợi, tối ưu chi phí và đưa đón
+            tận nhà trên mọi hành trình liên tỉnh miền Bắc.
           </p>
         </div>
 
         {/* Nội dung dạng 3 Cột Semantic <article> gọn gàng, vừa vặn */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch mb-8 sm:mb-10">
-          
           {/* ============================================================ */}
           {/* CỘT 1: Giải pháp di chuyển tiết kiệm, nhanh chóng             */}
           {/* ============================================================ */}
@@ -73,18 +73,27 @@ export function IntroTeaser() {
                 Giải Pháp Di Chuyển Tiết Kiệm & Nhanh Chóng
               </h3>
               <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed mb-4">
-                Dịch vụ xe ghép liên tỉnh là lựa chọn tối ưu thay thế xe khách chật chội và taxi riêng đắt đỏ. Hành khách được đón và trả tận cửa nhà, chạy thẳng đường cao tốc êm ái, không bắt khách dọc đường, không sang xe chuyển tuyến.
+                Dịch vụ xe ghép liên tỉnh là lựa chọn tối ưu thay thế xe khách
+                chật chội và taxi riêng đắt đỏ. Hành khách được đón và trả tận
+                cửa nhà, chạy thẳng đường cao tốc êm ái, không bắt khách dọc
+                đường, không sang xe chuyển tuyến.
               </p>
             </div>
 
             {/* Micro Highlights Tags */}
             <div className="pt-3 border-t border-slate-100 space-y-1.5">
               <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                <Sparkles className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" aria-hidden="true" />
+                <Sparkles
+                  className="w-3.5 h-3.5 text-amber-500 flex-shrink-0"
+                  aria-hidden="true"
+                />
                 <span>Tiết kiệm lên tới 50% chi phí so với taxi</span>
               </div>
               <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                <Zap className="w-3.5 h-3.5 text-red-500 flex-shrink-0" aria-hidden="true" />
+                <Zap
+                  className="w-3.5 h-3.5 text-red-500 flex-shrink-0"
+                  aria-hidden="true"
+                />
                 <span>Thời gian di chuyển rút ngắn qua cao tốc</span>
               </div>
             </div>
@@ -112,7 +121,10 @@ export function IntroTeaser() {
                     key={idx}
                     className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-700 leading-snug"
                   >
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                    <CheckCircle2
+                      className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"
+                      aria-hidden="true"
+                    />
                     <span className="font-medium">{text}</span>
                   </li>
                 ))}
@@ -172,7 +184,6 @@ export function IntroTeaser() {
               </span>
             </div>
           </article>
-
         </div>
 
         {/* CTA: Nút "Xem thêm giới thiệu" có anchor text chuẩn SEO */}

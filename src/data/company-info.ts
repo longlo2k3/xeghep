@@ -52,7 +52,7 @@ export const COMPANY_INFO = {
   coverage: "Móng Cái – Hạ Long – Hải Phòng – Bắc Ninh – Bắc Giang – Hà Nội",
   workingHours: "Phục vụ 24/7 (Cả ngày lẫn đêm, các ngày lễ tết)",
   fleetDescription:
-    "100% xe riêng đời mới 4, 5, 7 chỗ, điều hòa mát lạnh, sạch sẽ, bảo dưỡng định kỳ",
+    "Cam kết xe riêng đời mới 4, 5, 7 chỗ, điều hòa mát lạnh, sạch sẽ, bảo dưỡng định kỳ",
   bookingPromise:
     "Giá rõ ràng đã bao gồm cầu đường bến bãi – Đưa đón tận nhà – Miễn phí hủy chuyến",
   summary:

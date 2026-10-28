@@ -113,7 +113,7 @@ export default async function RouteDetailPage({ params }: Props) {
               <div className="lg:col-span-7 space-y-5">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 text-red-700 text-xs font-bold uppercase tracking-wider">
                   <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
-                  <span>100% Xe Riêng Đời Mới • Đưa Đón Tận Nhà 24/7</span>
+                  <span>Cam kết Xe Riêng Đời Mới • Đưa Đón Tận Nhà 24/7</span>
                 </span>
 
                 {/* H1 per spec_v2.md 5.2 */}
@@ -192,7 +192,11 @@ export default async function RouteDetailPage({ params }: Props) {
               <span>Bảng Giá Chi Tiết Tuyến {route.name}</span>
             </h2>
 
-            <RoutePricingDisplay customHtml={route.customPricingHtml} customCss={route.customPricingCss} customJs={route.customPricingJs}>
+            <RoutePricingDisplay
+              customHtml={route.customPricingHtml}
+              customCss={route.customPricingCss}
+              customJs={route.customPricingJs}
+            >
               <table className="w-full text-left text-sm text-slate-700 border-collapse">
                 <thead>
                   <tr className="bg-slate-100 text-slate-900 font-extrabold border-b border-slate-200 text-xs sm:text-sm">
@@ -263,8 +267,8 @@ export default async function RouteDetailPage({ params }: Props) {
             <p className="text-xs text-slate-500 italic flex items-center gap-1.5 pt-2 border-t border-slate-100">
               <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
               <span>
-                Giá đã bao gồm phí cầu đường bến bãi – Cam kết 100% xe riêng đời
-                mới, đưa đón tại nhà – Miễn phí huỷ chuyến.
+                Giá đã bao gồm phí cầu đường bến bãi – Cam kết xe riêng đời mới,
+                đưa đón tại nhà – Miễn phí huỷ chuyến.
               </span>
             </p>
           </div>
